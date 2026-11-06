@@ -1,0 +1,225 @@
+/* 游戏街机厅 · bridge 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.bridge.tutTitle'] = '桥梁搭建 · 玩法';
+  d.en['gs.bridge.tutTitle'] = 'Bridge Builder · How to Play';
+  d.zh['gs.bridge.tut1t'] = '目标';
+  d.en['gs.bridge.tut1t'] = 'Objective';
+  d.zh['gs.bridge.tut1'] = '用有限预算在峡谷上搭一座真实桁架桥，让卡车从左岸安全驶到右岸。后面跨度更大、车更重、预算更紧。';
+  d.en['gs.bridge.tut1'] = 'Build a real truss bridge across the canyon on a limited budget so the truck can drive from the left bank to the right. Later levels stretch the span, add weight and tighten the budget.';
+  d.zh['gs.bridge.tut2t'] = '建造';
+  d.en['gs.bridge.tut2t'] = 'Building';
+  d.zh['gs.bridge.tut2'] = '空白处拖拽放置节点（自动吸附网格）；从一个节点拖到另一个节点架梁。删除模式可移除节点或梁，撤销可回退一步。超出预算的梁会被拒绝。';
+  d.en['gs.bridge.tut2'] = 'Drag on empty ground to place a grid-snapped node; drag node→node to raise a beam. Delete mode removes nodes or beams and undo steps back. Beams that exceed the budget are rejected.';
+  d.zh['gs.bridge.tut3t'] = '材料与受力';
+  d.en['gs.bridge.tut3t'] = 'Materials & Stress';
+  d.zh['gs.bridge.tut3'] = '木、钢、缆索的价格、强度、重量与刚度都不同：木便宜但弱，钢强但贵，缆索只能受拉。每个节点和杆件都进入二维刚度矩阵求解，长度、斜撑与车重都会改变轴力和挠度。杆件颜色由绿到黄到红代表应力比，超过 100% 即断裂；挠度超限同样失败。';
+  d.en['gs.bridge.tut3'] = 'Wood, steel and cable differ in cost, strength, weight and stiffness: wood is cheap but weak, steel is strong but pricey, cable carries tension only. Nodes and members go into a 2D stiffness matrix; span, bracing and truck weight all change axial force and deflection. Beam colour runs green → yellow → red as the stress ratio rises; past 100% it snaps, and excess deflection also fails.';
+  d.zh['gs.bridge.tut4t'] = '计分与编辑器';
+  d.en['gs.bridge.tut4t'] = 'Scoring & Editor';
+  d.zh['gs.bridge.tut4'] = '通关结算显示用时、材料消耗、梁数、材质构成、最大挠度与安全率；材料越省越好，每关单独记录最佳。编辑器里可自由搭桥、试跑，并把自建关卡保存在本地（arcade_bridge_editor_custom）。';
+  d.en['gs.bridge.tut4'] = 'Results show time, material used, beam count, material mix, max deflection and safety ratio; spending less is better and each level keeps its own best. The editor lets you build and test freely and saves your custom level locally (arcade_bridge_editor_custom).';
+
+  /* 关卡名 */
+  d.zh['gs.bridge.level1'] = '浅谷小桥';
+  d.en['gs.bridge.level1'] = 'Shallow Creek';
+  d.zh['gs.bridge.level2'] = '双墩缓坡';
+  d.en['gs.bridge.level2'] = 'Twin Piers';
+  d.zh['gs.bridge.level3'] = '窄谷重车';
+  d.en['gs.bridge.level3'] = 'Heavy Haul';
+  d.zh['gs.bridge.level4'] = '高低落差';
+  d.en['gs.bridge.level4'] = 'Uneven Banks';
+  d.zh['gs.bridge.level5'] = '宽谷双墩';
+  d.en['gs.bridge.level5'] = 'Wide Crossing';
+  d.zh['gs.bridge.level6'] = '深谷独墩';
+  d.en['gs.bridge.level6'] = 'Deep Gorge';
+  d.zh['gs.bridge.level7'] = '长跨重载';
+  d.en['gs.bridge.level7'] = 'Long Haul';
+  d.zh['gs.bridge.level8'] = '终局巨跨';
+  d.en['gs.bridge.level8'] = 'Grand Span';
+
+  /* 按钮 / 面板 */
+  d.zh['gs.bridge.hud'] = '预算 {b} · 梁 {n}';
+  d.en['gs.bridge.hud'] = 'Budget {b} · Beams {n}';
+  d.zh['gs.bridge.levels'] = '关卡';
+  d.en['gs.bridge.levels'] = 'Levels';
+  d.zh['gs.bridge.build'] = '建造';
+  d.en['gs.bridge.build'] = 'Build';
+  d.zh['gs.bridge.remove'] = '拆除';
+  d.en['gs.bridge.remove'] = 'Remove';
+  d.zh['gs.bridge.undo'] = '撤销';
+  d.en['gs.bridge.undo'] = 'Undo';
+  d.zh['gs.bridge.test'] = '试跑';
+  d.en['gs.bridge.test'] = 'Test drive';
+  d.zh['gs.bridge.editor'] = '编辑器';
+  d.en['gs.bridge.editor'] = 'Editor';
+  d.zh['gs.bridge.save'] = '保存';
+  d.en['gs.bridge.save'] = 'Save';
+  d.zh['gs.bridge.load'] = '读取';
+  d.en['gs.bridge.load'] = 'Load';
+  d.zh['gs.bridge.clear'] = '清空';
+  d.en['gs.bridge.clear'] = 'Clear';
+  d.zh['gs.bridge.exitEditor'] = '退出编辑器';
+  d.en['gs.bridge.exitEditor'] = 'Exit editor';
+  d.zh['gs.bridge.restart'] = '重开';
+  d.en['gs.bridge.restart'] = 'Restart';
+  d.zh['gs.bridge.selectLevel'] = '选择关卡';
+  d.en['gs.bridge.selectLevel'] = 'Choose a level';
+  d.zh['gs.bridge.close'] = '返回';
+  d.en['gs.bridge.close'] = 'Back';
+  d.zh['gs.bridge.canvasLabel'] = '桥梁建造区域';
+  d.en['gs.bridge.canvasLabel'] = 'Bridge building area';
+
+  /* 顶栏 HUD */
+  d.zh['gs.bridge.hudSpan'] = '跨度';
+  d.en['gs.bridge.hudSpan'] = 'Span';
+  d.zh['gs.bridge.hudBudget'] = '预算';
+  d.en['gs.bridge.hudBudget'] = 'Budget';
+  d.zh['gs.bridge.hudWeight'] = '车重';
+  d.en['gs.bridge.hudWeight'] = 'Load';
+  d.zh['gs.bridge.hudNodes'] = '节点';
+  d.en['gs.bridge.hudNodes'] = 'Nodes';
+  d.zh['gs.bridge.hudMat'] = '材料';
+  d.en['gs.bridge.hudMat'] = 'Material';
+  d.zh['gs.bridge.hudStress'] = '最大应力';
+  d.en['gs.bridge.hudStress'] = 'Peak stress';
+  d.zh['gs.bridge.hudDeflect'] = '挠度';
+  d.en['gs.bridge.hudDeflect'] = 'Deflection';
+  d.zh['gs.bridge.hudCross'] = '过桥';
+  d.en['gs.bridge.hudCross'] = 'Crossing';
+  d.zh['gs.bridge.hudLevel'] = '第 {l}/{t} 关';
+  d.en['gs.bridge.hudLevel'] = 'Level {l}/{t}';
+  d.zh['gs.bridge.hudTime'] = '用时';
+  d.en['gs.bridge.hudTime'] = 'Time';
+
+  /* 提示消息 */
+  d.zh['gs.bridge.levelStart'] = '第 {n} 关：先铺桥面，再加斜撑';
+  d.en['gs.bridge.levelStart'] = 'Level {n}: lay the deck first, then add bracing';
+  d.zh['gs.bridge.editorStart'] = '编辑器：自由搭桥，试跑后可保存到本地';
+  d.en['gs.bridge.editorStart'] = 'Editor: build freely, test, then save locally';
+  d.zh['gs.bridge.editorTitle'] = '自建关卡';
+  d.en['gs.bridge.editorTitle'] = 'Custom level';
+  d.zh['gs.bridge.nothingUndo'] = '没有可撤销的操作';
+  d.en['gs.bridge.nothingUndo'] = 'Nothing to undo';
+  d.zh['gs.bridge.undone'] = '已撤销一步';
+  d.en['gs.bridge.undone'] = 'Undid the last step';
+  d.zh['gs.bridge.nodeLimit'] = '节点数量已达上限';
+  d.en['gs.bridge.nodeLimit'] = 'Node limit reached';
+  d.zh['gs.bridge.tooShort'] = '梁太短了，至少拉开一点距离';
+  d.en['gs.bridge.tooShort'] = 'Beam too short — pull the nodes further apart';
+  d.zh['gs.bridge.duplicate'] = '这两个节点之间已经有梁了';
+  d.en['gs.bridge.duplicate'] = 'A beam already connects these nodes';
+  d.zh['gs.bridge.overBudget'] = '预算不足，这根梁需要 {c} 材料';
+  d.en['gs.bridge.overBudget'] = 'Not enough budget — this beam needs {c} material';
+  d.zh['gs.bridge.materialSel'] = '已选用{m}';
+  d.en['gs.bridge.materialSel'] = 'Selected {m}';
+  d.zh['gs.bridge.needBridge'] = '先搭出连通左右两岸的桥面';
+  d.en['gs.bridge.needBridge'] = 'First build a deck that connects both banks';
+  d.zh['gs.bridge.testing'] = '卡车出发，注意梁的应力颜色';
+  d.en['gs.bridge.testing'] = 'Truck rolling — watch the stress colours';
+  d.zh['gs.bridge.beamDeleted'] = '梁已删除，材料已退回';
+  d.en['gs.bridge.beamDeleted'] = 'Beam removed, material refunded';
+  d.zh['gs.bridge.nodeDeleted'] = '节点及其梁已删除';
+  d.en['gs.bridge.nodeDeleted'] = 'Node and its beams removed';
+  d.zh['gs.bridge.removed'] = '已拆除';
+  d.en['gs.bridge.removed'] = 'Removed';
+  d.zh['gs.bridge.nothingRemove'] = '这里没有可拆除的梁或节点';
+  d.en['gs.bridge.nothingRemove'] = 'Nothing to remove here';
+  d.zh['gs.bridge.beamBuilt'] = '{m}梁已建成';
+  d.en['gs.bridge.beamBuilt'] = '{m} beam built';
+  d.zh['gs.bridge.msgCleared'] = '已清空自建结构';
+  d.en['gs.bridge.msgCleared'] = 'Player structure cleared';
+  d.zh['gs.bridge.restarted'] = '已重开，保留桥墩与锚点';
+  d.en['gs.bridge.restarted'] = 'Restarted — piers and anchors kept';
+
+  /* 材质 */
+  d.zh['gs.bridge.materialWood'] = '木材';
+  d.en['gs.bridge.materialWood'] = 'Wood';
+  d.zh['gs.bridge.materialSteel'] = '钢材';
+  d.en['gs.bridge.materialSteel'] = 'Steel';
+  d.zh['gs.bridge.materialCable'] = '缆索';
+  d.en['gs.bridge.materialCable'] = 'Cable';
+  d.zh['gs.bridge.tensionOnly'] = '仅受拉';
+  d.en['gs.bridge.tensionOnly'] = 'Tension only';
+  d.zh['gs.bridge.tensionOk'] = '可受压';
+  d.en['gs.bridge.tensionOk'] = 'Can take compression';
+
+  /* 结算 */
+  d.zh['gs.bridge.winTitle'] = '安全过河！';
+  d.en['gs.bridge.winTitle'] = 'Crossed safely!';
+  d.zh['gs.bridge.failTitle'] = '测试失败';
+  d.en['gs.bridge.failTitle'] = 'Test failed';
+  d.zh['gs.bridge.failNoPath'] = '桥梁没有连通左右两岸，卡车无路可走。';
+  d.en['gs.bridge.failNoPath'] = 'The bridge does not connect both banks, so the truck had nowhere to go.';
+  d.zh['gs.bridge.failUnstable'] = '结构不稳定：自由度不足或约束奇异，桥面无法受力。';
+  d.en['gs.bridge.failUnstable'] = 'The structure is unstable: too few constraints or a singular system, so the deck cannot carry load.';
+  d.zh['gs.bridge.failSlack'] = '缆索受压松弛，结构失去支撑而失稳。';
+  d.en['gs.bridge.failSlack'] = 'A cable went slack under compression and the structure lost its support.';
+  d.zh['gs.bridge.failBreak'] = '杆件应力超过 100%，桥面断裂，卡车坠落。';
+  d.en['gs.bridge.failBreak'] = 'A member passed 100% stress, the deck snapped and the truck fell.';
+  d.zh['gs.bridge.failDeflect'] = '桥面挠度过大，卡车无法继续行驶。';
+  d.en['gs.bridge.failDeflect'] = 'The deck deflected too far for the truck to continue.';
+  d.zh['gs.bridge.failHint'] = '提示：缩短单跨、增加斜撑，或把受拉杆换成钢/缆索后再试。';
+  d.en['gs.bridge.failHint'] = 'Tip: shorten spans, add bracing, or swap tension members to steel/cable and try again.';
+  d.zh['gs.bridge.safeArrive'] = '卡车平稳抵达对岸。';
+  d.en['gs.bridge.safeArrive'] = 'The truck reached the far bank safely.';
+  d.zh['gs.bridge.resTime'] = '用时';
+  d.en['gs.bridge.resTime'] = 'Time';
+  d.zh['gs.bridge.resCost'] = '材料消耗';
+  d.en['gs.bridge.resCost'] = 'Material used';
+  d.zh['gs.bridge.resBeams'] = '梁数';
+  d.en['gs.bridge.resBeams'] = 'Beams';
+  d.zh['gs.bridge.resDefl'] = '最大挠度';
+  d.en['gs.bridge.resDefl'] = 'Max deflection';
+  d.zh['gs.bridge.resStress'] = '最大应力';
+  d.en['gs.bridge.resStress'] = 'Peak stress';
+  d.zh['gs.bridge.matBreakdown'] = '木 {w} · 钢 {s} · 缆 {c}';
+  d.en['gs.bridge.matBreakdown'] = 'Wood {w} · Steel {s} · Cable {c}';
+  d.zh['gs.bridge.bestLevel'] = '本关最佳 {n} · 越省越好';
+  d.en['gs.bridge.bestLevel'] = 'Best on this level: {n} — lower is better';
+  d.zh['gs.bridge.allClear'] = '八座桥全部通车！';
+  d.en['gs.bridge.allClear'] = 'All eight bridges are open!';
+  d.zh['gs.bridge.continueEdit'] = '继续编辑';
+  d.en['gs.bridge.continueEdit'] = 'Keep editing';
+  d.zh['gs.bridge.retry'] = '再试一次';
+  d.en['gs.bridge.retry'] = 'Try again';
+  d.zh['gs.bridge.nextLevel'] = '下一关';
+  d.en['gs.bridge.nextLevel'] = 'Next level';
+  d.zh['gs.bridge.backEdit'] = '返回建造';
+  d.en['gs.bridge.backEdit'] = 'Back to build';
+  d.zh['gs.bridge.repair'] = '调整结构后再试跑';
+  d.en['gs.bridge.repair'] = 'Adjust the structure and test again';
+  d.zh['gs.bridge.editorPass'] = '自建关卡试跑成功！';
+  d.en['gs.bridge.editorPass'] = 'Custom level crossed!';
+
+  /* 关卡选择 */
+  d.zh['gs.bridge.lvMeta'] = '跨度 {s} · 预算 {b} · 车重 {w}';
+  d.en['gs.bridge.lvMeta'] = 'Span {s} · Budget {b} · Load {w}';
+  d.zh['gs.bridge.clearedTag'] = '已通车';
+  d.en['gs.bridge.clearedTag'] = 'Cleared';
+  d.zh['gs.bridge.bestShort'] = '最佳 {n}';
+  d.en['gs.bridge.bestShort'] = 'Best {n}';
+  d.zh['gs.bridge.notCleared'] = '未通车';
+  d.en['gs.bridge.notCleared'] = 'Not cleared';
+  d.zh['gs.bridge.levelTitle'] = '第 {n} 座桥';
+  d.en['gs.bridge.levelTitle'] = 'Bridge {n}';
+
+  /* 编辑器存档 */
+  d.zh['gs.bridge.saved'] = '自建关卡已保存';
+  d.en['gs.bridge.saved'] = 'Custom level saved';
+  d.zh['gs.bridge.saveFail'] = '保存失败：本地存储不可用';
+  d.en['gs.bridge.saveFail'] = 'Save failed: local storage unavailable';
+  d.zh['gs.bridge.noSave'] = '暂无自建关卡存档';
+  d.en['gs.bridge.noSave'] = 'No custom level saved yet';
+  d.zh['gs.bridge.loaded'] = '已载入自建关卡（{n} 个节点）';
+  d.en['gs.bridge.loaded'] = 'Custom level loaded ({n} nodes)';
+  d.zh['gs.bridge.loadFail'] = '读取存档失败';
+  d.en['gs.bridge.loadFail'] = 'Failed to load the save';
+
+  /* 教程标题与帮助 */
+  d.zh['gs.bridge.help'] = '空白拖拽放节点 · 节点间拖拽建梁 · 拆除模式移除 · T 试跑 · Z 撤销 · R 重开 · E 编辑器 · 1/2/3 选材料';
+  d.en['gs.bridge.help'] = 'Drag empty ground for nodes · drag node→node for beams · remove mode deletes · T test · Z undo · R restart · E editor · 1/2/3 material';
+  d.zh['gs.bridge.helpText'] = '桥梁搭建演示结构力学里的「跨度—承载力」权衡：二维桁架用节点与杆件组装整体刚度矩阵，逐杆求出轴力、应力与挠度。把长跨拆成短跨、增加斜撑、按受力性质选木/钢/缆索，就能在有限预算下安全通车。自建关卡保存在本地键 arcade_bridge_editor_custom。';
+  d.en['gs.bridge.helpText'] = 'Bridge Builder demonstrates the span-vs-capacity trade-off of structural mechanics: a 2D truss assembles a global stiffness matrix from nodes and members, then solves axial force, stress and deflection per member. Split long spans, add bracing and pick wood/steel/cable by load type to cross safely on a tight budget. Custom levels are stored locally under arcade_bridge_editor_custom.';
+})();

@@ -1,0 +1,312 @@
+/* ============================================================
+   游戏页共享骨架样式（顶栏由 shell.js 注入）
+   ============================================================ */
+
+.shell-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: rgba(10, 10, 18, 0.92);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.shell-back {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-pink);
+  text-decoration: none;
+  border: 2px solid var(--neon-pink);
+  border-radius: 6px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  text-shadow: 0 0 6px rgba(255, 45, 149, 0.6);
+  box-shadow: 0 0 8px rgba(255, 45, 149, 0.2);
+  transition: background 0.15s, color 0.15s;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.shell-back:hover {
+  background: var(--neon-pink);
+  color: #1a0410;
+  text-shadow: none;
+}
+
+.shell-title {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.35);
+  flex: 1;
+  /* E2E 修复：flex 子项默认 min-width:auto，长标题会顶开顶栏导致 320px 溢出 */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shell-best {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-yellow);
+  text-shadow: 0 0 8px rgba(255, 230, 0, 0.6);
+  white-space: nowrap;
+  padding: 6px 10px;
+  border: 1px dashed rgba(255, 230, 0, 0.4);
+  border-radius: 6px;
+}
+
+/* 破纪录闪烁动画 */
+@keyframes best-flash {
+  0%, 100% { color: var(--neon-yellow); transform: scale(1); }
+  50%      { color: #ffffff;             transform: scale(1.18); }
+}
+
+.shell-best.flash {
+  animation: best-flash 0.35s ease 3;
+}
+
+/* 游戏内容容器（与全站内容容器同宽 920px，切换不跳宽） */
+#game-root {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 12px 40px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.shell-help {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-cyan);
+  text-decoration: none;
+  border: 2px solid var(--neon-cyan);
+  border-radius: 6px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+  transition: background 0.15s, color 0.15s;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.shell-help:hover {
+  background: var(--neon-cyan);
+  color: #04121a;
+  text-shadow: none;
+}
+
+.shell-restart {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-green);
+  text-decoration: none;
+  border: 2px solid var(--neon-green);
+  border-radius: 6px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.2);
+  transition: background 0.15s, color 0.15s;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.shell-restart:hover {
+  background: var(--neon-green);
+  color: #041a06;
+  text-shadow: none;
+}
+
+/* 全屏按钮：紫色系图标按钮（紧凑，节省顶栏空间） */
+.shell-fs {
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  line-height: 1;
+  color: var(--neon-purple);
+  text-decoration: none;
+  border: 2px solid var(--neon-purple);
+  border-radius: 6px;
+  padding: 8px 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  text-shadow: 0 0 6px rgba(185, 103, 255, 0.6);
+  box-shadow: 0 0 8px rgba(185, 103, 255, 0.2);
+  transition: background 0.15s, color 0.15s;
+  /* 触控目标 ≥44×44（原 40×44） */
+  min-width: 44px;
+  min-height: 44px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.shell-fs:hover {
+  background: var(--neon-purple);
+  color: #12041a;
+  text-shadow: none;
+}
+.shell-fs .ui-ic { background-color: currentColor; font-size: 13px; }
+
+.shell-back:focus-visible,
+.shell-help:focus-visible,
+.shell-restart:focus-visible,
+.shell-fs:focus-visible {
+  outline: 2px solid var(--accent, #00f0ff);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, #00f0ff) 25%, transparent);
+}
+
+/* ---------- 窄屏「更多」菜单（≤480px 由 shell.js 注入） ---------- */
+.shell-more { display: none; }
+.shell-more-btn {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--neon-purple);
+  background: transparent;
+  cursor: pointer;
+  border: 2px solid var(--neon-purple);
+  border-radius: 6px;
+  text-shadow: 0 0 6px rgba(185, 103, 255, 0.6);
+  box-shadow: 0 0 8px rgba(185, 103, 255, 0.2);
+  transition: background 0.15s, color 0.15s;
+}
+.shell-more-btn:hover { background: var(--neon-purple); color: #12041a; text-shadow: none; }
+.shell-more-btn:focus-visible,
+.shell-more-panel :focus-visible { outline: 2px solid var(--accent, #00f0ff); outline-offset: 2px; }
+.shell-fs-label { display: none; }
+
+@media (max-width: 480px) {
+  /* 两行顶栏：① 返回 + 标题 + 更多 ② 快捷条，总高约 104px */
+  .shell-header { gap: 4px; padding: 6px 8px; flex-wrap: wrap; }
+  /* 标题不参与压缩：保持完整文本，空间不足时由 flex-wrap 换行 */
+  .shell-title { flex: 0 0 auto; max-width: 100%; font-size: 11px; order: 1; }
+  .shell-back { order: 0; font-size: 9px; padding: 7px 9px; }
+  .shell-more { display: block; position: relative; order: 2; margin-left: auto; }
+  .shell-more-panel {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 300;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 188px;
+    padding: 8px;
+    box-sizing: border-box;
+    background: rgba(10, 10, 18, 0.98);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  }
+  .shell-more-panel.open { display: flex; }
+  .shell-more-panel .shell-help,
+  .shell-more-panel .shell-restart,
+  .shell-more-panel .shell-fs {
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    padding: 10px 12px;
+    font-size: 10px;
+  }
+  .shell-more-panel .shell-best { align-self: flex-start; font-size: 8px; }
+  .shell-fs-label { display: inline-block; margin-left: 8px; font-size: 10px; }
+  /* 菜单里用带文字的完整标签（i18n 文案本身已含 ⛶），隐藏重复字形 */
+  .shell-more-panel .shell-fs-glyph { display: none; }
+  /* 触控规范：常驻顶栏按钮可点区域 ≥44×44 */
+  .shell-back,
+  .shell-restart,
+  .shell-fs { min-width: 44px; justify-content: center; }
+  /* 顶栏快捷条（音效/音乐/语言/主题/搜索/震动）：44×44 触控区，单独一行 */
+  #arcade-quickbar { order: 3; margin-left: auto; gap: 3px; }
+  body.has-header-quickbar .qb-btn { width: 44px; height: 44px; }
+  /* 窄屏游戏内容块常用 96vw/98vw，超出容器 padding 的装饰外溢会撑大
+     documentElement.scrollWidth；仅横向裁切，纵向仍可见，不影响页面滚动 */
+  #game-root { padding: 10px 8px 24px; overflow-x: clip; }
+}
+
+@media (max-width: 380px) {
+  /* 320 档：进一步收紧间距，仍允许换行 */
+  .shell-header { flex-wrap: wrap; gap: 5px; padding: 6px 7px; }
+  .shell-title { flex: 0 0 auto; max-width: 100%; font-size: 10px; }
+  .shell-back { font-size: 8px; padding: 5px 6px; }
+  .shell-fs { font-size: 11px; padding: 5px 6px; }
+}
+
+/* ---------- 顶栏快捷条图标：隐藏 emoji，改 CSS mask + 内联 SVG 自绘 ----------
+   仅作用于游戏页顶栏内的快捷条（body.has-header-quickbar）；
+   mask 用 accent 着色，跟随主题；图标随按钮 44×44 命中区，语义仍由原 aria-label 提供 */
+body.has-header-quickbar #arcade-quickbar .qb-btn { font-size: 0; }
+body.has-header-quickbar #arcade-quickbar .qb-btn.qb-lang { font-size: 13px; }
+body.has-header-quickbar #arcade-quickbar .qb-btn.qb-lang::before { content: none; }
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(1)::before,
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(2)::before,
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(4)::before,
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(5)::before,
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(6)::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--accent, #00f0ff);
+  -webkit-mask-image: var(--qb-icon);
+  mask-image: var(--qb-icon);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+/* 音效 */
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(1) {
+  --qb-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9h3l4-3v12l-4-3H4z'/%3E%3Cpath d='M15 8.5a5 5 0 0 1 0 7'/%3E%3Cpath d='M18 5.5a9 9 0 0 1 0 13'/%3E%3C/svg%3E");
+}
+/* 音乐 */
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(2) {
+  --qb-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 17V6l10-2v11'/%3E%3Ccircle cx='6.5' cy='17.5' r='2.5'/%3E%3Ccircle cx='16.5' cy='15.5' r='2.5'/%3E%3C/svg%3E");
+}
+/* 主题（调色盘） */
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(4) {
+  --qb-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-2 0-2 2-2 3-2a4 4 0 0 0 4-4A9 9 0 0 0 12 3z'/%3E%3Ccircle cx='7.5' cy='10' r='1.3'/%3E%3Ccircle cx='11' cy='7' r='1.3'/%3E%3Ccircle cx='14.5' cy='9' r='1.3'/%3E%3C/svg%3E");
+}
+/* 搜索 */
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(5) {
+  --qb-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M16.5 16.5 21 21'/%3E%3C/svg%3E");
+}
+/* 震动（触感反馈） */
+body.has-header-quickbar #arcade-quickbar .qb-btn:nth-child(6) {
+  --qb-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='8' y='3' width='8' height='18' rx='2'/%3E%3Cpath d='M4 8v8M2 10v4M20 8v8M22 10v4'/%3E%3C/svg%3E");
+}
+
+/* 减动效偏好（A4）：同 theme.css */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

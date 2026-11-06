@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>铁壁防线 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 铁壁防线：敌军坦克进攻密码局，驾驶守卫坦克清剿多波次敌军，守住院落中的情报基地。三难度 + 道具系统。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/tank/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="铁壁防线 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 铁壁防线：敌军坦克进攻密码局，驾驶守卫坦克清剿多波次敌军，守住院落中的情报基地。三难度 + 道具系统。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/tank/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="铁壁防线 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 铁壁防线：敌军坦克进攻密码局，驾驶守卫坦克清剿多波次敌军，守住院落中的情报基地。三难度 + 道具系统。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "铁壁防线",
+    "url": "https://game.netcn.org/games/tank/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 铁壁防线：敌军坦克进攻密码局，驾驶守卫坦克清剿多波次敌军，守住院落中的情报基地。三难度 + 道具系统。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .tk-wrap { padding: 14px 10px 24px; width: min(640px, 98vw); text-align: center; }
+    .tk-pick { padding: 18px 10px; }
+    .tk-pick-t { font-family: var(--font-pixel); font-size: 16px; letter-spacing: 2px; color: var(--neon-pink); text-shadow: 0 0 12px rgba(255,45,149,0.5); }
+    .tk-pick-d { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin: 10px 0 14px; }
+    .tk-pick-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .tk-pick-btns .mode-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 52px; padding: 8px 14px; text-align: center; }
+    .tk-pick-btns small { display: block; font-size: 10px; color: var(--text-dim); line-height: 1.4; }
+    .gh-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; }
+    .tk-mode { display: flex; gap: 8px; justify-content: center; margin: 0 0 14px; flex-wrap: wrap; }
+    .tk-mode-btn {
+      flex: 1 1 140px; min-height: 48px; padding: 8px 12px; display: flex;
+      flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+      font-size: 12px; border-radius: 10px;
+    }
+    .tk-mode-btn small { font-size: 10px; color: var(--text-dim); line-height: 1.35; }
+    .tk-mode-btn.active {
+      border-color: var(--neon-cyan); color: var(--neon-cyan);
+      box-shadow: 0 0 14px rgba(0,240,255,0.35), inset 0 0 12px rgba(0,240,255,0.12);
+    }
+    .tk-info {
+      display: flex; justify-content: space-between; font-size: 12px; color: var(--text-dim);
+      margin: 6px 2px; flex-wrap: wrap; gap: 6px; align-items: center;
+      padding: 8px 10px; background: linear-gradient(90deg, rgba(255,45,149,0.1), rgba(0,240,255,0.06));
+      border: 1px solid rgba(255,45,149,0.32); border-radius: 8px;
+    }
+    #tk-score { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 11px; }
+    .tk-stage {
+      position: relative; width: min(416px, 100%); margin: 8px auto;
+      filter: drop-shadow(0 0 14px rgba(0,240,255,0.12));
+    }
+    .tk-canvas {
+      display: block; width: 100%; height: auto; border-radius: 10px;
+      border: 1px solid rgba(0,240,255,0.32); background: #0b0e16; touch-action: none;
+    }
+    .tk-wave-banner {
+      position: absolute; left: 50%; top: 20%; transform: translate(-50%, 10px) scale(.85);
+      z-index: 4; pointer-events: none; opacity: 0; white-space: nowrap;
+      font-family: var(--font-pixel); font-size: 14px; color: var(--neon-yellow);
+      text-shadow: 0 0 12px currentColor, 0 0 28px currentColor;
+      padding: 9px 16px; border-radius: 12px; text-align: center;
+      background: rgba(6,8,16,.86); border: 1px solid currentColor;
+      box-shadow: 0 0 24px currentColor;
+      transition: opacity .3s ease, transform .3s cubic-bezier(.2,1.5,.4,1);
+    }
+    .tk-wave-banner.show { opacity: 1; transform: translate(-50%, 0) scale(1); }
+    .tk-wave-banner small { display: block; font-family: var(--font-mono); font-size: 9px; color: var(--neon-cyan); margin-top: 4px; letter-spacing: .1em; }
+    .tk-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 10px 0; flex-wrap: wrap; }
+    .tk-dpad { display: grid; grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(3, 48px); gap: 4px; }
+    .tk-sp { display: block; }
+    .tk-dot { border-radius: 50%; background: radial-gradient(circle, rgba(0,240,255,0.35), transparent 70%); }
+    .tk-dir { font-size: 14px; padding: 0; width: 100%; height: 100%; min-width: 44px; min-height: 44px; border-radius: 8px; }
+    .tk-fire { font-size: 13px; padding: 15px 20px; min-width: 86px; min-height: 48px; border-radius: 10px; }
+    .tk-pause-btn { font-size: 12px; padding: 15px 12px; min-height: 48px; border-radius: 10px; }
+    .tk-p2 { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 4px 0 10px; flex-wrap: wrap; }
+    .tk-p2-label { font-size: 12px; color: var(--neon-cyan); letter-spacing: 2px; }
+    .tk-p2 .tk-fire { min-width: 72px; padding: 12px 16px; }
+    .tk-msg {
+      font-size: 12px; color: var(--text-main); min-height: 22px; text-align: left;
+      background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      padding: 8px; margin: 6px 0;
+    }
+    .tk-overlay, .tk-pause, .tk-upgrade {
+      position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center;
+      background: rgba(6,8,16,0.86); border-radius: 10px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+    .tk-upgrade { z-index: 6; }
+    .tk-card {
+      width: min(320px, 90%); padding: 16px 14px; text-align: center; border-radius: 14px;
+      background: linear-gradient(160deg, rgba(20,28,48,0.98), rgba(10,10,22,0.98));
+      border: 1px solid rgba(0,240,255,0.35); box-shadow: 0 0 24px rgba(0,240,255,0.18), inset 0 0 16px rgba(255,45,149,0.08);
+    }
+    .tk-card h2 { margin: 0 0 8px; font-family: var(--font-pixel); font-size: 15px; color: var(--neon-pink); text-shadow: 0 0 12px rgba(255,45,149,0.55); }
+    .tk-card h2.win { color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255,230,0,0.6); }
+    .tk-card p { margin: 0 0 10px; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+    .tk-card .btn { display: block; width: 100%; margin-top: 8px; }
+    .tk-up-card { width: min(340px, 94%); max-height: 94%; overflow-y: auto; }
+    .tk-up-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .tk-up-btn {
+      display: flex; align-items: flex-start; gap: 10px; width: 100%; min-height: 56px;
+      padding: 10px; text-align: left; border-radius: 10px; margin-top: 0;
+      background: linear-gradient(120deg, rgba(0,240,255,0.10), rgba(255,45,149,0.07));
+      border: 1px solid rgba(0,240,255,0.45);
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .tk-up-btn:active { transform: scale(.975); border-color: var(--neon-yellow); box-shadow: 0 0 14px rgba(255,230,0,0.3); }
+    .tk-up-btn .k {
+      flex: 0 0 auto; font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow);
+      border: 1px solid rgba(255,230,0,0.6); border-radius: 6px; padding: 5px 7px; line-height: 1;
+    }
+    .tk-up-btn .tx { display: block; min-width: 0; }
+    .tk-up-btn b { display: block; font-size: 13px; color: var(--neon-cyan); margin-bottom: 3px; }
+    .tk-up-btn small { display: block; font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+    .tk-ov-stats { display: flex; justify-content: space-around; gap: 8px; font-size: 12px; color: var(--text-dim); margin: 6px 0 4px; }
+    .tk-ov-stats b { color: var(--neon-yellow); font-family: var(--font-mono); }
+    @media (max-width: 480px) {
+      .tk-dpad { grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 4px; }
+      .tk-fire { min-width: 72px; padding: 12px 14px; font-size: 12px; }
+      .tk-controls { gap: 12px; }
+      .tk-up-card { width: min(320px, 96%); padding: 12px 10px; }
+      .tk-up-btn { min-height: 54px; padding: 9px 8px; }
+    }
+  </style>
+</head>
+<body data-game-id="tank" data-game-title="铁壁防线" data-best-mode="max">
+  <h1 class="seo-h1">铁壁防线</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="tank-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="tank.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

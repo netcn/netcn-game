@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>像素飞鸟 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 像素飞鸟旗舰版：护盾、磁铁、慢速三种道具，无人机/追踪鸟/投弹机三类敌人，每局三个任务与每日挑战，20 管通关，像素视差城市与昼夜渐变。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/pixelbird/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="像素飞鸟 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 像素飞鸟旗舰版：护盾、磁铁、慢速三种道具，无人机/追踪鸟/投弹机三类敌人，每局三个任务与每日挑战，20 管通关，像素视差城市与昼夜渐变。">
+  <meta property="og:url" content="https://game.netcn.org/games/pixelbird/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="像素飞鸟 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 像素飞鸟旗舰版：护盾、磁铁、慢速三种道具，无人机/追踪鸟/投弹机三类敌人，每局三个任务与每日挑战，20 管通关，像素视差城市与昼夜渐变。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "像素飞鸟",
+    "url": "https://game.netcn.org/games/pixelbird/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 像素飞鸟旗舰版：护盾、磁铁、慢速三种道具，无人机/追踪鸟/投弹机三类敌人，每局三个任务与每日挑战，20 管通关，像素视差城市与昼夜渐变。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .pb-wrap { width: min(400px, 92vw); margin: 0 auto; padding: 4px 0 14px; text-align: center; }
+    .pixelbird-stage, .pb-stage { position: relative; width: 100%; }
+    .pb-canvas { display: block; width: 100%; height: auto; aspect-ratio: 400/500;
+      max-width: 100%; border-radius: 12px; touch-action: none; cursor: pointer;
+      box-shadow: 0 0 20px rgba(0,240,255,0.12); }
+    .pb-pause { position: absolute; right: 8px; top: 8px; z-index: 6;
+      width: 44px; height: 44px; min-width: 44px; min-height: 44px;
+      border-radius: 8px; border: 1px solid rgba(0,240,255,0.45);
+      background: rgba(6,12,24,0.72); color: var(--neon-cyan);
+      font-family: var(--font-pixel); font-size: 13px; cursor: pointer; }
+    .pb-pause[hidden] { display: none; }
+    .pb-overlay { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start; gap: 8px; padding: 14px 12px;
+      overflow-y: auto; overscroll-behavior: contain;
+      background: linear-gradient(165deg, rgba(5,8,18,0.95), rgba(18,8,32,0.94));
+      border-radius: 12px; border: 1px solid rgba(0,240,255,0.22); box-sizing: border-box;
+      text-align: center; }
+    .pb-overlay[hidden], .pb-pause-veil[hidden] { display: none; }
+    .pb-title { font-family: var(--font-pixel); font-size: 18px; line-height: 1.4;
+      color: var(--neon-pink); text-shadow: 0 0 14px rgba(255,45,149,0.8); letter-spacing: 1px; }
+    .pb-sub { font-size: 11px; color: var(--text-dim); line-height: 1.6; }
+    .pb-bestline { font-size: 11px; color: var(--neon-yellow); font-family: var(--font-pixel);
+      line-height: 1.6; }
+    .pb-daily { width: 100%; max-width: 330px; display: flex; flex-direction: column; gap: 2px;
+      padding: 7px 9px; border-radius: 8px; background: rgba(255,230,0,0.06);
+      border: 1px solid rgba(255,230,0,0.28); font-size: 10px; color: var(--text-dim); line-height: 1.5; }
+    .pb-daily b { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 10px; }
+    .pb-daily span { color: var(--text-main); }
+    .pb-daily em { font-style: normal; color: var(--neon-green); }
+    .pb-missions { width: 100%; max-width: 330px; display: flex; flex-direction: column; gap: 4px; }
+    .pb-task { display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      padding: 5px 9px; border-radius: 6px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); font-size: 10px; color: var(--text-dim); line-height: 1.4; }
+    .pb-task em { font-style: normal; color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 9px; }
+    .pb-task.done { border-color: rgba(57,255,20,0.5); color: var(--neon-green); }
+    .pb-task.done em { color: var(--neon-green); }
+    .pb-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 3px; }
+    .pb-btns .btn { min-height: 44px; min-width: 110px; }
+    .pb-how { font-size: 10px; color: var(--text-dim); line-height: 1.6; max-width: 320px; }
+    .pb-scorebig { display: flex; align-items: baseline; gap: 8px; font-size: 11px; color: var(--text-dim); }
+    .pb-scorebig b { font-family: var(--font-pixel); font-size: 26px; color: var(--neon-yellow);
+      text-shadow: 0 0 12px rgba(255,230,0,0.7); }
+    .pb-res-line { font-size: 10px; color: var(--text-dim); line-height: 1.5; }
+    .pb-medal { font-size: 11px; color: var(--neon-green); font-family: var(--font-pixel);
+      line-height: 1.5; }
+    .pb-pause-veil { position: absolute; inset: 0; z-index: 7; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px; padding: 18px;
+      background: rgba(7,7,13,0.9); border-radius: 12px; text-align: center; }
+    .pb-firehud { display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: fit-content; max-width: 100%; margin: 8px auto 0; padding: 3px 4px 3px 10px;
+      border-radius: 10px; border: 1px solid rgba(255,45,149,0.3);
+      background: rgba(255,45,149,0.08); }
+    .pb-firehud[hidden] { display: none; }
+    .pb-ammo { display: flex; gap: 4px; }
+    .pb-ammo i { display: block; width: 9px; height: 12px; border-radius: 2px;
+      background: #ff2d95; box-shadow: 0 0 6px rgba(255,45,149,0.7); }
+    .pb-ammo i.off { background: rgba(255,255,255,0.14); box-shadow: none; }
+    .pb-fire { display: block; min-width: 96px; min-height: 44px; margin: 0;
+      padding: 0 12px; border-radius: 8px; box-sizing: border-box;
+      border: 1px solid rgba(255,45,149,0.55); background: rgba(255,45,149,0.14);
+      color: var(--neon-pink); font-family: var(--font-pixel); font-size: 12px;
+      letter-spacing: 1px; cursor: pointer; touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent; }
+    .pb-fire:active { background: rgba(255,45,149,0.3); }
+    .pb-fire.empty { color: var(--text-dim); border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.04); }
+    .pb-fire:disabled { opacity: .45; cursor: default; }
+    .pb-taskbar { display: flex; flex-direction: column; gap: 4px; margin: 8px 2px 4px; }
+    .pb-taskbar .pb-task { justify-content: space-between; }
+    .pb-help { font-size: 10px; color: var(--text-dim); line-height: 1.7;
+      background: rgba(255,255,255,0.03); border-radius: 8px; padding: 8px 10px; text-align: left; }
+    @media (max-width: 420px) {
+      .pb-wrap { width: 100%; padding: 4px 6px 12px; }
+      .pb-title { font-size: 15px; }
+      .pb-overlay { padding: 10px 9px; gap: 6px; }
+      .pb-daily, .pb-missions, .pb-taskbar { max-width: 100%; }
+      .pb-btns .btn { min-width: 96px; }
+    }
+  </style>
+</head>
+<body data-game-id="pixelbird" data-game-title="像素飞鸟" data-best-mode="max">
+  <h1 class="seo-h1">像素飞鸟</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="pixelbird-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="pixelbird.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

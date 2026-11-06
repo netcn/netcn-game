@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>贪吃蛇 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 贪吃蛇：吃掉食物越变越长，小心别撞墙也别咬到自己！ 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/snake/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="贪吃蛇 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 贪吃蛇：吃掉食物越变越长，小心别撞墙也别咬到自己！ 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/snake/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="贪吃蛇 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 贪吃蛇：吃掉食物越变越长，小心别撞墙也别咬到自己！ 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "贪吃蛇",
+    "url": "https://game.netcn.org/games/snake/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 贪吃蛇：吃掉食物越变越长，小心别撞墙也别咬到自己！ 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .snake-stage { position: relative; width: fit-content; margin: 0 auto; }
+    .snake-stage canvas { width: min(400px, 92vw) !important; height: auto !important; aspect-ratio: 1 / 1; max-width: 100%; }
+    .snake-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+      background: rgba(7, 7, 13, 0.88);
+      border-radius: var(--radius);
+    }
+    .snake-overlay.hidden { display: none; }
+    .snake-overlay-title {
+      font-family: var(--font-pixel); font-size: 16px; color: var(--neon-pink);
+      text-shadow: 0 0 8px rgba(255, 45, 149, 0.6), 0 0 20px rgba(255, 45, 149, 0.3);
+    }
+    .snake-overlay-score { font-size: 15px; color: var(--text-dim); }
+    .snake-overlay-score span {
+      font-family: var(--font-pixel); color: var(--neon-yellow);
+      text-shadow: 0 0 8px rgba(255, 230, 0, 0.5);
+    }
+    .snake-overlay-cause { font-size: 13px; color: var(--neon-pink); line-height: 1.6; }
+    .snake-overlay-best { font-size: 12px; color: var(--text-dim); }
+    .snake-overlay-best b { color: var(--neon-cyan); font-family: var(--font-mono); }
+    .snake-bubble {
+      position: absolute; left: 50%; top: 12%; z-index: 3; pointer-events: none;
+      transform: translate(-50%, 6px) scale(.86); opacity: 0;
+      padding: 8px 14px; border-radius: 999px; white-space: nowrap;
+      font-family: var(--font-pixel); font-size: 13px; color: var(--neon-yellow);
+      background: rgba(7, 10, 20, 0.86); border: 1px solid currentColor;
+      box-shadow: 0 0 16px currentColor, inset 0 0 12px rgba(255,255,255,0.08);
+      text-shadow: 0 0 8px currentColor;
+      transition: transform .28s cubic-bezier(.2,1.4,.4,1), opacity .22s ease;
+    }
+    .snake-bubble.show { transform: translate(-50%, 0) scale(1); opacity: 1; }
+    .snake-menu {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      padding: 18px 12px; max-width: 440px; margin: 0 auto;
+    }
+    .snake-menu-title {
+      font-family: var(--font-pixel); font-size: 12px; color: var(--neon-purple);
+      text-shadow: 0 0 6px rgba(185, 103, 255, 0.5); margin-top: 6px;
+    }
+    .snake-mode-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .mode-btn {
+      font-family: var(--font-pixel); font-size: 12px; padding: 9px 14px; min-height: 44px;
+      box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
+      background: rgba(255, 255, 255, 0.04); color: var(--text-dim);
+      border: 1px solid rgba(185, 103, 255, 0.35); border-radius: var(--radius);
+      cursor: pointer; transition: all .15s;
+    }
+    .mode-btn:hover { border-color: var(--neon-purple); color: #fff; }
+    .mode-btn.selected {
+      background: var(--neon-purple); color: #0a0a12; border-color: var(--neon-purple);
+      box-shadow: 0 0 14px rgba(185, 103, 255, 0.5);
+    }
+    .snake-duo-tip {
+      max-width: 330px; font-size: 11px; line-height: 1.7; color: var(--neon-purple);
+      background: rgba(185, 103, 255, 0.08); border: 1px solid rgba(185, 103, 255, 0.3);
+      border-radius: 8px; padding: 8px 10px;
+    }
+    .duo-hud { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; max-width: 420px; margin: 8px auto; }
+    .duo-side {
+      flex: 1 1 140px; display: flex; align-items: baseline; gap: 6px; justify-content: center;
+      font-size: 12px; color: var(--text-dim); padding: 8px 10px; border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .duo-side b { font-family: var(--font-pixel); font-size: 12px; }
+    .duo-side em { font-style: normal; font-family: var(--font-pixel); font-size: 13px; }
+    .duo-side.p1 { border-color: rgba(57, 255, 20, 0.4); box-shadow: inset 0 0 16px rgba(57, 255, 20, 0.1); }
+    .duo-side.p1 b, .duo-side.p1 em { color: var(--neon-green); text-shadow: 0 0 8px rgba(57, 255, 20, 0.5); }
+    .duo-side.p2 { border-color: rgba(208, 91, 255, 0.4); box-shadow: inset 0 0 16px rgba(208, 91, 255, 0.1); }
+    .duo-side.p2 b, .duo-side.p2 em { color: #d05bff; text-shadow: 0 0 8px rgba(208, 91, 255, 0.5); }
+    .snake-ctrl { display: flex; justify-content: center; margin: 8px 0 2px; }
+    .duo-pads { display: flex; justify-content: center; gap: 8px; margin: 10px auto 6px; max-width: 100%; }
+    .duo-pad { display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(2, 44px); gap: 3px; }
+    .duo-dbtn {
+      min-width: 44px; min-height: 44px; font-family: var(--font-pixel); font-size: 14px;
+      background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(0, 240, 255, 0.5);
+      border-radius: 8px; color: var(--neon-cyan); cursor: pointer;
+      touch-action: manipulation; user-select: none; -webkit-user-select: none;
+    }
+    .duo-dbtn:active { background: var(--neon-cyan); color: #04121a; }
+    .duo-pad.p1 .duo-dbtn { border-color: rgba(57, 255, 20, 0.55); color: var(--neon-green); text-shadow: 0 0 6px rgba(57, 255, 20, 0.6); }
+    .duo-pad.p1 .duo-dbtn:active { background: var(--neon-green); color: #0a1a04; }
+    .duo-pad.p2 .duo-dbtn { border-color: rgba(208, 91, 255, 0.6); color: #d05bff; text-shadow: 0 0 6px rgba(208, 91, 255, 0.6); }
+    .duo-pad.p2 .duo-dbtn:active { background: #d05bff; color: #12041a; }
+    .duo-up { grid-column: 2; grid-row: 1; }
+    .duo-left { grid-column: 1; grid-row: 2; }
+    .duo-down { grid-column: 2; grid-row: 2; }
+    .duo-right { grid-column: 3; grid-row: 2; }
+    @media (max-width: 380px) {
+      .duo-side { flex-basis: 130px; padding: 6px 8px; font-size: 11px; }
+      .duo-side em { font-size: 12px; }
+      .snake-mode-row { gap: 6px; }
+      .mode-btn { font-size: 11px; padding: 8px 11px; }
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body data-game-id="snake" data-game-title="贪吃蛇" data-best-mode="max">
+  <h1 class="seo-h1">贪吃蛇</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="snake-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="snake.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

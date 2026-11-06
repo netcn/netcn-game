@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>游戏街机厅 · ARCADE HALL</title>
+<meta name="description" content="53 款经典小游戏——街机、逻辑、空间、动作、棋类、牌骰、球类，按分类挑一款，打开即玩，纪录仅存本地。">
+<meta name="theme-color" content="#05060c">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="游戏街机厅">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+<meta property="og:title" content="游戏街机厅 · ARCADE HALL">
+<meta property="og:description" content="53 款经典小游戏，按分类挑一款，打开即玩。">
+<meta property="og:url" content="https://game.netcn.org/">
+<meta property="og:image" content="https://game.netcn.org/assets/icons/og-share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="游戏街机厅 · ARCADE HALL">
+<meta name="twitter:description" content="53 款经典小游戏，按分类挑一款，打开即玩。">
+<meta name="twitter:image" content="https://game.netcn.org/assets/icons/og-share.png">
+<link rel="canonical" href="https://game.netcn.org/">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" href="assets/icons/icon-512.png" type="image/png" sizes="512x512">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "游戏街机厅 · ARCADE HALL",
+  "url": "https://game.netcn.org/",
+  "inLanguage": "zh-CN",
+  "description": "53 款经典小游戏——街机、逻辑、空间、动作、棋类、牌骰、球类，全部打开即玩，纪录仅存本地。"
+}
+</script>
+<script>
+(function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}if(document.documentElement){document.documentElement.setAttribute("lang",lang==="en"?"en":"zh-CN");}})();
+</script>
+<link rel="stylesheet" href="assets/css/theme.css">
+<link rel="stylesheet" href="shell/netcn-shell.css">
+<script src="shell/shell.js"></script>
+<style>
+  :root{
+    --g-bg:#05060c; --g-ac:#7c5cff; --g-cyan:#00f0ff;
+    --g-ink:#e8e8f0; --g-dim:#8a8aa0; --g-line:rgba(124,92,255,.22);
+  }
+  html,body{margin:0;min-height:100%;background:var(--g-bg);color:var(--g-ink)}
+  body{
+    font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+    background:radial-gradient(1100px 520px at 50% -12%,rgba(124,92,255,.18),transparent 62%),
+               radial-gradient(700px 420px at 100% 30%,rgba(0,240,255,.06),transparent 70%),
+               var(--g-bg);
+    background-attachment:fixed;
+  }
+  .nc-shell{
+    background:rgba(9,9,19,.92);border-bottom:1px solid var(--g-line);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  }
+  .nc-tools .lang-btn{border-radius:999px;min-width:38px}
+  .nc-tools .story-link{font-size:12px}
+  .wrap{max-width:1120px;margin:0 auto;padding:24px 16px 52px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 26px}
+  .chip{
+    display:inline-flex;align-items:center;min-height:34px;padding:0 13px;border-radius:999px;
+    border:1px solid var(--g-line);background:rgba(124,92,255,.07);color:var(--g-dim);
+    font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:.16s;
+  }
+  .chip:hover{color:var(--g-ink);border-color:rgba(124,92,255,.6)}
+  .chip.on{color:#fff;background:var(--g-ac);border-color:var(--g-ac);
+    box-shadow:0 0 16px rgba(124,92,255,.38)}
+  .chip .n{opacity:.7;margin-left:6px;font-weight:400;font-size:11px}
+  .grp{margin:0 0 30px}
+  .grp h2{display:flex;align-items:center;gap:9px;margin:0 0 12px;
+    font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--g-ink)}
+  .grp h2::before{content:'';width:4px;height:16px;border-radius:3px;
+    background:linear-gradient(180deg,var(--c,var(--g-ac)),var(--g-cyan))}
+  .grp h2 .num{font-size:11px;font-weight:400;color:var(--g-dim)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:12px}
+  .gc{
+    position:relative;display:flex;flex-direction:column;gap:8px;min-height:138px;padding:14px;
+    border-radius:14px;text-decoration:none;color:inherit;overflow:hidden;
+    background:linear-gradient(155deg,rgba(26,26,50,.88),rgba(11,11,22,.92));
+    border:1px solid var(--g-line);transition:transform .18s,border-color .18s,box-shadow .18s;
+  }
+  .gc::after{content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(190px 110px at 100% 0,color-mix(in srgb,var(--c,var(--g-ac)) 18%,transparent),transparent)}
+  .gc:hover,.gc:focus-visible{transform:translateY(-3px);border-color:var(--c,var(--g-ac));
+    box-shadow:0 12px 28px rgba(0,0,0,.45),0 0 18px color-mix(in srgb,var(--c,var(--g-ac)) 28%,transparent)}
+  .gc .ico{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;
+    font-size:21px;line-height:1;background:color-mix(in srgb,var(--c,var(--g-ac)) 20%,transparent);
+    border:1px solid color-mix(in srgb,var(--c,var(--g-ac)) 45%,transparent)}
+  .gc .tt{font-size:14px;font-weight:700;letter-spacing:.01em}
+  .gc .ds{flex:1;font-size:11.5px;line-height:1.6;color:var(--g-dim);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .gc .meta{display:flex;gap:6px;flex-wrap:wrap}
+  .gc .tag{font-size:10px;line-height:1.6;padding:1px 7px;border-radius:99px;
+    border:1px solid color-mix(in srgb,var(--c,var(--g-ac)) 42%,transparent);color:var(--c,var(--g-cyan))}
+  .gc .tag.dim{border-color:rgba(255,255,255,.12);color:var(--g-dim)}
+  .empty{display:none;padding:34px 12px;text-align:center;color:var(--g-dim);font-size:13px}
+  .empty.on{display:block}
+  .nc-foot{color:var(--g-dim)}
+  @media(max-width:640px){
+    .wrap{padding:18px 12px 40px}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px}
+    .gc{min-height:128px;padding:12px}
+  }
+  @media(prefers-reduced-motion:reduce){.gc{transition:none}}
+</style>
+</head>
+<body>
+<nav class="nc-shell" aria-label="netcn 站点导航" data-nc-tone="dark">
+  <a class="nc-brand" href="./"><span class="nc-mk" aria-hidden="true"></span>游戏街机厅<span class="nc-brand-en">ARCADE</span></a>
+  <nav class="nc-sw" aria-label="netcn 站点">
+    <a href="https://netcn.org/" data-nc-to="nav">导航</a>
+    <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
+    <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a>
+  </nav>
+  <div class="nc-search has-icon">
+    <span class="search-icon" aria-hidden="true">⌕</span>
+    <input id="q" type="search" autocomplete="off" placeholder="搜索游戏…（按 / 聚焦）" aria-label="搜索游戏">
+  </div>
+  <div class="nc-tools">
+    <a class="story-link" href="story.html">史话</a>
+    <button class="lang-btn" id="lang" type="button" aria-label="切换语言">EN</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="chips" id="chips" aria-label="游戏分类"></div>
+  <div id="groups"></div>
+  <p class="empty" id="empty"></p>
+</main>
+
+<footer class="nc-foot" data-nc-tone="dark">
+  <nav class="nc-foot-nav" aria-label="netcn 站点">
+    <a href="https://netcn.org/" data-nc-to="nav">导航</a>
+    <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
+    <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a>
+  </nav>
+  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+</footer>
+
+<script src="assets/js/core/storage.js"></script>
+<script src="assets/js/core/i18n.js"></script>
+<script src="assets/js/core/i18n-dict.js"></script>
+<script src="games.js"></script>
+<script src="assets/js/pwa.js"></script>
+<script>
+(function () {
+  'use strict';
+  var GAMES = window.GAMES || [];
+  var CATS = window.GAME_CATEGORIES || [];
+  var COLORS = ['#00f0ff', '#b967ff', '#39ff14', '#ff9f1c', '#ff2d95', '#ffe600', '#7c5cff'];
+  var en = !!(window.Arcade && Arcade.i18n && Arcade.i18n.getLang() === 'en');
+  var L = en
+    ? { all: 'All', search: 'Search games...', none: 'No games matched. Try another word.',
+        searchAria: 'Search games', lang: '中', story: 'Chronicle' }
+    : { all: '全部', search: '搜索游戏…（按 / 聚焦）', none: '没有匹配的游戏，换个词试试。',
+        searchAria: '搜索游戏', lang: 'EN', story: '史话' };
+
+  function T(key, fallback) {
+    if (!window.Arcade || !Arcade.i18n) return fallback;
+    var v = Arcade.i18n.t(key);
+    return (v && v !== key) ? v : fallback;
+  }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function catName(zh, i) { return T('cat.' + zh, zh); }
+  function gameTitle(g) { return T('g.' + g.id + '.t', g.title); }
+  function gameDesc(g) { return T('g.' + g.id + '.d', g.desc); }
+
+  var groupsEl = document.getElementById('groups');
+  var chipsEl = document.getElementById('chips');
+  var emptyEl = document.getElementById('empty');
+  var qEl = document.getElementById('q');
+  var activeCat = '';
+
+  function card(g, color) {
+    var meta = '<span class="tag">' + esc(T('cat.' + g.category, g.category)) + '</span>';
+    if (g.lvl) meta += '<span class="tag dim">' + esc(g.lvl) + '</span>';
+    if (g.time) meta += '<span class="tag dim">' + esc(g.time) + '</span>';
+    return '<a class="gc" href="' + esc(g.path) + '" data-id="' + esc(g.id) + '" ' +
+      'data-text="' + esc((g.title + ' ' + g.desc + ' ' + g.id + ' ' + g.category).toLowerCase()) + '" ' +
+      'style="--c:' + esc(color) + '">' +
+      '<span class="ico" aria-hidden="true">' + esc(g.icon) + '</span>' +
+      '<span class="tt">' + esc(gameTitle(g)) + '</span>' +
+      '<span class="ds">' + esc(gameDesc(g)) + '</span>' +
+      '<span class="meta">' + meta + '</span></a>';
+  }
+
+  function render() {
+    var html = '';
+    CATS.forEach(function (zh, i) {
+      var list = GAMES.filter(function (g) { return g.category === zh; });
+      if (!list.length) return;
+      html += '<section class="grp" data-cat="' + esc(zh) + '" style="--c:' + COLORS[i % COLORS.length] + '">' +
+        '<h2>' + esc(catName(zh, i)) + '<span class="num">' + list.length + '</span></h2>' +
+        '<div class="grid">' + list.map(function (g) { return card(g, COLORS[i % COLORS.length]); }).join('') +
+        '</div></section>';
+    });
+    groupsEl.innerHTML = html;
+    chipsEl.innerHTML = '<button class="chip on" type="button" data-cat="">' + esc(L.all) +
+      '<span class="n">' + GAMES.length + '</span></button>' +
+      CATS.map(function (zh, i) {
+        var n = GAMES.filter(function (g) { return g.category === zh; }).length;
+        return '<button class="chip" type="button" data-cat="' + esc(zh) + '">' +
+          esc(catName(zh, i)) + '<span class="n">' + n + '</span></button>';
+      }).join('');
+    filter();
+  }
+
+  function filter() {
+    var q = (qEl.value || '').trim().toLowerCase();
+    var shown = 0;
+    [].slice.call(groupsEl.querySelectorAll('.grp')).forEach(function (sec) {
+      var catOk = !activeCat || sec.getAttribute('data-cat') === activeCat;
+      var n = 0;
+      [].slice.call(sec.querySelectorAll('.gc')).forEach(function (a) {
+        var ok = catOk && (!q || a.getAttribute('data-text').indexOf(q) >= 0);
+        a.style.display = ok ? '' : 'none';
+        if (ok) n++;
+      });
+      sec.style.display = n ? '' : 'none';
+      shown += n;
+    });
+    emptyEl.textContent = L.none;
+    emptyEl.classList.toggle('on', shown === 0);
+  }
+
+  chipsEl.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('.chip') : null;
+    if (!b) return;
+    activeCat = b.getAttribute('data-cat') || '';
+    [].slice.call(chipsEl.querySelectorAll('.chip')).forEach(function (c) {
+      c.classList.toggle('on', c === b);
+    });
+    filter();
+  });
+  qEl.addEventListener('input', filter);
+  qEl.placeholder = L.search;
+  qEl.setAttribute('aria-label', L.searchAria);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && document.activeElement !== qEl) { e.preventDefault(); qEl.focus(); }
+    if (e.key === 'Escape' && document.activeElement === qEl) { qEl.value = ''; filter(); qEl.blur(); }
+  });
+  var langBtn = document.getElementById('lang');
+  langBtn.textContent = L.lang;
+  langBtn.addEventListener('click', function () {
+    if (window.Arcade && Arcade.i18n) Arcade.i18n.setLang(en ? 'zh' : 'en');
+  });
+  document.querySelector('.nc-tools .story-link').textContent = L.story;
+
+  render();
+})();
+</script>
+</body>
+</html>

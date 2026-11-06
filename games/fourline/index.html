@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>四子棋 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 四子棋：抢先连成四子，挑战会攻会守的 AI。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/fourline/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="四子棋 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 四子棋：抢先连成四子，挑战会攻会守的 AI。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/fourline/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="四子棋 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 四子棋：抢先连成四子，挑战会攻会守的 AI。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "四子棋",
+    "url": "https://game.netcn.org/games/fourline/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 四子棋：抢先连成四子，挑战会攻会守的 AI。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    :root { --c4-red: #ff2d6f; --c4-red-deep: #a8003d; --c4-gold: #ffd400; --c4-gold-deep: #b07d00; }
+    .c4-wrap { position: relative; width: 100%; max-width: 420px; padding: 10px 0 22px; text-align: center; }
+
+    /* ---------- 模式选择 ---------- */
+    .c4-pick { padding: 8px 4px 2px; }
+    .c4-pick-t { font-family: var(--font-pixel); font-size: 18px; letter-spacing: 1px; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.6); }
+    .c4-pick-d { max-width: 300px; margin: 10px auto 16px; font-size: 12px; line-height: 1.8; color: var(--text-dim); }
+    .c4-modes { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; max-width: 320px; margin: 0 auto; }
+    .c4-mode-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 58px; padding: 12px 8px; border-radius: 12px; line-height: 1.4; }
+    .c4-mode-btn small { font-family: var(--font-pixel); font-size: 8px; letter-spacing: 0; color: var(--text-dim); }
+    .c4-mode-btn:hover small { color: #fff; }
+    .c4-mode-btn.active small, .c4-mode-btn.selected small { color: #0a0a12; opacity: .8; }
+    .c4-mode-ic { display: block; width: 19px; height: 19px; color: var(--neon-cyan); transition: color .15s; }
+    .c4-mode-ic svg { display: block; width: 100%; height: 100%; }
+    .c4-mode-btn:hover .c4-mode-ic { color: #fff; }
+    .c4-mode-btn.active .c4-mode-ic, .c4-mode-btn.selected .c4-mode-ic { color: #0a0a12; }
+    .c4-pick-best { margin-top: 16px; font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); }
+    .c4-pick-best b { color: var(--neon-yellow); text-shadow: 0 0 8px rgba(255,230,0,.5); }
+    .c4-pick-daily { margin-top: 8px; font-family: var(--font-pixel); font-size: 9px; line-height: 1.7; color: var(--text-dim); }
+    .c4-pick-daily::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); vertical-align: middle; }
+
+    /* ---------- HUD ---------- */
+    .c4-hud { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 10px; }
+    .c4-chip { padding: 5px 8px; border: 1px solid rgba(0,240,255,.22); border-radius: 999px; background: rgba(0,240,255,.05); font-family: var(--font-pixel); font-size: 9px; color: var(--text-dim); white-space: nowrap; }
+    .c4-chip b { color: var(--neon-yellow); }
+    #c4-chip-first { border-color: rgba(255,212,0,.3); color: #ffe37a; }
+    #c4-chip-score { color: var(--text-main); }
+
+    /* ---------- 棋盘（凹槽 + 立体） ---------- */
+    .c4-stage { position: relative; }
+    .c4-board {
+      --c4-gap: clamp(3px, 1.1vw, 5px);
+      position: relative; display: grid; grid-template-columns: repeat(7, minmax(0,1fr));
+      gap: var(--c4-gap); width: 100%; max-width: 380px; margin: 0 auto; padding: 9px;
+      border: 1px solid rgba(0,240,255,.25); border-radius: 16px; overflow: hidden;
+      background: linear-gradient(180deg, #101b38 0%, #0a1024 55%, #060a18 100%);
+      box-shadow:
+        inset 0 2px 1px rgba(255,255,255,.1),
+        inset 0 -10px 22px rgba(0,0,0,.9),
+        0 10px 28px rgba(0,0,0,.5),
+        0 0 22px rgba(0,90,255,.18);
+      touch-action: manipulation;
+    }
+    .c4-board::before {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; border-radius: inherit;
+      background: linear-gradient(110deg, rgba(0,240,255,.09), transparent 32%, transparent 68%, rgba(185,103,255,.1));
+    }
+    .c4-cell {
+      position: relative; z-index: 1; aspect-ratio: 1 / 1; border-radius: 50%; cursor: pointer;
+      background: radial-gradient(circle at 50% 38%, #02040b 0%, #060a16 58%, #121c33 100%);
+      box-shadow: inset 0 4px 9px rgba(0,0,0,.95), inset 0 -2px 2px rgba(120,210,255,.16);
+      -webkit-tap-highlight-color: transparent;
+      transition: background .15s, box-shadow .15s;
+    }
+    .c4-cell.hl {
+      background: radial-gradient(circle at 50% 38%, #071127 0%, #0c1a38 55%, #1b2c52 100%);
+      box-shadow: inset 0 4px 9px rgba(0,0,0,.9), inset 0 -2px 2px rgba(0,240,255,.3), 0 0 8px rgba(0,240,255,.16);
+    }
+    .c4-cell.sel {
+      box-shadow: inset 0 4px 9px rgba(0,0,0,.9), inset 0 -2px 3px rgba(0,240,255,.36), 0 0 10px rgba(0,240,255,.28);
+    }
+    .c4-cell.ok-col {
+      background: radial-gradient(circle at 50% 38%, #061331 0%, #0b1b3e 58%, #1a3158 100%);
+      box-shadow: inset 0 4px 9px rgba(0,0,0,.9), inset 0 -2px 2px rgba(0,240,255,.4), 0 0 9px rgba(0,240,255,.2);
+    }
+    .c4-board.opening .c4-cell.dim-col { opacity: .3; cursor: not-allowed; }
+    .c4-board.opening .c4-cell.dim-col:hover { background: radial-gradient(circle at 50% 38%, #02040b 0%, #060a16 58%, #121c33 100%); }
+
+    /* ---------- 棋子 ---------- */
+    .c4-piece { position: absolute; inset: 5%; z-index: 2; border-radius: 50%; opacity: 0; pointer-events: none; transition: filter .45s; }
+    .c4-piece.p1, .c4-piece.p2 { opacity: 1; }
+    .c4-piece.p1 {
+      background: radial-gradient(circle at 33% 25%, #ffe3ec 0%, #ff8aa8 12%, var(--c4-red) 46%, var(--c4-red-deep) 100%);
+      box-shadow:
+        inset -5px -7px 12px rgba(0,0,0,.55),
+        inset 4px 4px 10px rgba(255,255,255,.3),
+        0 5px 10px rgba(0,0,0,.6),
+        0 0 12px rgba(255,45,111,.55);
+    }
+    .c4-piece.p2 {
+      background: radial-gradient(circle at 33% 25%, #fffbe0 0%, #fff08a 12%, var(--c4-gold) 46%, var(--c4-gold-deep) 100%);
+      box-shadow:
+        inset -5px -7px 12px rgba(0,0,0,.5),
+        inset 4px 4px 10px rgba(255,255,255,.38),
+        0 5px 10px rgba(0,0,0,.6),
+        0 0 12px rgba(255,212,0,.55);
+    }
+    .c4-piece::after {
+      content: ''; position: absolute; left: 18%; top: 11%; width: 35%; height: 20%; border-radius: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,0));
+      transform: rotate(-16deg);
+    }
+    .c4-piece.dropping { animation: c4drop .44s cubic-bezier(.3,1.35,.55,1) both; }
+    @keyframes c4drop {
+      0%   { transform: translateY(calc(-1 * var(--fall, 0px))) scale(.9, .96); opacity: .55; }
+      55%  { transform: translateY(0) scale(1.1, .88); opacity: 1; }
+      72%  { transform: translateY(-3%) scale(.97, 1.04); }
+      86%  { transform: translateY(0) scale(1.03, .97); }
+      100% { transform: translateY(0) scale(1); }
+    }
+    .c4-piece.win { animation: c4pulse .85s ease-in-out 3; }
+    @keyframes c4pulse {
+      0%, 100% { transform: scale(1); filter: brightness(1); }
+      35% { transform: scale(1.22); filter: brightness(1.7); }
+      65% { transform: scale(1.04); filter: brightness(1.1); }
+    }
+
+    /* ---------- 落点预览 ---------- */
+    .c4-ghost { position: absolute; inset: 8%; z-index: 2; border-radius: 50%; opacity: 0; transform: scale(.92); pointer-events: none; transition: opacity .15s, transform .15s; }
+    .c4-ghost.show { opacity: .5; transform: scale(1); }
+    .c4-ghost.p1 { background: radial-gradient(circle at 33% 25%, rgba(255,255,255,.75), rgba(255,45,111,.75) 45%, rgba(120,0,45,.7)); box-shadow: inset 0 0 10px rgba(0,0,0,.4), 0 0 10px rgba(255,45,111,.4); }
+    .c4-ghost.p2 { background: radial-gradient(circle at 33% 25%, rgba(255,255,255,.8), rgba(255,212,0,.75) 45%, rgba(120,90,0,.7)); box-shadow: inset 0 0 10px rgba(0,0,0,.4), 0 0 10px rgba(255,212,0,.4); }
+
+    /* ---------- 落点涟漪 ---------- */
+    .c4-ripple {
+      position: absolute; left: 50%; top: 50%; z-index: 3; width: 96%; height: 96%; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.75); pointer-events: none;
+      animation: c4ripple .55s ease-out forwards;
+    }
+    .c4-ripple.p1 { border-color: rgba(255,120,150,.85); }
+    .c4-ripple.p2 { border-color: rgba(255,230,0,.85); }
+    @keyframes c4ripple {
+      from { opacity: .85; transform: translate(-50%, -50%) scale(.35); }
+      to   { opacity: 0; transform: translate(-50%, -50%) scale(1.35); }
+    }
+
+    /* ---------- 胜利连线 / Canvas 特效层 ---------- */
+    .c4-line-layer { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+    .c4-fx-canvas { position: absolute; inset: 0; z-index: 5; width: 100%; height: 100%; border-radius: inherit; pointer-events: none; }
+    .c4-winline {
+      position: absolute; height: 6px; border-radius: 99px; transform-origin: 0 50%;
+      animation: c4line .38s ease-out both;
+    }
+    .c4-winline.p1 {
+      background: linear-gradient(90deg, rgba(255,45,111,0), #ff2d6f 15%, #fff 50%, #ff2d6f 85%, rgba(255,45,111,0));
+      box-shadow: 0 0 8px #ff2d6f, 0 0 18px rgba(255,45,111,.75);
+    }
+    .c4-winline.p2 {
+      background: linear-gradient(90deg, rgba(255,212,0,0), #ffd400 15%, #fff 50%, #ffd400 85%, rgba(255,212,0,0));
+      box-shadow: 0 0 8px #ffd400, 0 0 18px rgba(255,212,0,.75);
+    }
+    @keyframes c4line {
+      from { opacity: .2; transform: rotate(var(--rot, 0rad)) scaleX(0); }
+      to   { opacity: 1; transform: rotate(var(--rot, 0rad)) scaleX(1); }
+    }
+    .c4-board.lose .c4-piece.p1 { filter: saturate(.45) brightness(.7); }
+    .c4-board.lose .c4-piece.p2 { filter: brightness(1.25) saturate(1.25); }
+    .c4-board.draw .c4-piece { filter: grayscale(.5) brightness(.82); }
+    .c4-board.fail .c4-piece { filter: grayscale(.62) brightness(.72); }
+    .c4-stage.c4-shake { animation: c4shake .42s cubic-bezier(.36,.07,.19,.97); }
+    @keyframes c4shake {
+      10%, 90% { transform: translate(-1px, 1px); }
+      20%, 80% { transform: translate(2px, -1px); }
+      30%, 50%, 70% { transform: translate(-3px, 1px); }
+      40%, 60% { transform: translate(3px, -1px); }
+    }
+
+    /* ---------- 状态 / 操作提示 ---------- */
+    .c4-status { min-height: 24px; margin-top: 10px; font-size: 13px; line-height: 1.5; color: var(--text-main); }
+    .c4-status.turn1 { color: #ff7aa0; }
+    .c4-status.turn2 { color: var(--neon-yellow); }
+    .c4-status.warn { color: var(--neon-orange); }
+    .c4-status.thinking { color: var(--neon-yellow); }
+    .c4-status.win { color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255,212,0,.55); }
+    .c4-status.lose { color: #ff6b9d; text-shadow: 0 0 10px rgba(255,45,111,.4); }
+    .c4-status.draw { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.35); }
+    .c4-dots { display: inline-flex; gap: 3px; margin-left: 5px; vertical-align: middle; }
+    .c4-dots i { width: 4px; height: 4px; border-radius: 50%; background: currentColor; animation: c4dot 1s infinite; }
+    .c4-dots i:nth-child(2) { animation-delay: .15s; }
+    .c4-dots i:nth-child(3) { animation-delay: .3s; }
+    @keyframes c4dot {
+      0%, 80%, 100% { opacity: .25; transform: translateY(0); }
+      40% { opacity: 1; transform: translateY(-3px); }
+    }
+    .c4-rule { margin-top: 5px; min-height: 16px; font-size: 10px; line-height: 1.65; color: var(--text-dim); }
+    .c4-rule strong, .c4-rule b { color: var(--neon-cyan); font-weight: normal; }
+    .c4-tip { margin-top: 7px; font-size: 10px; line-height: 1.6; color: var(--text-dim); }
+    .c4-tools { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+    .c4-wrap .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; }
+    .c4-tools .btn { font-size: 10px; padding: 10px 18px; }
+    .c4-btn-ic { display: inline-flex; width: 15px; height: 15px; }
+    .c4-btn-ic svg { display: block; width: 100%; height: 100%; }
+
+    /* ---------- 结算 ---------- */
+    .c4-overlay { z-index: 70; background: rgba(5,8,16,.86); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .c4-card {
+      width: min(340px, 88vw); padding: 24px 20px 22px; text-align: center; border-radius: 16px;
+      border: 1px solid rgba(0,240,255,.35);
+      background: linear-gradient(165deg, rgba(20,28,56,.98), rgba(7,10,22,.98));
+      box-shadow: 0 0 32px rgba(0,240,255,.22), inset 0 1px 0 rgba(255,255,255,.1);
+    }
+    .c4-card h2 { font-size: 18px; line-height: 1.4; }
+    .c4-card h2.win { color: var(--neon-green); text-shadow: 0 0 14px rgba(57,255,20,.5); }
+    .c4-card h2.lose { color: var(--neon-pink); text-shadow: 0 0 14px rgba(255,45,149,.55); }
+    .c4-card h2.draw { color: var(--neon-yellow); text-shadow: 0 0 14px rgba(255,230,0,.45); }
+    .c4-card p { margin: 10px 0 0; font-size: 12px; line-height: 1.8; color: var(--text-dim); }
+    .c4-stats { display: flex; flex-wrap: wrap; gap: 14px 20px; justify-content: center; margin: 16px 0 4px; }
+    .c4-stats span { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); }
+    .c4-stats b { font-size: 19px; color: var(--neon-yellow); text-shadow: 0 0 10px rgba(255,230,0,.45); }
+    .c4-record {
+      display: inline-block; margin-top: 10px; padding: 5px 10px; border: 1px solid rgba(255,230,0,.5); border-radius: 99px;
+      background: rgba(255,230,0,.1); font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow);
+      animation: c4record 1s ease-in-out infinite;
+    }
+    @keyframes c4record { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+    .c4-record .c4-btn-ic { width: 14px; height: 14px; margin-right: 2px; }
+    .c4-ov-note {
+      margin-top: 12px; padding: 7px 10px; border-radius: 8px;
+      border: 1px solid rgba(255,212,0,.28); background: rgba(255,212,0,.07);
+      font-size: 10px; line-height: 1.65; color: #ffe37a;
+    }
+    .c4-ov-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+    .c4-ov-btns .btn { font-size: 10px; padding: 10px 16px; min-height: 44px; }
+    .c4-pause-overlay { z-index: 74; }
+    .c4-pause-overlay .c4-card { width: min(330px, 86vw); }
+
+    @media (max-width: 380px) {
+      .c4-wrap { padding-top: 4px; }
+      .c4-pick-t { font-size: 16px; }
+      .c4-mode-btn { padding: 10px 6px; }
+      .c4-chip { padding: 4px 7px; font-size: 8px; }
+      .c4-card { padding: 20px 16px; }
+      .c4-ov-btns .btn { font-size: 9px; padding: 9px 12px; }
+    }
+    html.theme-daylight .c4-board .c4-cell {
+      background: radial-gradient(circle at 50% 38%, #02040b 0%, #060a16 58%, #121c33 100%);
+      border-color: transparent;
+    }
+    html.theme-daylight .c4-board .c4-cell.hl {
+      background: radial-gradient(circle at 50% 38%, #071127 0%, #0c1a38 55%, #1b2c52 100%);
+    }
+    html.reduced-motion .c4-piece.dropping,
+    html.reduced-motion .c4-piece.win,
+    html.reduced-motion .c4-winline,
+    html.reduced-motion .c4-ripple,
+    html.reduced-motion .c4-dots i,
+    html.reduced-motion .c4-stage.c4-shake,
+    html.reduced-motion .c4-record { animation: none !important; }
+  </style>
+<style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
+</head>
+<body data-game-id="fourline" data-game-title="四子棋" data-best-mode="max">
+  <h1 class="seo-h1">四子棋</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="fourline-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="fourline.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

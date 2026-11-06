@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>数织 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 数织：根据行列数字提示，涂出隐藏的图案。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/nonogram/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="数织 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 数织：根据行列数字提示，涂出隐藏的图案。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/nonogram/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="数织 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 数织：根据行列数字提示，涂出隐藏的图案。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "数织",
+    "url": "https://game.netcn.org/games/nonogram/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 数织：根据行列数字提示，涂出隐藏的图案。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .no-wrap { padding: 14px 0 22px; width: min(430px, 100vw); max-width: 100%; text-align: center; box-sizing: border-box; }
+    .no-diff { display: flex; gap: 6px; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; }
+    .no-diff .mode-btn { font-size: 11px; padding: 8px 10px; border-radius: 9px; min-width: 44px; min-height: 44px; }
+    .no-diff .mode-btn.selected { background: rgba(0,240,255,.18); border-color: rgba(0,240,255,.65); color: var(--neon-cyan); box-shadow: 0 0 12px rgba(0,240,255,.28); }
+    .no-daily-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .no-daily-btn { font-size: 11px; padding: 7px 12px; min-height: 44px; }
+    .no-daily-btn.done { border-color: rgba(0,255,140,.5); color: var(--neon-green); }
+    .no-daily-btn.selected { background: rgba(180,80,255,.16); border-color: rgba(190,110,255,.6); color: #d9b0ff; }
+    .no-daily-info { font-size: 11px; color: var(--text-dim); }
+    .no-view { width: 100%; max-height: min(52vh, calc(100vh - 395px)); margin: 0 auto; overflow: auto; box-sizing: border-box;
+      overscroll-behavior: contain; touch-action: pan-x pan-y; -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin; scrollbar-color: rgba(0,240,255,.45) transparent; }
+    .no-stage { position: relative; display: block; width: calc(100% * var(--no-zoom, 1)); max-width: none;
+      padding: 10px; margin: 0 auto; border-radius: 16px; box-sizing: border-box;
+      background: radial-gradient(circle at 50% 20%, rgba(22,32,66,.92), rgba(5,7,18,.97));
+      box-shadow: inset 0 0 30px rgba(0,240,255,.07), 0 12px 32px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06); }
+    .no-grid { display: grid; grid-template-columns: var(--hc, 32px) repeat(var(--n, 5), 1fr); gap: 2px;
+      width: 100%; margin: 0 auto; }
+    .no-zoom { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 8px auto 0; }
+    .no-zbtn { min-width: 44px; min-height: 44px; padding: 4px 10px; border-radius: 10px; cursor: pointer;
+      font-family: var(--font-pixel); font-size: 14px; line-height: 1.1;
+      background: rgba(0, 240, 255, 0.10); color: var(--neon-cyan);
+      border: 1px solid rgba(0, 240, 255, 0.35); transition: all .15s; }
+    .no-zbtn:active { background: rgba(0, 240, 255, 0.28); }
+    .no-zbtn:disabled { opacity: .35; cursor: default; }
+    .no-zlbl { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+      min-width: 78px; font-family: var(--font-pixel); color: var(--neon-yellow);
+      border-color: rgba(255, 230, 0, 0.38); background: rgba(255, 230, 0, 0.08); }
+    .no-zlbl b { font-size: 13px; font-weight: 400; }
+    .no-zlbl span { font-size: 9px; color: var(--text-dim); }
+    .no-zreset { font-family: inherit; font-size: 11px; color: var(--text-dim); }
+    .no-grid.big { gap: 1px; }
+    .no-unit { display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: var(--font-pixel); color: var(--text-dim); }
+    .no-corner { color: rgba(255,255,255,.18); font-size: 12px; }
+    .no-hint { gap: 2px; transition: color .25s; }
+    .no-rowhint { flex-direction: row; }
+    .no-colhint { flex-direction: column; }
+    .no-hint span { font-size: .92em; line-height: 1; }
+    .no-hint.done { color: var(--neon-green); text-shadow: 0 0 8px rgba(0,255,140,.5); animation: noClueDone .5s ease-out; }
+    @keyframes noClueDone { 0% { transform: scale(1); } 45% { transform: scale(1.18); } 100% { transform: scale(1); } }
+    .no-cell { position: relative; aspect-ratio: 1 / 1; padding: 0; border-radius: 5px; cursor: pointer;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14);
+      transition: background .18s ease, box-shadow .22s ease, transform .14s ease;
+      -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    .no-grid.big .no-cell { border-radius: 3px; }
+    .no-cell:hover { border-color: rgba(0,240,255,.5); box-shadow: 0 0 8px rgba(0,240,255,.18); }
+    .no-cell:active { transform: scale(.94); background: rgba(0,240,255,.2); }
+    .no-cell.filled { background: linear-gradient(150deg, #63f6ff, #00b8d4); border-color: rgba(0,240,255,.75);
+      box-shadow: 0 0 10px rgba(0,240,255,.5), inset 0 0 8px rgba(255,255,255,.35); }
+    .no-cell.filled.ripple::before { background: radial-gradient(circle, rgba(255,255,255,.75), rgba(0,240,255,.25) 45%, transparent 72%); }
+    .no-cell.ripple::before { content: ''; position: absolute; inset: -2px; border-radius: 6px; pointer-events: none;
+      background: radial-gradient(circle, rgba(0,240,255,.8), transparent 70%);
+      animation: noRipple .5s ease-out forwards; }
+    @keyframes noRipple { 0% { transform: scale(.25); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+    .no-cell.crossed::after { content: '×'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      color: var(--neon-pink); font-size: 14px; font-weight: 700; }
+    .no-grid.big .no-cell.crossed::after { font-size: 11px; }
+    .no-cell.cursor { outline: 2px dashed var(--neon-cyan); outline-offset: -2px; }
+    .no-cell.pop { animation: noPop .3s cubic-bezier(.34,1.4,.5,1); }
+    @keyframes noPop { 0% { transform: scale(.82); } 55% { transform: scale(1.06); } 100% { transform: scale(1); } }
+    .no-cell.wrong { animation: noWrong .5s ease-in-out 3; background: rgba(255,60,90,.55) !important; box-shadow: 0 0 12px rgba(255,60,90,.7) !important; }
+    @keyframes noWrong { 0%,100% { transform: translateX(0); } 30% { transform: translateX(-3px); } 70% { transform: translateX(3px); } }
+    .no-overlay { position: absolute; inset: 0; z-index: 9800; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      border-radius: 16px; padding: 16px; background: radial-gradient(circle at 50% 42%, rgba(12,16,36,.9), rgba(4,5,14,.97)); }
+    .no-overlay.show { display: flex; animation: noFade .24s ease-out; }
+    @keyframes noFade { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+    .no-ov-title { font-family: var(--font-pixel); font-size: clamp(15px, 4.5vw, 20px); color: var(--neon-yellow); text-shadow: 0 0 14px rgba(255,230,0,.6); }
+    .no-ov-stats { font-size: 13px; color: var(--text-dim); line-height: 1.95; }
+    .no-ov-stats b { color: var(--text-main); font-family: var(--font-pixel); font-size: 14px; }
+    .no-pic-name { color: var(--neon-cyan); font-size: 14px; }
+    .no-best { color: var(--neon-green); font-size: 12px; margin-top: 4px; }
+    .no-ov-btns { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; justify-content: center; }
+    .no-ov-btns .btn { font-size: 12px; padding: 9px 14px; }
+    .no-head { display: flex; justify-content: space-around; align-items: center; margin: 14px auto 0; width: min(346px, calc(96vw - 48px));
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 12px; padding: 8px 6px; }
+    .no-stat { display: flex; flex-direction: column; gap: 2px; }
+    .no-stat span { font-size: 10px; color: var(--text-dim); letter-spacing: .08em; }
+    .no-stat b { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-cyan); }
+    .no-msg { min-height: 18px; font-size: 12px; color: var(--neon-pink); margin-top: 10px; }
+    .no-actions { display: flex; gap: 6px; justify-content: center; margin-top: 8px; flex-wrap: wrap; }
+    .no-actions .btn { font-size: 12px; padding: 9px 12px; min-height: 44px; }
+    .no-actions .btn.on { background: rgba(0,240,255,.22); border-color: rgba(0,240,255,.6); color: var(--neon-cyan); }
+    .no-ov-btns .btn { min-height: 44px; }
+    @media (max-width: 480px) {
+      .no-diff .mode-btn, .no-daily-btn { min-height: 44px; }
+    }
+  </style>
+</head>
+<body data-game-id="nonogram" data-game-title="数织" data-best-mode="min">
+  <h1 class="seo-h1">数织</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="nonogram-core.js?v=20261105i"></script>
+  <script src="nonogram-puzzles.js?v=20261105i"></script>
+  <script src="nonogram-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="nonogram.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

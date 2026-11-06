@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>电路连接 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 电路连接：旋转线路，把电流从电源送到灯泡。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/circuit/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="电路连接 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 电路连接：旋转线路，把电流从电源送到灯泡。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/circuit/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="电路连接 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 电路连接：旋转线路，把电流从电源送到灯泡。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "电路连接",
+    "url": "https://game.netcn.org/games/circuit/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 电路连接：旋转线路，把电流从电源送到灯泡。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .ci-wrap { box-sizing: border-box; padding: 10px 8px 18px; width: min(540px, 100%); text-align: center; margin: 0 auto; }
+    .ci-head { display: flex; justify-content: space-between; gap: 4px 10px; flex-wrap: wrap;
+      font-size: 12px; color: var(--text-dim); margin: 0 2px 8px; }
+    .ci-head span { white-space: nowrap; }
+    .ci-stage { position: relative; }
+    .ci-canvas { width: 100% !important; height: auto !important; border-radius: 14px; background: #050d15;
+      box-shadow: 0 0 24px rgba(0,240,255,0.12), inset 0 0 30px rgba(0,0,0,0.6);
+      touch-action: none; max-width: 100%; display: block; }
+    .ci-paused { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(3,10,16,0.8); color: #8ffcff; font-size: 20px; letter-spacing: 2px;
+      border-radius: 14px; text-shadow: 0 0 16px rgba(0,240,255,0.7); }
+    .ci-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(2,9,14,0.82); backdrop-filter: blur(5px); border-radius: 14px; padding: 12px; z-index: 3; }
+    .ci-overlay.hidden, .ci-paused.hidden { display: none !important; }
+    .ci-ov-card { width: min(340px, 88%); background: linear-gradient(160deg, rgba(12,40,54,0.95), rgba(5,18,26,0.96));
+      border: 1px solid rgba(0,240,255,0.35); border-radius: 14px; padding: 16px 14px;
+      box-shadow: 0 0 30px rgba(0,240,255,0.18); }
+    .ci-ov-title { font-family: var(--font-pixel); font-size: 16px; line-height: 1.5; letter-spacing: .5px;
+      color: #9ffcff; margin-bottom: 10px; text-shadow: 0 0 14px rgba(0,240,255,0.55); }
+    .ci-ov-stats { font-size: 13px; color: var(--text-main); line-height: 1.8; }
+    .ci-ov-score { margin-top: 8px; font-size: 16px; color: #ffe27a; }
+    .ci-ov-best { font-size: 12px; color: var(--text-dim); margin: 4px 0 12px; }
+    .ci-ov-btns { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .ci-msg { min-height: 18px; font-size: 13px; color: var(--neon-green); margin: 8px 0 2px; }
+    .ci-levels { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 8px 2px 0; }
+    .ci-lv { appearance: none; border: 1px solid rgba(0,240,255,0.22); background: rgba(9,32,43,0.8);
+      color: var(--text-dim); border-radius: 8px; padding: 7px 0; font-size: 12px; cursor: pointer;
+      transition: border-color .15s, color .15s, box-shadow .15s; }
+    .ci-lv:hover { border-color: rgba(0,240,255,0.55); color: #bff8ff; }
+    .ci-lv.sel { border-color: #00f0ff; color: #dfffff; box-shadow: 0 0 12px rgba(0,240,255,0.3); }
+  </style>
+</head>
+<body data-game-id="circuit" data-game-title="电路连接" data-best-mode="min">
+  <h1 class="seo-h1">电路连接</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="../_shared/pipegen.js"></script>
+  <script src="circuit-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="circuit.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>
+

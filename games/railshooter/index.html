@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>轨道射击 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 轨道射击：霓虹轨道上迎战 6 波敌人与双阶段 Boss，12 发弹匣换弹、生命与护甲、平民误伤惩罚，命中弱点连击得分。 打开即玩，最高分与进度保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/railshooter/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="轨道射击 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 轨道射击：霓虹轨道上迎战 6 波敌人与双阶段 Boss，12 发弹匣换弹、生命与护甲、平民误伤惩罚，命中弱点连击得分。 打开即玩，最高分与进度保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/railshooter/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="轨道射击 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 轨道射击：霓虹轨道上迎战 6 波敌人与双阶段 Boss，12 发弹匣换弹、生命与护甲、平民误伤惩罚，命中弱点连击得分。 打开即玩，最高分与进度保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "轨道射击",
+    "url": "https://game.netcn.org/games/railshooter/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 轨道射击：霓虹轨道上迎战 6 波敌人与双阶段 Boss，12 发弹匣换弹、生命与护甲、平民误伤惩罚，命中弱点连击得分。 打开即玩，最高分与进度保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .rs-wrap { padding: 14px; width: min(620px, 96vw); text-align: center; }
+    .rs-hide { display: none !important; }
+    .rs-wrap .btn { min-height: 44px; }
+    .rs-stage { position: relative; }
+    .rs-canvas { display: block; width: 100%; height: auto; border-radius: 10px; background: #05060f;
+      box-shadow: 0 0 18px rgba(0,240,255,0.15); touch-action: none; cursor: crosshair; max-width: 100%; }
+
+    .rs-hud { display: flex; flex-direction: column; gap: 5px; margin: 0 2px 8px; }
+    .rs-hud-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 10px; }
+    .rs-hud-item { display: inline-flex; align-items: baseline; gap: 4px; font-size: 11px; }
+    .rs-hud-item em { font-style: normal; font-size: 9px; letter-spacing: .04em; color: rgba(150,180,220,.7); }
+    .rs-hud-item b { color: var(--neon-cyan); font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .rs-gauge { display: flex; align-items: center; gap: 4px; flex: 1 1 92px; min-width: 0; font-size: 9px; }
+    .rs-gauge em { font-style: normal; flex: 0 0 auto; font-size: 9px; color: rgba(150,180,220,.75); }
+    .rs-gauge > span { font-size: 9px; color: var(--text-dim); min-width: 20px; text-align: right; font-variant-numeric: tabular-nums; }
+    .rs-bar { position: relative; flex: 1 1 auto; height: 7px; min-width: 20px; border-radius: 3px;
+      background: rgba(255,255,255,0.08); overflow: hidden; }
+    .rs-bar i { display: block; width: 100%; height: 100%; border-radius: 3px;
+      transform: scaleX(1); transform-origin: left center; }
+    .rs-bar.hp i { background: linear-gradient(90deg, #ff2d95, #ff5c74); }
+    .rs-bar.hp.critical i { background: linear-gradient(90deg, #ff3b5c, #ff8a00); }
+    .rs-bar.armor i { background: linear-gradient(90deg, #0090ff, #00f0ff); }
+    .rs-bar.reload { height: 3px; margin-top: 2px; }
+    .rs-bar.reload i { background: var(--neon-yellow); }
+    .rs-ammo-box { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+    .rs-ammo { font-size: 10px; color: var(--neon-yellow); font-variant-numeric: tabular-nums; }
+    .rs-ammo.low { color: #ff8a00; }
+    .rs-ammo.empty { color: #ff3b5c; }
+
+    .rs-boss { display: flex; align-items: center; gap: 6px; margin: 0 2px; }
+    .rs-boss em { font-style: normal; flex: 0 0 auto; font-family: var(--font-pixel); font-size: 8px;
+      color: var(--neon-pink); }
+    .rs-boss .rs-bar { height: 8px; min-width: 40px; }
+    .rs-boss .rs-bar i { background: linear-gradient(90deg, #ff2d95, #ff5c74); }
+    .rs-boss.phase2 .rs-bar i { background: linear-gradient(90deg, #ff2d95, #ff7a00); }
+    .rs-boss .rs-boss-pct { flex: 0 0 auto; font-size: 9px; color: var(--text-dim); min-width: 26px;
+      text-align: right; font-variant-numeric: tabular-nums; }
+    .rs-boss .rs-boss-ph { flex: 0 0 auto; font-family: var(--font-pixel); font-size: 8px;
+      color: var(--neon-yellow); min-width: 50px; text-align: right; }
+
+    .rs-msg { min-height: 18px; font-size: 12px; color: var(--neon-green); margin: 7px 0 0; line-height: 1.7; }
+    .rs-screen { position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px; padding: 12px; box-sizing: border-box;
+      border-radius: 10px; z-index: 2; overflow: auto;
+      background: linear-gradient(160deg, rgba(4,7,16,0.94), rgba(10,4,24,0.93));
+      border: 1px solid rgba(0,240,255,0.25); }
+    .rs-screen-title { font-family: var(--font-pixel); font-size: 19px; color: var(--text-main);
+      text-shadow: 0 0 14px rgba(0,240,255,0.65); line-height: 1.4; }
+    .rs-screen-sub { font-size: 11px; color: var(--text-dim); line-height: 1.7; max-width: 380px; }
+    .rs-screen-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .rs-keys { font-size: 10px; color: rgba(150,180,220,.75); line-height: 1.8; max-width: 360px; }
+    .rs-res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 14px; width: min(340px, 100%);
+      background: rgba(255,255,255,0.04); border-radius: 10px; padding: 8px 12px; }
+    .rs-res-row { display: flex; justify-content: space-between; gap: 10px; font-size: 10px;
+      color: var(--text-dim); }
+    .rs-res-row b { color: var(--neon-cyan); font-weight: 600; font-variant-numeric: tabular-nums; }
+    .rs-res-new { grid-column: 1 / -1; text-align: center; color: var(--neon-yellow);
+      font-family: var(--font-pixel); font-size: 9px; }
+    .rs-pause { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 12px;
+      align-items: center; justify-content: center;
+      background: rgba(4,4,12,0.78); border-radius: 10px; z-index: 2;
+      color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 14px;
+      text-shadow: 0 0 14px rgba(255,230,0,0.7); }
+
+    .rs-touch { display: grid; grid-template-columns: repeat(4, minmax(44px, 1fr)); gap: 6px; margin-top: 8px; }
+    .rs-tbtn { min-width: 44px; min-height: 48px; padding: 0 4px; border-radius: 8px;
+      border: 1px solid rgba(0,240,255,0.35); color: var(--neon-cyan); font-family: var(--font-pixel);
+      font-size: 11px; line-height: 1.2; touch-action: none; user-select: none; cursor: pointer;
+      background: linear-gradient(180deg, rgba(10,20,40,0.92), rgba(4,8,18,0.96));
+      box-shadow: 0 0 10px rgba(0,240,255,0.12); }
+    .rs-tbtn.wide { font-size: 9px; letter-spacing: .02em; }
+    .rs-tbtn.is-down { background: linear-gradient(180deg, rgba(0,240,255,0.28), rgba(0,80,120,0.5));
+      transform: translateY(1px); color: #fff; }
+
+    @media (max-width: 480px) {
+      .rs-screen { padding: 8px; gap: 7px; }
+      .rs-screen-title { font-size: 15px; }
+      .rs-res-grid { padding: 6px 8px; gap: 2px 8px; }
+      .rs-screen-sub { font-size: 10px; }
+      .rs-keys { display: none; }
+      .rs-msg { font-size: 11px; }
+    }
+  </style>
+</head>
+<body data-game-id="railshooter" data-game-title="轨道射击" data-best-mode="max">
+  <h1 class="seo-h1">轨道射击</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="railshooter-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="railshooter.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

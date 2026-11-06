@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>迷宫吃豆 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 迷宫吃豆：迷宫追逐玩法致敬经典街机，非官方，与 PAC-MAN™ 无关。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/mazedot/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="迷宫吃豆 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 迷宫吃豆：迷宫追逐玩法致敬经典街机，非官方，与 PAC-MAN™ 无关。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/mazedot/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="迷宫吃豆 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 迷宫吃豆：迷宫追逐玩法致敬经典街机，非官方，与 PAC-MAN™ 无关。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "迷宫吃豆",
+    "url": "https://game.netcn.org/games/mazedot/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 迷宫吃豆：迷宫追逐玩法致敬经典街机，非官方，与 PAC-MAN™ 无关。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .pm-wrap { padding: 14px; width: min(480px, 96vw); text-align: center; }
+    .pm-stage { position: relative; }
+    .pm-canvas { width: 100%; max-width: 100%; height: auto; border-radius: 10px; background: #05060f;
+      box-shadow: 0 0 18px rgba(255,230,0,0.15); touch-action: none; display: block; }
+    .pm-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 10px; font-size: 13px; color: var(--text-dim); margin: 8px 2px; }
+    .pm-top span { white-space: nowrap; }
+    .pm-msg { min-height: 18px; font-size: 13px; color: var(--neon-green); margin: 6px 0; }
+    .pm-combo { min-height: 16px; font-size: 12px; color: var(--neon-cyan); letter-spacing: .5px; }
+    .pm-dpad { grid-template-columns: repeat(3, 52px); grid-template-rows: repeat(2, 52px); gap: 6px; margin: 10px auto 0; }
+    .pm-wrap .btn { min-height: 44px; }
+    .pm-wrap .game-controls .btn { min-width: 118px; }
+    .pm-wrap .pm-ov-btns .btn { min-width: 136px; min-height: 44px; }
+    .pm-lives { color: var(--neon-pink); }
+    .pm-fear { color: var(--neon-cyan); }
+    .pm-ov { position: absolute; inset: 0; z-index: 2; border-radius: 10px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px; padding: 18px; text-align: center;
+      background: rgba(4,6,16,0.9); backdrop-filter: blur(2px); }
+    .pm-ov.hidden { display: none; }
+    .pm-ov-title { font-family: var(--font-pixel); font-size: 16px; color: var(--neon-yellow); text-shadow: 0 0 10px rgba(255,230,0,.55); line-height: 1.5; }
+    .pm-ov-body { font-size: 13px; color: var(--text-dim); line-height: 1.75; }
+    .pm-ov-note { margin-top: 6px; font-size: 12px; color: var(--neon-cyan); }
+    .pm-ov-btns { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+    @media (max-width: 480px) {
+      .pm-ov-title { font-size: 14px; }
+      .pm-ov { gap: 8px; padding: 12px; }
+      .pm-dpad { grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(2, 48px); }
+    }
+  </style>
+</head>
+<body data-game-id="mazedot" data-game-title="迷宫吃豆" data-best-mode="max">
+  <h1 class="seo-h1">迷宫吃豆</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="mazedot-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="mazedot.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>塔防 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 塔防：建造电塔狙击冰塔，守住 30 波进攻（含 3 场 Boss 战）。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/towerdefense/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="塔防 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 塔防：建造电塔狙击冰塔，守住 30 波进攻（含 3 场 Boss 战）。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/towerdefense/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="塔防 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 塔防：建造电塔狙击冰塔，守住 30 波进攻（含 3 场 Boss 战）。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "塔防",
+    "url": "https://game.netcn.org/games/towerdefense/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 塔防：建造电塔狙击冰塔，守住 30 波进攻（含 3 场 Boss 战）。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .td-wrap { padding: 12px 10px 24px; width: min(720px, 96vw); margin: 0 auto; text-align: center; }
+    .td-wrap .game-controls.is-hidden { display: none; }
+    .td-canvas { display: block; width: 100%; height: auto; border-radius: 10px; background: #0a120a;
+      border: 1px solid rgba(57,255,20,0.3); box-shadow: 0 0 18px rgba(57,255,20,0.15);
+      touch-action: none; max-width: 100%; }
+    .td-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 10px; font-size: 12px;
+      color: var(--text-dim); margin: 8px 2px; padding: 8px 10px; border-radius: 8px;
+      background: linear-gradient(90deg, rgba(57,255,20,0.07), rgba(0,240,255,0.05));
+      border: 1px solid rgba(57,255,20,0.2); }
+    .td-top b { color: var(--neon-yellow); font-family: var(--font-mono); }
+    .td-tray { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin: 8px 0; }
+    .td-tower { display: inline-flex; align-items: center; gap: 5px; border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 7px 10px; cursor: pointer; background: rgba(255,255,255,0.04);
+      font-size: 12px; color: var(--text-dim); transition: all 0.15s; }
+    .td-tower:hover { border-color: rgba(255,255,255,0.45); }
+    .td-tower.sel { border-color: var(--neon-yellow); color: var(--neon-yellow);
+      background: rgba(255,230,0,0.08); box-shadow: 0 0 10px rgba(255,230,0,0.28); }
+    .td-tower b { color: var(--neon-green); font-family: var(--font-mono); }
+    .td-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+    .td-stage { position: relative; width: 100%; max-width: 720px; margin: 8px auto; }
+    .td-wave-banner {
+      position: absolute; left: 50%; top: 16%; transform: translate(-50%, 10px) scale(.86);
+      z-index: 5; pointer-events: none; opacity: 0; white-space: nowrap;
+      font-family: var(--font-pixel); font-size: 14px; color: var(--neon-yellow);
+      text-shadow: 0 0 12px currentColor, 0 0 26px currentColor;
+      padding: 9px 16px; border-radius: 12px; text-align: center;
+      background: rgba(6,10,8,.86); border: 1px solid currentColor;
+      box-shadow: 0 0 24px currentColor;
+      transition: opacity .3s ease, transform .3s cubic-bezier(.2,1.5,.4,1);
+    }
+    .td-wave-banner.show { opacity: 1; transform: translate(-50%, 0) scale(1); }
+    .td-wave-banner small { display: block; font-family: var(--font-mono); font-size: 9px; color: var(--neon-cyan); margin-top: 4px; letter-spacing: .1em; }
+    .td-over { position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center;
+      background: rgba(6,8,16,0.87); border-radius: 10px;
+      -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
+    .td-card { width: min(360px, 92%); padding: 16px 14px; border-radius: 14px; text-align: center;
+      background: linear-gradient(160deg, rgba(16,28,22,0.98), rgba(8,10,18,0.98));
+      border: 1px solid rgba(57,255,20,0.32);
+      box-shadow: 0 0 26px rgba(57,255,20,0.16), inset 0 0 18px rgba(0,240,255,0.06); }
+    .td-title { font-family: var(--font-pixel); font-size: 15px; color: var(--neon-green);
+      text-shadow: 0 0 12px rgba(57,255,20,0.55); margin-bottom: 8px; }
+    .td-title.win { color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255,230,0,0.6); }
+    .td-title.lose { color: var(--neon-pink); text-shadow: 0 0 12px rgba(255,45,149,0.6); }
+    .td-hint { font-size: 12px; color: var(--text-dim); line-height: 1.7; margin-bottom: 8px; }
+    .td-res-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 12px;
+      color: var(--text-dim); margin: 6px 0 8px; }
+    .td-res-stats b { color: var(--neon-yellow); font-family: var(--font-mono); }
+    .td-card .btn { display: block; width: 100%; margin-top: 8px; }
+    .td-msg { min-height: 18px; font-size: 12px; color: var(--neon-green); margin: 8px 0; line-height: 1.6; }
+    .td-sel { display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap;
+      margin: 8px 0; padding: 8px; border-radius: 8px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12); }
+    .td-sel span { font-size: 12px; color: var(--neon-yellow); }
+    .td-sel .btn { padding: 7px 10px; font-size: 12px; }
+    #td-speed.on { border-color: var(--neon-yellow); color: var(--neon-yellow);
+      box-shadow: 0 0 10px rgba(255,230,0,0.3); }
+    @media (max-width: 480px) {
+      .td-wrap { padding: 10px 6px 20px; }
+      .td-top { font-size: 11px; gap: 4px 8px; padding: 7px 8px; }
+      .td-tower { font-size: 11px; padding: 6px 8px; gap: 4px; }
+      .td-dot { width: 7px; height: 7px; }
+      .td-card { padding: 14px 10px; }
+      .td-sel .btn { font-size: 11px; padding: 6px 8px; }
+    }
+  </style>
+</head>
+<body data-game-id="towerdefense" data-game-title="塔防" data-best-mode="max">
+  <h1 class="seo-h1">塔防</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="towerdefense-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="towerdefense.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>推箱子 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 推箱子：把每个箱子精准推到目标点，别进死角。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/sokoban/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="推箱子 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 推箱子：把每个箱子精准推到目标点，别进死角。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/sokoban/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="推箱子 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 推箱子：把每个箱子精准推到目标点，别进死角。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "推箱子",
+    "url": "https://game.netcn.org/games/sokoban/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 推箱子：把每个箱子精准推到目标点，别进死角。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .sk-wrap { padding: 14px 12px 22px; width: min(480px, 100%); text-align: center; }
+    .sk-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .sk-hud { flex: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; font-size: 11px; color: var(--text-dim); }
+    .sk-hud b { color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 11px; }
+    .sk-btn { font-size: 11px; padding: 7px 10px; border-radius: 7px; background: rgba(255,255,255,0.06); border: 1px solid rgba(0,240,255,0.28); color: var(--text); cursor: pointer; font-family: inherit; white-space: nowrap; min-height: 44px; min-width: 44px; }
+    .sk-btn:hover { border-color: var(--neon-cyan); box-shadow: 0 0 10px rgba(0,240,255,0.3); }
+    .sk-btn.tall { height: 44px; min-width: 62px; }
+    .sk-canvas { display: block; width: 100% !important; max-width: 460px; height: auto !important; margin: 0 auto; border-radius: 14px; background: #070b16; box-shadow: 0 0 0 1px rgba(0,240,255,0.16), 0 12px 34px rgba(0,0,0,0.55), 0 0 26px rgba(0,240,255,0.08); touch-action: none; cursor: pointer; }
+    .sk-msg { min-height: 18px; font-size: 12px; line-height: 1.5; color: var(--neon-pink); margin-top: 6px; }
+    .sk-touch { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 8px; }
+    .sk-side { display: flex; flex-direction: column; gap: 8px; }
+    .sk-overlay .sk-panel { background: linear-gradient(160deg, rgba(20,30,50,0.98), rgba(9,13,24,0.98)); border: 1px solid rgba(0,240,255,0.3); border-radius: 16px; padding: 22px 18px; width: min(400px, 94vw); box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 30px rgba(0,240,255,0.12); }
+    .sk-overlay .btn { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+    .sk-panel-title { font-family: var(--font-pixel); font-size: 15px; line-height: 1.6; color: var(--neon-cyan); margin-bottom: 14px; letter-spacing: 1px; }
+    .sk-panel-title.win { color: var(--neon-green); text-shadow: 0 0 14px rgba(57,255,20,0.55); }
+    .sk-panel-title.dead { color: #ff4d6d; text-shadow: 0 0 14px rgba(255,77,109,0.65); }
+    .sk-deadlock-panel { border-color: rgba(255,77,109,0.55) !important; animation: skDeadPulse 1.5s ease-in-out infinite; }
+    @keyframes skDeadPulse {
+      0%, 100% { box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 18px rgba(255,40,80,0.22); }
+      50% { box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 38px rgba(255,40,80,0.55); }
+    }
+    .sk-lv-scroll { max-height: min(58vh, 440px); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; margin-bottom: 16px; padding-right: 2px; }
+    .sk-chapter { text-align: left; margin-bottom: 12px; }
+    .sk-chapter-title { position: sticky; top: 0; z-index: 1; padding: 6px 2px; margin-bottom: 6px; font-family: var(--font-pixel); font-size: 10px; letter-spacing: 1px; color: var(--neon-purple); background: rgba(9,13,24,0.96); border-bottom: 1px solid rgba(185,103,255,0.22); }
+    .sk-lv-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .sk-lvl { position: relative; aspect-ratio: 1; min-height: 44px; border-radius: 9px; border: 1px solid rgba(0,240,255,0.26); background: rgba(0,240,255,0.05); color: var(--text); cursor: pointer; font-family: var(--font-pixel); font-size: 13px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+    .sk-lvl.done { border-color: rgba(57,255,20,0.55); background: rgba(57,255,20,0.08); }
+    .sk-lvl.cur { box-shadow: 0 0 0 2px var(--neon-cyan), 0 0 14px rgba(0,240,255,0.4); }
+    .sk-lvl.locked { opacity: 0.45; cursor: not-allowed; }
+    .sk-lvl-lock { font-size: 11px; color: var(--text-dim); }
+    .sk-lvl-star { font-size: 8px; color: var(--neon-green); }
+    .sk-res-stats { display: flex; flex-direction: column; gap: 7px; font-size: 13px; color: var(--text-dim); margin-bottom: 18px; }
+    .sk-res-stats b { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 13px; }
+    .sk-res-note { display: block; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.12); font-size: 11px; line-height: 1.6; }
+    .sk-res-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    @media (max-width: 420px) {
+      .sk-wrap { padding-left: 6px; padding-right: 6px; }
+      .sk-hud { font-size: 10px; gap: 2px 7px; }
+      .sk-btn { padding: 8px; font-size: 10px; }
+      .sk-lv-grid { gap: 5px; }
+      .sk-lv-scroll { max-height: 54vh; }
+      .sk-chapter-title { font-size: 9px; }
+    }
+  </style>
+</head>
+<body data-game-id="sokoban" data-game-title="推箱子" data-best-mode="min">
+  <h1 class="seo-h1">推箱子</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="sokoban-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="sokoban.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

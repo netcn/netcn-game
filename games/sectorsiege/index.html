@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>拉线占领 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 拉线占领（即时战略）：随机网格产兵，按住己方格拖线派兵，到达时兵多者占领——吞并中立滚雪球，统一整片密码战线。三难度 + 每日一题。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/sectorsiege/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="拉线占领 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 拉线占领（即时战略）：随机网格产兵，按住己方格拖线派兵，到达时兵多者占领——吞并中立滚雪球，统一整片密码战线。三难度 + 每日一题。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/sectorsiege/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="拉线占领 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 拉线占领（即时战略）：随机网格产兵，按住己方格拖线派兵，到达时兵多者占领——吞并中立滚雪球，统一整片密码战线。三难度 + 每日一题。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "拉线占领",
+    "url": "https://game.netcn.org/games/sectorsiege/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 拉线占领（即时战略）：随机网格产兵，按住己方格拖线派兵，到达时兵多者占领——吞并中立滚雪球，统一整片密码战线。三难度 + 每日一题。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .gl-wrap { padding: 14px 10px 24px; width: min(680px, 100%); box-sizing: border-box; text-align: center; }
+    .gl-pick { padding: 18px 10px; }
+    .gl-pick-t { font-family: var(--font-pixel); font-size: 16px; letter-spacing: 2px; color: var(--neon-cyan); text-shadow: 0 0 12px rgba(0,240,255,0.5); }
+    .gl-pick-d { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin: 10px 0 14px; }
+    .gl-pick-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
+    .gl-pick-btns .mode-btn, #gl-pick-daily { flex-direction: column; gap: 4px; padding: 10px 14px; }
+    .gl-pick-btns small { font-size: 10px; color: var(--text-dim); }
+    .gl-info {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--text-dim); margin: 6px 2px; flex-wrap: wrap;
+      padding: 8px 10px; background: linear-gradient(90deg, rgba(0,240,255,0.08), rgba(255,45,149,0.05));
+      border: 1px solid rgba(0,240,255,0.3); border-radius: 8px;
+    }
+    #gl-hud { font-family: var(--font-pixel); color: var(--neon-yellow); font-size: 11px; }
+    #gl-cv {
+      display: block; width: 100%; height: auto;
+      border: 1px solid rgba(0,240,255,0.25); border-radius: 8px; margin: 8px 0;
+      background: #0b0e16; touch-action: none; cursor: crosshair;
+    }
+    .gl-controls { display: flex; gap: 10px; justify-content: center; margin: 8px 0; flex-wrap: wrap; }
+    .gl-msg {
+      font-size: 12px; color: var(--text-main); min-height: 22px; text-align: left;
+      background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      padding: 8px; margin: 6px 0;
+    }
+    .gl-overlay {
+      position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
+      padding: 20px; background: radial-gradient(circle at 50% 40%, rgba(10,16,32,.88), rgba(3,4,10,.97));
+      animation: glFade .26s ease-out;
+    }
+    @keyframes glFade { from { opacity: 0; } to { opacity: 1; } }
+    .gl-ov-card {
+      width: min(410px, 92vw); text-align: center; padding: 22px 18px;
+      border-radius: 16px; border: 1px solid rgba(0,240,255,.35);
+      background: linear-gradient(160deg, rgba(18,26,48,.98), rgba(8,11,22,.98));
+      box-shadow: 0 0 34px rgba(0,240,255,.2), inset 0 1px 0 rgba(255,255,255,.07);
+      animation: glCard .3s cubic-bezier(.2,.9,.3,1.25);
+    }
+    @keyframes glCard { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
+    .gl-ov-icon { font-size: 34px; line-height: 1; margin-bottom: 8px; animation: glPop .42s cubic-bezier(.2,.9,.3,1.5); }
+    @keyframes glPop { 0% { transform: scale(.3); opacity: 0; } 70% { transform: scale(1.12); opacity: 1; } 100% { transform: scale(1); } }
+    #gl-ov-title {
+      margin: 0 0 8px; font-family: var(--font-pixel); font-size: clamp(14px, 4.4vw, 19px);
+      letter-spacing: 1px; color: var(--neon-pink); text-shadow: 0 0 14px rgba(255,45,149,.6);
+    }
+    #gl-ov-title.win { color: var(--neon-green); text-shadow: 0 0 14px rgba(57,255,20,.65); }
+    #gl-ov-text { margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.9; }
+    #gl-ov-text b { color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 13px; }
+    .gl-ov-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+    .gl-ov-btns .btn { font-size: 12px; padding: 9px 15px; }
+  </style>
+</head>
+<body data-game-id="sectorsiege" data-game-title="拉线占领" data-best-mode="min">
+  <h1 class="seo-h1">拉线占领</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="sectorsiege-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="sectorsiege.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

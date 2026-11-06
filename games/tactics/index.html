@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>战棋对决 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 战棋对决：回合制策略战棋，兵种克制 + 移动/攻击范围，三关递进挑战 AI 军团与 Boss。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/tactics/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="战棋对决 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 战棋对决：回合制策略战棋，兵种克制 + 移动/攻击范围，三关递进挑战 AI 军团与 Boss。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/tactics/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="战棋对决 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 战棋对决：回合制策略战棋，兵种克制 + 移动/攻击范围，三关递进挑战 AI 军团与 Boss。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "战棋对决",
+    "url": "https://game.netcn.org/games/tactics/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 战棋对决：回合制策略战棋，兵种克制 + 移动/攻击范围，三关递进挑战 AI 军团与 Boss。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .tk-wrap { padding: 12px 10px 20px; width: min(640px, 98vw); text-align: center; margin: 0 auto; }
+    .tk-top { display: flex; justify-content: center; align-items: center; gap: 6px 12px; flex-wrap: wrap; font-size: 12px; margin: 4px 2px 2px; color: var(--text-dim); }
+    .tk-top .stat-value { font-family: var(--font-pixel); font-size: 11px; }
+    .tk-msg { min-height: 20px; font-size: 13px; color: var(--neon-pink); margin: 4px 0 6px; line-height: 1.55; }
+    .tk-msg.ai { color: var(--neon-yellow); }
+    .tk-msg.ok { color: var(--neon-cyan); }
+
+    /* ---------- 关卡选择 ---------- */
+    .tk-pick { padding: 4px 0 2px; }
+    .tk-pick-title { font-family: var(--font-pixel); font-size: 15px; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.55); margin: 6px 0 6px; }
+    .tk-pick-sub { font-size: 12px; color: var(--text-dim); line-height: 1.7; margin: 0 auto 8px; max-width: 430px; }
+    .tk-pick-best { display: inline-block; font-size: 11px; color: var(--neon-yellow); border: 1px dashed rgba(255,230,0,.4); border-radius: 999px; padding: 4px 12px; margin-bottom: 12px; }
+    .tk-levels { display: flex; flex-direction: column; gap: 10px; max-width: 440px; margin: 0 auto 14px; }
+    .tk-lvl { display: flex; align-items: center; gap: 12px; text-align: left; min-height: 74px; padding: 10px 14px; border: 2px solid rgba(0,240,255,.4); border-radius: 10px; background: linear-gradient(135deg, rgba(0,240,255,.10), rgba(255,45,149,.06)); color: var(--text-main); cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .12s; font-family: inherit; }
+    .tk-lvl:active { transform: scale(.98); }
+    .tk-lvl:hover { border-color: var(--neon-cyan); box-shadow: 0 0 16px rgba(0,240,255,.35); }
+    .tk-lvl.locked { opacity: .45; cursor: not-allowed; border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.04); }
+    .tk-lvl-num { font-family: var(--font-pixel); font-size: 17px; color: var(--neon-cyan); min-width: 36px; text-align: center; }
+    .tk-lvl-body { flex: 1; min-width: 0; }
+    .tk-lvl-t { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); text-shadow: 0 0 6px rgba(255,230,0,.4); margin-bottom: 4px; line-height: 1.5; }
+    .tk-lvl-d { font-size: 11px; color: var(--text-dim); line-height: 1.55; }
+    .tk-lvl-stars { display: flex; gap: 3px; margin-top: 6px; }
+    .tk-lvl-state { font-size: 11px; color: var(--neon-green); white-space: nowrap; font-family: var(--font-pixel); }
+    .tk-lvl.locked .tk-lvl-state { color: var(--text-dim); }
+    .tk-diff { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 0 auto 4px; }
+    .tk-diff .mode-btn { min-height: 44px; min-width: 72px; }
+    .tk-diff-note { font-size: 11px; color: var(--text-dim); line-height: 1.6; margin: 6px auto 10px; max-width: 430px; }
+
+    /* ---------- 战场 ---------- */
+    .tk-stage { position: relative; display: flex; flex-direction: column; align-items: center; }
+    .tk-boardView {
+      position: relative; width: 100%; max-width: 100%; max-height: 58vh;
+      margin: 0 auto; overflow: auto; border-radius: 12px;
+      overscroll-behavior: contain; touch-action: pan-x pan-y;
+      -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+    }
+    .tk-boardView::-webkit-scrollbar { width: 6px; height: 6px; }
+    .tk-boardView::-webkit-scrollbar-thumb { background: rgba(0,240,255,.32); border-radius: 3px; }
+    .tk-boardView.zoomed { cursor: grab; }
+    .tk-boardView.dragging { cursor: grabbing; }
+    .tk-boardWrap { position: relative; width: fit-content; margin: 0 auto; }
+    .tk-board {
+      display: grid; gap: 2px; padding: 6px; margin: 0 auto; width: fit-content;
+      background: linear-gradient(160deg, #1d3b27 0%, #102019 55%, #152b1e 100%);
+      border: 1px solid rgba(0,240,255,.22); border-radius: 12px;
+      box-shadow: 0 10px 32px rgba(0,0,0,.5), inset 0 0 26px rgba(0,0,0,.45);
+      user-select: none; touch-action: manipulation;
+    }
+    .tk-fx { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 3; }
+    .tk-cell {
+      width: var(--tk-cell, 40px); height: var(--tk-cell, 40px); border-radius: 5px; position: relative;
+      cursor: pointer; transition: background .12s ease, box-shadow .12s ease; overflow: hidden;
+    }
+    .tk-cell.grass { background: linear-gradient(160deg, #2c5a35, #1e3d28); box-shadow: inset 0 0 0 1px rgba(120,200,140,.08); }
+    .tk-cell.alt { background: linear-gradient(160deg, #31633b, #214530); }
+    .tk-cell.hill { background: linear-gradient(160deg, #55713c, #2c4527); box-shadow: inset 0 0 0 1px rgba(255,230,0,.16); }
+    .tk-cell.forest { background: linear-gradient(160deg, #123a24, #0a2115); box-shadow: inset 0 0 0 1px rgba(57,255,20,.18); }
+    .tk-cell.wall { background: linear-gradient(160deg, #4a5470, #222a3d); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14), inset 0 -6px 10px rgba(0,0,0,.4); cursor: default; }
+    .tk-cell.wall::after { content: ''; position: absolute; inset: 3px; border-radius: 3px; background: linear-gradient(135deg, rgba(255,255,255,.14), transparent 52%); }
+    .tk-cell.hill::before { content: ''; position: absolute; left: 50%; bottom: 16%; transform: translateX(-50%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 9px solid rgba(255,230,0,.28); }
+    .tk-cell.forest::before { content: ''; position: absolute; inset: 14%; background:
+      radial-gradient(circle at 30% 34%, rgba(57,255,20,.30) 0 9%, transparent 10%),
+      radial-gradient(circle at 66% 46%, rgba(57,255,20,.24) 0 11%, transparent 12%),
+      radial-gradient(circle at 44% 74%, rgba(0,240,255,.10) 0 8%, transparent 9%); }
+    .tk-cell.canmove { background: rgba(0,240,255,.22); box-shadow: inset 0 0 0 1px rgba(0,240,255,.55), 0 0 12px rgba(0,240,255,.35); }
+    .tk-cell.canatk { background: rgba(255,45,149,.16); box-shadow: inset 0 0 0 2px rgba(255,45,149,.55), 0 0 12px rgba(255,45,149,.35); }
+    .tk-cell.canmove.canatk { background: linear-gradient(135deg, rgba(0,240,255,.22), rgba(255,45,149,.20)); box-shadow: inset 0 0 0 2px rgba(185,103,255,.6), 0 0 12px rgba(185,103,255,.4); }
+    .tk-cell.sel { box-shadow: inset 0 0 0 3px var(--neon-yellow), 0 0 18px rgba(255,230,0,.55); z-index: 2; }
+    .tk-cell.target { box-shadow: inset 0 0 0 2px rgba(255,45,149,.85), 0 0 14px rgba(255,45,149,.6); animation: tkTarget 1s ease-in-out infinite; }
+    .tk-cell.cursor { outline: 2px dashed rgba(255,255,255,.65); outline-offset: -4px; }
+    @keyframes tkTarget { 0%,100% { filter: brightness(1); } 50% { filter: brightness(1.35); } }
+
+    .tk-detail { display: flex; gap: 6px 8px; justify-content: center; flex-wrap: wrap; margin: 8px 0 2px; font-size: 11px; color: var(--text-dim); min-height: 20px; }
+    .tk-chip { display: inline-flex; align-items: center; gap: 4px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 3px 9px; line-height: 1.3; }
+    .tk-chip b { color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 10px; }
+    .tk-chip.hp b { color: var(--neon-green); }
+    .tk-chip.atk b { color: var(--neon-yellow); }
+    .tk-chip.rng b { color: var(--neon-purple); }
+    .tk-chip.mov b { color: #6fa8ff; }
+    .tk-chip.warn { border-color: rgba(255,45,149,.45); color: var(--neon-pink); }
+    .tk-chip.good { border-color: rgba(57,255,20,.35); color: var(--neon-green); }
+    .tk-endturn { margin: 4px auto 8px; min-width: 150px; }
+    .tk-zoom-bar { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 8px auto 2px; }
+    .tk-zoom-bar .btn { min-width: 44px; min-height: 44px; padding: 0 10px; font-size: 12px; }
+    .tk-zoom-bar .tk-zoom-toggle { min-width: 92px; font-size: 10px; }
+    .tk-zoom-hint { font-size: 10px; color: var(--text-dim); margin: 2px 0 6px; line-height: 1.5; }
+    .tk-legend { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; font-size: 10px; color: var(--text-dim); margin-top: 6px; }
+    .tk-legend span { display: inline-flex; align-items: center; gap: 4px; }
+    .tk-dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; }
+
+    /* ---------- 结算/浮层 ---------- */
+    .tk-overlay {
+      position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
+      background: rgba(5,5,12,0.85); padding: 16px;
+    }
+    .tk-overlay.hidden { display: none; }
+    .tk-modal {
+      background: var(--bg-panel); border: 1px solid var(--accent, #00f0ff); border-radius: 12px;
+      padding: 20px; width: min(420px, 94vw); text-align: center;
+      box-shadow: 0 0 30px color-mix(in srgb, var(--accent, #00f0ff) 25%, transparent);
+    }
+    .tk-modal h2 { font-family: var(--font-pixel); font-size: 15px; margin-bottom: 10px; line-height: 1.5; }
+    .tk-modal h2.win { color: var(--neon-green); text-shadow: 0 0 10px rgba(57,255,20,.6); }
+    .tk-modal h2.lose { color: var(--neon-pink); text-shadow: 0 0 10px rgba(255,45,149,.6); }
+    .tk-modal p { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-bottom: 12px; }
+    .tk-result { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 14px; }
+    .tk-result div { border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 7px 8px; font-size: 11px; color: var(--text-dim); }
+    .tk-result b { display: block; font-family: var(--font-pixel); font-size: 14px; color: var(--neon-yellow); margin-top: 3px; }
+    .tk-result .rec b { color: var(--neon-green); }
+    .tk-modal .game-controls { gap: 8px; margin: 0; }
+    #tk-battle .game-controls.is-hidden { display: none; }
+    .tk-modal .btn { font-size: 10px; padding: 10px 14px; }
+
+  </style>
+<style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
+</head>
+<body data-game-id="tactics" data-game-title="战棋对决" data-best-mode="max">
+  <h1 class="seo-h1">战棋对决</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="tactics-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="tactics.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

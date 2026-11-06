@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>迷宫 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/maze/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="迷宫 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/maze/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="迷宫 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "迷宫",
+    "url": "https://game.netcn.org/games/maze/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .mz-wrap {
+      --mz-a: #00f0ff; --mz-b: #ff2d95;
+      --mz-a-soft: rgba(0,240,255,0.10); --mz-b-soft: rgba(255,45,149,0.07);
+      --mz-a-soft2: rgba(0,240,255,0.16); --mz-b-soft2: rgba(255,45,149,0.10);
+      --mz-a-line: rgba(0,240,255,0.30); --mz-a-line2: rgba(0,240,255,0.68);
+      --mz-glow: rgba(0,240,255,0.18); --mz-glow-b: rgba(255,45,149,0.55);
+      --mz-bg: #070b14;
+      padding: 14px 10px 24px; width: min(420px, 98vw); text-align: center;
+    }
+    .mz-hidden { display: none !important; }
+    .mz-pick { padding: 14px 4px 8px; }
+    .mz-pick-t { font-family: var(--font-pixel); font-size: 17px; letter-spacing: 2px; color: var(--mz-b); text-shadow: 0 0 14px var(--mz-glow-b); }
+    .mz-pick-d { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin: 10px 0 16px; }
+    .mz-modes { display: flex; flex-direction: column; gap: 9px; max-width: 330px; margin: 0 auto; }
+    .mz-mode {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      min-height: 62px; padding: 10px 14px; border-radius: 12px; cursor: pointer; text-align: left; color: var(--text);
+      background: linear-gradient(135deg, var(--mz-a-soft), var(--mz-b-soft));
+      border: 1px solid var(--mz-a-line); font: inherit;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+    .mz-mode:hover, .mz-mode:focus-visible {
+      border-color: var(--mz-a-line2); box-shadow: 0 0 20px var(--mz-glow);
+      background: linear-gradient(135deg, var(--mz-a-soft2), var(--mz-b-soft2));
+      outline: none;
+    }
+    .mz-mode:active { transform: translateY(1px); }
+    .mz-mode-main { display: block; min-width: 0; }
+    .mz-mode-main b { display: block; font-family: var(--font-pixel); font-size: 13px; color: var(--mz-a); letter-spacing: 1px; }
+    .mz-mode-main small { display: block; font-size: 10px; color: var(--text-dim); margin-top: 4px; line-height: 1.5; }
+    .mz-daily-meta { display: block; color: var(--neon-yellow) !important; font-family: ui-monospace, monospace; letter-spacing: .04em; }
+    .mz-mode-badge {
+      flex: 0 0 auto; min-width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+      border-radius: 9px; border: 1px solid rgba(255,230,0,0.45); color: var(--neon-yellow);
+      font-family: var(--font-pixel); font-size: 12px; box-shadow: inset 0 0 12px rgba(255,230,0,0.12);
+    }
+    .mz-diffrow { display: flex; align-items: center; gap: 6px; max-width: 330px; margin: 14px auto 0; }
+    .mz-diffrow-t { font-size: 10px; color: var(--text-dim); white-space: nowrap; padding: 0 2px; }
+    .mz-diffchip {
+      flex: 1; min-height: 44px; padding: 6px 4px; border-radius: 10px; cursor: pointer;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16);
+      color: var(--text-dim); font: inherit; font-size: 11px;
+      transition: border-color .12s ease, color .12s ease, background .12s ease;
+    }
+    .mz-diffchip.on { color: var(--mz-a); border-color: var(--mz-a-line2); background: var(--mz-a-soft); box-shadow: 0 0 14px var(--mz-glow); }
+    .mz-diffchip:active { transform: translateY(1px); }
+    .mz-themerow { display: flex; align-items: center; gap: 6px; max-width: 330px; margin: 10px auto 0; }
+    .mz-themerow-t { font-size: 10px; color: var(--text-dim); white-space: nowrap; padding: 0 2px; }
+    .mz-themes { display: flex; flex: 1; min-width: 0; gap: 6px; }
+    .mz-themechip {
+      flex: 1; min-width: 0; min-height: 44px; padding: 6px 3px; border-radius: 10px; cursor: pointer;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16);
+      color: var(--text-dim); font: inherit; font-size: 10px; white-space: nowrap;
+      transition: border-color .12s ease, color .12s ease, background .12s ease;
+    }
+    .mz-themechip.on { color: var(--mz-a); border-color: var(--mz-a-line2); background: var(--mz-a-soft); box-shadow: 0 0 14px var(--mz-glow); }
+    .mz-themechip:active { transform: translateY(1px); }
+    .mz-pick-best { margin-top: 16px; font-size: 11px; color: var(--text-dim); letter-spacing: .08em; }
+    .mz-pick-best b { color: var(--neon-yellow); font-family: ui-monospace, monospace; }
+    .mz-hud { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin: 0 0 8px; }
+    .mz-pill {
+      display: flex; align-items: center; gap: 5px; padding: 4px 9px; border-radius: 999px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--mz-a-line);
+      font-size: 10px; color: var(--text-dim); white-space: nowrap;
+    }
+    .mz-pill b { font-family: ui-monospace, monospace; font-size: 11px; color: var(--text-main); }
+    .mz-pill.hot b { color: var(--neon-yellow); }
+    .mz-pill.danger { border-color: rgba(255,45,149,0.65); background: rgba(255,45,149,0.10); }
+    .mz-pill.danger b { color: var(--neon-pink); }
+    .mz-stage {
+      position: relative; width: min(360px, 100%); margin: 0 auto;
+      filter: drop-shadow(0 0 18px var(--mz-glow));
+    }
+    .mz-canvas {
+      display: block; width: 100%; height: auto; max-width: 360px; margin: 0 auto;
+      border-radius: 12px; border: 1px solid var(--mz-a-line); background: var(--mz-bg);
+      touch-action: none; user-select: none; -webkit-user-select: none;
+    }
+    .mz-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 10px 0 0; }
+    .mz-dpad { display: grid; grid-template-columns: repeat(3, 52px); grid-template-rows: repeat(2, 52px); gap: 6px; }
+    .mz-sp { display: block; }
+    .mz-dpad button {
+      min-width: 44px; min-height: 44px;
+      font-size: 20px; border-radius: 12px; background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18); color: var(--text); cursor: pointer;
+      touch-action: none; transition: transform .08s ease, background .08s ease;
+    }
+    .mz-dpad button:active { transform: translateY(1px); background: rgba(0,240,255,0.20); border-color: rgba(0,240,255,0.5); }
+    .mz-side { display: flex; flex-direction: column; gap: 8px; }
+    .mz-mini {
+      min-height: 44px; min-width: 44px;
+      font-size: 11px; padding: 9px 12px; border-radius: 10px; cursor: pointer;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); color: var(--text-dim);
+      white-space: nowrap;
+    }
+    .mz-mini:active { transform: translateY(1px); }
+    .mz-banner {
+      position: absolute; left: 50%; top: 50%; z-index: 6; pointer-events: none;
+      transform: translate(-50%, -50%) scale(.88); opacity: 0; white-space: nowrap; text-align: center;
+      padding: 12px 18px; border-radius: 14px; color: var(--neon-cyan);
+      background: rgba(5,8,16,0.92); border: 1px solid currentColor;
+      box-shadow: 0 0 30px currentColor;
+      font-family: var(--font-pixel); font-size: 14px; letter-spacing: 1px;
+      transition: opacity .25s ease, transform .34s cubic-bezier(.2,1.4,.4,1);
+    }
+    .mz-banner.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .mz-banner small { display: block; font-family: ui-monospace, monospace; font-size: 10px; color: var(--text-main); margin-top: 6px; letter-spacing: .08em; }
+    .mz-overlay {
+      position: absolute; inset: 0; z-index: 7; display: flex; align-items: center; justify-content: center;
+      padding: 10px; border-radius: 12px; background: rgba(5,8,16,0.88);
+      -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
+    }
+    .mz-card {
+      width: min(320px, 100%); max-height: 100%; overflow: auto; padding: 15px 14px; border-radius: 14px;
+      text-align: center; background: linear-gradient(160deg, rgba(18,26,48,0.98), rgba(8,9,20,0.98));
+      border: 1px solid var(--mz-a-line);
+      box-shadow: 0 0 26px var(--mz-glow), inset 0 0 18px var(--mz-b-soft2);
+    }
+    .mz-card h2 { margin: 0 0 6px; font-family: var(--font-pixel); font-size: 15px; color: var(--neon-pink); text-shadow: 0 0 12px rgba(255,45,149,0.55); }
+    .mz-card h2.win { color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255,230,0,0.6); }
+    .mz-card .mz-sub { font-size: 11px; color: var(--text-dim); line-height: 1.6; margin: 0 0 10px; }
+    .mz-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 8px 0 2px; }
+    .mz-stat { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.09); border-radius: 8px; padding: 6px 8px; text-align: left; font-size: 10px; color: var(--text-dim); }
+    .mz-stat b { display: block; font-family: ui-monospace, monospace; font-size: 13px; color: var(--text-main); margin-top: 2px; }
+    .mz-stat.score b { color: var(--neon-yellow); }
+    .mz-newrec {
+      display: none; margin: 9px auto 0; width: fit-content; padding: 3px 11px; border-radius: 999px;
+      font-size: 10px; letter-spacing: .06em; color: var(--neon-yellow); border: 1px solid rgba(255,230,0,0.55);
+      box-shadow: 0 0 14px rgba(255,230,0,0.28);
+    }
+    .mz-newrec.on { display: block; animation: mzPulse 1s ease-in-out infinite alternate; }
+    @keyframes mzPulse { from { opacity: .55; transform: scale(.97); } to { opacity: 1; transform: scale(1.03); } }
+    .mz-actions { display: flex; gap: 8px; margin-top: 12px; }
+    .mz-actions .btn { flex: 1; margin: 0; font-size: 12px; padding: 10px 6px; }
+    .mz-msg { min-height: 16px; font-size: 11px; color: var(--neon-pink); margin-top: 8px; transition: color .2s ease; }
+    @media (max-width: 480px) {
+      .mz-dpad { grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(2, 48px); gap: 5px; }
+      .mz-controls { gap: 12px; }
+      .mz-mini { padding: 8px 10px; font-size: 10px; }
+      .mz-card { padding: 12px 11px; }
+      .mz-card h2 { font-size: 13px; }
+      .mz-mode { min-height: 64px; padding: 9px 12px; }
+      .mz-diffrow { gap: 4px; }
+      .mz-themerow { gap: 4px; }
+      .mz-themechip { font-size: 9px; }
+    }
+  </style>
+<style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
+</head>
+<body data-game-id="maze" data-game-title="迷宫" data-best-mode="max">
+  <h1 class="seo-h1">迷宫</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="maze-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="maze.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>保龄球 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 保龄球：10 帧标准计分（Strike/Spare/追加投），角度/力度/旋转物理投球。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/bowling/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="保龄球 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 保龄球：10 帧标准计分（Strike/Spare/追加投），角度/力度/旋转物理投球。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/bowling/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="保龄球 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 保龄球：10 帧标准计分（Strike/Spare/追加投），角度/力度/旋转物理投球。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "保龄球",
+    "url": "https://game.netcn.org/games/bowling/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 保龄球：10 帧标准计分（Strike/Spare/追加投），角度/力度/旋转物理投球。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .bw-top {
+      display: flex; justify-content: space-between; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--text-dim); margin: 6px 2px; flex-wrap: wrap;
+    }
+    .bw-top b { color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 13px; }
+    .bw-top .bw-best b { color: var(--neon-yellow); }
+    .bw-diff .mode-btn { font-size: 11px; padding: 6px 10px; line-height: 1.3; min-height: 44px; }
+    .bw-diff small { display: block; font-family: inherit; font-size: 9px; color: var(--text-dim); margin-top: 3px; }
+    .bw-diff .mode-btn.selected small { color: rgba(10, 10, 18, 0.78); }
+    .bw-stage {
+      position: relative; width: min(440px, calc(100vw - 30px)); margin: 8px auto;
+      border-radius: 14px; overflow: hidden; background: #05060f;
+      border: 1px solid rgba(255, 230, 0, 0.25);
+      box-shadow: 0 0 28px rgba(255, 230, 0, 0.1), inset 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+    .bw-canvas { display: block; width: 100%; height: auto; touch-action: none; }
+    .bw-msg {
+      position: absolute; left: 0; right: 0; top: 33%; text-align: center; padding: 0 12px;
+      font-family: var(--font-pixel); font-size: 19px; line-height: 1.5;
+      color: var(--neon-yellow); text-shadow: 0 0 16px rgba(255, 230, 0, 0.85);
+      opacity: 0; transform: scale(0.82); pointer-events: none; z-index: 3;
+      transition: opacity 0.18s, transform 0.18s;
+    }
+    .bw-msg.show { opacity: 1; transform: scale(1); }
+    .bw-msg.spare { color: var(--neon-cyan); text-shadow: 0 0 16px rgba(0, 240, 255, 0.8); }
+    .bw-msg.gutter { color: var(--neon-pink); text-shadow: 0 0 16px rgba(255, 45, 149, 0.8); }
+    .bw-overlay {
+      position: absolute; inset: 0; z-index: 5; display: flex; align-items: center;
+      justify-content: center; padding: 12px; background: rgba(4, 5, 12, 0.84);
+      backdrop-filter: blur(3px);
+    }
+    .bw-card {
+      width: 100%; max-width: 300px; text-align: center; padding: 16px 14px;
+      border-radius: 12px; border: 1px solid rgba(255, 230, 0, 0.35);
+      background: linear-gradient(180deg, rgba(32, 25, 56, 0.96), rgba(8, 8, 18, 0.97));
+      box-shadow: 0 0 26px rgba(255, 230, 0, 0.16);
+    }
+    .bw-card h2 {
+      margin: 0 0 8px; font-size: 15px; line-height: 1.5;
+      color: var(--neon-yellow); font-family: var(--font-pixel);
+    }
+    .bw-card p { margin: 0 0 10px; font-size: 11px; color: var(--text-dim); }
+    .bw-final-lab { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+    .bw-final {
+      font-family: var(--font-pixel); font-size: 34px; line-height: 1.1; margin: 2px 0 10px;
+      color: var(--neon-cyan); text-shadow: 0 0 18px rgba(0, 240, 255, 0.7);
+    }
+    .bw-ov-stats {
+      display: flex; justify-content: space-around; gap: 6px; flex-wrap: wrap;
+      font-size: 10px; color: var(--text-dim); margin-bottom: 10px;
+    }
+    .bw-ov-stats b {
+      display: block; margin-top: 2px; font-size: 14px;
+      font-family: var(--font-pixel); color: var(--neon-yellow);
+    }
+    .bw-record {
+      font-size: 12px; color: var(--neon-yellow); margin-bottom: 8px;
+      text-shadow: 0 0 12px rgba(255, 230, 0, 0.8);
+    }
+    .bw-ov-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .bw-ov-btns .btn { min-height: 44px; font-size: 11px; padding: 9px 14px; }
+    .bw-board {
+      display: grid; grid-template-columns: repeat(9, 1fr) 1.35fr; gap: 2px;
+      width: min(440px, calc(100vw - 30px)); margin: 8px auto;
+    }
+    .bw-frame {
+      background: rgba(0, 0, 0, 0.42); border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px; padding: 3px 1px; text-align: center; overflow: hidden;
+    }
+    .bw-frame.active {
+      border-color: rgba(255, 230, 0, 0.75); background: rgba(255, 230, 0, 0.08);
+      box-shadow: 0 0 9px rgba(255, 230, 0, 0.3);
+    }
+    .bw-fn { font-size: 9px; color: var(--text-dim); line-height: 1.2; }
+    .bw-fr {
+      font-family: var(--font-pixel); font-size: 10px; line-height: 1.4;
+      color: var(--neon-cyan); min-height: 13px; white-space: nowrap; overflow: hidden;
+    }
+    .bw-fr span { margin: 0 1px; }
+    .bw-ts { font-size: 10px; line-height: 1.3; color: var(--neon-yellow); min-height: 12px; }
+    .bw-panel { width: min(440px, calc(100vw - 30px)); margin: 8px auto 0; }
+    .bw-mode-row {
+      display: flex; gap: 6px; width: min(440px, calc(100vw - 30px)); margin: 6px auto 0;
+    }
+    .bw-mode-row .mode-btn {
+      flex: 1 1 0; min-width: 0; min-height: 46px; font-size: 11px; padding: 6px 8px; line-height: 1.25;
+    }
+    .bw-mode-row .mode-btn small {
+      display: block; font-family: inherit; font-size: 9px; color: var(--text-dim); margin-top: 2px;
+    }
+    .bw-mode-row .mode-btn.selected small { color: rgba(10, 10, 18, 0.78); }
+    .bw-status {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 4px;
+      width: min(440px, calc(100vw - 30px)); margin: 6px auto 0;
+      font-size: 10px; line-height: 1.3;
+    }
+    .bw-chip {
+      display: inline-block; padding: 3px 8px; border-radius: 999px;
+      border: 1px solid rgba(185, 103, 255, 0.35); background: rgba(185, 103, 255, 0.08);
+      color: var(--neon-purple); white-space: nowrap;
+    }
+    .bw-chip-oil { border-color: rgba(0, 240, 255, 0.4); background: rgba(0, 240, 255, 0.07); color: var(--neon-cyan); }
+    .bw-pick-row {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px;
+      width: min(440px, calc(100vw - 30px)); margin: 6px auto 0;
+    }
+    .bw-pick {
+      box-sizing: border-box; min-height: 50px; padding: 5px 3px; border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.035);
+      color: var(--text-dim); font-family: inherit; font-size: 10px; line-height: 1.25;
+      cursor: pointer; touch-action: manipulation; overflow-wrap: anywhere;
+    }
+    .bw-pick b { display: block; font-family: var(--font-pixel); font-size: 10px; color: var(--neon-cyan); }
+    .bw-pick small { display: block; font-size: 8px; color: var(--text-dim); margin-top: 2px; }
+    .bw-pick.selected {
+      border-color: rgba(255, 230, 0, 0.8); background: linear-gradient(180deg, rgba(255, 230, 0, 0.2), rgba(255, 230, 0, 0.08));
+      color: #fff; box-shadow: 0 0 10px rgba(255, 230, 0, 0.22);
+    }
+    .bw-pick.selected b { color: var(--neon-yellow); }
+    .bw-pick.selected small { color: rgba(255, 255, 255, 0.72); }
+    .bw-card-wide { max-width: 330px; }
+    .bw-games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 0 0 8px; }
+    .bw-game-item {
+      border-radius: 6px; border: 1px solid rgba(0, 240, 255, 0.22); background: rgba(0, 240, 255, 0.05);
+      padding: 3px 2px; font-size: 9px; color: var(--text-dim);
+    }
+    .bw-game-item b { display: block; margin-top: 1px; font-family: var(--font-pixel); font-size: 12px; color: var(--neon-cyan); }
+    .bw-champion, .bw-rank, .bw-lead {
+      font-size: 10px; line-height: 1.5; margin: 4px 0; color: var(--text-dim);
+    }
+    .bw-champion { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255, 230, 0, 0.6); }
+    .bw-rank { color: var(--neon-cyan); }
+    .bw-lead { color: var(--neon-purple); }
+    .bw-note { font-size: 9px; line-height: 1.55; color: var(--text-dim); margin: 4px 0 8px; }
+    .bw-overlay { overflow-y: auto; }
+    .bw-card { box-sizing: border-box; max-height: calc(100% - 6px); overflow-y: auto; }
+    .bw-meter {
+      position: relative; height: 18px; margin-bottom: 8px; overflow: hidden;
+      border-radius: 9px; border: 1px solid rgba(0, 240, 255, 0.35);
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .bw-meter-fill {
+      height: 100%; width: 72%;
+      background: linear-gradient(90deg, #39ff14, #ffe600 58%, #ff2d95);
+      box-shadow: 0 0 12px rgba(255, 230, 0, 0.55);
+      transition: width 0.05s linear;
+    }
+    .bw-meter-txt {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-pixel); font-size: 10px; color: #fff; text-shadow: 0 1px 2px #000;
+    }
+    .bw-aimrow {
+      display: flex; justify-content: center; align-items: center;
+      gap: 10px; flex-wrap: wrap; margin-bottom: 8px;
+    }
+    .bw-group { display: flex; align-items: center; gap: 4px; }
+    .bw-lab { font-size: 11px; color: var(--text-dim); margin-right: 2px; }
+    .bw-val {
+      font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow);
+      min-width: 32px; text-align: center;
+    }
+    .bw-step {
+      min-width: 44px; min-height: 44px; padding: 0; border-radius: 8px; line-height: 1;
+      border: 1px solid rgba(185, 103, 255, 0.4); background: rgba(255, 255, 255, 0.04);
+      color: var(--neon-purple); font-size: 17px; cursor: pointer; touch-action: manipulation;
+    }
+    .bw-step:active { background: var(--neon-purple); color: #12041a; }
+    .bw-step:disabled { opacity: 0.35; cursor: default; }
+    .bw-throw { width: 100%; min-height: 48px; font-size: 12px; letter-spacing: 0.5px; }
+    .bw-throw:disabled { opacity: 0.45; cursor: default; transform: none; }
+    @media (max-width: 400px) {
+      .bw-card { max-width: 280px; }
+      .bw-aimrow { gap: 6px; }
+      .bw-lab { font-size: 10px; }
+      .bw-val { min-width: 28px; }
+    }
+  </style>
+<style>@media (max-width:480px){
+  .bw-diff{display:flex;flex-wrap:nowrap;gap:4px;}
+  .bw-diff .mode-btn{flex:1 1 0;min-width:0;font-size:9px;padding:4px 4px;min-height:44px;line-height:1.22;}
+  .bw-diff small{font-size:8px;margin-top:1px;}
+  .bw-mode-row{gap:4px;width:calc(100vw - 24px);}
+  .bw-mode-row .mode-btn{font-size:9px;padding:5px 4px;min-height:44px;}
+  .bw-mode-row .mode-btn small{font-size:8px;}
+  .bw-status{width:calc(100vw - 24px);font-size:9px;gap:3px;}
+  .bw-chip{padding:3px 6px;}
+  .bw-pick-row{width:calc(100vw - 24px);gap:3px;}
+  .bw-pick{min-height:44px;font-size:9px;padding:4px 2px;}
+  .bw-pick b{font-size:9px;}
+  .bw-pick small{font-size:8px;}
+  .bw-top{margin:2px;}
+  .bw-stage{width:280px;margin:4px auto;}
+  .bw-board{width:min(345px,calc(100vw - 24px));margin:4px auto;}
+  .bw-frame{padding:2px 1px;}
+  .bw-panel{margin-top:4px;}
+  .bw-meter{height:16px;margin-bottom:4px;}
+  .bw-aimrow{margin-bottom:4px;}
+  .bw-throw{min-height:44px;}
+}</style>
+</head>
+<body data-game-id="bowling" data-game-title="保龄球" data-best-mode="max">
+  <h1 class="seo-h1">保龄球</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="bowling-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="bowling.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>
+

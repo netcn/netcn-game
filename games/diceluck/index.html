@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>快艇骰子 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 快艇骰子：五颗骰子 13 个计分类别，策略填分。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/diceluck/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="快艇骰子 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 快艇骰子：五颗骰子 13 个计分类别，策略填分。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/diceluck/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="快艇骰子 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 快艇骰子：五颗骰子 13 个计分类别，策略填分。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "快艇骰子",
+    "url": "https://game.netcn.org/games/diceluck/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 快艇骰子：五颗骰子 13 个计分类别，策略填分。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    /* ---------- 快艇骰子 · 旗舰版布局 ---------- */
+    .dl-wrap { width: min(560px, 96vw); margin: 0 auto; padding: 8px 10px 16px; text-align: center; }
+    .dl-head { display: flex; align-items: stretch; gap: 8px; margin-bottom: 8px; }
+    .dl-diffs { flex: 1 1 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+    .dl-diff { min-height: 44px; padding: 5px 4px; border-radius: 8px; cursor: pointer; font-family: var(--font-body);
+      font-size: 10.5px; line-height: 1.2; color: var(--text-dim); background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(185,103,255,0.35); transition: background .15s, color .15s, border-color .15s, box-shadow .15s; }
+    .dl-diff small { display: block; margin-top: 2px; font-size: 9px; opacity: .75; }
+    .dl-diff:hover { border-color: var(--neon-purple); color: var(--text-main); }
+    .dl-diff.active { color: #0a0a12; font-weight: 700; border-color: var(--neon-purple);
+      background: linear-gradient(180deg, #d59cff, var(--neon-purple)); box-shadow: 0 0 14px rgba(185,103,255,.5); }
+    .dl-diff.active small { opacity: .85; }
+    .dl-mini { flex: 0 0 44px; width: 44px; min-height: 44px; border-radius: 8px; cursor: pointer; font-size: 19px;
+      color: var(--neon-cyan); background: rgba(0,240,255,.05); border: 1px solid rgba(0,240,255,.4); transition: all .15s; }
+    .dl-mini:hover { background: var(--neon-cyan); color: #04121a; box-shadow: 0 0 14px rgba(0,240,255,.6); }
+
+    .dl-modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-bottom: 6px; }
+    .dl-mode { min-height: 44px; padding: 5px 4px; border-radius: 8px; cursor: pointer; font-family: var(--font-body);
+      font-size: 11px; line-height: 1.2; color: var(--text-dim); background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,240,255,.3); transition: all .15s; }
+    .dl-mode small { display: block; margin-top: 2px; font-size: 8.5px; opacity: .72; }
+    .dl-mode:hover { color: var(--text-main); border-color: var(--neon-cyan); }
+    .dl-mode.active { color: #04121a; font-weight: 700; border-color: var(--neon-cyan);
+      background: linear-gradient(180deg, #9df3ff, var(--neon-cyan)); box-shadow: 0 0 12px rgba(0,240,255,.45); }
+    .dl-mode.active small { opacity: .8; }
+    .dl-cardpick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-bottom: 8px; }
+    .dl-cardpick-btn { min-height: 44px; padding: 4px 5px; text-align: left; border-radius: 8px; cursor: pointer;
+      color: var(--text-dim); background: rgba(255,255,255,.035); border: 1px solid rgba(255,230,0,.22);
+      font-family: var(--font-body); transition: all .15s; }
+    .dl-cardpick-btn b { display: block; font-size: 10.5px; line-height: 1.25; color: var(--text-main); }
+    .dl-cardpick-btn small { display: block; margin-top: 1px; font-size: 8.5px; line-height: 1.25; opacity: .72; }
+    .dl-cardpick-btn.active { border-color: var(--neon-yellow); background: rgba(255,230,0,.1);
+      box-shadow: 0 0 10px rgba(255,230,0,.25); }
+    .dl-cardpick-btn.active b { color: var(--neon-yellow); }
+    .dl-cardpick-btn.locked { opacity: .38; cursor: default; }
+    .dl-ai { margin-top: 2px; font-size: 10.5px; color: var(--neon-cyan); }
+    .dl-ai b { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); }
+    .dl-ai[hidden] { display: none; }
+
+    .dl-stage { position: relative; padding: 12px 4px 4px; margin: 2px 0 6px; border-radius: 16px;
+      background: radial-gradient(ellipse 70% 80% at 50% 20%, rgba(57,255,20,.09), rgba(10,10,18,.15) 72%); }
+    .dl-dice { display: flex; gap: clamp(5px, 2vw, 9px); justify-content: center; align-items: flex-end; min-height: 74px; }
+    .dl-die { position: relative; width: clamp(48px, 13.2vw, 60px); aspect-ratio: 1 / 1; padding: 0; border: 0;
+      background: none; cursor: pointer; touch-action: manipulation; transition: transform .18s ease; }
+    .dl-die:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 4px; border-radius: 12px; }
+    .dl-face { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr);
+      gap: 3%; width: 100%; height: 100%; padding: 16%; border-radius: 19%;
+      background: radial-gradient(circle at 32% 24%, #ffffff 0%, #fcf8ef 32%, #efe8d8 72%, #d4ccb9 100%);
+      box-shadow: inset 0 -7px 12px rgba(122,105,80,.32), inset 0 3px 6px rgba(255,255,255,.95),
+        inset 0 0 0 1px rgba(255,255,255,.8), 0 9px 16px rgba(0,0,0,.5), 0 2px 0 rgba(160,148,125,.85);
+      transition: box-shadow .18s ease, transform .18s ease; }
+    .dl-face::before { content: ''; position: absolute; inset: 4% 9% 52%; border-radius: 60% 60% 45% 45% / 55%;
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,0));
+      pointer-events: none; }
+    .dl-pip { display: block; align-self: center; justify-self: center; width: 78%; height: 78%; border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #5c5c66, #0b0b12 70%);
+      box-shadow: inset 0 -1px 1px rgba(255,255,255,.25), inset 0 1px 2px rgba(0,0,0,.85), 0 1px 0 rgba(255,255,255,.45); }
+    .dl-die.red .dl-pip { background: radial-gradient(circle at 32% 28%, #ff7a6e, #a40012 70%); }
+    .dl-die.hold { transform: translateY(-7px); animation: dl-hold-pulse 1.8s ease-in-out infinite; }
+    .dl-die.hold .dl-face { box-shadow: 0 0 0 3px var(--neon-pink), 0 0 20px rgba(255,45,149,.8),
+      inset 0 -7px 12px rgba(122,105,80,.32), inset 0 3px 6px rgba(255,255,255,.95), 0 9px 16px rgba(0,0,0,.5); }
+    @keyframes dl-hold-pulse { 0%, 100% { transform: translateY(-7px); } 50% { transform: translateY(-9px); } }
+    .dl-die.rolling .dl-face { animation: dl-tumble .26s linear infinite; }
+    @keyframes dl-tumble {
+      0% { transform: rotate(-9deg) translateY(2px); }
+      40% { transform: rotate(7deg) translateY(-12px) scale(1.05); }
+      70% { transform: rotate(-4deg) translateY(-2px); }
+      100% { transform: rotate(-9deg) translateY(2px); }
+    }
+    .dl-die.landed .dl-face { animation: dl-bounce .42s cubic-bezier(.2,.8,.3,1.35); }
+    @keyframes dl-bounce {
+      0% { transform: translateY(-18px) scale(1.05); }
+      42% { transform: translateY(3px) scale(.97); }
+      72% { transform: translateY(-5px); }
+      100% { transform: none; }
+    }
+    .dl-msg { min-height: 20px; margin: 6px 2px 2px; font-size: 12px; line-height: 1.45; color: var(--text-dim); transition: color .15s; }
+
+    .dl-mainrow { display: flex; align-items: stretch; gap: 8px; margin: 6px 0 8px; }
+    .dl-totalbox { flex: 1 1 auto; min-width: 0; padding: 7px 10px; border-radius: 10px; text-align: left;
+      display: flex; flex-direction: column; justify-content: center;
+      background: linear-gradient(180deg, rgba(0,240,255,.1), rgba(0,240,255,.02)); border: 1px solid rgba(0,240,255,.28); }
+    .dl-total-line { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+    .dl-total-line > span { font-size: 11px; color: var(--text-dim); flex: 0 0 auto; }
+    .dl-total-line b { font-family: var(--font-pixel); font-size: 21px; line-height: 1.15; color: var(--neon-yellow); text-shadow: 0 0 10px rgba(255,230,0,.5); }
+    .dl-mult { margin-left: auto; padding: 1px 6px; border-radius: 999px; font-style: normal; font-size: 9px;
+      color: var(--neon-purple); border: 1px solid rgba(185,103,255,.5); }
+    .dl-total-sub { display: flex; justify-content: space-between; gap: 8px; margin-top: 1px; font-size: 10px; color: var(--text-dim); }
+    .dl-roll { flex: 0 0 44%; min-height: 56px; padding: 8px 6px; font-size: 12px; line-height: 1.35; }
+    .dl-roll.is-fast { animation: dl-fast-pulse .7s ease-in-out infinite; }
+    @keyframes dl-fast-pulse { 0%, 100% { box-shadow: 0 0 8px rgba(255,230,0,.25), inset 0 0 8px rgba(255,230,0,.08); } 50% { box-shadow: 0 0 22px rgba(255,230,0,.75), inset 0 0 12px rgba(255,230,0,.2); } }
+
+    .dl-card { text-align: left; border-radius: 12px; overflow: hidden;
+      background: var(--bg-panel); border: 1px solid rgba(0,240,255,.22); }
+    .dl-card-head { display: flex; justify-content: space-between; padding: 8px 12px; font-family: var(--font-pixel);
+      font-size: 10px; color: var(--text-dim); background: rgba(255,255,255,.02); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .dl-scroll { max-height: 46vh; max-height: calc(100dvh - 395px); min-height: 170px; overflow-y: auto;
+      overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 1px 6px 6px; }
+    .dl-sect { padding: 8px 6px 4px; font-family: var(--font-pixel); font-size: 10px; letter-spacing: 1px; color: var(--neon-purple); }
+    .dl-cat { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: space-between; gap: 8px;
+      padding: 6px 8px; border: 0; border-bottom: 1px solid rgba(255,255,255,.06); background: transparent;
+      color: var(--text-main); font-family: var(--font-body); font-size: 12px; text-align: left; cursor: pointer;
+      transition: background .12s, color .12s; }
+    .dl-cat:hover { background: rgba(0,240,255,.07); }
+    .dl-cat.can .dl-cat-name { color: var(--neon-cyan); }
+    .dl-cat-val { flex: 0 0 auto; font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); }
+    .dl-cat-val.zero { color: var(--text-dim); }
+    .dl-cat-val.hot { color: var(--neon-yellow); text-shadow: 0 0 8px rgba(255,230,0,.5); }
+    .dl-cat-val.used { color: var(--neon-green); }
+    .dl-cat.used { opacity: .55; cursor: not-allowed; }
+    .dl-cat.sel { background: rgba(0,240,255,.12); box-shadow: inset 3px 0 0 var(--neon-cyan); }
+    .dl-cat.sel .dl-cat-name { color: #fff; }
+    .dl-sum { display: flex; justify-content: space-between; gap: 8px; padding: 7px 10px; font-size: 11px; color: var(--text-dim);
+      border-top: 1px dashed rgba(255,255,255,.12); }
+    .dl-sum .ok { color: var(--neon-green); }
+    .dl-sum .dim { color: var(--text-dim); }
+    .dl-ubar { height: 5px; margin: 0 10px 4px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.08); }
+    .dl-ubar i { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+      box-shadow: 0 0 8px rgba(57,255,20,.5); transition: width .35s ease; }
+    .dl-sum.total { padding: 10px; font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow);
+      border-top: 1px solid rgba(255,255,255,.16); }
+    .dl-sum.total span:last-child { text-shadow: 0 0 10px rgba(255,230,0,.5); }
+
+    .dl-help { margin-top: 8px; padding: 7px 9px; border-radius: 8px; font-size: 10.5px; line-height: 1.65;
+      color: var(--text-dim); text-align: left; background: rgba(255,255,255,.03); }
+    .dl-keys { color: rgba(138,138,160,.9); }
+
+    /* ---------- 结算面板 ---------- */
+    .dl-end-overlay { z-index: 9000; padding: 16px; background: rgba(5,5,12,.86); }
+    .dl-panel { width: min(430px, 94vw); max-height: 88vh; overflow-y: auto; padding: 18px 16px; border-radius: 16px;
+      text-align: center; background: linear-gradient(180deg, var(--bg-panel-2), var(--bg-panel));
+      border: 1px solid var(--neon-yellow); box-shadow: 0 0 40px rgba(255,230,0,.25), 0 20px 50px rgba(0,0,0,.6); }
+    .dl-panel h2 { margin-bottom: 8px; font-family: var(--font-pixel); font-size: 16px; color: var(--neon-yellow);
+      text-shadow: 0 0 12px rgba(255,230,0,.5); }
+    .dl-end-score span { display: block; font-size: 11px; color: var(--text-dim); }
+    .dl-end-score b { display: block; font-family: var(--font-pixel); font-size: 34px; line-height: 1.3;
+      color: var(--neon-yellow); text-shadow: 0 0 18px rgba(255,230,0,.55); }
+    .dl-end-tag { min-height: 20px; margin: 4px 0 10px; font-size: 12px; color: var(--neon-green); }
+    .dl-end-tag.record { animation: dl-record-pop .7s ease 2; }
+    @keyframes dl-record-pop { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.12); } }
+    .dl-end-break { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 10px; padding: 10px;
+      text-align: left; border-radius: 10px; background: rgba(255,255,255,.04); }
+    .dl-bd-row { display: flex; justify-content: space-between; gap: 6px; padding: 3px 2px; font-size: 11px;
+      color: var(--text-dim); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .dl-bd-row b { font-family: var(--font-pixel); font-size: 10px; color: var(--text-main); }
+    .dl-bd-row.bonus b { color: var(--neon-yellow); }
+    .dl-end-best { margin: 10px 0 12px; font-size: 11px; color: var(--text-dim); }
+    .dl-end-play { width: 100%; min-height: 48px; }
+
+    @media (max-width: 380px) {
+      .dl-wrap { padding: 6px 8px 12px; }
+      .dl-diff { font-size: 9.5px; }
+      .dl-roll { font-size: 11px; }
+      .dl-cat { font-size: 11.5px; }
+      .dl-help { font-size: 10px; }
+    }
+  </style>
+<style>@media (max-width:900px){ main#game-root{padding-top:32px;} .dl-scroll{max-height:calc(100dvh - 495px);} }</style>
+</head>
+<body data-game-id="diceluck" data-game-title="快艇骰子" data-best-mode="max">
+  <h1 class="seo-h1">快艇骰子</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="diceluck-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="diceluck.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>
+

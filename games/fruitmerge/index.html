@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>西瓜合成 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 西瓜合成：投下水果两两合成，冲击终极西瓜。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/fruitmerge/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="西瓜合成 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 西瓜合成：投下水果两两合成，冲击终极西瓜。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/fruitmerge/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="西瓜合成 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 西瓜合成：投下水果两两合成，冲击终极西瓜。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "西瓜合成",
+    "url": "https://game.netcn.org/games/fruitmerge/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 西瓜合成：投下水果两两合成，冲击终极西瓜。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .fm-wrap { padding: 12px; width: min(440px, 96vw); text-align: center; }
+    .fm-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 10px;
+      font-size: 12px; color: var(--text-dim); margin: 0 2px 4px; }
+    .fm-top b { color: var(--neon-yellow); font-family: var(--font-mono); }
+    .fm-nextlabel { display: inline-flex; align-items: center; gap: 4px; }
+    #fm-next { width: 28px; height: 28px; vertical-align: middle; }
+    .fm-mode { min-height: 0; font-size: 11px; line-height: 1.5; color: var(--neon-cyan); letter-spacing: .3px; margin: 0 2px 6px; }
+    .fm-mode.on { color: var(--neon-cyan); text-shadow: 0 0 8px rgba(0,240,255,.35); }
+    .fm-stage { position: relative; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 0 22px rgba(255,230,0,0.14), 0 10px 26px rgba(0,0,0,0.4); }
+    .fm-canvas { display: block; width: 100%; height: auto; background: #0a0f1e; touch-action: none; max-width: 100%; }
+    .fm-over { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 18px;
+      background: rgba(4,7,16,0.84); backdrop-filter: blur(4px); }
+    .fm-over.show { display: flex; animation: fmFade .25s ease both; }
+    @keyframes fmFade { from { opacity: 0; } to { opacity: 1; } }
+    .fm-over-box { width: min(300px, 100%); padding: 22px 16px; border-radius: 14px;
+      background: linear-gradient(160deg, #151b32, #0b0f1c); border: 1px solid rgba(255,45,149,0.35);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.6); }
+    .fm-over-title { font-family: var(--font-pixel); font-size: 15px; color: var(--neon-pink); line-height: 1.6; margin-bottom: 10px; }
+    .fm-over-score { font-family: var(--font-mono); font-size: 15px; color: var(--neon-yellow); margin-bottom: 6px; }
+    .fm-over-sub { font-size: 12px; color: var(--text-dim); line-height: 1.7; margin-bottom: 14px; }
+    .fm-over-btns { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .fm-over-btns .btn { min-height: 44px; }
+    .fm-controls { display: flex; justify-content: center; gap: 10px; margin: 10px 0 4px; flex-wrap: wrap; }
+    .fm-controls .btn { min-height: 44px; padding: 10px 16px; font-size: 13px; }
+    .fm-msg { min-height: 18px; font-size: 12px; color: var(--neon-green); margin: 6px 0; line-height: 1.5; }
+    .fm-help { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-top: 10px; text-align: left;
+      background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 12px; }
+    @media (max-width: 400px) {
+      .fm-top { font-size: 11px; }
+      .fm-controls .btn { padding: 8px 12px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body data-game-id="fruitmerge" data-game-title="西瓜合成" data-best-mode="max">
+  <h1 class="seo-h1">西瓜合成</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="fruitmerge-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="fruitmerge.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

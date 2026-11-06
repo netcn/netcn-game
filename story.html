@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>破译编年史 · 游戏街机厅</title>
+<meta name="description" content="破译编年史：12 章密码学史，从罗塞塔石碑到量子时代。每章收录关联游戏、人物与密码概念，打开即读。">
+<meta name="theme-color" content="#0a0a12">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="游戏街机厅">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" href="assets/icons/icon-512.png" type="image/png" sizes="512x512">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="canonical" href="https://game.netcn.org/story.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+<meta property="og:title" content="破译编年史 · 游戏街机厅">
+<meta property="og:description" content="12 章密码学史：从罗塞塔石碑到量子时代，每章关联可玩的破译游戏。">
+<meta property="og:url" content="https://game.netcn.org/story.html">
+<meta property="og:image" content="https://game.netcn.org/assets/icons/og-share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="破译编年史 · 游戏街机厅">
+<meta name="twitter:description" content="12 章密码学史：从罗塞塔石碑到量子时代，每章关联可玩的破译游戏。">
+<meta name="twitter:image" content="https://game.netcn.org/assets/icons/og-share.png">
+<link rel="preload" href="assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+</script>
+<link rel="stylesheet" href="assets/css/theme.css">
+<link rel="stylesheet" href="shell/netcn-shell.css">
+<script src="shell/shell.js"></script>
+<style>
+  .story-top{position:sticky;top:0;z-index:20;background:rgba(10,10,18,.92);
+    border-bottom:1px solid rgba(0,240,255,.22);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .story-top-inner{max-width:920px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:8px 16px;min-height:52px}
+  .story-back{display:inline-flex;align-items:center;gap:6px;min-width:44px;min-height:44px;
+    color:var(--neon-cyan);text-decoration:none;font-size:12px}
+  .story-back:hover{text-shadow:0 0 8px rgba(0,240,255,.6)}
+  .story-chev{display:inline-block;width:9px;height:9px;border-left:2px solid currentColor;
+    border-bottom:2px solid currentColor;transform:rotate(45deg);flex:none}
+  .story-brand{font-family:var(--font-pixel);font-size:12px;line-height:1.4;color:var(--neon-cyan);
+    text-shadow:0 0 8px rgba(0,240,255,.55);white-space:nowrap;min-width:0}
+  .story-brand small{display:block;font-size:6px;letter-spacing:.18em;color:var(--text-dim);
+    text-shadow:none;margin-top:2px;text-transform:uppercase}
+  .story-lang{margin-left:auto;flex:none;font-family:var(--font-pixel);font-size:10px;letter-spacing:.08em;
+    color:var(--neon-cyan);background:transparent;border:2px solid var(--neon-cyan);border-radius:6px;
+    min-width:44px;min-height:44px;padding:0 9px;cursor:pointer}
+  .story-lang:hover{background:var(--neon-cyan);color:#04121a}
+  .story-wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:22px 16px 56px}
+  .story-lead{font-size:12.5px;line-height:1.8;color:var(--text-dim);margin:0 0 16px}
+  .story-lead b{color:var(--neon-yellow);font-family:var(--font-mono,monospace)}
+  .story-grid{display:grid;grid-template-columns:1fr;gap:11px}
+  .st-chapter{background:var(--bg-panel);border:1px solid rgba(0,240,255,.2);border-radius:12px;
+    overflow:hidden;transition:border-color .15s,box-shadow .15s}
+  .st-chapter[open]{border-color:rgba(0,240,255,.55);box-shadow:0 0 18px rgba(0,240,255,.12)}
+  .st-chapter summary{display:flex;align-items:center;gap:12px;padding:13px 14px;min-height:44px;
+    cursor:pointer;list-style:none;outline-offset:-3px}
+  .st-chapter summary::-webkit-details-marker{display:none}
+  .st-glyph{width:30px;height:30px;flex:none;border-radius:8px;border:1px solid rgba(0,240,255,.35);
+    background:radial-gradient(circle,rgba(0,240,255,.18),transparent 72%);display:flex;
+    align-items:center;justify-content:center}
+  .st-glyph .ui-ic{width:15px;height:15px}
+  .st-head{flex:1;min-width:0}
+  .st-era{display:block;font-family:var(--font-pixel);font-size:8px;letter-spacing:.06em;
+    color:var(--neon-yellow);margin-bottom:4px}
+  .st-title{display:block;font-family:var(--font-pixel);font-size:12px;line-height:1.5;
+    color:var(--text-main);word-break:break-word}
+  .st-one{display:block;font-size:11.5px;line-height:1.6;color:var(--text-dim);margin-top:3px}
+  .st-read{flex:none;font-size:10px;color:var(--neon-green);border:1px solid rgba(57,255,20,.4);
+    border-radius:999px;padding:2px 7px}
+  .st-chev{margin-left:auto;flex:none;width:9px;height:9px;border-right:2px solid var(--text-dim);
+    border-bottom:2px solid var(--text-dim);transform:rotate(45deg);transition:transform .18s}
+  .st-chapter[open] .st-chev{transform:rotate(225deg);border-color:var(--neon-cyan)}
+  .st-body{padding:0 14px 14px;border-top:1px solid rgba(255,255,255,.07);margin-top:2px}
+  .st-concept{font-size:12.5px;line-height:1.8;color:#b9c9dd;margin:12px 0 0;padding:10px 12px;
+    background:rgba(0,240,255,.05);border-left:2px solid rgba(0,240,255,.45);border-radius:0 8px 8px 0}
+  .st-label{display:flex;align-items:center;gap:6px;font-family:var(--font-pixel);font-size:8px;
+    letter-spacing:.12em;color:var(--text-dim);margin:14px 0 7px;text-transform:uppercase}
+  .st-label .ui-ic{width:12px;height:12px}
+  .st-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .st-chip{font-size:11px;color:var(--text-main);border:1px solid rgba(255,255,255,.14);
+    border-radius:999px;padding:4px 9px;background:rgba(255,255,255,.04)}
+  .st-games{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:7px}
+  .st-game{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;
+    padding:0 12px;border-radius:8px;border:1px solid rgba(0,240,255,.28);text-decoration:none;
+    color:var(--neon-cyan);font-size:12px;line-height:1.3;background:rgba(0,240,255,.04)}
+  .st-game:hover{background:rgba(0,240,255,.12);border-color:var(--neon-cyan)}
+  .st-game span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .st-game .st-chev{border-color:currentColor;width:7px;height:7px}
+  .nc-foot{position:relative;z-index:1;max-width:920px;margin:18px auto 0;padding:12px 16px 38px;
+    font-size:11px;color:#566981;line-height:1.6}
+  .nc-foot a{color:#7d90aa}
+  .nc-foot-nav a{color:#7d90aa;min-height:44px}
+  .nc-foot-nav a:hover{color:var(--neon-cyan)}
+  @media (max-width:480px){
+    .story-top-inner{padding:6px 10px;gap:8px;min-height:48px}
+    .story-brand{font-size:10px}
+    .story-brand small{display:none}
+    .story-wrap{padding:16px 10px 44px}
+    .st-chapter summary{padding:11px 11px;gap:9px}
+    .st-glyph{width:26px;height:26px}
+    .st-one{font-size:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .st-body{padding:0 11px 12px}
+    .st-games{grid-template-columns:1fr}
+    .nc-foot{padding:12px 10px 28px}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#chapters" id="story-skip">跳到章节列表</a>
+<header class="story-top">
+  <div class="story-top-inner nc-inner" data-nc-tone="dark">
+    <a class="story-back" href="./" aria-label="返回游戏街机厅"><span class="story-chev" aria-hidden="true"></span><span id="story-back-label">大厅</span></a>
+    <span class="nc-mk" aria-hidden="true"></span>
+    <div class="story-brand">破译编年史<small>THE CODEBREAKER CHRONICLE</small></div>
+    <nav class="nc-sw" aria-label="netcn 站点">
+      <a href="https://netcn.org/" data-nc-to="nav">导航</a>
+      <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
+      <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
+      <a href="./" data-nc-to="game">玩游戏</a>
+    </nav>
+    <button class="story-lang" id="story-lang" type="button" aria-label="切换语言">EN</button>
+  </div>
+</header>
+<main class="story-wrap">
+  <h1 class="story-brand" style="font-size:14px;margin:0 0 8px">破译编年史</h1>
+  <p class="story-lead" id="story-lead"></p>
+  <div class="story-grid" id="story-list"></div>
+</main>
+<footer class="nc-foot" data-nc-tone="dark">
+  <nav class="nc-foot-nav" aria-label="netcn 站点">
+    <a href="https://netcn.org/" data-nc-to="nav">导航</a>
+    <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
+    <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
+    <a href="./" data-nc-to="game">玩游戏</a>
+  </nav>
+  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-site">破译编年史 · 12 章</span>
+</footer>
+<script src="assets/js/core/storage.js"></script>
+<script src="assets/js/core/i18n.js"></script>
+<script src="assets/js/core/i18n-dict.js"></script>
+<script src="games.js"></script>
+<script src="assets/js/rank.js"></script>
+<script src="assets/js/stories.js"></script>
+<script src="assets/js/pwa.js"></script>
+<script>
+(function () {
+  var lang = Arcade.i18n ? Arcade.i18n.getLang() : 'zh';
+  var en = lang === 'en';
+  var listEl = document.getElementById('story-list');
+  var leadEl = document.getElementById('story-lead');
+  var langBtn = document.getElementById('story-lang');
+  var backLabel = document.getElementById('story-back-label');
+  var skip = document.getElementById('story-skip');
+
+  /* 量子章（第 12 章）摘要键尚未进核心字典，页面内补两条回退文案 */
+  var FALLBACK = {
+    quantum: {
+      zh: { t: '量子时代', one: 'Shor 瓦解公钥，格密码与 QKD 重筑防线' },
+      en: { t: 'The Quantum Age', one: 'Shor breaks public key; lattices and QKD rebuild the walls' }
+    }
+  };
+
+  var T = function (key) {
+    var v = Arcade.i18n ? Arcade.i18n.t(key) : key;
+    return (v && v !== key) ? v : null;
+  };
+
+  if (en) {
+    document.title = 'The Codebreaker Chronicle · Arcade Hall';
+    leadEl.innerHTML = '<b>' + (window.STORIES ? window.STORIES.length : 12) + '</b> chapters, from the Rosetta Stone to the quantum age. Each chapter links the games, people and cipher concepts behind it.';
+    backLabel.textContent = 'Lobby';
+    langBtn.textContent = '中文';
+    langBtn.setAttribute('aria-label', 'Switch language');
+    skip.textContent = 'Skip to chapters';
+  } else {
+    leadEl.innerHTML = '<b>' + (window.STORIES ? window.STORIES.length : 12) + '</b> 章编年史，从罗塞塔石碑到量子时代；每章收录关联游戏、人物与密码概念。';
+  }
+
+  langBtn.addEventListener('click', function () {
+    if (Arcade.i18n) Arcade.i18n.setLang(en ? 'zh' : 'en');
+  });
+
+  if (!window.STORIES || !listEl) return;
+
+  var gamesById = {};
+  if (window.GAMES) {
+    for (var gi = 0; gi < window.GAMES.length; gi++) gamesById[window.GAMES[gi].id] = window.GAMES[gi];
+  }
+  var uaExpanded = {};
+
+  function chapterMeta(ch) {
+    var fb = FALLBACK[ch.id] && FALLBACK[ch.id][lang];
+    var title = T(ch.titleKey) || (fb && fb.t) || ch.id;
+    var one = T(ch.titleKey + '.one') || (fb && fb.one) || '';
+    return { title: title, one: one };
+  }
+
+  function gameLink(id) {
+    var g = gamesById[id];
+    if (!g) return null;
+    var name = T('g.' + id + '.t') || g.title || id;
+    var a = document.createElement('a');
+    a.className = 'st-game';
+    a.href = g.path || ('games/' + id + '/index.html');
+    var s = document.createElement('span');
+    s.textContent = name;
+    var chev = document.createElement('span');
+    chev.className = 'st-chev';
+    chev.setAttribute('aria-hidden', 'true');
+    a.appendChild(s);
+    a.appendChild(chev);
+    return a;
+  }
+
+  function markRead(ch) {
+    if (!Arcade.stories || !Arcade.stories.markRead) return;
+    if (!Arcade.stories.isRead(ch.id)) Arcade.stories.markRead(ch.id);
+  }
+
+  window.STORIES.forEach(function (ch, idx) {
+    var meta = chapterMeta(ch);
+    var read = !!(Arcade.stories && Arcade.stories.isRead && Arcade.stories.isRead(ch.id));
+
+    var card = document.createElement('details');
+    card.className = 'st-chapter';
+    card.id = 'ch-' + ch.id;
+
+    var sum = document.createElement('summary');
+    var glyph = document.createElement('span');
+    glyph.className = 'st-glyph';
+    var ic = document.createElement('span');
+    ic.className = 'ui-ic ' + (idx % 3 === 1 ? 'ic-book' : idx % 3 === 2 ? 'ic-bulb' : 'ic-scroll');
+    ic.setAttribute('aria-hidden', 'true');
+    glyph.appendChild(ic);
+    sum.appendChild(glyph);
+
+    var head = document.createElement('span');
+    head.className = 'st-head';
+    var era = document.createElement('span');
+    era.className = 'st-era';
+    era.textContent = T(ch.era) || ch.era;
+    var title = document.createElement('span');
+    title.className = 'st-title';
+    title.textContent = meta.title;
+    var one = document.createElement('span');
+    one.className = 'st-one';
+    one.textContent = meta.one;
+    head.appendChild(era);
+    head.appendChild(title);
+    if (meta.one) head.appendChild(one);
+    sum.appendChild(head);
+
+    if (read) {
+      var badge = document.createElement('span');
+      badge.className = 'st-read';
+      badge.textContent = en ? 'Read' : '已读';
+      sum.appendChild(badge);
+    }
+
+    var chev = document.createElement('span');
+    chev.className = 'st-chev';
+    chev.setAttribute('aria-hidden', 'true');
+    sum.appendChild(chev);
+    card.appendChild(sum);
+
+    var body = document.createElement('div');
+    body.className = 'st-body';
+
+    var conceptText = ch.concept ? (ch.concept[lang] || ch.concept.zh || ch.concept.en) : '';
+    if (conceptText) {
+      var concept = document.createElement('p');
+      concept.className = 'st-concept';
+      concept.textContent = conceptText;
+      body.appendChild(concept);
+    }
+
+    /* 正文若已解码（secure.js 可用时）则展示；当前子站无解码种子，自动跳过 */
+    var bodyText = T(ch.bodyKey);
+    if (bodyText && bodyText !== meta.title) {
+      var p = document.createElement('p');
+      p.className = 'st-concept';
+      p.textContent = bodyText;
+      body.appendChild(p);
+    }
+
+    var people = (ch.people || []).map(function (pid) {
+      return T('stp.' + pid + '.name') || pid;
+    });
+    if (people.length) {
+      var pl = document.createElement('div');
+      pl.className = 'st-label';
+      var pi = document.createElement('span');
+      pi.className = 'ui-ic ic-book';
+      pi.setAttribute('aria-hidden', 'true');
+      pl.appendChild(pi);
+      pl.appendChild(document.createTextNode(en ? 'People' : '人物'));
+      body.appendChild(pl);
+      var pc = document.createElement('div');
+      pc.className = 'st-chips';
+      people.forEach(function (n) {
+        var chip = document.createElement('span');
+        chip.className = 'st-chip';
+        chip.textContent = n;
+        pc.appendChild(chip);
+      });
+      body.appendChild(pc);
+    }
+
+    var linked = (ch.games || []).map(gameLink).filter(Boolean);
+    if (linked.length) {
+      var gl = document.createElement('div');
+      gl.className = 'st-label';
+      var gic = document.createElement('span');
+      gic.className = 'ui-ic ic-bulb';
+      gic.setAttribute('aria-hidden', 'true');
+      gl.appendChild(gic);
+      gl.appendChild(document.createTextNode(en ? 'Play' : '关联游戏'));
+      body.appendChild(gl);
+      var gd = document.createElement('div');
+      gd.className = 'st-games';
+      linked.forEach(function (a) { gd.appendChild(a); });
+      body.appendChild(gd);
+    }
+
+    card.appendChild(body);
+    listEl.appendChild(card);
+
+    card.addEventListener('toggle', function () {
+      if (!card.open) return;
+      markRead(ch);
+      var sv = card.querySelector('.st-read');
+      if (!sv) {
+        var b = document.createElement('span');
+        b.className = 'st-read';
+        b.textContent = en ? 'Read' : '已读';
+        card.firstChild.appendChild(b);
+      }
+    });
+
+    uaExpanded[ch.id] = card;
+  });
+
+  /* ?id= 定位章节：展开并滚动到可视区；无效 id 时停留在目录 */
+  var qid = '';
+  try {
+    qid = (new URLSearchParams(location.search)).get('id') || '';
+  } catch (e) {}
+  if (qid && uaExpanded[qid]) {
+    var target = uaExpanded[qid];
+    target.open = true;
+    try { target.scrollIntoView({ block: 'start' }); } catch (e2) { target.scrollIntoView(); }
+    markRead(Arcade.stories.get(qid));
+  }
+})();
+</script>
+</body>
+</html>

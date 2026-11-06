@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>台球 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 台球：标准 8 球规则，人机对战或双人本地，加塞走位与自由球。打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/billiards/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="台球 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 台球：标准 8 球规则，人机对战或双人本地，加塞走位与自由球。打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/billiards/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="台球 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 台球：标准 8 球规则，人机对战或双人本地，加塞走位与自由球。打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "台球",
+    "url": "https://game.netcn.org/games/billiards/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 台球：标准 8 球规则，人机对战或双人本地，加塞走位与自由球。打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .bl-wrap { box-sizing: border-box; width: min(660px, 100%); margin: 0 auto; padding: 10px; text-align: center; }
+    .bl-wrap.is-panel .bl-hud,
+    .bl-wrap.is-panel .bl-status,
+    .bl-wrap.is-panel .bl-deck,
+    .bl-wrap.is-panel .bl-actions,
+    .bl-wrap.is-panel .bl-help { display: none; }
+
+    .bl-hud { display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: 4px 6px; margin-bottom: 6px; }
+    .bl-side { display: inline-flex; align-items: center; gap: 5px; min-width: 0; padding: 4px 8px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
+      font-size: 10.5px; color: var(--text-dim); background: rgba(255,255,255,.03); transition: border-color .18s, box-shadow .18s, color .18s; }
+    .bl-side b { font-family: var(--font-mono); color: var(--text-main); font-weight: 700; white-space: nowrap; }
+    .bl-side em { font-style: normal; font-size: 9.5px; color: var(--text-dim); white-space: nowrap; }
+    .bl-side i { width: 6px; height: 6px; border-radius: 50%; flex: 0 0 auto; background: currentColor; opacity: .55; }
+    .bl-side.p1 { color: var(--neon-cyan); }
+    .bl-side.p2 { color: var(--neon-pink); }
+    .bl-side.active { border-color: currentColor; box-shadow: 0 0 10px rgba(0,240,255,.28); color: var(--text-main); }
+    .bl-side.p2.active { box-shadow: 0 0 10px rgba(255,45,149,.28); }
+    .bl-stat { display: inline-flex; align-items: center; gap: 4px; padding: 4px 7px; border-radius: 6px; background: rgba(0,0,0,.22);
+      font-size: 9.5px; letter-spacing: .04em; color: var(--text-dim); }
+    .bl-stat b { font-family: var(--font-mono); font-size: 11.5px; color: var(--neon-yellow); font-weight: 700; }
+    .bl-stat.best b { color: var(--neon-cyan); }
+
+    .bl-stage { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 0 26px rgba(0,240,255,.14), 0 10px 30px rgba(0,0,0,.55); }
+    .bl-canvas { display: block; width: 100%; height: auto; aspect-ratio: 640/350; background: #0b3d24;
+      touch-action: none; cursor: crosshair; max-width: 100%; }
+    .bl-foul { position: absolute; left: 50%; top: 7px; transform: translate(-50%, -8px); max-width: calc(100% - 16px);
+      padding: 5px 10px; border-radius: 999px; border: 1px solid var(--neon-pink); background: rgba(40,3,20,.88);
+      color: #ff8ec0; font-size: 11px; font-family: var(--font-mono); letter-spacing: .03em; box-shadow: 0 0 16px rgba(255,45,149,.5);
+      opacity: 0; pointer-events: none; transition: opacity .18s, transform .18s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; z-index: 3; }
+    .bl-foul.show { opacity: 1; transform: translate(-50%, 0); }
+
+    .bl-status { box-sizing: border-box; min-height: 40px; margin: 6px 0 0; padding: 6px 9px; border: 1px solid rgba(0,240,255,.22); border-radius: 8px;
+      background: rgba(0,240,255,.05); color: var(--neon-green); font-size: 11.5px; line-height: 1.55; white-space: pre-line;
+      display: flex; align-items: center; justify-content: center; transition: border-color .18s, background .18s, color .18s; }
+    .bl-status.is-foul { border-color: rgba(255,45,149,.7); background: rgba(255,45,149,.11); color: #ff8ec0; box-shadow: 0 0 12px rgba(255,45,149,.16); }
+    .bl-status.is-info { color: var(--neon-cyan); border-color: rgba(0,240,255,.35); }
+
+    .bl-deck { display: grid; grid-template-columns: 144px minmax(0, 1fr); gap: 8px; margin-top: 8px; }
+    .bl-spinwrap { min-width: 0; }
+    .bl-spinlabel { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; font-size: 9.5px; color: var(--text-dim); letter-spacing: .06em; }
+    .bl-spinlabel b { color: var(--neon-purple); font-family: var(--font-mono); font-weight: 600; }
+    .bl-spinpad { position: relative; display: grid; grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(3, 48px); width: 144px; height: 144px;
+      border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,.18);
+      background: radial-gradient(circle at 34% 28%, #ffffff 0%, #f0f0e4 42%, #d6d6c8 70%, #adada0 100%);
+      box-shadow: inset -6px -8px 16px rgba(0,0,0,.22), inset 4px 5px 12px rgba(255,255,255,.7), 0 0 14px rgba(185,103,255,.18); }
+    .bl-spinpad button { width: 48px; height: 48px; min-height: 48px; padding: 0; border: 0; background: transparent; cursor: pointer; position: relative; touch-action: manipulation; }
+    .bl-spinpad button::before { content: ''; position: absolute; left: 50%; top: 50%; width: 11px; height: 11px; margin: -5.5px; border-radius: 50%;
+      background: rgba(12,42,36,.26); box-shadow: inset 0 1px 1px rgba(0,0,0,.25); transition: width .14s, height .14s, margin .14s, background .14s, box-shadow .14s; }
+    .bl-spinpad button.is-on::before { width: 20px; height: 20px; margin: -10px; background: radial-gradient(circle at 35% 30%, #fff 0%, var(--neon-pink) 62%, #a5005f 100%);
+      box-shadow: 0 0 12px rgba(255,45,149,.85); }
+    .bl-spinpad button:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: -3px; }
+
+    .bl-powercol { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+    .bl-aimrow { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; flex: 1; min-height: 44px; }
+    .bl-aimrow button { min-height: 44px; }
+    .bl-powerbar { position: relative; flex: 1; min-height: 44px; overflow: hidden; border: 1px solid rgba(255,230,0,.5); border-radius: 8px;
+      background: rgba(255,230,0,.06); box-shadow: inset 0 0 10px rgba(0,0,0,.35); touch-action: none; cursor: pointer; }
+    .bl-powerfill { position: absolute; inset: 0 auto 0 0; width: 60%; background: linear-gradient(90deg, rgba(0,240,255,.55), rgba(255,230,0,.9) 55%, var(--neon-pink));
+      box-shadow: 0 0 12px rgba(255,230,0,.5); transition: width .06s linear; }
+    .bl-powertext { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 5px;
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.75); pointer-events: none; }
+    .bl-powertext b { color: var(--neon-yellow); }
+    .bl-shoot { min-height: 44px; flex: 1; font-family: var(--font-pixel); font-size: 11px; }
+    .bl-shoot.charging { animation: bl-charge .5s linear infinite alternate; }
+    @keyframes bl-charge { from { box-shadow: 0 0 8px rgba(57,255,20,.35); } to { box-shadow: 0 0 22px rgba(57,255,20,.85); } }
+
+    .bl-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 6px; }
+    .bl-actions .btn, .bl-actions button { min-height: 44px; padding: 6px 8px; font-size: 10px; }
+
+    .bl-help { margin-top: 9px; padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,.04);
+      font-size: 10.5px; line-height: 1.65; color: var(--text-dim); text-align: left; }
+
+    .bl-panel { box-sizing: border-box; margin-top: 10px; padding: 13px; border: 1px solid rgba(0,240,255,.32); border-radius: 12px;
+      background: linear-gradient(180deg, rgba(9,18,28,.92), rgba(5,4,14,.95)); box-shadow: 0 0 24px rgba(0,240,255,.12); text-align: center; }
+    .bl-panel h2 { margin: 0 0 4px; font-family: var(--font-pixel); font-size: clamp(14px, 4vw, 20px); color: var(--neon-yellow); text-shadow: 0 0 14px rgba(255,200,80,.5); }
+    .bl-panel .bl-sub { margin: 0 auto 9px; max-width: 470px; font-size: 11.5px; line-height: 1.7; color: var(--text-main); }
+    .bl-panel .bl-rules { margin: 8px auto 4px; max-width: 480px; padding: 8px 10px; border-left: 2px solid var(--neon-purple); border-radius: 6px;
+      background: rgba(185,103,255,.08); font-size: 10.5px; line-height: 1.7; color: var(--text-dim); text-align: left; }
+    .bl-seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 9px; }
+    .bl-seg button { min-height: 44px; padding: 6px 8px; border: 1px solid rgba(0,240,255,.42); border-radius: 8px; background: transparent;
+      color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 10px; cursor: pointer; transition: background .15s, color .15s, box-shadow .15s; }
+    .bl-seg button.is-on { background: rgba(0,240,255,.16); color: #fff; box-shadow: 0 0 12px rgba(0,240,255,.35); }
+    .bl-seg button:disabled { opacity: .35; cursor: default; box-shadow: none; }
+    .bl-seglabel { margin: 10px 0 0; font-size: 9.5px; letter-spacing: .1em; color: var(--text-dim); }
+    .bl-panel .btn { width: 100%; min-height: 46px; margin-top: 10px; }
+    .bl-panel .bl-stats { margin: 9px 0 2px; padding: 8px 10px; border-radius: 8px; background: rgba(0,0,0,.25);
+      font-size: 11.5px; line-height: 1.9; color: var(--text-dim); text-align: left; }
+    .bl-panel .bl-stats b { color: var(--neon-yellow); font-family: var(--font-mono); }
+    .bl-panel .bl-note { margin-top: 8px; font-size: 10px; color: var(--neon-cyan); line-height: 1.6; }
+    .bl-panel .bl-note.warn { color: var(--text-dim); }
+    .bl-panel .bl-bestline { margin-top: 6px; font-size: 10.5px; color: var(--text-dim); }
+    .bl-panel .bl-bestline b { color: var(--neon-cyan); font-family: var(--font-mono); }
+
+    @media (max-width: 380px) {
+      .bl-wrap { padding: 8px; }
+      .bl-help { font-size: 10px; }
+    }
+  </style>
+</head>
+<body data-game-id="billiards" data-game-title="台球" data-best-mode="max">
+  <h1 class="seo-h1">台球</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="billiards-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="billiards.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

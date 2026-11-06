@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>黑白棋 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/reversi/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="黑白棋 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/reversi/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="黑白棋 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "黑白棋",
+    "url": "https://game.netcn.org/games/reversi/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    /* ---------- 黑白棋 · 旗舰版 ---------- */
+    .rv-hud {
+      display: flex; align-items: center; gap: 8px;
+      width: 100%; max-width: 460px; margin: 2px 0 6px;
+    }
+    .rv-side {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      min-width: 58px; padding: 6px 10px; border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(8, 12, 24, 0.72);
+      box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
+    }
+    .rv-side-black { border-color: rgba(0, 240, 255, 0.45); box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.55), 0 0 10px rgba(0, 240, 255, 0.15); }
+    .rv-side-white { border-color: rgba(255, 45, 149, 0.45); box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.45), 0 0 10px rgba(255, 45, 149, 0.15); }
+    .rv-side-label { font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
+    .rv-side-count { font-family: var(--font-pixel); font-size: 20px; line-height: 1.1; }
+    .rv-side-black .rv-side-count { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 240, 255, 0.55); }
+    .rv-side-white .rv-side-count { color: #fff; text-shadow: 0 0 10px rgba(255, 45, 149, 0.55); }
+    .rv-mid { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+    .rv-bar {
+      height: 12px; border-radius: 999px; overflow: hidden; display: flex;
+      background: #10131f; border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+    }
+    .rv-bar-b { height: 100%; width: 50%; background: linear-gradient(90deg, rgba(0, 240, 255, 0.35), var(--neon-cyan)); transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 0 10px rgba(0, 240, 255, 0.6); }
+    .rv-bar-w { height: 100%; width: 50%; background: linear-gradient(90deg, #fff, rgba(255, 45, 149, 0.55)); transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 0 10px rgba(255, 45, 149, 0.45); }
+    .rv-turn { text-align: center; font-size: 10px; letter-spacing: 0.5px; color: var(--text-dim); min-height: 14px; }
+    .rv-turn.black { color: var(--neon-cyan); }
+    .rv-turn.white, .rv-turn.ai { color: var(--neon-pink); }
+    .rv-turn.paused { color: var(--neon-yellow); }
+    .rv-meta {
+      display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center;
+      width: 100%; max-width: 460px; margin-bottom: 4px;
+      font-size: 10px; color: var(--text-dim); letter-spacing: 0.5px;
+    }
+    .rv-meta-item { white-space: nowrap; }
+    #rv-streak { color: var(--neon-yellow); }
+    #rv-best { color: var(--neon-cyan); }
+    .rv-diff-label { color: var(--text-dim); }
+
+    .game-message.rv-msg, #msg { min-height: 18px; }
+
+    .rv-board-wrap {
+      position: relative; width: 100%; display: flex; justify-content: center;
+      padding: 2px 0 6px;
+    }
+    .rv-board {
+      --cell: min(58px, calc((100vw - 22px) / 8));
+      display: grid;
+      grid-template-columns: repeat(8, var(--cell));
+      padding: 2px; gap: 0;
+      background: linear-gradient(145deg, #08251d, #061a15);
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      border-radius: 12px;
+      box-shadow: 0 0 22px rgba(0, 240, 255, 0.16), inset 0 0 26px rgba(0, 0, 0, 0.55);
+      width: fit-content; margin: 0 auto;
+      user-select: none; touch-action: manipulation;
+      transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+    .rv-cell {
+      width: var(--cell); height: var(--cell);
+      position: relative; display: flex; align-items: center; justify-content: center;
+      background: #0c352a;
+      box-shadow: inset 0 0 0 1px rgba(0, 240, 255, 0.08);
+      cursor: default;
+    }
+    .rv-cell.alt { background: #0f3e31; }
+    .rv-cell.rv-legal { cursor: pointer; }
+    .rv-cell.rv-legal:hover { box-shadow: inset 0 0 0 2px rgba(0, 240, 255, 0.5), inset 0 0 14px rgba(0, 240, 255, 0.18); }
+    .rv-cell.rv-cursor::after {
+      content: ''; position: absolute; inset: 2px; border: 2px dashed rgba(255, 230, 0, 0.85);
+      border-radius: 4px; pointer-events: none; z-index: 3;
+    }
+    .rv-cell.rv-hint-best {
+      box-shadow: inset 0 0 0 2px var(--neon-yellow), 0 0 14px rgba(255, 230, 0, 0.55);
+      animation: rvHintPulse 1.1s ease-in-out infinite;
+    }
+    @keyframes rvHintPulse {
+      0%, 100% { box-shadow: inset 0 0 0 2px rgba(255, 230, 0, 0.9), 0 0 10px rgba(255, 230, 0, 0.35); }
+      50% { box-shadow: inset 0 0 0 2px #fff7a8, 0 0 20px rgba(255, 230, 0, 0.8); }
+    }
+    .rv-disc {
+      position: absolute; inset: 9%; border-radius: 50%;
+      animation: rvPlace 0.28s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+      transform-style: preserve-3d; will-change: transform;
+    }
+    .rv-disc::before {
+      content: ''; position: absolute; left: 17%; top: 11%; width: 34%; height: 23%;
+      border-radius: 50%; background: rgba(255, 255, 255, 0.34);
+      filter: blur(1px); transform: rotate(-18deg);
+    }
+    .rv-disc.black {
+      background: radial-gradient(circle at 34% 28%, #43557a 0%, #161d2e 38%, #05060b 100%);
+      border: 1px solid rgba(0, 240, 255, 0.28);
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.7), inset 0 -3px 5px rgba(0, 0, 0, 0.75),
+        inset 0 2px 4px rgba(255, 255, 255, 0.12), 0 0 9px rgba(0, 240, 255, 0.32);
+    }
+    .rv-disc.white {
+      background: radial-gradient(circle at 34% 28%, #ffffff 0%, #eef2ff 42%, #b8c6df 100%);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.55), inset 0 -3px 6px rgba(120, 140, 180, 0.55),
+        inset 0 2px 5px #ffffff, 0 0 11px rgba(255, 45, 149, 0.38);
+    }
+    @keyframes rvPlace {
+      0% { transform: scale(0.35); opacity: 0.4; }
+      65% { transform: scale(1.14); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .rv-disc.rv-flip {
+      animation: rvFlip 0.46s cubic-bezier(0.3, 0.9, 0.3, 1.15) both;
+      animation-delay: var(--delay, 0ms);
+    }
+    .rv-disc.rv-flip.rv-pop { animation: rvFlipPop 0.5s cubic-bezier(0.3, 0.9, 0.3, 1.15) both, rvPlace 0.3s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+    @keyframes rvFlip {
+      0% { transform: perspective(360px) rotateY(0deg) scale(0.86); }
+      50% { transform: perspective(360px) rotateY(90deg) scale(0.96); }
+      100% { transform: perspective(360px) rotateY(180deg) scale(1); }
+    }
+    @keyframes rvFlipPop {
+      0% { transform: perspective(360px) rotateY(0deg) scale(0.5); }
+      65% { transform: perspective(360px) rotateY(100deg) scale(1.16); }
+      100% { transform: perspective(360px) rotateY(180deg) scale(1); }
+    }
+    .rv-legal-dot {
+      width: 26%; height: 26%; border-radius: 50%;
+      background: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.8), inset 0 0 4px #fff;
+      animation: rvBreathe 1.7s ease-in-out infinite;
+    }
+    .rv-hint-best .rv-legal-dot { background: var(--neon-yellow); box-shadow: 0 0 12px rgba(255, 230, 0, 0.9); animation-duration: 0.9s; }
+    @keyframes rvBreathe {
+      0%, 100% { transform: scale(0.82); opacity: 0.65; }
+      50% { transform: scale(1.12); opacity: 1; }
+    }
+    .rv-last-ring {
+      position: absolute; inset: 5%; border-radius: 50%;
+      border: 2px solid rgba(255, 230, 0, 0.95);
+      box-shadow: 0 0 9px rgba(255, 230, 0, 0.65);
+      animation: rvLastPulse 1s ease-in-out infinite; pointer-events: none;
+    }
+    @keyframes rvLastPulse {
+      0%, 100% { opacity: 0.55; transform: scale(0.94); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    .rv-hint-badge {
+      position: absolute; right: 1px; top: 0; z-index: 4;
+      font-family: var(--font-pixel); font-size: 8px; line-height: 1.4;
+      padding: 1px 3px; border-radius: 4px;
+      color: #06120a; background: var(--neon-yellow);
+      box-shadow: 0 0 10px rgba(255, 230, 0, 0.8);
+      animation: rvBadgeBob 1.1s ease-in-out infinite;
+    }
+    @keyframes rvBadgeBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+
+    .rv-board.thinking { animation: rvThink 1.2s ease-in-out infinite; }
+    @keyframes rvThink {
+      50% { box-shadow: 0 0 32px rgba(255, 45, 149, 0.42), inset 0 0 26px rgba(0, 0, 0, 0.55); border-color: rgba(255, 45, 149, 0.6); }
+    }
+    .rv-board.finished { border-color: rgba(255, 230, 0, 0.55); box-shadow: 0 0 28px rgba(255, 230, 0, 0.28), inset 0 0 26px rgba(0, 0, 0, 0.55); }
+    .rv-board.paused { filter: saturate(0.5) brightness(0.8); }
+
+    .rv-pause-mask {
+      position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center;
+      background: rgba(4, 8, 14, 0.72); backdrop-filter: blur(3px);
+      border-radius: 12px;
+    }
+    .rv-pause-mask.hidden { display: none; }
+    .rv-pause-card { text-align: center; padding: 14px 20px; border: 1px solid rgba(255, 230, 0, 0.45); border-radius: 12px; background: rgba(10, 14, 26, 0.9); box-shadow: 0 0 22px rgba(255, 230, 0, 0.2); }
+    .rv-pause-title { font-family: var(--font-pixel); font-size: 14px; color: var(--neon-yellow); margin-bottom: 6px; }
+    .rv-pause-sub { font-size: 10px; color: var(--text-dim); }
+
+    .rv-action-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; width: 100%; max-width: 460px; margin-top: 6px; }
+    .rv-act { position: relative; min-width: 44px; min-height: 48px; padding: 4px 3px; font-size: 10px; white-space: nowrap; }
+    .rv-act:disabled { opacity: 0.42; cursor: not-allowed; }
+    .rv-key {
+      position: absolute; top: 3px; right: 4px; font-size: 7px; line-height: 1;
+      padding: 1px 2px; border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 3px; opacity: 0.7; pointer-events: none;
+    }
+    .rv-act.rv-cooling { overflow: hidden; }
+    .rv-act.rv-cooling::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+      background: conic-gradient(rgba(0, 240, 255, 0.28) var(--cd, 100%), transparent 0);
+    }
+    #mode-controls, #diff-controls { display: grid; width: 100%; max-width: 460px; gap: 8px; margin-top: 8px; }
+    #mode-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #diff-controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .mode-btn { min-width: 44px; min-height: 44px; font-size: 10px; padding: 4px 6px; }
+    .mode-btn.active {
+      background: var(--neon-cyan); color: #04121a; text-shadow: none;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
+    }
+    .mode-btn.pink.active { background: var(--neon-pink); color: #1a0410; box-shadow: 0 0 16px rgba(255, 45, 149, 0.6); }
+    .mode-btn:disabled { opacity: .42; cursor: default; box-shadow: none; }
+    .rv-help { font-size: 10px; max-width: 460px; text-align: center; margin-top: 8px; }
+
+    .rv-overlay {
+      position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
+      background: rgba(4, 6, 12, 0.82); backdrop-filter: blur(4px); padding: 16px;
+    }
+    .rv-overlay.hidden { display: none; }
+    .rv-ov-card {
+      width: min(360px, 92vw); max-height: 92vh; overflow: auto;
+      padding: 22px 20px; text-align: center;
+      background: linear-gradient(160deg, rgba(16, 20, 36, 0.98), rgba(8, 10, 20, 0.98));
+      border: 1px solid rgba(255, 230, 0, 0.4); border-radius: 18px;
+      box-shadow: 0 0 40px rgba(255, 230, 0, 0.2), inset 0 0 22px rgba(0, 0, 0, 0.6);
+      animation: rvCard 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+    }
+    @keyframes rvCard { from { opacity: 0; transform: translateY(18px) scale(0.9); } to { opacity: 1; transform: none; } }
+    .rv-ov-title { font-family: var(--font-pixel); font-size: 16px; margin-bottom: 8px; color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255, 230, 0, 0.6); }
+    .rv-ov-title.win { color: var(--neon-yellow); }
+    .rv-ov-title.lose { color: var(--neon-pink); text-shadow: 0 0 12px rgba(255, 45, 149, 0.6); }
+    .rv-ov-title.draw { color: var(--neon-cyan); text-shadow: 0 0 12px rgba(0, 240, 255, 0.6); }
+    .rv-ov-sub { font-size: 10px; color: var(--text-dim); line-height: 1.5; }
+    .rv-ov-score { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 14px 0 6px; }
+    .rv-ov-side { font-size: 11px; color: var(--text-dim); }
+    .rv-ov-side b { display: block; font-family: var(--font-pixel); font-size: 24px; margin-top: 6px; }
+    .rv-ov-side.black b { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+    .rv-ov-side.white b { color: #fff; text-shadow: 0 0 10px rgba(255, 45, 149, 0.55); }
+    .rv-ov-vs { font-family: var(--font-pixel); color: var(--text-dim); }
+    .rv-ov-rows { margin: 10px 0 4px; display: flex; flex-direction: column; gap: 6px; }
+    .rv-ov-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-bottom: 1px dashed rgba(255, 255, 255, 0.12); padding: 4px 2px; }
+    .rv-ov-row b { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-yellow); }
+    .rv-ov-btns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+    .rv-ov-btn { min-width: 44px; min-height: 44px; font-size: 10px; padding: 4px 6px; }
+
+    @media (max-width: 380px) {
+      .rv-hud { gap: 5px; }
+      .rv-side { min-width: 48px; padding: 5px 6px; }
+      .rv-side-count { font-size: 17px; }
+      .rv-act { font-size: 9px; }
+      .mode-btn { font-size: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .rv-disc, .rv-legal-dot, .rv-last-ring, .rv-hint-badge, .rv-board.thinking,
+      .rv-cell.rv-hint-best, .rv-ov-card { animation: none !important; }
+    }
+  </style>
+</head>
+<body data-game-id="reversi" data-game-title="黑白棋" data-best-mode="max">
+  <h1 class="seo-h1">黑白棋</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="reversi-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="reversi.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

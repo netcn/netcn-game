@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>恐龙快跑 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 恐龙快跑：收集金币、躲开障碍与暴龙追击，在随机天气下跑得更远。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/pixeldino/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="恐龙快跑 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 恐龙快跑：收集金币、躲开障碍与暴龙追击，在随机天气下跑得更远。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/pixeldino/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="恐龙快跑 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 恐龙快跑：收集金币、躲开障碍与暴龙追击，在随机天气下跑得更远。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "恐龙快跑",
+    "url": "https://game.netcn.org/games/pixeldino/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 恐龙快跑：收集金币、躲开障碍与暴龙追击，在随机天气下跑得更远。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .dn-wrap { position: relative; padding: 14px; width: min(640px, 96vw); margin: 0 auto; text-align: center; }
+    .dn-stage { position: relative; width: 100%; max-width: 640px; margin: 0 auto;
+      filter: drop-shadow(0 0 16px rgba(57,255,20,0.14)); }
+    .dn-canvas { display: block; width: 100%; height: auto; border-radius: 12px; background: #0a0a12;
+      border: 1px solid rgba(57,255,20,0.28); touch-action: none; }
+    .dn-top { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 3px 10px;
+      font-size: 12px; color: var(--text-dim); margin: 0 0 8px; padding: 7px 10px; border-radius: 8px;
+      background: linear-gradient(90deg, rgba(57,255,20,0.08), rgba(0,240,255,0.05));
+      border: 1px solid rgba(57,255,20,0.22); }
+    .dn-top span { white-space: nowrap; }
+    .dn-top b { color: var(--neon-yellow); font-family: 'Consolas', 'Courier New', monospace; }
+    .dn-weather { color: var(--neon-cyan); }
+    .dn-weather b { color: var(--neon-cyan); }
+
+    /* 自绘图标（纯 CSS，不用 emoji 当美术） */
+    .dn-ico { display: inline-block; position: relative; width: 14px; height: 14px; flex: none; vertical-align: -2px; }
+    .dn-ico-coin { border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff9c4, #ffe600 48%, #c58f00 100%);
+      box-shadow: 0 0 6px rgba(255,230,0,0.65), inset 0 0 0 1px rgba(110,74,0,0.55); }
+    .dn-ico-coin::after { content: ''; position: absolute; left: 6px; top: 3px; width: 2px; height: 5px;
+      background: rgba(255,255,255,0.7); border-radius: 1px; }
+    .dn-ico-magnet::before { content: ''; position: absolute; inset: 1px 1px 2px; border: 3px solid #ff2d95;
+      border-top: 0; border-radius: 0 0 7px 7px; box-shadow: 0 0 6px rgba(255,45,149,0.55); }
+    .dn-ico-magnet::after { content: ''; position: absolute; left: 0; right: 0; top: 1px; height: 4px;
+      background: linear-gradient(90deg, #ffe600 0 50%, #00f0ff 50% 100%); border-radius: 2px; }
+    .dn-ico-shield::before { content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, #b8fbff, #00b7d6);
+      clip-path: polygon(50% 0, 96% 20%, 96% 56%, 50% 100%, 4% 56%, 4% 20%);
+      box-shadow: 0 0 6px rgba(0,240,255,0.7); }
+    .dn-ico-shield::after { content: ''; position: absolute; left: 6px; top: 4px; width: 2px; height: 6px;
+      background: rgba(255,255,255,0.62); border-radius: 1px; }
+    .dn-ico-slow::before { content: ''; position: absolute; inset: 0; border-radius: 50%;
+      border: 2px solid #b967ff; background: rgba(185,103,255,0.16); box-shadow: 0 0 6px rgba(185,103,255,0.7); }
+    .dn-ico-slow::after { content: ''; position: absolute; left: 6px; top: 3px; width: 2px; height: 5px;
+      background: #ddc0ff; transform-origin: 50% 100%; transform: rotate(28deg);
+      box-shadow: 2px 4px 0 -1px #ddc0ff; }
+    .dn-ico-w-sunny { border-radius: 50%; background: radial-gradient(circle, #fff8c0, #ffd400 72%);
+      box-shadow: 0 0 6px rgba(255,212,0,0.7), 0 -5px 0 -3px #ffd400, 0 5px 0 -3px #ffd400, -5px 0 0 -3px #ffd400, 5px 0 0 -3px #ffd400; }
+    .dn-ico-w-rain { background: repeating-linear-gradient(90deg, #6fd0ff 0 2px, transparent 2px 5px);
+      background-size: 5px 14px; border-radius: 2px; box-shadow: 0 0 5px rgba(111,208,255,0.5); }
+    .dn-ico-w-sand { background: repeating-linear-gradient(160deg, #e0a75c 0 2px, transparent 2px 5px);
+      border-radius: 3px; box-shadow: 0 0 5px rgba(224,167,92,0.5); }
+    .dn-ico-w-night { border-radius: 50%; background: #dce8ff;
+      box-shadow: inset 5px -2px 0 0 #0a0a12, 0 0 6px rgba(200,225,255,0.6); }
+
+    .dn-msg { min-height: 18px; font-size: 12px; color: var(--neon-green); margin: 8px 0; line-height: 1.6; }
+
+    /* 道具 HUD */
+    .dn-power { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 8px 2px 0; flex-wrap: wrap; }
+    .dn-pw { display: inline-flex; align-items: center; gap: 5px; padding: 3px 7px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03);
+      opacity: 0.32; transition: opacity 0.2s, border-color 0.2s, box-shadow 0.2s; }
+    .dn-pw.on { opacity: 1; }
+    .dn-pw[data-pw="magnet"].on { border-color: #ff2d95; box-shadow: 0 0 8px rgba(255,45,149,0.3) inset; }
+    .dn-pw[data-pw="shield"].on { border-color: #00f0ff; box-shadow: 0 0 8px rgba(0,240,255,0.3) inset; }
+    .dn-pw[data-pw="slow"].on { border-color: #b967ff; box-shadow: 0 0 8px rgba(185,103,255,0.3) inset; }
+    .dn-pw i { display: block; width: 24px; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.16); overflow: hidden; }
+    .dn-pw i em { display: block; height: 100%; width: 0; background: currentColor; }
+    .dn-pw[data-pw="magnet"] { color: #ff2d95; }
+    .dn-pw[data-pw="shield"] { color: #00f0ff; }
+    .dn-pw[data-pw="slow"] { color: #b967ff; }
+
+    /* Boss 血条 / 追逐进度 */
+    .dn-boss { margin: 8px 2px 0; padding: 6px 8px; border-radius: 8px; text-align: left;
+      background: rgba(32,6,20,0.72); border: 1px solid rgba(255,45,149,0.45);
+      box-shadow: 0 0 14px rgba(255,45,149,0.18) inset; }
+    .dn-boss-top { display: flex; justify-content: space-between; align-items: center; font-size: 10px;
+      letter-spacing: 1px; color: var(--neon-pink); margin-bottom: 4px; }
+    .dn-boss-top b { color: var(--neon-yellow); font-family: 'Consolas', 'Courier New', monospace; }
+    .dn-boss-bar { height: 6px; border-radius: 999px; background: rgba(255,255,255,0.1); overflow: hidden; }
+    .dn-boss-bar + .dn-boss-bar { margin-top: 3px; height: 3px; }
+    .dn-boss-bar i { display: block; height: 100%; width: 100%; }
+    .dn-boss-hp i { background: linear-gradient(90deg, #ff2d95, #ff9f1c); transition: width 0.16s ease-out; }
+    .dn-boss-chase i { background: linear-gradient(90deg, rgba(255,230,0,0.55), #ffe600); transition: width 0.12s linear; }
+
+    /* 任务面板 */
+    .dn-tasks { display: flex; flex-direction: column; gap: 4px; margin: 8px 2px 0; text-align: left; }
+    .dn-tasks.idle { display: none; }
+    .dn-task { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 1px 8px;
+      padding: 4px 7px; border-radius: 6px; font-size: 11px; color: var(--text-dim);
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(0,240,255,0.12); }
+    .dn-task-nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .dn-task-val { color: var(--neon-cyan); font-family: 'Consolas', 'Courier New', monospace; }
+    .dn-task-bar { grid-column: 1 / -1; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.1); overflow: hidden; }
+    .dn-task-bar i { display: block; height: 100%; width: 0; border-radius: 999px;
+      background: linear-gradient(90deg, #00f0ff, #39ff14); transition: width 0.18s ease-out; }
+    .dn-task.done { border-color: rgba(57,255,20,0.5); color: var(--neon-green); }
+    .dn-task.done .dn-task-val { color: var(--neon-green); }
+    .dn-task.done .dn-task-bar i { background: var(--neon-green); }
+
+    .dn-over { position: absolute; inset: 0; z-index: 6; display: flex; align-items: flex-start; justify-content: center;
+      padding: 10px; overflow-y: auto; overscroll-behavior: contain;
+      background: rgba(6,8,16,0.88); border-radius: 12px;
+      -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
+    .dn-card { margin: auto; width: min(360px, 92%); padding: 16px 14px; border-radius: 14px; text-align: center;
+      background: linear-gradient(160deg, rgba(18,30,30,0.98), rgba(8,12,20,0.98));
+      border: 1px solid rgba(57,255,20,0.32);
+      box-shadow: 0 0 26px rgba(57,255,20,0.15), inset 0 0 18px rgba(0,240,255,0.06); }
+    .dn-title { font-family: var(--font-pixel); font-size: 15px; color: var(--neon-green);
+      text-shadow: 0 0 12px rgba(57,255,20,0.55); margin-bottom: 8px; }
+    .dn-hint { font-size: 12px; color: var(--text-dim); line-height: 1.7; margin-bottom: 8px; }
+    .dn-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; font-size: 12px;
+      color: var(--text-dim); margin: 4px 0; }
+    .dn-stats span { display: flex; align-items: center; justify-content: center; gap: 4px; }
+    .dn-stats b { color: var(--neon-yellow); font-family: 'Consolas', 'Courier New', monospace; }
+    .dn-ov-tasks { margin: 6px 0 2px; }
+    .dn-ov-lbl { font-size: 10px; letter-spacing: 1px; color: var(--text-dim); text-align: left; margin: 6px 2px 4px; }
+    .dn-diff { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; align-items: center; margin: 10px 0; }
+    .dn-diff-lbl { font-size: 11px; color: var(--text-dim); width: 100%; }
+    .dn-diff .mode-btn { padding: 8px 12px; font-size: 11px; min-height: 44px; min-width: 44px; }
+    .dn-diff .mode-btn.selected { border-color: var(--neon-yellow); color: var(--neon-yellow);
+      box-shadow: 0 0 10px rgba(255,230,0,0.25) inset; }
+    .dn-card > .btn { display: block; width: 100%; margin-top: 8px; min-height: 44px; }
+    .dn-touch { display: none; gap: 12px; justify-content: center; margin: 10px 0 4px; }
+    .dn-touch.show { display: flex; }
+    .dn-touch .btn { min-width: 110px; min-height: 44px; padding: 12px 10px; font-size: 13px; }
+    @media (max-width: 480px) {
+      .dn-top { font-size: 11px; padding: 6px 8px; gap: 3px 9px; }
+      .dn-touch { display: flex; }
+      .dn-card { padding: 14px 10px; }
+    }
+    @media (max-width: 360px) {
+      .dn-wrap { padding: 10px; width: 97vw; }
+      .dn-top { font-size: 10px; gap: 3px 7px; }
+      .dn-card { padding: 12px 9px; }
+      .dn-title { font-size: 13px; }
+      .dn-hint { font-size: 11px; }
+      .dn-stats { font-size: 11px; }
+      .dn-ov-lbl { margin-top: 4px; }
+      .dn-touch .btn { min-width: 92px; }
+      .dn-task { font-size: 10px; padding: 3px 6px; }
+      .dn-diff { gap: 4px; margin: 8px 0; }
+    }
+  </style>
+</head>
+<body data-game-id="pixeldino" data-game-title="恐龙快跑" data-best-mode="max">
+  <h1 class="seo-h1">恐龙快跑</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="pixeldino-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="pixeldino.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

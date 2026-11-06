@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <title>绵羊三消 · 游戏街机厅</title>
+  <meta name="description" content="游戏街机厅 · 绵羊三消：交换相邻绵羊三连消除，12 关草原委托 + 四种道具 + 特殊羊连锁。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://game.netcn.org/games/sheep/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
+  <meta property="og:title" content="绵羊三消 · 游戏街机厅">
+  <meta property="og:description" content="游戏街机厅 · 绵羊三消：交换相邻绵羊三连消除，12 关草原委托 + 四种道具 + 特殊羊连锁。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://game.netcn.org/games/sheep/">
+  <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="绵羊三消 · 游戏街机厅">
+  <meta name="twitter:description" content="游戏街机厅 · 绵羊三消：交换相邻绵羊三连消除，12 关草原委托 + 四种道具 + 特殊羊连锁。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "绵羊三消",
+    "url": "https://game.netcn.org/games/sheep/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
+    "description": "游戏街机厅 · 绵羊三消：交换相邻绵羊三连消除，12 关草原委托 + 四种道具 + 特殊羊连锁。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="../../assets/icons/icon-512.png">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .sh-wrap, .sh-wrap * { box-sizing: border-box; }
+    .sh-wrap { padding: 12px 10px 24px; width: 100%; max-width: 520px; margin: 0 auto; text-align: center; }
+    .sh-picker {
+      background: linear-gradient(180deg, rgba(20, 44, 30, 0.82), rgba(8, 18, 13, 0.92));
+      border: 1px solid rgba(57, 255, 20, 0.32); border-radius: 16px;
+      padding: 18px 16px 16px; margin: 6px 0 10px;
+      box-shadow: 0 0 28px rgba(57, 255, 20, 0.10), inset 0 0 18px rgba(57, 255, 20, 0.05);
+    }
+    .sh-picker-t {
+      font-family: var(--font-pixel); font-size: 14px; letter-spacing: 1px;
+      color: var(--neon-green); text-shadow: 0 0 12px rgba(57, 255, 20, 0.45); margin-bottom: 8px;
+    }
+    .sh-picker-d { font-size: 12px; color: var(--text-dim); line-height: 1.75; margin: 0 auto 14px; max-width: 330px; }
+    .sh-diffs { display: grid; gap: 8px; margin: 0 0 12px; }
+    .sh-diff {
+      display: flex; flex-direction: column; gap: 3px; width: 100%;
+      padding: 10px 13px; text-align: left; cursor: pointer; font-family: inherit;
+      background: linear-gradient(90deg, rgba(57, 255, 20, 0.06), rgba(185, 103, 255, 0.05));
+      border: 1px solid rgba(57, 255, 20, 0.28); border-radius: 10px;
+      color: var(--text-main, #e8e8f0); transition: transform .15s, border-color .15s, box-shadow .15s;
+    }
+    .sh-diff b { font-family: var(--font-pixel); font-size: 11px; letter-spacing: .5px; color: var(--neon-yellow); }
+    .sh-diff small { font-size: 11px; color: var(--text-dim); }
+    .sh-diff:hover { transform: translateY(-1px); border-color: var(--neon-green); box-shadow: 0 0 16px rgba(57, 255, 20, 0.28); }
+    .sh-diff:active { transform: translateY(0); }
+    .sh-daily { margin-top: 2px; font-size: 11px; padding: 5px 14px; }
+
+    .sh-hud {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 10px;
+      font-size: 11px; color: var(--text-dim); padding: 8px 10px;
+      background: linear-gradient(90deg, rgba(57, 255, 20, 0.08), rgba(185, 103, 255, 0.06));
+      border: 1px solid rgba(57, 255, 20, 0.3); border-radius: 9px;
+    }
+    .sh-hud #sh-score, .sh-hud #sh-time { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 10px; }
+    .sh-hud.sh-low-time, .sh-hud #sh-time.sh-low { color: var(--neon-pink); animation: sh-pulse 0.9s ease-in-out infinite; }
+    @keyframes sh-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+
+    .sh-stage { position: relative; width: 100%; max-width: 380px; margin: 10px auto 6px; }
+    .sh-cv {
+      display: block; width: 100%; height: auto; max-width: 100%;
+      border-radius: 16px; touch-action: none; user-select: none; -webkit-user-select: none;
+      background: #08130d; box-shadow: 0 0 20px rgba(57, 255, 20, 0.16), 0 10px 26px rgba(0, 0, 0, 0.55);
+    }
+    .sh-hint { font-size: 11px; color: var(--text-dim); line-height: 1.6; margin: 6px 2px 0; }
+    .sh-msg {
+      font-size: 12px; color: var(--text-main); min-height: 20px; margin: 5px 0 0;
+      padding: 7px 9px; text-align: left; border-radius: 8px;
+      background: rgba(0, 0, 0, 0.32); border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .sh-overlay { background: radial-gradient(circle at 50% 30%, rgba(57, 255, 20, 0.12), rgba(4, 9, 6, 0.96) 62%); padding: 16px; }
+    .sh-card {
+      width: 100%; max-width: 340px; display: flex; flex-direction: column; gap: 12px;
+      padding: 18px 16px; border-radius: 16px;
+      background: linear-gradient(180deg, rgba(22, 46, 32, 0.98), rgba(7, 16, 12, 0.98));
+      border: 1px solid rgba(57, 255, 20, 0.45); box-shadow: 0 0 32px rgba(57, 255, 20, 0.22);
+    }
+    .sh-card h2 { font-family: var(--font-pixel); font-size: 14px; letter-spacing: 1px; color: var(--neon-yellow); margin: 0; }
+    .sh-card p { font-size: 12px; line-height: 1.8; color: var(--text-dim); margin: 0; }
+    .sh-card p b { color: var(--neon-yellow); }
+    .sh-stats { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; font-size: 11px; color: var(--text-dim); }
+    .sh-stats b { display: inline-block; margin-left: 3px; font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow); }
+    .sh-newrec { font-family: var(--font-pixel); font-size: 10px; letter-spacing: .5px; color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255, 230, 0, 0.7); }
+    .sh-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .sh-btns .btn { min-width: 108px; }
+
+    @media (max-width: 480px) {
+      .sh-wrap { padding: 10px 8px 20px; }
+      .sh-picker { padding: 14px 12px; }
+      .sh-picker-t { font-size: 12px; }
+      .sh-hud { font-size: 10px; gap: 5px 8px; padding: 7px 8px; }
+      .sh-hud #sh-score, .sh-hud #sh-time { font-size: 9px; }
+      .sh-card { padding: 15px 12px; }
+      .sh-btns .btn { min-width: 96px; font-size: 11px; }
+    }
+  </style>
+<style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
+</head>
+<body data-game-id="sheep" data-game-title="绵羊三消" data-best-mode="max">
+  <h1 class="seo-h1">绵羊三消</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+<script src="../../games.js"></script>
+  <script src="sheep-i18n.js?v=20261105i"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="../_shared/kit.js"></script>
+  <script src="sheep.js?v=20261105i"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>
