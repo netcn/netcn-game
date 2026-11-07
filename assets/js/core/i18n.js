@@ -42,6 +42,13 @@ Arcade.i18n = (function () {
     try { localStorage.setItem(KEY, l); } catch (e) {}
     location.reload();
   }
+  /* 顶栏统一切换：只更新内存语言，不刷新（页面自行重渲染） */
+  function setLangLive(l) {
+    if (l !== 'zh' && l !== 'en') return;
+    lang = l;
+    try { localStorage.setItem(KEY, l); } catch (e) {}
+    document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
+  }
   function getLang() { return lang; }
 
   /* 同步 <html lang> 属性（SEO/无障碍：切 EN 时 lang 应为 en） */
@@ -68,7 +75,7 @@ Arcade.i18n = (function () {
     }
   }
 
-  return { t: t, setLang: setLang, getLang: getLang, applyStatic: applyStatic };
+  return { t: t, setLang: setLang, setLangLive: setLangLive, getLang: getLang, applyStatic: applyStatic };
 })();
 
 /* 全局翻译函数 T（游戏/页面脚本通用）：所有脚本均在 i18n.js 之后加载，安全直接使用 */

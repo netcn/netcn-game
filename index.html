@@ -125,7 +125,8 @@
     <input id="q" type="search" autocomplete="off" placeholder="搜索游戏…（按 / 聚焦）" aria-label="搜索游戏">
   </div>
   <div class="nc-tools">
-    <button class="lang-btn" id="lang" type="button" aria-label="切换语言">EN</button>
+    <button class="nc-tool" id="ncTheme" type="button" aria-label="切换明暗">☾</button>
+    <button class="nc-tool" id="ncLang" type="button" aria-label="切换语言">EN</button>
   </div>
 </nav>
 
@@ -157,7 +158,7 @@
   var GAMES = window.GAMES || [];
   var CATS = window.GAME_CATEGORIES || [];
   var COLORS = ['#00f0ff', '#b967ff', '#39ff14', '#ff9f1c', '#ff2d95', '#ffe600', '#7c5cff'];
-  var en = !!(window.Arcade && Arcade.i18n && Arcade.i18n.getLang() === 'en');
+  var en = localStorage.getItem('arcade_lang') === 'en';
   var L = en
     ? { all: 'All', search: 'Search games...', none: 'No games matched. Try another word.',
         searchAria: 'Search games', lang: '中' }
@@ -252,10 +253,22 @@
     if (e.key === '/' && document.activeElement !== qEl) { e.preventDefault(); qEl.focus(); }
     if (e.key === 'Escape' && document.activeElement === qEl) { qEl.value = ''; filter(); qEl.blur(); }
   });
-  var langBtn = document.getElementById('lang');
-  langBtn.textContent = L.lang;
-  langBtn.addEventListener('click', function () {
-    if (window.Arcade && Arcade.i18n) Arcade.i18n.setLang(en ? 'zh' : 'en');
+  /* 中英切换由 shell/shell.js 统一驱动：即时重算文案并重渲染，不整页刷新 */
+  function refreshLabels() {
+    en = localStorage.getItem('arcade_lang') === 'en';
+    L = en
+      ? { all: 'All', search: 'Search games...', none: 'No games matched. Try another word.',
+          searchAria: 'Search games', lang: '中' }
+      : { all: '全部', search: '搜索游戏…（按 / 聚焦）', none: '没有匹配的游戏，换个词试试。',
+          searchAria: '搜索游戏', lang: 'EN' };
+    qEl.placeholder = L.search;
+    qEl.setAttribute('aria-label', L.searchAria);
+    emptyEl.textContent = L.none;
+    render();
+  }
+  document.addEventListener('ncn:lang', function (e) {
+    if (window.Arcade && Arcade.i18n && Arcade.i18n.setLangLive) Arcade.i18n.setLangLive(e.detail.lang);
+    refreshLabels();
   });
 
   render();
