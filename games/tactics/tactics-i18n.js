@@ -106,8 +106,8 @@
   d.en['gs.tactics.allActed'] = 'All units have acted this turn';
   d.zh['gs.tactics.hintMsg'] = '建议先行动 {name}（优先攻击 {target}）';
   d.en['gs.tactics.hintMsg'] = 'Tip: move {name} first (focus {target})';
-  d.zh['gs.tactics.helpText'] = '战棋对决训练的是战术规划与多单位协调——密码协议中的「多方安全计算」需要同样的多参与者协调。';
-  d.en['gs.tactics.helpText'] = 'Tactics games train strategic planning and multi-unit coordination — "secure multi-party computation" in cryptography needs the same multi-participant coordination.';
+  d.zh['gs.tactics.helpText'] = '战棋对决训练的是战术规划与多单位协调。';
+  d.en['gs.tactics.helpText'] = 'Tactics games train strategic planning and multi-unit coordination.';
 
   /* ---------- 新增：关卡选择 / 难度 ---------- */
   d.zh['gs.tactics.pickTitle'] = '战役 · 选择关卡';

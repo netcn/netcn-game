@@ -352,7 +352,7 @@ body::after {
 }
 
 /* ============================================================
-   破译 · P0 组件样式（设置/音效/toast/教程/大厅控件）
+   游戏街机厅 · 组件样式（设置/音效/toast/教程/控件）
    依赖 extras.js 注入的 --accent 变量
    ============================================================ */
 
@@ -529,15 +529,6 @@ body.has-header-quickbar .qb-btn .qb-tip.show {
 .tut-list li span { font-size: 12px; }
 .tut-start { width: 100%; text-align: center; }
 
-/* 人物档案浮层：关联游戏按钮 */
-.pp-game {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 6px 12px; border-radius: 999px; text-decoration: none;
-  color: var(--neon-cyan); border: 1px solid var(--accent, #00f0ff);
-  background: color-mix(in srgb, var(--accent, #00f0ff) 10%, transparent);
-  font-size: 12px; transition: background 0.12s, box-shadow 0.12s;
-}
-.pp-game:hover { background: color-mix(in srgb, var(--accent, #00f0ff) 22%, transparent); box-shadow: 0 0 10px color-mix(in srgb, var(--accent, #00f0ff) 30%, transparent); }
 
 /* ---------- 大厅控件 ---------- */
 #lobby-controls {
@@ -845,7 +836,7 @@ html.theme-daylight .c4-cell {
   border-color: rgba(122, 91, 184, 0.38);
 }
 
-/* F4：晨光主题残存深色块修复——游戏页顶栏与编年史史料框 */
+/* F4：晨光主题残存深色块修复——游戏页顶栏 */
 html.theme-daylight .shell-header {
   background: rgba(253, 248, 236, .92);
   border-bottom-color: rgba(122, 91, 184, .28);
@@ -894,15 +885,6 @@ html.theme-daylight .fp-dot.off,
 html.theme-daylight .footprint .fp-dot { background: rgba(122, 91, 184, 0.08); color: var(--text-dim); }
 html.theme-daylight .anav-item:hover { background: rgba(122, 91, 184, 0.10); }
 
-/* 隐藏密文彩蛋线索（N3 ARG）：极小字，细心玩家才会发现 */
-.egg-hint {
-  display: block; margin-top: 4px; font-size: 9px; line-height: 1.6;
-  color: rgba(138,138,160,.35); letter-spacing: .5px; user-select: none;
-}
-.egg-hint:hover { color: rgba(255,230,0,.7); }
-/* 彩蛋提示双语：HTML 内置两份文案，按 <html lang> 纯 CSS 切换（不依赖 JS/SW 缓存状态） */
-html[lang="en"] .egg-hint .egg-zh { display: none; }
-html:not([lang="en"]) .egg-hint .egg-en { display: none; }
 
 
 /* ============================================================
@@ -977,15 +959,6 @@ body.game-phase-overlay .ss-tools {
 }
 .ui-ic.ic-search {
   --ui-ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M15.5 15.5L21 21' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-.ui-ic.ic-scroll {
-  --ui-ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='4' y='4' width='16' height='16' rx='2' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M8 8h8M8 12h8M8 16h5' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-.ui-ic.ic-clip {
-  --ui-ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7v9a3 3 0 0 0 6 0V6a2 2 0 0 0-4 0v10' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-.ui-ic.ic-book {
-  --ui-ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 5a2 2 0 0 1 2-2h5v16H6a2 2 0 0 0-2 2V5z' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M20 5a2 2 0 0 0-2-2h-5v16h5a2 2 0 0 1 2 2V5z' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
 }
 .ui-ic.ic-bulb {
   --ui-ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3a6 6 0 0 0-3 11v3h6v-3a6 6 0 0 0-3-11z' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M9 20h6' stroke='black' stroke-width='2'/%3E%3C/svg%3E");

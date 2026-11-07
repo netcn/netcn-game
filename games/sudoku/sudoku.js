@@ -146,7 +146,7 @@ window.GAME_TUTORIAL_STEPS = [
     return true;
   }
 
-  var dailyMode = false; // 当前是否每日一题（解完计入今日破译中心）
+  var dailyMode = false; // 当前是否每日一题（解完计入每日挑战）
   function applyGen(gen, dailyMsg) {
     clearSave();
     puzzle = gen.puzzle; solution = gen.solution;

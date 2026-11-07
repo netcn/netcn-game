@@ -147,8 +147,8 @@ Arcade.music = (function () {
           notes: [72,0,0,0,0,0,0,0,76,0,0,0,0,79,0,0,0,0,76,0,0,0,0,0,0,0,0,0,0,0,0,0,69,0,0,0,0,0,0,0,72,0,0,0,0,76,0,0,0,0,72,0,0,0,0,0,0,0,0,0,0,0,0,0,69,0,0,0,0,0,0,0,72,0,0,0,0,77,0,0,0,0,72,0,0,0,0,0,0,0,0,0,0,0,0,0,67,0,0,0,0,0,0,0,71,0,0,0,0,74,0,0,0,0,71,0,0,0,0,0,0,0,0,0,0,0,0,0] }
       ]
     },
-    /* ========== 破译 · 悬疑：d 小调 Dm-Bb-F-A，半音点缀 ========== */
-    cipher: {
+    /* ========== 悬疑氛围：d 小调 Dm-Bb-F-A，半音点缀 ========== */
+    mystery: {
       bpm: 102, steps: 128,
       parts: [
         { wave: 'square', vol: 0.07, pan: -0.25,
@@ -165,8 +165,8 @@ Arcade.music = (function () {
                   'k',0,0,0,0,0,0,0,'h',0,0,0,0,0,0,0, 'k',0,0,0,0,0,0,0,'h',0,0,0,0,0,0,0, 'k',0,0,0,0,0,0,0,'h',0,0,0,0,0,0,0, 'k',0,0,0,0,0,0,0,'h',0,0,0,0,0,0,0] }
       ]
     },
-    /* ========== 破译 B · 神秘低音变奏：Dm-Bb-F-A ========== */
-    cipher2: {
+    /* ========== 神秘低音变奏 B：Dm-Bb-F-A ========== */
+    mystery2: {
       bpm: 94, steps: 128,
       parts: [
         { wave: 'square', vol: 0.07, pan: -0.25,
@@ -203,7 +203,7 @@ Arcade.music = (function () {
     minesweeper: 'puzzle', chess: 'puzzle', checkers: 'puzzle', gomoku: 'puzzle', reversi: 'puzzle',
     fourline: 'puzzle', siege: 'puzzle', diceluck: 'puzzle', poker: 'puzzle',
     blackjack: 'puzzle', deckbuilder: 'puzzle', tactics: 'puzzle',
-    /* 破译类（cipher / cipher2 随机） */
+    /* 悬疑类曲目（随机） */
     
   };
 
@@ -212,7 +212,7 @@ Arcade.music = (function () {
     lobby: ['lobby', 'lobby2'],
     arcade: ['arcade', 'arcade2'],
     puzzle: ['puzzle', 'puzzle2'],
-    cipher: ['cipher', 'cipher2']
+    mystery: ['mystery', 'mystery2']
   };
   var lastTrack = null;
 
@@ -407,7 +407,7 @@ Arcade.music = (function () {
   }
 
   function play(gameId) {
-    /* 页面/大厅可直接传曲类名（lobby/arcade/puzzle/cipher），游戏 id 走映射 */
+    /* 页面/大厅可直接传曲类名（lobby/arcade/puzzle/mystery），游戏 id 走映射 */
     var group = TRACK_POOL[gameId] ? gameId : trackFor(gameId);
     var name = pickTrack(group);
     if (current === name) return;

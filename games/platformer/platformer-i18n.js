@@ -204,6 +204,6 @@
   d.en['gs.platformer.spike'] = 'Hit a spike — back to the checkpoint…';
   d.zh['gs.platformer.winFmt'] = '抵达终点！金币 {n}';
   d.en['gs.platformer.winFmt'] = 'Goal reached! Coins {n}';
-  d.zh['gs.platformer.helpText'] = '平台跳跃训练的是精确时机与空间判断——侧信道攻击需要同样的精确性：在正确的时间测量正确的东西。';
+  d.zh['gs.platformer.helpText'] = '平台跳跃训练的是精确时机与空间判断。';
   d.en['gs.platformer.helpText'] = 'Platformers train precise timing and spatial judgment — side-channel attacks need the same precision: measuring the right thing at the right time.';
 })();

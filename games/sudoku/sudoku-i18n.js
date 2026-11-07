@@ -40,8 +40,8 @@
   d.en['gs.sudoku.winErr'] = ', {n} errors';
   d.zh['gs.sudoku.winClean'] = '，零失误！';
   d.en['gs.sudoku.winClean'] = ', no mistakes!';
-  d.zh['gs.sudoku.helpText'] = '数独是约束满足的巅峰之作：每行每列每宫的约束逐步缩小可能性——这与「已知明文逐步缩小密钥空间」的密码分析推理链完全同构。';
-  d.en['gs.sudoku.helpText'] = 'Sudoku is the pinnacle of constraint satisfaction: row/column/box constraints progressively narrow possibilities — structurally identical to known-plaintext attacks narrowing the keyspace.';
+  d.zh['gs.sudoku.helpText'] = '数独是约束满足的巅峰之作：每行每列每宫的约束逐步缩小可能性。';
+  d.en['gs.sudoku.helpText'] = 'Sudoku is the pinnacle of constraint satisfaction: row/column/box constraints progressively narrow possibilities.';
   d.zh['gs.sudoku.pickCell'] = '先点选一个空格';
   d.en['gs.sudoku.pickCell'] = 'Select an empty cell first';
   d.zh['gs.sudoku.timeLabel'] = '用时';

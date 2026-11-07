@@ -1,5 +1,5 @@
 /* ============================================================
-   破译 · 扩展基座（P0）
+   游戏街机厅 · 扩展基座
    模块：settings / audio / fx / ui / tutorial
    纯静态零依赖；须在 storage.js 之后加载
    游戏页由 shell.js 自动注入；大厅在 index.html 直接引入
@@ -16,37 +16,9 @@ Arcade.escapeHtml = function (s) {
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 };
 
-/* ---------------- 归档长文懒加载（C2 字典拆分） ----------------
-   i18n-archive.js（人物传记/引言、密件全文）体积较大，核心字典
-   只保留摘要键。people/artifacts 内容页同步加载；其余页面在
-   打开人物档案弹窗时按需注入一次（与 music.js 延迟加载同模式）。
-   i18n-archive.js 末尾会置 window.__arcadeArchiveLoaded 防重复注入。 */
-Arcade.ensureArchive = function (cb) {
-  if (window.__arcadeArchiveLoaded) { if (cb) cb(); return; }
-  window.__arcadeArchiveLoaded = true; /* 先置位防并发重复注入；失败也只降级为占位文案 */
-  var pre = (typeof window.__arcadePagePrefix === 'string') ? window.__arcadePagePrefix
-    : (/\/games\/[^/]+\//.test(location.pathname) ? '../../' : '');
-  /* arcade enc v1：加载编码载荷 + 解码引导（secure.js 统一解码执行）*/
-  var s = document.createElement('script');
-  s.src = pre + 'assets/js/enc/i18n-archive.enc.js';
-  s.onload = function () {
-    var sec = document.createElement('script');
-    sec.src = pre + 'assets/js/secure.js';
-    sec.onload = sec.onerror = function () { if (cb) cb(); };
-    (document.head || document.documentElement).appendChild(sec);
-  };
-  s.onerror = function () { if (cb) cb(); };
-  (document.head || document.documentElement).appendChild(s);
-};
-
 /* ---------------- 设置：音效 / 音乐 / 语言 / 主题 / 触感 ---------------- */
 Arcade.settings = (function () {
   var KEY = 'arcade_settings';
-  /* arcade enc v1 · 密钥散件 B */
-  window.__DSH_MASK = [0x72, 0xA4, 0x0C, 0xE9, 0x5B, 0x3F, 0xD1, 0x68];
-  /* arcade enc v1 · 密钥散件 C（全站共有文件；decode 引导读取）*/
-  window.__DSH_SALT = String.fromCharCode(112,111,121,105) + '-enc-v1';
-
   var THEMES = ['neon', 'daylight'];
   /* 各主题的主题色（meta theme-color / iOS 状态栏联动；与 theme.css 配色一致） */
   var THEME_COLORS = { neon: '#0a0a12', daylight: '#f2ead8' };
@@ -368,7 +340,7 @@ Arcade.ui = (function () {
     });
     bar.appendChild(themeBtn);
 
-    // 搜索：全站搜索浮层（游戏/章节/人物/密件）
+    // 搜索：游戏搜索浮层
     var searchBtn = document.createElement('button');
     searchBtn.className = 'qb-btn';
     searchBtn.setAttribute('aria-label', T('settings.search'));
@@ -423,7 +395,7 @@ Arcade.ui = (function () {
     }
   }
 
-  /* ---------- 全站搜索浮层：游戏 / 章节 / 人物 / 密件 ---------- */
+  /* ---------- 游戏搜索浮层 ---------- */
   var searchOv = null, searchInput = null, searchList = null;
 
   function openSearch() {
@@ -557,7 +529,7 @@ Arcade.ui = (function () {
     window.__arcadeHotkeysBound = true;
   }
 
-  /* 检索四类内容（大小写不敏感，匹配标题/名称/描述/正文前 60 字） */
+  /* 检索游戏（大小写不敏感，匹配标题/描述/id） */
   function doSearch(q, T) {
     var html = '';
     var any = false;
@@ -579,61 +551,6 @@ Arcade.ui = (function () {
             '<span class="si-ic">' + g.icon + '</span>' +
             '<span class="si-t">' + T('g.' + g.id + '.t') + '</span>' +
             '<span class="si-d">' + (T('g.' + g.id + '.d') || '').slice(0, 36) + '</span></a>';
-        });
-      }
-    }
-
-    // ② 编年史章节（12 章）
-    if (window.Arcade && Arcade.stories && window.STORIES) {
-      var chRes = Arcade.stories.getAll().filter(function (ch) {
-        var t = (T(ch.titleKey) || '').toLowerCase();
-        var one = (T(ch.titleKey + '.one') || '').toLowerCase();
-        return t.indexOf(q) >= 0 || one.indexOf(q) >= 0;
-      });
-      if (chRes.length) {
-        any = true;
-        html += '<div class="search-group">' + T('search.chapters') + ' <span>' + chRes.length + '</span></div>';
-        chRes.slice(0, 6).forEach(function (ch) {
-          html += '<a class="search-item" href="' + up + 'story.html?id=' + ch.id + '">' +
-            '<span class="si-ic"><span class="ui-ic ic-scroll" aria-hidden="true"></span></span>' +
-            '<span class="si-t">' + T(ch.titleKey) + '</span>' +
-            '<span class="si-d">' + (T(ch.titleKey + '.one') || '').slice(0, 36) + '</span></a>';
-        });
-      }
-    }
-
-    // ③ 人物志（13 人）
-    if (window.PEOPLE) {
-      var pRes = window.PEOPLE.filter(function (pid) {
-        return (T('stp.' + pid + '.name') || '').toLowerCase().indexOf(q) >= 0 ||
-          (T('stp.' + pid + '.role') || '').toLowerCase().indexOf(q) >= 0;
-      });
-      if (pRes.length) {
-        any = true;
-        html += '<div class="search-group">' + T('search.people') + ' <span>' + pRes.length + '</span></div>';
-        pRes.slice(0, 6).forEach(function (pid) {
-          html += '<a class="search-item" href="' + up + 'people.html?id=' + pid + '" data-person="' + pid + '">' +
-            '<span class="si-ic"><span class="ui-ic ic-book" aria-hidden="true"></span></span>' +
-            '<span class="si-t">' + T('stp.' + pid + '.name') + '</span>' +
-            '<span class="si-d">' + (T('stp.' + pid + '.role') || '').slice(0, 36) + '</span></a>';
-        });
-      }
-    }
-
-    // ④ 密件册（41 件）
-    if (window.ARTIFACTS) {
-      var aRes = window.ARTIFACTS.filter(function (art) {
-        return (T('sta.' + art.id + '.name') || '').toLowerCase().indexOf(q) >= 0 ||
-          (T('sta.' + art.id + '.desc') || '').toLowerCase().indexOf(q) >= 0;
-      });
-      if (aRes.length) {
-        any = true;
-        html += '<div class="search-group">' + T('search.artifacts') + ' <span>' + aRes.length + '</span></div>';
-        aRes.slice(0, 6).forEach(function (art) {
-          html += '<a class="search-item" href="' + up + 'artifacts.html?id=' + art.id + '" data-art="' + art.id + '">' +
-            '<span class="si-ic"><span class="ui-ic ic-clip" aria-hidden="true"></span></span>' +
-            '<span class="si-t">' + T('sta.' + art.id + '.name') + '</span>' +
-            '<span class="si-d">' + (T('sta.' + art.id + '.desc') || '').slice(0, 36) + '</span></a>';
         });
       }
     }
@@ -701,11 +618,6 @@ Arcade.tutorial = (function () {
     });
     html += '</ul>' +
       '  <button class="btn green tut-start">' + T('extras.tutStart') + '</button>' +
-      (opts.narrativeLink
-        ? '<div style="margin-top:10px;text-align:center">' +
-          '<a href="' + opts.narrativeLink.href + '" style="font-size:11px;color:var(--text-dim);text-decoration:none">' +
-          opts.narrativeLink.text + '</a></div>'
-        : '') +
       '</div>';
     overlay.innerHTML = html;
     document.body.appendChild(overlay);
@@ -730,110 +642,7 @@ Arcade.tutorial = (function () {
     });
   }
 
-  /* 人物档案浮层（编年史人物志 / 正文 chip 使用）
-     含「出没章节」反链 + 「关联游戏」区 + 「冷知识」行
-     C2：传记/引言在归档词典中 —— 先确保懒加载再渲染 */
-  function profile(pid) {
-    Arcade.ensureArchive(function () { renderProfile(pid); });
-  }
-
-  function renderProfile(pid) {
-    var overlay = document.createElement('div');
-    overlay.className = 'tut-overlay';
-    var up = (typeof window.__arcadePagePrefix === 'string') ? window.__arcadePagePrefix : '';
-    // 反查：该人物出现于哪些章节（章节链接）
-    var chIds = [];
-    if (window.STORIES && Arcade.stories) {
-      Arcade.stories.getAll().forEach(function (ch) {
-        if (ch.people && ch.people.indexOf(pid) >= 0) chIds.push(ch);
-      });
-    }
-    var chaptersHtml = chIds.map(function (ch) {
-      return '<a class="pp-game" href="' + up + 'story.html?id=' + ch.id + '"><span class="ui-ic ic-scroll" aria-hidden="true"></span> ' + T(ch.titleKey) + '</a>';
-    }).join('');
-    // 反查：该人物出现于哪些章节 → 收集章节游戏（去重）
-    var gameIds = [];
-    var gameSeen = {};
-    if (window.STORIES && Arcade.stories) {
-      Arcade.stories.getAll().forEach(function (ch) {
-        if (!ch.people || ch.people.indexOf(pid) < 0) return;
-        ch.games.forEach(function (gid) {
-          if (!gameSeen[gid]) { gameSeen[gid] = 1; gameIds.push(gid); }
-        });
-      });
-    }
-    var gamesHtml = '';
-    gameIds.forEach(function (gid) {
-      var g = null;
-      (window.GAMES || []).forEach(function (x) { if (x.id === gid) g = x; });
-      if (!g) return;
-      gamesHtml += '<a class="pp-game" href="' + up + g.path + '">' +
-        g.icon + ' ' + T('g.' + gid + '.t') + '</a>';
-    });
-    /* C4：反查相关密件（该人物所在章节的密件） */
-    var artIds = [];
-    var artSeen = {};
-    if (window.ARTIFACTS && chIds.length) {
-      chIds.forEach(function (ch) {
-        (window.ARTIFACTS || []).forEach(function (a) {
-          if (a.chapterId === ch.id && !artSeen[a.id]) { artSeen[a.id] = 1; artIds.push(a.id); }
-        });
-      });
-    }
-    var artsHtml = '';
-    artIds.forEach(function (aid) {
-      artsHtml += '<a class="pp-game" href="' + up + 'artifacts.html?id=' + aid + '">' +
-        '<span class="ui-ic ic-clip" aria-hidden="true"></span> ' + T('sta.' + aid + '.name') + '</a>';
-    });
-    var fact = T('stp.' + pid + '.fact');
-    var hasFact = fact && fact.indexOf('stp.') !== 0;
-    var html = '<div class="tut-modal" style="max-width:420px">' +
-      '<div style="text-align:center;margin:8px 0"><span class="ui-ic ic-book" style="width:34px;height:34px" aria-hidden="true"></span></div>' +
-      '<div class="tut-title" style="text-align:center">' + T('stp.' + pid + '.name') + '</div>' +
-      '<div style="text-align:center;font-size:11px;color:var(--text-dim);margin-bottom:10px">' +
-      T('stp.' + pid + '.era') + ' · ' + T('stp.' + pid + '.role') + '</div>' +
-      '<p style="font-size:13px;color:var(--text-main);line-height:1.9;margin:0 0 10px">' + T('stp.' + pid + '.bio') + '</p>' +
-      '<div style="font-size:12px;color:var(--neon-yellow);line-height:1.7;border-top:1px dashed rgba(255,230,0,.3);padding-top:8px">“' + T('stp.' + pid + '.quote') + '”</div>' +
-      (window.PEOPLE_SRC && window.PEOPLE_SRC[pid] && window.PEOPLE_SRC[pid].length
-        ? '<div style="margin-top:10px;border-top:1px dashed rgba(255,255,255,.12);padding-top:8px">' +
-          '<div style="font-size:11px;color:var(--text-dim);margin-bottom:6px"><span class="ui-ic ic-book" aria-hidden="true"></span> ' + T('common.srcTitle') + '</div>' +
-          '<div style="font-size:11px;line-height:1.9;color:var(--text-dim)">' +
-          window.PEOPLE_SRC[pid].map(function (s) {
-            return s.url
-              ? '<a style="color:var(--neon-cyan)" href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a>'
-              : s.label;
-          }).join(' · ') + '</div></div>'
-        : '') +
-      (chaptersHtml
-        ? '<div style="margin-top:12px;border-top:1px dashed rgba(255,255,255,.12);padding-top:10px">' +
-          '<div style="font-size:11px;color:var(--text-dim);margin-bottom:6px">' + T('people.chaptersOf') + '</div>' +
-          '<div style="display:flex;flex-wrap:wrap;gap:6px">' + chaptersHtml + '</div></div>'
-        : '') +
-      (gamesHtml
-        ? '<div style="margin-top:12px;border-top:1px dashed rgba(255,255,255,.12);padding-top:10px">' +
-          '<div style="font-size:11px;color:var(--text-dim);margin-bottom:6px">' + T('people.gamesOf') + '</div>' +
-          '<div style="display:flex;flex-wrap:wrap;gap:6px">' + gamesHtml + '</div></div>'
-        : '') +
-      (artsHtml
-        ? '<div style="margin-top:12px;border-top:1px dashed rgba(255,255,255,.12);padding-top:10px">' +
-          '<div style="font-size:11px;color:var(--text-dim);margin-bottom:6px">' + T('people.artifactsOf') + '</div>' +
-          '<div style="display:flex;flex-wrap:wrap;gap:6px">' + artsHtml + '</div></div>'
-        : '') +
-      (hasFact
-        ? '<div style="margin-top:12px;border-top:1px dashed rgba(0,240,255,.25);padding-top:10px;font-size:12px;color:var(--neon-cyan);line-height:1.8">' +
-          '<span class="ui-ic ic-bulb" aria-hidden="true"></span> ' + fact + '</div>'
-        : '') +
-      '<button class="btn green" style="margin-top:14px;width:100%">' + T('common.close') + '</button>' +
-      '</div>';
-    overlay.innerHTML = html;
-    document.body.appendChild(overlay);
-    makeAccessible(overlay);
-    overlay.querySelector('.tut-start, .btn.green').addEventListener('click', function () {
-      if (overlay.closeA11y) overlay.closeA11y(); else if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-    });
-  }
-
-  return { show: show, auto: auto, profile: profile };
+  return { show: show, auto: auto };
 })();
 
 /* ---------------- 调味：统一的音效 + 特效封装 ----------------

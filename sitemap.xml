@@ -11,11 +11,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://game.netcn.org/story.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://game.netcn.org/games/snake/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -279,15 +274,5 @@
     <loc>https://game.netcn.org/games/billiards/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://game.netcn.org/people.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://game.netcn.org/artifacts.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>

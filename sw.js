@@ -1,11 +1,11 @@
 /* ============================================================
    游戏街机厅 Service Worker（game/ 子站）
-   —— 缓存版本：arcade-hall-v8（2026-11-06 首页由 3D 大厅改为 2D 游戏目录）
+   —— 缓存版本：arcade-hall-v9（2026-11-07 删除旧叙事层）
    —— 策略：HTML 导航 network-first（离线回退缓存）；
            静态资源（JS/CSS/字体/图片）cache-first
-   —— 预缓存：2D 首页 + 档案页 + 53 款游戏页 + 子站 assets 核心
+   —— 预缓存：2D 首页 + 53 款游戏页 + 子站 assets 核心
    ============================================================ */
-var CACHE = 'arcade-hall-v8';
+var CACHE = 'arcade-hall-v9';
 /* 与 53 个游戏页内脚本引用保持一致，预缓存带版本号的 URL，
    避免离线打开时因 ?v= 未命中缓存而加载失败 */
 var ASSET_VER = '20261105i';
@@ -22,10 +22,6 @@ var EXTRA_SCRIPTS = {
 var CORE = [
   './',
   './index.html',
-  './story.html',
-  './people.html',
-  './artifacts.html',
-  './assets/js/archive.js',
   './games.js',
   './manifest.webmanifest',
   './assets/css/theme.css',
@@ -40,14 +36,8 @@ var CORE = [
   './assets/js/core/extras.js',
   './assets/js/core/music.js',
   './assets/js/rank.js',
-  './assets/js/plot.js',
-  './assets/js/stories.js',
   './assets/js/shell.js',
   './assets/js/pwa.js',
-  './assets/js/secure.js',
-  './assets/js/enc/i18n-archive.enc.js',
-  './assets/js/enc/i18n-story.enc.js',
-  /* 首页 2026-11-06 起不再使用 three.js / hall-*，旧 3D 资源只留在磁盘上 */
   /* 32 款游戏共用的画布工具库（未带版本号，游戏页按原路径引用） */
   './games/_shared/kit.js',
   './games/_shared/pipegen.js',

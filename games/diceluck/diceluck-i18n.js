@@ -72,8 +72,8 @@
   d.en['gs.diceluck.cat.yahtzee'] = 'Five of a Kind';
   d.zh['gs.diceluck.cat.chance'] = '机会（任意总和）';
   d.en['gs.diceluck.cat.chance'] = 'Chance (any total)';
-  d.zh['gs.diceluck.helpText'] = '快艇骰子训练的是概率思维——密码学中「生日悖论」和「碰撞概率」的计算都建立在同样的概率直觉之上。';
-  d.en['gs.diceluck.helpText'] = 'Dice games train probabilistic thinking — the birthday paradox and collision probability calculations in cryptography rest on the same probability intuition.';
+  d.zh['gs.diceluck.helpText'] = '快艇骰子训练的是概率思维。';
+  d.en['gs.diceluck.helpText'] = 'Dice games train probabilistic thinking.';
   d.zh['gs.diceluck.helpKeys'] = '键盘：1–5 锁定骰子 / 空格掷骰（滚动中则快进）/ 方向键选分类 / 回车确认';
   d.en['gs.diceluck.helpKeys'] = 'Keys: 1–5 lock a die / Space rolls (fast-forward while rolling) / arrows pick a category / Enter confirms';
   d.zh['gs.diceluck.diffTitle'] = '难度';

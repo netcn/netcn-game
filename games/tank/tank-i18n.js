@@ -7,19 +7,19 @@
   function en(k, v) { d.en[k] = v; }
 
   /* 共享字典 gt.pickT / gt.pickD 带 emoji 图标，本目录内覆盖为纯文字（避免 emoji 当美术图标） */
-  zh('gt.pickT', '守卫密码局'); en('gt.pickT', 'DEFEND THE CIPHER BUREAU');
-  zh('gt.pickD', '敌军坦克来窃取密码机——守住基地，清剿全部波次。选择难度：');
-  en('gt.pickD', 'Enemy tanks are coming for the cipher machine — hold the base and clear every wave. Choose a difficulty:');
+  zh('gt.pickT', '守卫基地'); en('gt.pickT', 'DEFEND THE BASE');
+  zh('gt.pickD', '敌军坦克来袭——守住基地，清剿全部波次。选择难度：');
+  en('gt.pickD', 'Enemy tanks are coming — hold the base and clear every wave. Choose a difficulty:');
   /* 结算标题/正文同样去掉 emoji，并去掉与统计栏重复的分数字样 */
   zh('gt.winT', '基地守住了！'); en('gt.winT', 'BASE SECURED!');
-  zh('gt.winD', '清剿全部 {w} 波敌军（击杀 {k}）。<br>密码机安然无恙，敌军一无所获。');
-  en('gt.winD', 'All {w} waves cleared ({k} kills).<br>The cipher machine is safe — the enemy got nothing.');
+  zh('gt.winD', '清剿全部 {w} 波敌军（击杀 {k}）。<br>基地安然无恙。');
+  en('gt.winD', 'All {w} waves cleared ({k} kills).<br>The base is safe.');
   zh('gt.loseBase', '基地失守！'); en('gt.loseBase', 'BASE LOST!');
   zh('gt.loseAll', '守军尽没'); en('gt.loseAll', 'GARRISON WIPED');
-  zh('gt.loseBaseD', '敌军炸毁了密码局——机密失守。');
-  en('gt.loseBaseD', 'The enemy destroyed the cipher bureau.');
-  zh('gt.loseAllD', '坦克全部战毁，密码局失去最后防线。');
-  en('gt.loseAllD', 'All tanks lost — the bureau lost its last line of defense.');
+  zh('gt.loseBaseD', '敌军炸毁了基地。');
+  en('gt.loseBaseD', 'The enemy destroyed the base.');
+  zh('gt.loseAllD', '坦克全部战毁，基地失去最后防线。');
+  en('gt.loseAllD', 'All tanks lost — the base lost its last line of defense.');
   zh('gt.score', '得分'); en('gt.score', 'SCORE');
 
   zh('gs.tank.hq', '密'); en('gs.tank.hq', 'HQ');
@@ -90,6 +90,6 @@
   zh('gs.tank.up.twin.desc', '每次开火并排射出两发炮弹，火力翻倍。');
   en('gs.tank.up.twin.desc', 'Fire two parallel shells per shot — double the firepower.');
 
-  zh('gs.tank.helpText', '坦克大战的加密通信模式模拟了真实战场：恩尼格玛的每日密钥、JN-25 的加表复用、紫密的双路步进——每种密码体系的破与防都在战场上演。<a class="gh-link" href="../../story.html?id=ww1">见编年史「一战的电波战」→</a>');
-  en('gs.tank.helpText', 'Tank battle\'s encrypted communication mode simulates real warfare: Enigma\'s daily keys, JN-25\'s additive reuse, Purple\'s dual-path stepping — every cipher system\'s cat-and-mouse plays out on the battlefield. <a class="gh-link" href="../../story.html?id=ww1">See the Chronicle chapter "The Radio War" &rarr;</a>');
+  zh('gs.tank.helpText', '守住基地、清剿全部波次；优先打掉靠近基地的坦克，留意道具掉落。');
+  en('gs.tank.helpText', 'Hold the base and clear every wave; prioritise tanks nearing the base and grab power-ups.');
 })();

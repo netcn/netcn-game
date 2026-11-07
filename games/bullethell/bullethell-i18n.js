@@ -38,8 +38,8 @@
   d.en['gs.bullethell.tut4t'] = 'Scoring';
   d.zh['gs.bullethell.tut4'] = '共 12 波：第 6 波中 Boss、第 12 波三阶段最终 Boss。击破敌机 +100 起、中 Boss +1200、最终 Boss +5000，擦弹 +2 且连击越高奖励越多。';
   d.en['gs.bullethell.tut4'] = '12 waves: a mid-boss at wave 6 and a three-phase final boss at wave 12. Enemies from +100, mid-boss +1200, final boss +5000, plus graze bonuses that scale with your combo.';
-  d.zh['gs.bullethell.helpText'] = '弹幕射击训练的是多目标并行处理——破译员同时追踪多条密文线索、多个假设、多个密钥候选时需要同样的并行思维。';
-  d.en['gs.bullethell.helpText'] = 'Bullet-hell trains multi-target parallel processing — codebreakers tracking multiple ciphertext threads, hypotheses and key candidates need the same parallel thinking.';
+  d.zh['gs.bullethell.helpText'] = '弹幕射击训练的是多目标并行处理。';
+  d.en['gs.bullethell.helpText'] = 'Bullet-hell trains multi-target parallel processing.';
 
   /* ---- 旗舰重制新增文案 ---- */
   d.zh['gs.bullethell.hudScore'] = '得分';

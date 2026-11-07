@@ -173,6 +173,6 @@
   d.en['gs.blocks.help'] = 'Keys: ←→ move · ↓ soft drop · ↑ rotate · Space hard drop · C hold · P pause; touch buttons support hold-to-repeat';
   d.zh['gs.blocks.paused'] = '已暂停';
   d.en['gs.blocks.paused'] = 'Paused';
-  d.zh['gs.blocks.helpText'] = '俄罗斯方块训练的是空间优化与即时决策——破译员面对密文时也需要在有限信息下做出最优的「摆放」选择：哪种分析方法最合适？';
-  d.en['gs.blocks.helpText'] = 'Tetris trains spatial optimization and instant decision-making — codebreakers face the same challenge: choosing the best analytical approach with limited information.';
+  d.zh['gs.blocks.helpText'] = '俄罗斯方块训练的是空间优化与即时决策。';
+  d.en['gs.blocks.helpText'] = 'Tetris trains spatial optimization and instant decision-making.';
 })();

@@ -58,8 +58,8 @@
   d.en['gs.hashi.dailyPre'] = 'Daily · {n}';
   d.zh['gs.hashi.dailyMsg'] = '每日一题（{d}）：{n}';
   d.en['gs.hashi.dailyMsg'] = 'Daily puzzle ({d}): {n}';
-  d.zh['gs.hashi.helpText'] = '岛屿连线是图论连通性的训练——网络协议中的「安全通道建立」就是在不可信的图上建立可信的连接。';
-  d.en['gs.hashi.helpText'] = 'Hashi trains graph-theory connectivity — "secure channel establishment" in network protocols builds trusted connections over untrusted graphs.';
+  d.zh['gs.hashi.helpText'] = '岛屿连线是图论连通性的训练。';
+  d.en['gs.hashi.helpText'] = 'Hashi trains graph-theory connectivity.';
   d.zh['gs.hashi.expert'] = '专家';
   d.en['gs.hashi.expert'] = 'Expert';
   d.zh['gs.hashi.packBtn'] = '关卡包';

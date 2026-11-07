@@ -84,8 +84,8 @@
   d.en['gs.dungeon.startMsg'] = 'Explore floor 1, find the stairs, and watch out for monsters!';
   d.zh['gs.dungeon.sub'] = '随机生成的 5 层地牢，每层都不同。<br>击败怪物、拾取宝物、击杀 Boss 通关。<br>支持 方向键 / WASD / 触屏。';
   d.en['gs.dungeon.sub'] = '5 randomly generated floors, never the same twice.<br>Defeat monsters, grab treasure, slay the Boss to win.<br>Supports arrow keys / WASD / touch.';
-  d.zh['gs.dungeon.helpText'] = '地牢探险训练的是探索未知与风险评估——密码分析员面对一份未知加密体制的密文时，探索过程与此完全相同：试探、学习、调整策略。';
-  d.en['gs.dungeon.helpText'] = 'Dungeon crawling trains exploring the unknown and risk assessment — a cryptanalyst facing an unknown cipher explores the same way: probe, learn, adapt.';
+  d.zh['gs.dungeon.helpText'] = '地牢探险训练的是探索未知与风险评估。';
+  d.en['gs.dungeon.helpText'] = 'Dungeon crawling trains exploring the unknown and risk assessment.';
   d.zh['gs.dungeon.pauseBtn'] = '暂停';
   d.en['gs.dungeon.pauseBtn'] = 'Pause';
   d.zh['gs.dungeon.pauseT'] = '已暂停';

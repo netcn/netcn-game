@@ -104,6 +104,6 @@
   d.en['gs.sokoban.replayBtn'] = 'Replay';
   d.zh['gs.sokoban.playAgain'] = '再玩一次';
   d.en['gs.sokoban.playAgain'] = 'Play again';
-  d.zh['gs.sokoban.helpText'] = '推箱子训练的是状态空间搜索与死锁避免——100 关全部通关后，各关最佳步数之和就是最终成绩。密码分析中「避免走进不可解的分支」需要同样的前瞻性思维。';
-  d.en['gs.sokoban.helpText'] = 'Sokoban trains state-space search and deadlock avoidance — clear all 100 levels and your score is the sum of each level’s best moves. Cryptanalysis needs the same forward thinking to avoid "unsolvable branches".';
+  d.zh['gs.sokoban.helpText'] = '推箱子训练的是状态空间搜索与死锁避免，100 关全部通关后，各关最佳步数之和就是最终成绩。';
+  d.en['gs.sokoban.helpText'] = 'Sokoban trains state-space search and deadlock avoidance clear all 100 levels and your score is the sum of each level’s best moves.';
 })();

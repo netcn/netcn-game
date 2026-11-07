@@ -58,8 +58,8 @@
   d.en['gs.reversi.startAi'] = 'You play black first; the AI plays white';
   d.zh['gs.reversi.startBlack'] = '黑棋先行';
   d.en['gs.reversi.startBlack'] = 'Black moves first';
-  d.zh['gs.reversi.helpText'] = '黑白棋训练的是全局思维与翻转策略——密码学中的「密钥翻转」（密钥轮换）需要同样的全局视角：改变一个密钥会影响整个系统。';
-  d.en['gs.reversi.helpText'] = 'Reversi trains global thinking and flip strategies — "key rotation" in cryptography needs the same global view: changing one key affects the entire system.';
+  d.zh['gs.reversi.helpText'] = '黑白棋训练的是全局思维与翻转策略。';
+  d.en['gs.reversi.helpText'] = 'Reversi trains global thinking and flip strategies.';
   d.zh['gs.reversi.blackWins'] = '黑方获胜！';
   d.en['gs.reversi.blackWins'] = 'Black Wins!';
   d.zh['gs.reversi.whiteWins'] = '白方获胜！';

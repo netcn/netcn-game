@@ -114,8 +114,8 @@
   d.en['gs.towerdefense.pauseHint'] = 'Press P or the button below to resume';
   d.zh['gs.towerdefense.resume'] = '继续';
   d.en['gs.towerdefense.resume'] = 'Resume';
-  d.zh['gs.towerdefense.helpText'] = '塔防训练的是多层防御策略——密码系统的「纵深防御」需要同样的分层思维。快捷键：1-6 选塔 · 方向键移动光标 · Enter 放置 · U 升级 · S 出售 · 空格开始/暂停 · P 暂停。';
-  d.en['gs.towerdefense.helpText'] = 'Tower defense trains layered defense strategy — cryptography\'s "defense in depth" needs the same layered thinking. Keys: 1-6 select · arrows move cursor · Enter place · U upgrade · S sell · Space start/pause · P pause.';
+  d.zh['gs.towerdefense.helpText'] = '塔防训练的是多层防御策略，快捷键：1-6 选塔 · 方向键移动光标 · Enter 放置 · U 升级 · S 出售 · 空格开始/暂停 · P 暂停。';
+  d.en['gs.towerdefense.helpText'] = 'Tower defense trains layered defense strategy Keys: 1-6 select · arrows move cursor · Enter place · U upgrade · S sell · Space start/pause · P pause.';
   d.zh['gs.towerdefense.waveSub'] = '共 {n} 个敌人 · 守住基地';
   d.en['gs.towerdefense.waveSub'] = '{n} enemies · hold the base';
   d.zh['gs.towerdefense.waveClear'] = '波次肃清';

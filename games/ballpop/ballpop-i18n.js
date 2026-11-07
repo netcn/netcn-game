@@ -54,8 +54,8 @@
   d.en['gs.ballpop.tut6t'] = 'Boss & portals';
   d.zh['gs.ballpop.tut6'] = '第 5/8/12 关是 Boss 战：每消除 1 球扣 2 点血，炸弹 ×3、闪电 ×2，Boss 护盾期间伤害降至 25%；成对传送门连通弹球与落球，传送带冷却与次数上限，不会无限循环。';
   d.en['gs.ballpop.tut6'] = 'Stages 5/8/12 are Boss fights: each cleared bubble deals 2 damage, bombs ×3 and lightning ×2, and its shield cuts damage to 25%. Paired portals warp shots and falling bubbles with cooldowns and a use limit — no infinite loops.';
-  d.zh['gs.ballpop.helpText'] = '弹球消消训练的是物理直觉与连锁反应预测——密码学中的「雪崩效应」也是一种连锁反应：一个比特的改变扩散到整个输出。';
-  d.en['gs.ballpop.helpText'] = 'Ball-popper trains physics intuition and chain-reaction prediction — the "avalanche effect" in cryptography is also a chain reaction: one bit change spreading through the entire output.';
+  d.zh['gs.ballpop.helpText'] = '弹球消消训练的是物理直觉与连锁反应预测。';
+  d.en['gs.ballpop.helpText'] = 'Ball-popper trains physics intuition and chain-reaction prediction.';
   /* ---- 旗舰重制新增（zh/en 对称） ---- */
   d.zh['gs.ballpop.pickT'] = '弹珠消消';
   d.en['gs.ballpop.pickT'] = 'Ball Pop';

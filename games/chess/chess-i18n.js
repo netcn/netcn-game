@@ -136,8 +136,8 @@
   d.en['gs.chess.pN'] = 'Knight';
   d.zh['gs.chess.pP'] = '兵';
   d.en['gs.chess.pP'] = 'Pawn';
-  d.zh['gs.chess.helpText'] = '国际象棋 AI 用极小极大算法搜索博弈树——这正是密码学中「攻击者模型」的形式化：假设对手最优应对，寻找自己的最优策略。';
-  d.en['gs.chess.helpText'] = 'Chess AI uses minimax to search the game tree — formalizing cryptography\'s "adversary model": assume the opponent plays optimally, find your best strategy.';
+  d.zh['gs.chess.helpText'] = '国际象棋 AI 用极小极大算法搜索博弈树。';
+  d.en['gs.chess.helpText'] = 'Chess AI uses minimax to search the game tree.';
   d.zh['gs.chess.hudScore'] = '得分';
   d.en['gs.chess.hudScore'] = 'SCORE';
   d.zh['gs.chess.hudBest'] = '最高';

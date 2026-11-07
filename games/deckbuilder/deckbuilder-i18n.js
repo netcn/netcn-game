@@ -160,8 +160,8 @@
   d.en['gs.deckbuilder.intentLine'] = 'Intent: {i} {d} damage';
   d.zh['gs.deckbuilder.poisonTag'] = ' · 毒 {p}';
   d.en['gs.deckbuilder.poisonTag'] = ' · poison {p}';
-  d.zh['gs.deckbuilder.helpText'] = '卡牌构筑训练的是组合优化与资源管理——密码系统设计中的「密钥调度」就是组合优化：如何在有限资源下最大化安全性。';
-  d.en['gs.deckbuilder.helpText'] = 'Deck-builders train combinatorial optimization and resource management — "key scheduling" in cipher design is combinatorial optimization: maximizing security with limited resources.';
+  d.zh['gs.deckbuilder.helpText'] = '卡牌构筑训练的是组合优化与资源管理。';
+  d.en['gs.deckbuilder.helpText'] = 'Deck-builders train combinatorial optimization and resource management.';
 
   /* ---------- 旗舰版：难度 / 地图 / 节点 ---------- */
   d.zh['gs.deckbuilder.diffTitle'] = '选择难度';
@@ -424,8 +424,8 @@
   d.en['gs.deckbuilder.tut3'] = 'Block lasts through the enemy action, then clears. Enemy block clears after it acts. Read the intent above its head.';
   d.zh['gs.deckbuilder.tut4'] = '每层战斗胜利可三选一加卡；成绩=层数×100+精英×60+遗物×15+金币+剩余生命×2。';
   d.en['gs.deckbuilder.tut4'] = 'Win a battle to pick 1 of 3 cards. Score = floors×100 + elites×60 + relics×15 + gold + HP×2.';
-  d.zh['gs.deckbuilder.helpText'] = '卡牌构筑训练组合优化与资源管理：能量是预算，抽牌是信息流，意图是威胁情报。每回合先读敌人意图，再决定攻击还是格挡——这正是密码系统设计中的「密钥调度」思路：在有限资源下最大化安全性。';
-  d.en['gs.deckbuilder.helpText'] = 'Deck-builders train combinatorial optimization: energy is your budget, draws are information flow, intents are threat intel. Read the intent, then decide attack or block — the same "key scheduling" logic in cipher design: maximizing security with limited resources.';
+  d.zh['gs.deckbuilder.helpText'] = '卡牌构筑训练组合优化与资源管理：能量是预算，抽牌是信息流，意图是威胁提示。每回合先读敌人意图，再决定攻击还是格挡。';
+  d.en['gs.deckbuilder.helpText'] = 'Read the intent, then decide attack or block.';
 
   /* ---------- 交互补充 ---------- */
   d.zh['gs.deckbuilder.close'] = '关闭';

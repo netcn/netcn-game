@@ -150,6 +150,6 @@
   d.zh['gs.circuit.resume'] = '继续';
   d.en['gs.circuit.resume'] = 'Resume';
 
-  d.zh['gs.circuit.helpText'] = '电路连接是布尔逻辑的物理化身：AND、OR、XOR 在导线中流淌。单向管像二极管，只允许电流朝一个方向通过；交叉管则让两条信号线同格穿过却互不干扰。现代密码的每一次加密，本质上都是一次布尔电路运算。';
-  d.en['gs.circuit.helpText'] = 'Circuit connection is Boolean logic made physical: AND, OR and XOR flow through wires. One-way pipes act like diodes, letting current pass in only one direction; cross pipes let two signals share a cell without connecting. Every modern encryption is, at heart, a Boolean circuit operation.';
+  d.zh['gs.circuit.helpText'] = '电路连接是布尔逻辑的物理化身：AND、OR、XOR 在导线中流淌。单向管像二极管，只允许电流朝一个方向通过；交叉管则让两条信号线同格穿过却互不干扰。';
+  d.en['gs.circuit.helpText'] = 'Circuit connection is Boolean logic made physical: AND, OR and XOR flow through wires. One-way pipes act like diodes, letting current pass in only one direction; cross pipes let two signals share a cell without connecting.';
 })();

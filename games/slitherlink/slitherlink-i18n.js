@@ -48,8 +48,8 @@
   d.en['gs.slitherlink.dailyPre'] = 'Daily · {n}';
   d.zh['gs.slitherlink.dailyMsg'] = '每日一题（{d}）：{n}';
   d.en['gs.slitherlink.dailyMsg'] = 'Daily puzzle ({d}): {n}';
-  d.zh['gs.slitherlink.helpText'] = '数回是图论循环检测的视觉训练——密码协议中的「环路检测」（防止重放攻击）需要同样的图论直觉。';
-  d.en['gs.slitherlink.helpText'] = 'Slitherlink trains graph-theory cycle detection visually — "loop detection" in cryptographic protocols (preventing replay attacks) needs the same graph intuition.';
+  d.zh['gs.slitherlink.helpText'] = '数回是图论循环检测的视觉训练。';
+  d.en['gs.slitherlink.helpText'] = 'Slitherlink trains graph-theory cycle detection visually.';
   d.zh['gs.slitherlink.winTitle'] = '闭合环完成！';
   d.en['gs.slitherlink.winTitle'] = 'Loop Complete!';
   d.zh['gs.slitherlink.ovSteps'] = '总步数';

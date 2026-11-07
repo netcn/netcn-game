@@ -48,7 +48,7 @@ window.GAMES = [
     },
   {
     id: 'tank', title: '铁壁防线', category: '经典街机',
-    desc: '敌军坦克进攻密码局，驾驶守卫坦克清剿多波次敌军，道具系统 + 三难度。',
+    desc: '敌军坦克进攻基地，驾驶守卫坦克清剿多波次敌军，道具系统 + 三难度。',
     icon: '🎖️', path: 'games/tank/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '10min',
@@ -183,7 +183,7 @@ window.GAMES = [
     },
   {
     id: 'llk', title: '连连看', category: '逻辑谜题',
-    desc: '国民品类 × 密码符号：两段三折线连通配对消除，三关递进 + 每日一题。',
+    desc: '经典连连看：两段三折线内配对消除，三关递进 + 每日一题。',
     icon: '🔗', path: 'games/llk/index.html',
     mobile: 'ok', bestMode: 'min',
     lvl: 'easy', time: '5min',
@@ -340,7 +340,7 @@ window.GAMES = [
     },
   {
     id: 'sectorsiege', title: '拉线占领', category: '牌骰策略',
-    desc: '即时战略：随机网格产兵，拖线派兵占领——吞并中立滚雪球，统一密码战线。',
+    desc: '即时战略：随机网格产兵，拖线派兵占领——吞并中立滚雪球，统一整张地图。',
     icon: '⚡', path: 'games/sectorsiege/index.html',
     mobile: 'ok', bestMode: 'min',
     lvl: 'mid', time: '5min',

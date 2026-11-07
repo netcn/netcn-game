@@ -46,8 +46,8 @@
   d.en['gs.gomoku.off'] = 'OFF';
   d.zh['gs.gomoku.help'] = '你执黑先行 · 三档 AI · 可开禁手 · 十二道残局等你破解';
   d.en['gs.gomoku.help'] = 'You play black and move first · three AI levels · optional foul rule · twelve puzzles to crack';
-  d.zh['gs.gomoku.helpText'] = '五子棋训练的是模式识别与威胁评估——破译员在密文中识别「可能的模式」时用的是同样的直觉：这个结构是巧合还是有意设计？';
-  d.en['gs.gomoku.helpText'] = 'Gomoku trains pattern recognition and threat assessment — codebreakers use the same intuition when spotting "possible patterns" in ciphertext: coincidence or design?';
+  d.zh['gs.gomoku.helpText'] = '五子棋训练的是模式识别与威胁评估。';
+  d.en['gs.gomoku.helpText'] = 'Gomoku trains pattern recognition and threat assessment.';
   d.zh['gs.gomoku.aiWin'] = 'AI 获胜';
   d.en['gs.gomoku.aiWin'] = 'AI wins';
   d.zh['gs.gomoku.draw'] = '棋盘已满，平局';

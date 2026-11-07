@@ -148,6 +148,6 @@
   d.zh['gs.pixeldino.ovDist'] = '最远距离';
   d.en['gs.pixeldino.ovDist'] = 'Top distance';
 
-  d.zh['gs.pixeldino.helpText'] = '恐龙快跑训练的是持续专注与阈值反应——密码系统的「入侵检测」需要同样的持续监控与阈值触发机制。';
-  d.en['gs.pixeldino.helpText'] = 'The pixel dino trains sustained focus and threshold reaction — "intrusion detection" in cryptographic systems needs the same continuous monitoring and threshold triggering.';
+  d.zh['gs.pixeldino.helpText'] = '恐龙快跑训练的是持续专注与阈值反应。';
+  d.en['gs.pixeldino.helpText'] = 'The pixel dino trains sustained focus and threshold reaction.';
 })();

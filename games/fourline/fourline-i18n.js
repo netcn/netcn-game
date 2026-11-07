@@ -111,8 +111,8 @@
   en('pauseDesc', 'The timer is paused. Press Esc or tap Resume to return to the game.');
   zh('resume', '继续');
   en('resume', 'Resume');
-  zh('helpText', '四子棋训练的是威胁识别与多重规划——密码分析员同时追踪多个攻击向量时需要同样的多重规划能力。');
-  en('helpText', 'Connect-4 trains threat identification and multi-threaded planning — cryptanalysts tracking multiple attack vectors simultaneously need the same multi-threaded planning.');
+  zh('helpText', '四子棋训练的是威胁识别与多重规划。');
+  en('helpText', 'Connect-4 trains threat identification and multi-threaded planning.');
 
   zh('dailySolved', '今日已解');
   en('dailySolved', 'Solved today');

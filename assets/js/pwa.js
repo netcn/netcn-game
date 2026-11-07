@@ -38,7 +38,7 @@
     }
 
     window.addEventListener('load', function () {
-      /* 子站根页面（story.html / index.html）用 ./sw.js，游戏页在 games/<id>/ 下用 ../../sw.js */
+      /* 子站根页面（index.html）用 ./sw.js，游戏页在 games/<id>/ 下用 ../../sw.js */
       var swUrl = /\/games\/[^/]+\//.test(location.pathname) ? '../../sw.js' : 'sw.js';
       navigator.serviceWorker.register(swUrl).then(function (reg) {
         /* 后续更新：waiting → 自动接管 + 提示（忽略提示则下次导航自然生效） */

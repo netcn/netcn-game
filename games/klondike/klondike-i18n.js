@@ -17,8 +17,8 @@
 
   d.zh['gs.klondike.pickT'] = '解码牌局 · 纸牌接龙';
   d.en['gs.klondike.pickT'] = 'DECODE THE DEAL · KLONDIKE';
-  d.zh['gs.klondike.pickD'] = '打乱的牌局就是被「换位」的密文——把它重组回 A→K 四套完整序列。先选玩法，再选难度：';
-  d.en['gs.klondike.pickD'] = 'The shuffled deal is transposed ciphertext — rebuild it into four complete A→K sequences. Pick a variant, then a difficulty:';
+  d.zh['gs.klondike.pickD'] = '把打乱的牌局重新整理成 A→K 四套完整序列。先选玩法，再选难度：';
+  d.en['gs.klondike.pickD'] = 'Rebuild the shuffled deal into four complete A→K sequences. Pick a variant, then a difficulty:';
   d.zh['gs.klondike.pickDaily'] = '每日一题（三张翻）';
   d.en['gs.klondike.pickDaily'] = 'Daily Puzzle (draw 3)';
   d.zh['gs.klondike.dailyLev'] = '每日一题 · 三张翻';
@@ -112,10 +112,10 @@
   d.zh['gs.klondike.hintNoneFc'] = '无可用移动，可撤销或重开';
   d.en['gs.klondike.hintNoneFc'] = 'No legal move — undo or start a new deal';
 
-  d.zh['gs.klondike.winT'] = '牌局破解！';
+  d.zh['gs.klondike.winT'] = '牌局完成！';
   d.en['gs.klondike.winT'] = 'DEAL SOLVED!';
-  d.zh['gs.klondike.winD'] = '四套 A→K 全部还原，总用时 <b>{s}s</b> · {n} 步<br>换位密文已重组为完整序列。';
-  d.en['gs.klondike.winD'] = 'All four A→K sequences restored in <b>{s}s</b> · {n} moves<br>The transposed ciphertext is reassembled.';
+  d.zh['gs.klondike.winD'] = '四套 A→K 全部还原，总用时 <b>{s}s</b> · {n} 步<br>牌局已整理为完整序列。';
+  d.en['gs.klondike.winD'] = 'All four A→K sequences restored in <b>{s}s</b> · {n} moves<br>The deal is complete.';
   d.zh['gs.klondike.fcWinT'] = 'FreeCell 全部归位！';
   d.en['gs.klondike.fcWinT'] = 'FREECELL CLEARED!';
   d.zh['gs.klondike.fcWinD'] = '52 张牌全部归位，用时 <b>{s}s</b> · {n} 步<br>八列全明，四堆圆满。';
@@ -140,8 +140,8 @@
   d.zh['gs.klondike.tut4'] = '成绩 = 通关用时；每日一题固定洗牌（人人同局）并共享连破记录。两种玩法分别记录个人最佳。';
   d.en['gs.klondike.tut4'] = 'Score = time to win; the daily puzzle uses a fixed shuffle (everyone gets the same deal) and shares the streak record. Each variant keeps its own personal best.';
 
-  d.zh['gs.klondike.helpText'] = '纸牌接龙训练的是序列规划与延迟决策——有些牌现在不打，留着后面用。这与密码学中「保存截获密文等未来技术破解」（先存后解）的策略同构。';
-  d.en['gs.klondike.helpText'] = 'Klondike trains sequence planning and deferred decisions — some cards you don\'t play now, saving them for later. Mirrors "harvest now, decrypt later": saving intercepted ciphertext for future technology.';
+  d.zh['gs.klondike.helpText'] = '纸牌接龙训练的是序列规划与延迟决策，有些牌现在不打，留着后面用。';
+  d.en['gs.klondike.helpText'] = 'Klondike trains sequence planning and deferred decisions some cards you don\'t play now, saving them for later.';
 
   d.zh['gs.klondike.bestLbl'] = '最佳';
   d.en['gs.klondike.bestLbl'] = 'BEST';
@@ -156,7 +156,7 @@
   d.zh['gs.klondike.pickDiff'] = '选择玩法';
   d.en['gs.klondike.pickDiff'] = 'Change Mode';
 
-  d.zh['gs.klondike.dailySolved'] = '今日已破译 · {s}s · 连破 {n} 天';
+  d.zh['gs.klondike.dailySolved'] = '今日已完成 · {s}s · 连胜 {n} 天';
   d.en['gs.klondike.dailySolved'] = 'Solved today · {s}s · {n}-day streak';
   d.zh['gs.klondike.dailyStreak'] = '连破 {n} 天';
   d.en['gs.klondike.dailyStreak'] = '{n}-day streak';

@@ -82,7 +82,7 @@
   d.en['gs.rhythm.playingMsg'] = '{s} · {b} BPM · {d}';
   d.zh['gs.rhythm.help'] = 'D/F/J/K 或 ←↓↑→ 击打 · 长按保持\n滑键跟随箭头 · P / 空格暂停';
   d.en['gs.rhythm.help'] = 'D/F/J/K or ←↓↑→ · hold · swipe\nP / Space pause';
-  d.zh['gs.rhythm.helpText'] = '节拍脉冲训练的是时序精确性——侧信道攻击中的「差分功耗分析」需要精确到纳秒级的时序测量。节奏感是精确度的直觉训练。';
+  d.zh['gs.rhythm.helpText'] = '节拍脉冲训练的是时序精确性，节奏感是精确度的直觉训练。';
   d.en['gs.rhythm.helpText'] = 'Rhythm games train temporal precision — differential power analysis in side-channel attacks needs nanosecond-level timing measurements. Rhythm is intuition training for precision.';
 
   d.zh['gs.rhythm.jPerfect'] = '完美';

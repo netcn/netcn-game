@@ -52,7 +52,7 @@
   d.en['gs.curling.tut4t'] = 'Scoring';
   d.zh['gs.curling.tut4'] = '标准赛共 8 端，每端双方各投 4 壶；只给最靠近圆心的一方计分，8 端后总分高者胜，成绩=总分。';
   d.en['gs.curling.tut4'] = 'Eight ends in standard play, four rocks each per end; only the side closest to the button scores. Highest total after 8 ends wins; your score is the total.';
-  d.zh['gs.curling.helpText'] = '冰壶训练的是精确控制与摩擦力预测——侧信道攻击中的「功耗分析」需要同样的物理精确度：测量微小能量差异。';
+  d.zh['gs.curling.helpText'] = '冰壶训练的是精确控制与摩擦力预测。';
   d.en['gs.curling.helpText'] = 'Curling trains precision control and friction prediction — power analysis in side-channel attacks needs the same physical precision: measuring tiny energy differences.';
 
   /* 旗舰版新增文案 */

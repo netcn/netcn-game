@@ -42,8 +42,8 @@
   d.en['gs.brickbash.livesLeft'] = '{n} lives left — click or press Space to launch';
   d.zh['gs.brickbash.levelUp'] = '清屏！进入第 {n} 关，球速提升';
   d.en['gs.brickbash.levelUp'] = 'Cleared! Entering level {n} — ball speed up';
-  d.zh['gs.brickbash.helpText'] = '打砖块训练的是角度计算与反弹预测——与差分分析中「预测输入差分如何传播到输出差分」的思维方式同构。';
-  d.en['gs.brickbash.helpText'] = 'Brick-basher trains angle calculation and bounce prediction — structurally identical to differential cryptanalysis: predicting how input differences propagate to output differences.';
+  d.zh['gs.brickbash.helpText'] = '打砖块训练的是角度计算与反弹预测。';
+  d.en['gs.brickbash.helpText'] = 'Brick-basher trains angle calculation and bounce prediction.';
   /* ---- 旗舰版新增（zh/en 对称） ---- */
   d.zh['gs.brickbash.pickTitle'] = '选择难度';
   d.en['gs.brickbash.pickTitle'] = 'CHOOSE DIFFICULTY';

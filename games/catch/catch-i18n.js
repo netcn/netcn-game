@@ -44,8 +44,8 @@
   d.en['gs.catch.loseLife'] = '-1 life';
   d.zh['gs.catch.miss'] = '漏接 -1';
   d.en['gs.catch.miss'] = 'Missed -1';
-  d.zh['gs.catch.helpText'] = '接物大作战训练的是轨迹预测——破译员预测密钥流下一个输出的过程与此完全相同：从过去的模式推断未来的行为。';
-  d.en['gs.catch.helpText'] = 'Catch-game trains trajectory prediction — the same process codebreakers use to predict the next keystream output from past patterns.';
+  d.zh['gs.catch.helpText'] = '接物大作战训练的是轨迹预测。';
+  d.en['gs.catch.helpText'] = 'Catch-game trains trajectory prediction.';
 
   /* —— 旗舰版新增 —— */
   d.zh['gs.catch.hudBest'] = '最高分';

@@ -38,8 +38,8 @@
   d.en['gs.frogcross.tut4t'] = 'Scoring';
   d.zh['gs.frogcross.tut4'] = '成绩=用时秒数，越少越好。';
   d.en['gs.frogcross.tut4'] = 'Your score is the time in seconds — the lower, the better.';
-  d.zh['gs.frogcross.helpText'] = '青蛙过河训练的是时机选择与风险评估——密码战中「何时使用已破译的情报」需要同样的时机判断：过早暴露会打草惊蛇。';
-  d.en['gs.frogcross.helpText'] = 'Frog-crossing trains timing selection and risk assessment — in cryptographic warfare, "when to use broken intelligence" needs the same judgment: acting too early tips off the enemy.';
+  d.zh['gs.frogcross.helpText'] = '青蛙过河训练的是时机选择与风险评估。';
+  d.en['gs.frogcross.helpText'] = 'Frog-crossing trains timing selection and risk assessment.';
   d.zh['gs.frogcross.aria'] = '青蛙过河 游戏画面';
   d.en['gs.frogcross.aria'] = 'Frog Crossing game screen';
   d.zh['gs.frogcross.level'] = '关卡';

@@ -88,7 +88,7 @@
   d.zh['gs.sheep.toolShuffleToast'] = '洗牌';
   d.zh['gs.sheep.noTool'] = '该道具已用完';
   d.zh['gs.sheep.resumed'] = '已恢复上次进度（仅存本机）';
-  d.zh['gs.sheep.helpText'] = '绵羊三消训练的是空间模式匹配——破译员在密文中识别重复结构时用的正是同样的空间直觉。';
+  d.zh['gs.sheep.helpText'] = '绵羊三消训练的是空间模式匹配。';
 
   /* 第二轮：成就 / 图鉴 / 周挑战 */
   d.zh['gs.sheep.achvTitle'] = '成就墙';
@@ -272,7 +272,7 @@
   d.en['gs.sheep.toolShuffleToast'] = 'Shuffle';
   d.en['gs.sheep.noTool'] = 'That tool is used up';
   d.en['gs.sheep.resumed'] = 'Resumed last progress (stored on this device only)';
-  d.en['gs.sheep.helpText'] = 'Sheep matching trains spatial pattern recognition — the same spatial intuition codebreakers use when spotting repeating structures in ciphertext.';
+  d.en['gs.sheep.helpText'] = 'Sheep matching trains spatial pattern recognition.';
 
   /* Round 2: achievements / codex / weekly challenge */
   d.en['gs.sheep.achvTitle'] = 'Achievements';

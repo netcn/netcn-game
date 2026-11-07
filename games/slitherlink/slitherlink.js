@@ -643,7 +643,7 @@
   var puzzle = null;
   var edgeState = {};   // key -> 0 未画 / 1 画 / -1 ✕
   var steps = 0;
-  var isDaily = false;  // 当前是否每日一题（解完计入今日破译中心）
+  var isDaily = false;  // 当前是否每日一题（解完计入每日挑战）
   var solved = false;   // 是否已判定完成（通关后清档）
   var tutorialOn = false, tutorialStep = 0;
   var packOn = false, packLevel = 0;

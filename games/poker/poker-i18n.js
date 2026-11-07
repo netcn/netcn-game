@@ -230,6 +230,6 @@
   d.en['gs.poker.changeTableAgain'] = 'Switch table';
   d.zh['gs.poker.keyHint'] = '键盘：C 跟注/过牌 · R 加注 · F 弃牌 · S 摊牌 · N 下一手 · Esc 暂停';
   d.en['gs.poker.keyHint'] = 'Keys: C call/check · R raise · F fold · S show · N next hand · Esc pause';
-  d.zh['gs.poker.helpText'] = '德州扑克是信息不对称下的概率决策：底池赔率、位置与牌力共同决定跟注或加注——与密码分析中「在有限信息下评估攻击成本与收益」的思维一致。';
-  d.en['gs.poker.helpText'] = 'Hold\'em is probabilistic decision-making under asymmetric information: pot odds, position and hand strength decide call or raise — the same mindset as weighing attack cost against payoff with limited information in cryptanalysis.';
+  d.zh['gs.poker.helpText'] = '德州扑克是信息不对称下的概率决策：底池赔率、位置与牌力共同决定跟注或加注。';
+  d.en['gs.poker.helpText'] = 'Hold\'em is probabilistic decision-making under asymmetric information: pot odds, position and hand strength decide call or raise.';
 })();

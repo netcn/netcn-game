@@ -58,9 +58,9 @@ Arcade.storage = (function () {
 })();
 
 /* ============================================================
-   每日破译中心持久化
+   每日挑战持久化
    key：arcade_daily_{gameId}_{YYYY-M-D} = 当日破解用时（秒）
-       arcade_daily_streak / arcade_daily_last = 连续破译天数
+       arcade_daily_streak / arcade_daily_last = 连续完成天数
    依赖：上方 Arcade.storage 同一 localStorage
    ============================================================ */
 
@@ -86,16 +86,16 @@ Arcade.daily = (function () {
     }
   }
 
-  /** 某游戏某日（默认今天）是否已破译今日题 */
+  /** 某游戏某日（默认今天）是否已完成今日题 */
   function isSolved(gameId, d) {
     return get(PREFIX + gameId + '_' + dayStr(d)) !== null;
   }
-  /** 某游戏某日（默认今天）的破解用时；未破译返回 null */
+  /** 某游戏某日（默认今天）的完成用时；未完成返回 null */
   function solvedTime(gameId, d) {
     var v = get(PREFIX + gameId + '_' + dayStr(d));
     return v === null ? null : Number(v);
   }
-  /** 记录今日题已破译（用时秒）；同一天同游戏只记一次，返回是否新记录 */
+  /** 记录今日题已完成（用时秒）；同一天同游戏只记一次，返回是否新记录 */
   function markSolved(gameId, seconds) {
     var k = PREFIX + gameId + '_' + dayStr();
     if (get(k) !== null) return false;

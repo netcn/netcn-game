@@ -40,8 +40,8 @@
   d.en['gs.match3.finalScore'] = ' Final score: {n}';
   d.zh['gs.match3.invalid'] = '无效交换：没有形成三连';
   d.en['gs.match3.invalid'] = 'Invalid swap: no match of three';
-  d.zh['gs.match3.helpText'] = '三消训练的是模式匹配与连锁反应预测——密码分析员在密文中寻找重复模式时用的正是同一种视觉搜索技能。';
-  d.en['gs.match3.helpText'] = 'Match-3 trains pattern matching and chain-reaction prediction — the same visual search skill cryptanalysts use when hunting repeating patterns in ciphertext.';
+  d.zh['gs.match3.helpText'] = '三消训练的是模式匹配与连锁反应预测。';
+  d.en['gs.match3.helpText'] = 'Match-3 trains pattern matching and chain-reaction prediction.';
   d.zh['gs.match3.pickTitle'] = '选择难度';
   d.en['gs.match3.pickTitle'] = 'Choose Difficulty';
   d.zh['gs.match3.pickHint'] = '三连即可消除；4 连造直线炸弹，5 连造彩虹宝石。';

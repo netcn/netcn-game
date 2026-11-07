@@ -162,6 +162,6 @@
   d.en['gs.bowling.tut3t'] = 'Scoring';
   d.zh['gs.bowling.tut3'] = 'Strike = 10 + 下两投，Spare = 10 + 下一投；每局逐帧累计，第 10 帧按规则补球。球重影响质量、球速、旋转与碰撞偏转；油道影响油量、速度衰减与钩球，10 帧内油面会逐渐破坏、后段更易起钩。';
   d.en['gs.bowling.tut3'] = 'Strike = 10 + next two throws, Spare = 10 + next throw. Frames accumulate as you play, and the 10th frame follows bonus-throw rules. Ball weight changes mass, speed, revs and collision deflection; oil patterns change oil volume, speed decay and hook, while lane oil breaks down across the 10 frames and hooks more late.';
-  d.zh['gs.bowling.helpText'] = '保龄球训练角度、旋转与碰撞的物理计算——差分分析中「输入差分如何通过 S 盒传播」的追踪需要同样的物理直觉。重球偏转小、轻球好控；长油后段更冲，干道更早起钩。';
+  d.zh['gs.bowling.helpText'] = '保龄球训练角度、旋转与碰撞的物理计算，重球偏转小、轻球好控；长油后段更冲，干道更早起钩。';
   d.en['gs.bowling.helpText'] = 'Bowling trains angles, spin and collision physics — tracking how input differences propagate through S-boxes in differential analysis needs the same intuition. Heavy balls deflect less, light balls are easier to control; long oil reserves hook for later, while dry lanes hook earlier.';
 })();

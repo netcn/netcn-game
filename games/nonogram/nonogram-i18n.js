@@ -60,7 +60,7 @@
   z('gs.nonogram.lv15', '15×15 极限', '15×15 Extreme');
 
   z('gs.nonogram.time', '用时 {t}', 'Time {t}');
-  z('gs.nonogram.win', '「{p}」破译成功！用时 {s} 秒', '"{p}" decoded! Time: {s}s');
+  z('gs.nonogram.win', '「{p}」完成！用时 {s} 秒', '"{p}" solved! Time: {s}s');
   z('gs.nonogram.hudTime', '用时', 'TIME');
   z('gs.nonogram.hudPic', '图案', 'PICTURE');
   z('gs.nonogram.hudHint', '提示', 'HINTS');
@@ -100,8 +100,8 @@
   z('gs.nonogram.nextPuzzle', '下一题', 'Next puzzle');
   z('gs.nonogram.changeDiff', '换难度', 'Change tier');
   z('gs.nonogram.playAgain', '再来一局', 'Play again');
-  z('gs.nonogram.helpText', '数织是约束传播的视觉训练：行与列的数字提示逐步确定像素状态——与「已知明文逐步揭示密钥位」的推理链完全一致。',
-    'Nonograms train constraint propagation visually: row and column clues progressively determine pixel states — the same chain as known-plaintext attacks revealing key bits.');
+  z('gs.nonogram.helpText', '按每行每列的数字线索涂格，慢慢显出藏着的图案。',
+    'Use row and column hints to paint a hidden picture.');
 
   /* ---- 棋盘缩放 ---- */
   z('gs.nonogram.zoomIn', '放大棋盘', 'Zoom in');

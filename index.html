@@ -60,7 +60,6 @@
     -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
   }
   .nc-tools .lang-btn{border-radius:999px;min-width:38px}
-  .nc-tools .story-link{font-size:12px}
   .wrap{max-width:1120px;margin:0 auto;padding:24px 16px 52px}
   .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 26px}
   .chip{
@@ -124,7 +123,6 @@
     <input id="q" type="search" autocomplete="off" placeholder="搜索游戏…（按 / 聚焦）" aria-label="搜索游戏">
   </div>
   <div class="nc-tools">
-    <a class="story-link" href="story.html">史话</a>
     <button class="lang-btn" id="lang" type="button" aria-label="切换语言">EN</button>
   </div>
 </nav>
@@ -160,9 +158,9 @@
   var en = !!(window.Arcade && Arcade.i18n && Arcade.i18n.getLang() === 'en');
   var L = en
     ? { all: 'All', search: 'Search games...', none: 'No games matched. Try another word.',
-        searchAria: 'Search games', lang: '中', story: 'Chronicle' }
+        searchAria: 'Search games', lang: '中' }
     : { all: '全部', search: '搜索游戏…（按 / 聚焦）', none: '没有匹配的游戏，换个词试试。',
-        searchAria: '搜索游戏', lang: 'EN', story: '史话' };
+        searchAria: '搜索游戏', lang: 'EN' };
 
   function T(key, fallback) {
     if (!window.Arcade || !Arcade.i18n) return fallback;
@@ -257,7 +255,6 @@
   langBtn.addEventListener('click', function () {
     if (window.Arcade && Arcade.i18n) Arcade.i18n.setLang(en ? 'zh' : 'en');
   });
-  document.querySelector('.nc-tools .story-link').textContent = L.story;
 
   render();
 })();

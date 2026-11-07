@@ -642,7 +642,7 @@ window.GAME_TUTORIAL_STEPS = [
     S.msg = node.type === 'boss'
       ? t('msgBossFight').replace('{name}', enemyName(S.enemy))
       : (node.type === 'elite' ? t('eliteFight') : t('msgStart'));
-    if (S.cls === 'warlock') S.msg += ' · ' + t('cls.warlock.open');
+    if (S.cls === 'warlock') S.msg += ' · ' + t('gs.deckbuilder.cls.warlock.open');
     S.log = '';
     drawCards(5);
     syncUI();

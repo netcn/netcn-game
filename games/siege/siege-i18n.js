@@ -123,8 +123,8 @@
   d.zh['gs.siege.playAgain'] = '再来一局';
   d.en['gs.siege.playAgain'] = 'Play Again';
 
-  d.zh['gs.siege.helpText'] = '攻城棋训练的是战术规划与资源分配——密码战中的「密钥管理」就是资源分配：哪些密钥用在哪些信道上，何时轮换。';
-  d.en['gs.siege.helpText'] = 'Siege games train tactical planning and resource allocation — "key management" in cryptographic warfare is resource allocation: which keys for which channels, when to rotate.';
+  d.zh['gs.siege.helpText'] = '攻城棋训练的是战术规划与资源分配。';
+  d.en['gs.siege.helpText'] = 'Siege games train tactical planning and resource allocation.';
 
   /* ---- 旗舰扩展：弓手 / 法术 / 战役 ---- */
   d.zh['gs.siege.tut6t'] = '弓手与法术';

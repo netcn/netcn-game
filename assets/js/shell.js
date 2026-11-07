@@ -8,7 +8,7 @@
    ============================================================ */
 
 /* 自动注入扩展基座，游戏页无需逐个改 HTML（相对游戏页解析路径）
-   字典已拆分：i18n-dict.js 为站点键（g./st./stp./sta./公共），游戏内文案 gs.* 按游戏
+   字典已拆分：i18n-dict.js 为站点键（g./公共），游戏内文案 gs.* 按游戏
    拆到 games/<id>/<id>-i18n.js 按需加载（如铁壁防线等无 gs 键的游戏跳过）
    注入方式：按序 DOM 插入经典 <script>（同步执行、保持原有加载时序；替代已废弃的
    document.write，不阻塞解析器，兼容性更好） */
@@ -24,8 +24,6 @@ if (!window.__arcadeExtrasLoaded) {
     gid ? gid + '-i18n.js' : '',
     '../../assets/js/core/extras.js',
     '../../assets/js/rank.js',
-    '../../assets/js/plot.js',
-    '../../assets/js/stories.js',
     '../../assets/js/pwa.js'
   ];
   for (var __i = 0; __i < __arcadeExtras.length && !__staticChain; __i++) {
@@ -126,14 +124,6 @@ Arcade.shell = (function () {
       return;
     }
     var opts = { title: tutTitle() };
-    /* C2 教程叙事钩：有关联章节时在教程底部注入「深入了解」链接 */
-    var storyChs = Arcade.stories ? Arcade.stories.chaptersOf(gameId) : [];
-    if (storyChs.length && Arcade.i18n) {
-      opts.narrativeLink = {
-        href: '../../story.html?id=' + storyChs[0].id,
-        text: '<span class="ui-ic ic-scroll" aria-hidden="true"></span> ' + Arcade.i18n.t(storyChs[0].titleKey) + ' →'
-      };
-    }
     if (Arcade.tutorial) Arcade.tutorial.show(steps, opts);
   }
 
@@ -162,21 +152,6 @@ Arcade.shell = (function () {
     title.textContent = displayName();
     header.appendChild(title);
 
-    /* 史话：该游戏出现在编年史哪些章（有则显示，无则跳过） */
-    var storyChs = (window.Arcade && Arcade.stories) ? Arcade.stories.chaptersOf(gameId) : [];
-    if (storyChs.length) {
-      var story = document.createElement('a');
-      story.className = 'shell-help';
-      story.href = '../../story.html?id=' + storyChs[0].id; // 游戏页在 games/<id>/ 下
-      story.innerHTML = '<span class="ui-ic ic-scroll" aria-hidden="true"></span>' +
-        (Arcade.i18n ? Arcade.i18n.t('shell.story') : '史话');
-      story.title = storyChs.map(function (c) {
-        return Arcade.i18n.t(c.titleKey) + ' — ' + Arcade.i18n.t(c.titleKey + '.one');
-      }).join('  ');
-      /* hover 显示章节摘要（P2 增强：标题 + 一句话） */
-      story.setAttribute('data-story-summary', storyChs.map(function (c) { return Arcade.i18n.t(c.titleKey); }).join(' / '));
-      header.appendChild(story);
-    }
 
     var help = document.createElement('button');
     help.className = 'shell-help';
@@ -246,7 +221,7 @@ Arcade.shell = (function () {
       refreshBest();
     }
 
-    /* 窄屏「更多」菜单（≤480px）：把 史话/玩法/全屏/重开/BEST 收进下拉，
+    /* 窄屏「更多」菜单（≤480px）：把 玩法/全屏/重开/BEST 收进下拉，
        顶栏只留「返回 + 标题 + 更多」一行，快捷条独占一行，总高约 104px，
        避免 3 行 153px 顶栏吃掉首屏；宽屏仍按原顺序平铺，不出现该按钮。 */
     var narrow = window.matchMedia ? window.matchMedia('(max-width: 480px)') : { matches: false };
@@ -270,7 +245,6 @@ Arcade.shell = (function () {
     moreWrap.appendChild(moreBtn);
 
     var movable = [];
-    if (story) movable.push(story);
     movable.push(help);
     if (canFS) movable.push(fsBtn);
     movable.push(restart);
@@ -351,19 +325,6 @@ Arcade.shell = (function () {
       try { hist = JSON.parse(localStorage.getItem('arcade_playhist') || '{}') || {}; } catch (e) {}
       hist[mk] = (hist[mk] || 0) + 1;
       localStorage.setItem('arcade_playhist', JSON.stringify(hist));
-    } catch (e) {}
-    // 编年史：通关解锁关联密件
-    try {
-      if (window.Arcade && Arcade.stories && window.ARTIFACTS) {
-        window.ARTIFACTS.forEach(function (art) {
-          if (art.unlockGameId === gameId) {
-            var fresh = Arcade.stories.unlockArtifact(art.id);
-            if (fresh && Arcade.ui) {
-              Arcade.ui.toast(Arcade.i18n.t('sta.' + art.id + '.name') + ' ' + Arcade.i18n.t('shell.artifactGot'), 'win', null, 'ic-clip');
-            }
-          }
-        });
-      }
     } catch (e) {}
     if (isNew) {
       refreshBest();

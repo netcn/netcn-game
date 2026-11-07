@@ -84,8 +84,8 @@
   d.en['gs.minesweeper.changeDiff'] = 'Change difficulty';
   d.zh['gs.minesweeper.recordLine'] = '本档新纪录';
   d.en['gs.minesweeper.recordLine'] = 'New best for this level';
-  d.zh['gs.minesweeper.helpText'] = '扫雷是约束传播的教科书：每个数字约束周围格子的状态，逐步推理排除——这与密码分析中「已知明文约束密钥空间」的逻辑完全同构。';
-  d.en['gs.minesweeper.helpText'] = 'Minesweeper is constraint propagation 101: each number constrains neighboring cells, enabling deductive elimination — the same logic as known-plaintext attacks narrowing the keyspace.';
+  d.zh['gs.minesweeper.helpText'] = '扫雷是约束传播的教科书：每个数字约束周围格子的状态，逐步推理排除。';
+  d.en['gs.minesweeper.helpText'] = 'Minesweeper is constraint propagation 101: each number constrains neighboring cells, enabling deductive elimination.';
 
   /* ---------- 旗舰版新增（gs.ms.*，zh/en 对称） ---------- */
   d.zh['gs.ms.expertS'] = '专家';

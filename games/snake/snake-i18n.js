@@ -62,8 +62,8 @@
   d.en['gs.snake.paused'] = 'Paused · Press Space to resume';
   d.zh['gs.snake.sprintDone'] = '冲刺完成！';
   d.en['gs.snake.sprintDone'] = 'Sprint complete!';
-  d.zh['gs.snake.helpText'] = '贪吃蛇训练的是序列思维——每一步都影响后续所有可能性。这与密码分析中的「状态推演」同源：破译员需要从当前状态推演所有可能的下一步。';
-  d.en['gs.snake.helpText'] = 'Snake trains sequential thinking — every step affects all future possibilities. This mirrors the "state deduction" of cryptanalysis: codebreakers must reason about all possible next steps from the current state.';
+  d.zh['gs.snake.helpText'] = '贪吃蛇训练的是序列思维，每一步都影响后续所有可能性。';
+  d.en['gs.snake.helpText'] = 'Snake trains sequential thinking every step affects all future possibilities.';
   d.zh['gs.snake.level'] = '关卡';
   d.en['gs.snake.level'] = 'Level';
   d.zh['gs.snake.levelUp'] = '第 {n} 关！';

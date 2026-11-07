@@ -42,8 +42,8 @@
   d.en['gs.mazedot.levelUp'] = 'Level {n}! Ghosts speed up';
   d.zh['gs.mazedot.mirrorGhost'] = '，更多幽灵出没';
   d.en['gs.mazedot.mirrorGhost'] = ', more ghosts appear';
-  d.zh['gs.mazedot.helpText'] = '迷宫吃豆训练的是路径规划与资源收集——密码分析中的「逐列恢复密钥」就是一条需要规划的资源收集路径。';
-  d.en['gs.mazedot.helpText'] = 'Maze-chomper trains pathfinding and resource collection — "column-by-column key recovery" in cryptanalysis is a resource-collection path needing planning.';
+  d.zh['gs.mazedot.helpText'] = '迷宫吃豆训练的是路径规划与资源收集。';
+  d.en['gs.mazedot.helpText'] = 'Maze-chomper trains pathfinding and resource collection.';
   d.zh['gs.mazedot.aria'] = '迷宫吃豆 游戏画面';
   d.en['gs.mazedot.aria'] = 'Maze Dot game screen';
   d.zh['gs.mazedot.levelLabel'] = '关卡';

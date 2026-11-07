@@ -54,8 +54,8 @@
   d.en['gs.game24.hintMsg'] = 'One solution: {h} = 24';
   d.zh['gs.game24.noHint'] = '本题暂无提示，可直接换一题';
   d.en['gs.game24.noHint'] = 'No hint for this puzzle — just deal a new one';
-  d.zh['gs.game24.helpText'] = '24 点训练的是算术创造力——用有限运算符组合出目标值。这与密码分析中的「选择明文攻击」同源：精心选择输入使输出泄露信息。';
-  d.en['gs.game24.helpText'] = 'The 24-game trains arithmetic creativity — combining limited operators to hit a target. Mirrors chosen-plaintext attacks: carefully selecting inputs to leak information from outputs.';
+  d.zh['gs.game24.helpText'] = '24 点训练的是算术创造力，用有限运算符组合出目标值。';
+  d.en['gs.game24.helpText'] = 'The 24-game trains arithmetic creativity combining limited operators to hit a target.';
 
   /* 难度 */
   d.zh['gs.game24.easy'] = '简单';
