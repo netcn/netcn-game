@@ -1,11 +1,11 @@
 /* ============================================================
    游戏街机厅 Service Worker（game/ 子站）
-   —— 缓存版本：arcade-hall-v9（2026-11-07 删除旧叙事层）
+   —— 缓存版本：arcade-hall-v10（2026-11-07 壳层资源改 network-first）
    —— 策略：HTML 导航 network-first（离线回退缓存）；
            静态资源（JS/CSS/字体/图片）cache-first
    —— 预缓存：2D 首页 + 53 款游戏页 + 子站 assets 核心
    ============================================================ */
-var CACHE = 'arcade-hall-v9';
+var CACHE = 'arcade-hall-v10';
 /* 与 53 个游戏页内脚本引用保持一致，预缓存带版本号的 URL，
    避免离线打开时因 ?v= 未命中缓存而加载失败 */
 var ASSET_VER = '20261105i';
@@ -49,8 +49,9 @@ var CORE = [
   './assets/icons/icon-maskable-512.png',
   './assets/icons/og-share.png',
   './shell/mk-game.png',
-  './shell/netcn-shell.css',
-  './shell/shell.js',
+  './shell/netcn-shell.css?v=20261107c3',
+  './shell/netcn-ui.css?v=20261107c3',
+  './shell/shell.js?v=20261107c3',
 ];
 
 /* 53 款游戏页 + 各自三件套（注册表在 sw.js 同级：./games.js）
@@ -139,6 +140,16 @@ self.addEventListener('fetch', function (event) {
           return hit || caches.match('./index.html');
         });
       })
+    );
+    return;
+  }
+
+  /* 家族壳层：network-first。cache-first 会把旧 shell.js 锁死，
+     导致明暗/中英按钮点了没反应；离线时才回退（忽略版本号）。 */
+  if (url.pathname.indexOf('/shell/') >= 0) {
+    event.respondWith(
+      fetch(req).then(function (res) { putInCache(req, res); return res; })
+        .catch(function () { return caches.match(req, { ignoreSearch: true }); })
     );
     return;
   }
