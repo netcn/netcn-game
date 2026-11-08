@@ -1,13 +1,13 @@
 (function(){
 var d=document, r=d.documentElement, host=(location.hostname||'').replace(/^www\./,'');
-var key=/^ask\./.test(host)?'ask':/^quiz\./.test(host)?'quiz':/^game\./.test(host)?'game':'nav';
+var key=/^ask\./.test(host)?'ask':/^quiz\./.test(host)?'quiz':/^game\./.test(host)?'game':/^sky\./.test(host)?'sky':'nav';
 /* 本地预览时按子目录判断（localhost/home|quiz|game），或 ?nc= 强制指定 */
 var path=(location.pathname||'').split('/')[1]||'';
 if(host==='localhost'||host==='127.0.0.1'){
-  if(path==='quiz'||path==='game'||path==='ask') key=path;
+  if(path==='quiz'||path==='game'||path==='ask'||path==='sky') key=path;
   if(path==='home') key='nav';
 }
-var force=(location.search.match(/[?&]nc=(nav|ask|quiz|game)/)||[])[1];
+var force=(location.search.match(/[?&]nc=(nav|ask|quiz|game|sky)/)||[])[1];
 if(force) key=force;
 /* 各站自有的语言存储键；壳层负责与全域 cookie 对齐 */
 var LKEY={game:'arcade_lang'};

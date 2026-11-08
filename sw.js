@@ -49,9 +49,9 @@ var CORE = [
   './assets/icons/icon-maskable-512.png',
   './assets/icons/og-share.png',
   './shell/mk-game.png',
-  './shell/netcn-shell.css?v=20261107c5',
-  './shell/netcn-ui.css?v=20261107c5',
-  './shell/shell.js?v=20261107c5',
+  './shell/netcn-shell.css?v=20261107c6',
+  './shell/netcn-ui.css?v=20261107c6',
+  './shell/shell.js?v=20261107c6',
 ];
 
 /* 53 款游戏页 + 各自三件套（注册表在 sw.js 同级：./games.js）
