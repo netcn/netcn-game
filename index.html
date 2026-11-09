@@ -219,6 +219,14 @@
     filter();
   }
 
+  /* 游戏内页顶栏搜索回车会带 ?q= 回大厅，这里接住关键词 */
+  (function fromQuery() {
+    try {
+      var m = new URLSearchParams(location.search).get('q');
+      if (m) qEl.value = m.slice(0, 80);
+    } catch (e) {}
+  })();
+
   function filter() {
     var q = (qEl.value || '').trim().toLowerCase();
     var shown = 0;

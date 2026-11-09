@@ -1,0 +1,110 @@
+/* ============================================================
+   family-bridge.css — 游戏内页接入家族统一顶栏/页脚
+   目标：53 个游戏页的顶栏、页脚、按钮位置与全站完全一致；
+   但游戏画布保持深色霓虹沉浸感，不被纸感 tokens 洗白。
+   只引 netcn-shell.css（顶栏皮肤），不引 netcn-ui.css（它会
+   用 !important 强制 body 变白底并限宽 main）。
+   ============================================================ */
+
+/* 顶栏/页脚皮肤所需的家族变量（netcn-shell.css 会读取） */
+:root {
+  --ui-pad: max(clamp(14px, 3vw, 28px), calc((100% - 1200px) / 2));
+  --ui-gutter: clamp(14px, 3vw, 28px);
+  --ui-w: 1200px;
+  --ui-font: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+  --ui-bg: #fafbfc;
+  --ui-card: #ffffff;
+  --ui-surface: #f4f6f8;
+  --ui-line: #e5e8ee;
+  --ui-line-soft: #eef0f4;
+  --ui-ink: #141821;
+  --ui-ink2: #5c6577;
+  --ui-ink3: #98a1b0;
+  --ui-ac-site: #7c5cff;
+  --ui-ac: var(--ui-ac-site);
+  --ui-ac-soft: rgba(124, 92, 255, .08);
+  --ui-r: 10px;
+  --ui-r-card: 12px;
+  --ui-r-pill: 999px;
+  --ui-shadow: 0 1px 2px rgba(16, 24, 40, .04);
+  --ui-shadow-up: 0 6px 18px rgba(16, 24, 40, .09);
+}
+[data-theme="dark"], html.dark {
+  --ui-bg: #10141c; --ui-card: #171c25; --ui-surface: #1d2330;
+  --ui-line: #29313d; --ui-line-soft: #222936;
+  --ui-ink: #e6eaf2; --ui-ink2: #9aa5b7; --ui-ink3: #6a7488;
+}
+
+/* 家族顶栏：与其余四站一致的浅色纸感 */
+.nc-shell, .nc-foot {
+  background: var(--ui-card);
+  border-color: var(--ui-line);
+  color: var(--ui-ink2);
+  font-family: var(--ui-font);
+  backdrop-filter: none;
+}
+.nc-shell { border-bottom: 1px solid var(--ui-line); }
+.nc-shell .nc-brand { color: var(--ui-ink); }
+.nc-sw a, .nc-foot-nav a { color: var(--ui-ink2); border-radius: var(--ui-r-pill); }
+.nc-sw a[aria-current="page"], .nc-foot-nav a[aria-current="page"] {
+  color: var(--ui-ac); background: transparent; border-color: var(--ui-line);
+  font-weight: 800; text-decoration: underline; text-decoration-color: var(--ui-ac);
+  text-decoration-thickness: 2px; text-underline-offset: 4px;
+}
+.nc-search input, .nc-search {
+  background: var(--ui-surface); color: var(--ui-ink);
+  border: 1px solid var(--ui-line); border-radius: var(--ui-r-pill);
+}
+.nc-tools button {
+  border: 1px solid var(--ui-line); border-radius: var(--ui-r-pill);
+  background: var(--ui-card); color: var(--ui-ink2);
+}
+.nc-foot { border-top: 1px solid var(--ui-line); }
+
+/* 旧霓虹顶栏降级为「游戏工具条」：不再是 sticky 主导航，
+   保留返回大厅 / 游戏名 / 玩法 / 重开 / 最高分 / 全屏等游戏专属按钮。 */
+.shell-header {
+  position: relative;
+  top: auto;
+  z-index: 1;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 240, 255, .18);
+  border-left: 0; border-right: 0; border-top: 0;
+  border-radius: 0;
+  background: rgba(10, 10, 18, .96);
+}
+/* 家族顶栏里已有语言/主题按钮，隐藏游戏快捷栏里重复的同类按钮 */
+#arcade-quickbar .qb-lang,
+#arcade-quickbar .qb-family-dup { display: none !important; }
+
+/* 游戏画布保持深色：家族样式不得改动 body / main */
+body { background: var(--bg-deep) !important; color: var(--text-main) !important; }
+/* 页脚贴底：内容不足一屏时不留一截深色空白。
+   注意 extras.js 会给 body 加 game-phase-overlay 类，被 theme.css 的
+   通用 [class$="-overlay"] 规则误当成弹层居中；这里显式复位 body 布局，
+   并把该规则限制回真正的覆盖层元素。 */
+body:has(> .nc-foot) {
+  display: flex; flex-direction: column; min-height: 100vh;
+  align-items: stretch; justify-content: flex-start;
+  padding: 0 !important; gap: 0 !important;
+  position: static !important; inset: auto !important;
+}
+body:has(> .nc-foot) > .nc-foot { margin-top: auto; }
+body[class$="-overlay"], body.game-overlay, body.overlay {
+  display: flex !important; flex-direction: column !important;
+  align-items: stretch !important; justify-content: flex-start !important;
+  padding: 0 !important; gap: 0 !important; position: static !important;
+  background: var(--bg-deep) !important;
+}
+.nc-shell, .nc-foot, .shell-header {
+  width: 100% !important; box-sizing: border-box; flex: 0 0 auto; align-self: stretch;
+}
+#game-root { width: 100%; max-width: none; margin: 0; flex: 1 0 auto; }
+
+/* 顶栏固定后，seo-h1 与锚点滚动不被遮挡 */
+#game-root { scroll-margin-top: 60px; }
+
+@media (max-width: 560px) {
+  .nc-shell { --ui-pad: 10px; }
+  .shell-header { padding: 8px 10px; gap: 8px; }
+}

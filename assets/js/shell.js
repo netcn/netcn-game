@@ -289,7 +289,13 @@ Arcade.shell = (function () {
     else if (narrow.addListener) narrow.addListener(applyLayout);
 
     applyLayout();
-    document.body.insertBefore(header, document.body.firstChild);
+    /* 家族统一顶栏存在时，游戏工具条必须排在它下面，否则会盖住主导航 */
+    var familyNav = document.querySelector('.nc-shell');
+    if (familyNav && familyNav.parentNode === document.body) {
+      document.body.insertBefore(header, familyNav.nextSibling);
+    } else {
+      document.body.insertBefore(header, document.body.firstChild);
+    }
   }
 
   function refreshBest() {

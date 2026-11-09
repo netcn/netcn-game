@@ -1,11 +1,11 @@
 /* ============================================================
    游戏街机厅 Service Worker（game/ 子站）
-   —— 缓存版本：arcade-hall-v10（2026-11-07 壳层资源改 network-first）
+   —— 缓存版本：arcade-hall-v11（2026-11-09 游戏内页接入家族顶栏/页脚）
    —— 策略：HTML 导航 network-first（离线回退缓存）；
            静态资源（JS/CSS/字体/图片）cache-first
    —— 预缓存：2D 首页 + 53 款游戏页 + 子站 assets 核心
    ============================================================ */
-var CACHE = 'arcade-hall-v10';
+var CACHE = 'arcade-hall-v11';
 /* 与 53 个游戏页内脚本引用保持一致，预缓存带版本号的 URL，
    避免离线打开时因 ?v= 未命中缓存而加载失败 */
 var ASSET_VER = '20261105i';
@@ -26,6 +26,8 @@ var CORE = [
   './manifest.webmanifest',
   './assets/css/theme.css',
   './assets/css/shell.css',
+  './assets/css/family-bridge.css?v=1',
+  './assets/js/family-bridge.js?v=1',
   './assets/fonts/fusion-pixel-site.woff2',
   './assets/fonts/press-start-2p.woff2',
   './assets/js/core/storage.js',
@@ -144,9 +146,9 @@ self.addEventListener('fetch', function (event) {
     return;
   }
 
-  /* 家族壳层：network-first。cache-first 会把旧 shell.js 锁死，
+  /* 家族壳层 + 桥接资源：network-first。cache-first 会把旧 shell.js 锁死，
      导致明暗/中英按钮点了没反应；离线时才回退（忽略版本号）。 */
-  if (url.pathname.indexOf('/shell/') >= 0) {
+  if (url.pathname.indexOf('/shell/') >= 0 || /family-bridge\.(css|js)$/.test(url.pathname)) {
     event.respondWith(
       fetch(req).then(function (res) { putInCache(req, res); return res; })
         .catch(function () { return caches.match(req, { ignoreSearch: true }); })

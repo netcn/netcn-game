@@ -45,6 +45,9 @@
 <link rel="stylesheet" href="../../assets/css/theme.css">
   <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
   <link rel="stylesheet" href="../../assets/css/shell.css">
+<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261107c6">
+<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=1">
+<script src="../../shell/shell.js?v=20261107c6"></script>
   <style>
     /* ---------- 布局 ---------- */
     #game-root { overflow-x: clip; }
@@ -160,6 +163,23 @@
   </style>
 </head>
 <body data-game-id="gomoku" data-game-title="五子棋" data-best-mode="max">
+<nav class="nc-shell" aria-label="netcn 站点导航">
+  <a class="nc-brand" href="../../index.html" aria-label="返回首页"><span class="nc-mk" aria-hidden="true"></span><span class="nc-brand-txt">游戏厅</span></a>
+  <nav class="nc-sw" aria-label="netcn 站点">
+    <a href="https://netcn.org/" data-nc-to="nav">导航</a>
+    <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
+    <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+  </nav>
+  <div class="nc-search has-icon">
+    <span class="search-icon" aria-hidden="true">⌕</span>
+    <input id="q" type="search" autocomplete="off" placeholder="搜游戏（回车回大厅）" aria-label="搜索游戏">
+  </div>
+  <div class="nc-tools">
+    <button class="nc-tool" id="ncTheme" type="button" aria-label="切换明暗">☾</button>
+    <button class="nc-tool" id="ncLang" type="button" aria-label="切换语言">EN</button>
+  </div>
+</nav>
   <h1 class="seo-h1">五子棋</h1>
   <main id="game-root"></main>
   <script src="../../assets/js/core/storage.js"></script>
@@ -174,5 +194,16 @@
 <script src="../../assets/js/shell.js"></script>
   <script src="gomoku.js?v=20261105i"></script>
   <script src="../../assets/js/pwa.js"></script>
+<footer class="nc-foot" data-nc-tone="dark">
+  <nav class="nc-foot-nav" aria-label="netcn 站点">
+    <a href="https://netcn.org/" data-nc-to="nav">导航</a>
+    <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
+    <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+  </nav>
+  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+</footer>
+<script src="../../assets/js/family-bridge.js?v=1"></script>
 </body>
 </html>
