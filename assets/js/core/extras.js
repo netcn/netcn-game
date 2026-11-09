@@ -62,7 +62,7 @@ Arcade.settings = (function () {
   function set(k, v) {
     state[k] = v; save(); apply();
     if (k === 'sound' && Arcade.audio) Arcade.audio.setMuted(!v);
-    if (k === 'music' && Arcade.music) Arcade.music.setEnabled(v);
+    /* 背景乐已下线：music 只作为历史存档字段保留，不再驱动任何播放器 */
   }
 
   return { get: get, set: set, THEMES: THEMES };
@@ -288,9 +288,10 @@ Arcade.ui = (function () {
     });
     bar.appendChild(soundBtn);
 
-    // 音乐
+    // 音乐：背景乐已整体下线，按钮保留 DOM 位次（顶栏图标按 nth-child 映射）
+    // 但统一由 family-ui.css 隐藏，不再出现在任何游戏页 UI 中。
     var musicBtn = document.createElement('button');
-    musicBtn.className = 'qb-btn' + (s.music ? '' : ' off');
+    musicBtn.className = 'qb-btn qb-music' + (s.music ? '' : ' off');
     musicBtn.setAttribute('aria-label', T('settings.music'));
     musicBtn.title = T('settings.music');
     musicBtn.innerHTML = '<span class="qb-tip">' + T('settings.music') + '</span>';
@@ -298,7 +299,6 @@ Arcade.ui = (function () {
       var v = !Arcade.settings.get().music;
       Arcade.settings.set('music', v);
       musicBtn.classList.toggle('off', !v);
-      if (v && Arcade.music && Arcade.music.unlock) Arcade.music.unlock();
       if (Arcade.audio) Arcade.audio.play('ui');
     });
     bar.appendChild(musicBtn);

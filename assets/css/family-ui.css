@@ -1,0 +1,397 @@
+/* ============================================================
+   family-ui.css — 53 个游戏内页共用的一整套 UI
+   ------------------------------------------------------------
+   设计原则：
+   1) 页面框架（顶栏 / 游戏工具条 / 页脚 / 按钮 / 卡片 / 浮层 /
+      字体 / 圆角 / 边框）全部复用全站 netcn-ui.css 的纸感 tokens，
+      不再有街机霓虹第二套视觉语言。
+   2) 游戏画面本身装进一张统一规格的「舞台卡片」：画布由游戏自行绘制，
+      舞台底色/边框/文字亮度随全站明暗一起切换。
+   3) 53 页只靠这一个文件 + netcn-ui.css 换肤，不在单页里写特例。
+   加载顺序：theme.css → shell.css → netcn-shell.css →
+             family-bridge.css → netcn-ui.css → family-ui.css
+   ============================================================ */
+
+/* ---------- 1. 站点主色：与游戏厅首页保持一致 ---------- */
+:root { --ui-ac-site: #7c5cff; }
+
+/* ---------- 2. 把游戏旧变量接到全站 token / 舞台 token ----------
+   游戏页内联 <style> 大量使用 --neon-* / --text-* / --bg-*，
+   这里一次性重定义，53 页自动换肤；明暗只由 html.dark /
+   html[data-theme] 驱动，与其余四站同一个开关。 */
+:root,
+html[data-theme="light"],
+html.theme-daylight,
+html.theme-daylight[data-theme="light"] {
+  --nc-stage: #1d2534;          /* 浅色主题下的游戏舞台 */
+  --nc-stage-2: #273145;
+  --nc-stage-line: rgba(255, 255, 255, .13);
+  --bg-deep: var(--nc-stage);
+  --bg-panel: var(--nc-stage-2);
+  --bg-panel-2: #323d54;
+  --text-main: #eef2f8;
+  --text-dim: #c3ccdd;
+  --card-border: var(--nc-stage-line);
+  --neon-cyan: #a98cff;
+  --neon-purple: #b79dff;
+  --neon-pink: #f293b8;
+  --neon-green: #6fd8a6;
+  --neon-yellow: #e6bf62;
+  --neon-orange: #f2a768;
+  --accent: var(--ui-ac, #7c5cff);
+  --on-accent: #fff;
+  --font-pixel: var(--ui-font);
+  --font-body: var(--ui-font);
+  --radius: var(--ui-r-card, 12px);
+}
+html.dark,
+html[data-theme="dark"],
+.dark,
+html.dark.theme-daylight,
+html[data-theme="dark"].theme-daylight {
+  --nc-stage: #0b1019;
+  --nc-stage-2: #151c29;
+  --bg-panel-2: #1d2635;
+  --text-main: #e6eaf2;
+  --text-dim: #9aa5b7;
+  --neon-cyan: #c0a8ff;
+  --neon-purple: #cbb8ff;
+  --neon-pink: #f7a8c6;
+  --neon-green: #86e3bb;
+  --neon-yellow: #f0cc7c;
+  --neon-orange: #f7b884;
+}
+
+/* ---------- 3. 清掉街机氛围：扫描线 / 光晕 / 像素字 / 发光 ---------- */
+body::before, body::after { display: none !important; }
+#game-root, #game-root *, #game-root *::before, #game-root *::after,
+.shell-header, .shell-header *, .shell-header *::before, .shell-header *::after,
+[class$="-overlay"], [class$="-overlay"] *,
+.game-overlay, .game-overlay *,
+.tut-overlay, .tut-overlay *,
+.search-overlay, .search-overlay *,
+.toast-item {
+  font-family: var(--ui-font) !important;
+  text-shadow: none !important;
+}
+/* body 也可能被 theme.css 的 [class$="-overlay"] 误命中（game-phase-overlay），
+   这里把它复位成全站纸感，避免结算时整页突然变黑。 */
+body[class$="-overlay"], body.game-overlay, body.overlay {
+  background: var(--ui-bg) !important;
+  color: var(--ui-ink) !important;
+  position: static !important;
+  inset: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+/* ---------- 4. 游戏舞台：一张规格统一的卡片，嵌在纸感页面里 ---------- */
+main#game-root {
+  position: relative;
+  z-index: 1;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  width: auto !important;
+  box-sizing: border-box !important;
+  max-width: 960px !important;
+  margin: 16px auto 28px !important;
+  padding: 18px var(--ui-gutter) 24px !important;
+  flex: 0 1 auto !important;
+  background: var(--nc-stage) !important;
+  background-image: none !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: var(--ui-r-lg, 14px) !important;
+  box-shadow: var(--ui-shadow-up) !important;
+  scroll-margin-top: 60px;
+}
+/* 画布是游戏画面，不改绘制内容；只把外框换成家族规格 */
+canvas {
+  border-color: var(--nc-stage-line) !important;
+  border-radius: var(--ui-r-card, 12px) !important;
+  outline: 1px solid var(--nc-stage-line);
+  box-shadow: var(--ui-shadow) !important;
+}
+
+/* ---------- 5. 游戏工具条：与全站顶栏同一套纸感 ---------- */
+.shell-header {
+  position: relative !important;
+  top: auto !important;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 7px var(--ui-pad) !important;
+  margin: 0 !important;
+  background: var(--ui-card) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--ui-line) !important;
+  border-radius: 0 !important;
+  color: var(--ui-ink2);
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+.shell-title {
+  font-family: var(--ui-font) !important;
+  font-size: 15px !important;
+  font-weight: 800;
+  color: var(--ui-ink) !important;
+  text-shadow: none !important;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.shell-back, .shell-help, .shell-restart, .shell-fs, .shell-more-btn, .shell-best {
+  font-family: var(--ui-font) !important;
+  font-size: 12px !important;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ui-ink2) !important;
+  background: var(--ui-card) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: var(--ui-r-pill, 999px) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  padding: 6px 13px !important;
+  min-height: 34px;
+  transition: color .16s, border-color .16s, background .16s;
+}
+.shell-back:hover, .shell-help:hover, .shell-restart:hover,
+.shell-fs:hover, .shell-more-btn:hover {
+  color: var(--ui-ac) !important;
+  border-color: var(--ui-ac) !important;
+  background: var(--ui-ac-soft) !important;
+  text-shadow: none !important;
+}
+.shell-best {
+  font-size: 11px !important;
+  color: var(--ui-ink3) !important;
+  background: var(--ui-surface) !important;
+  border-style: solid !important;
+}
+.shell-fs .ui-ic { background-color: currentColor; }
+.shell-more-panel {
+  background: var(--ui-card) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: var(--ui-r-card, 12px) !important;
+  box-shadow: var(--ui-shadow-up) !important;
+  padding: 8px !important;
+}
+.shell-more-panel .shell-help,
+.shell-more-panel .shell-restart,
+.shell-more-panel .shell-fs {
+  background: var(--ui-card) !important;
+  color: var(--ui-ink2) !important;
+  border-color: var(--ui-line) !important;
+}
+
+/* ---------- 6. 快捷图标条：并入工具条的家族胶囊按钮 ---------- */
+#arcade-quickbar { gap: 5px; }
+#arcade-quickbar .qb-btn {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  color: var(--ui-ink2) !important;
+  background: var(--ui-card) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: var(--ui-r-pill, 999px) !important;
+  box-shadow: none !important;
+  font-family: var(--ui-font) !important;
+}
+#arcade-quickbar .qb-btn:hover {
+  color: var(--ui-ac) !important;
+  border-color: var(--ui-ac) !important;
+  background: var(--ui-ac-soft) !important;
+}
+#arcade-quickbar .qb-btn::before { background-color: var(--ui-ac) !important; }
+#arcade-quickbar .qb-btn .qb-tip,
+.qb-btn .qb-tip {
+  background: var(--ui-card) !important;
+  color: var(--ui-ink2) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: 8px !important;
+  font-family: var(--ui-font) !important;
+}
+body:not(.has-nav) #arcade-quickbar {
+  position: static !important;
+  top: auto !important; left: auto !important;
+  transform: none !important;
+  margin-left: auto;
+}
+body:not(.has-nav) .qb-btn {
+  background: var(--ui-card) !important;
+  border: 1px solid var(--ui-line) !important;
+  box-shadow: none !important;
+  border-radius: var(--ui-r-pill, 999px) !important;
+}
+/* 顶栏已有明暗 / 中英 / 搜索；游戏快捷条里的重复项与背景乐开关不再显示 */
+#arcade-quickbar .qb-lang,
+#arcade-quickbar .qb-family-dup,
+#arcade-quickbar .qb-music { display: none !important; }
+
+/* ---------- 7. 通用组件：按钮 / 卡片 / 徽章 / 输入 / 胶囊 ---------- */
+.btn, button.btn, .nc-btn {
+  font-family: var(--ui-font) !important;
+  border-radius: var(--ui-r-pill, 999px) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  font-weight: 700;
+}
+.btn:hover, button.btn:hover {
+  background: var(--ui-ac-soft) !important;
+  color: var(--ui-ac) !important;
+  border-color: var(--ui-ac) !important;
+  text-shadow: none !important;
+}
+.btn.pink:hover, .btn.green:hover, .btn.yellow:hover, .btn.purple:hover {
+  background: var(--ui-ac-soft) !important;
+  color: var(--ui-ac) !important;
+  border-color: var(--ui-ac) !important;
+}
+.card, .grid-board, .recent-card {
+  background: var(--bg-panel) !important;
+  border: 1px solid var(--nc-stage-line) !important;
+  border-radius: var(--ui-r-card, 12px) !important;
+  box-shadow: var(--ui-shadow) !important;
+  color: var(--text-main) !important;
+}
+.card.hoverable:hover {
+  border-color: var(--ui-ac) !important;
+  box-shadow: var(--ui-shadow-up) !important;
+  transform: translateY(-2px);
+}
+.badge {
+  font-family: var(--ui-font) !important;
+  background: var(--ui-surface) !important;
+  border-color: var(--ui-line) !important;
+  color: var(--ui-ink2) !important;
+  border-radius: var(--ui-r-pill, 999px) !important;
+}
+.badge.best { color: var(--neon-yellow) !important; }
+.mode-btn, .dpad-btn {
+  font-family: var(--ui-font) !important;
+  background: var(--ui-card) !important;
+  color: var(--ui-ink2) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: var(--ui-r, 10px) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  font-weight: 600;
+}
+.chip {
+  font-family: var(--ui-font) !important;
+  background: var(--ui-card) !important;
+  color: var(--ui-ink2) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: var(--ui-r-pill, 999px) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  font-weight: 600;
+}
+.mode-btn:hover, .chip:hover, .dpad-btn:hover {
+  color: var(--ui-ac) !important;
+  border-color: var(--ui-ac) !important;
+  background: var(--ui-ac-soft) !important;
+}
+.mode-btn.selected, .mode-btn.active, .chip.active, .chip.on {
+  background: var(--ui-ac) !important;
+  color: #fff !important;
+  border-color: var(--ui-ac) !important;
+  box-shadow: none !important;
+}
+.dpad-btn:active { background: var(--ui-ac) !important; color: #fff !important; }
+input[type="search"], input[type="text"], input[type="number"], select, .search-input {
+  font-family: var(--ui-font) !important;
+  background: var(--ui-card) !important;
+  color: var(--ui-ink) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: var(--ui-r, 10px) !important;
+  box-shadow: none !important;
+}
+
+/* ---------- 8. 通用文字 / 数据 / 帮助区 ---------- */
+.game-message, .game-stats, .help-text, .stat-value {
+  color: var(--text-dim) !important;
+  text-shadow: none !important;
+}
+.game-message, .game-stats .stat-value {
+  font-family: var(--ui-font) !important;
+  color: var(--neon-cyan) !important;
+}
+.game-canvas {
+  background: #07070d !important;
+  border-color: var(--nc-stage-line) !important;
+  border-radius: var(--ui-r-card, 12px) !important;
+  box-shadow: var(--ui-shadow) !important;
+}
+.skip-link {
+  background: var(--ui-card) !important;
+  color: var(--ui-ink) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: 8px !important;
+  font-family: var(--ui-font) !important;
+}
+
+/* ---------- 9. 浮层：教程 / 搜索 / 结算 / Toast ---------- */
+[class$="-overlay"], .game-overlay, .overlay, .tut-overlay, .search-overlay {
+  background: var(--ui-bg) !important;
+  color: var(--ui-ink) !important;
+  font-family: var(--ui-font) !important;
+}
+/* 舞台内的游戏结算浮层是「盖在画布上」的，家族卡片式样 */
+#game-root [class$="-overlay"], #game-root .game-overlay {
+  background: color-mix(in srgb, var(--nc-stage) 94%, transparent) !important;
+  color: var(--text-main) !important;
+}
+[class$="-overlay"] h2, .game-overlay h2, .overlay h2 {
+  font-family: var(--ui-font) !important;
+  letter-spacing: 0;
+  color: var(--ui-ink);
+}
+[class$="-overlay"] p, .game-overlay p, .overlay p { color: var(--ui-ink2); }
+.tut-modal, .search-box {
+  background: var(--ui-card) !important;
+  border: 1px solid var(--ui-line) !important;
+  border-radius: var(--ui-r-lg, 14px) !important;
+  box-shadow: var(--ui-shadow-up) !important;
+  font-family: var(--ui-font) !important;
+}
+.tut-title, .search-head, .search-group {
+  font-family: var(--ui-font) !important;
+  color: var(--ui-ink) !important;
+}
+.tut-list li { border-bottom: 1px solid var(--ui-line) !important; color: var(--ui-ink2) !important; }
+.tut-list li b { color: var(--ui-ink) !important; }
+.search-item, .search-hint, .search-empty { color: var(--ui-ink2) !important; }
+.toast-item {
+  background: var(--ui-card) !important;
+  border: 1px solid var(--ui-line) !important;
+  color: var(--ui-ink) !important;
+  border-radius: var(--ui-r, 10px) !important;
+  box-shadow: var(--ui-shadow-up) !important;
+  font-family: var(--ui-font) !important;
+}
+.toast-item.win { color: #2f9e6b !important; border-color: #2f9e6b !important; }
+.toast-item.warn { color: #b58412 !important; border-color: #b58412 !important; }
+
+/* ---------- 10. 响应式：与全站栅格同步收窄 ---------- */
+@media (max-width: 560px) {
+  .shell-header { --ui-pad: 10px; gap: 5px; }
+  .shell-back, .shell-help, .shell-restart, .shell-fs, .shell-more-btn {
+    padding: 5px 9px !important; font-size: 11px !important;
+  }
+  main#game-root {
+    margin: 10px 8px 20px !important;
+    padding: 12px 10px 18px !important;
+    overflow-x: clip;
+  }
+  #arcade-quickbar .qb-btn { width: 34px !important; height: 34px !important; }
+}

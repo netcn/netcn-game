@@ -57,10 +57,7 @@
                var(--g-bg);
     background-attachment:fixed;
   }
-  .nc-shell{
-    background:rgba(9,9,19,.92);border-bottom:1px solid var(--g-line);
-    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  }
+  /* 顶栏/页脚由 netcn-ui.css 统一为全站纸感，不再在这里叠加深色街机皮肤 */
   .nc-tools .lang-btn{border-radius:999px;min-width:38px}
   .wrap{max-width:1120px;margin:0 auto;padding:24px 16px 52px}
   .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 26px}
@@ -136,7 +133,7 @@
   <p class="empty" id="empty"></p>
 </main>
 
-<footer class="nc-foot" data-nc-tone="dark">
+<footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>

@@ -370,34 +370,8 @@ Arcade.shell = (function () {
   pushRecent();
   autoTutorialFirstTime();
 
-  /* 背景音乐延后加载（S4）：BGM 需用户手势才发声（AudioContext 限制），
-     首屏不阻塞 —— requestIdleCallback/load 后注入 music.js 再按游戏播放 */
-  (function bootMusic() {
-    var done = false;
-    function start() {
-      if (done) return;
-      done = true;
-      try {
-        if (Arcade.music && Arcade.settings) {
-          Arcade.music.setEnabled(Arcade.settings.get().music !== false);
-          Arcade.music.play(gameId);
-        }
-      } catch (e) {}
-    }
-    if (window.Arcade && Arcade.music) { start(); return; }
-    var s = document.createElement('script');
-    s.src = '../../assets/js/core/music.js';
-    s.onload = start;
-    var inject = function () {
-      if (window.Arcade && Arcade.music) { start(); return; }
-      (document.head || document.documentElement).appendChild(s);
-    };
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(inject, { timeout: 2000 });
-    } else {
-      window.addEventListener('load', function () { setTimeout(inject, 800); });
-    }
-  })();
+  /* 背景乐已下线：不再注入 music.js、不再自动播放 chiptune。
+     游戏音效（Arcade.audio）与节奏游戏自带的曲子不受影响。 */
 
   /* 无障碍：canvas 游戏画面补 role="img" + aria-label（屏幕阅读器可读出游戏名）
      游戏脚本同步执行创建 canvas，这里延迟扫描即可覆盖全部（含未来新游戏） */
