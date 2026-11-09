@@ -240,7 +240,7 @@ body:not(.has-nav) .qb-btn {
 /* ---------- 7. 通用组件：按钮 / 卡片 / 徽章 / 输入 / 胶囊 ---------- */
 .btn, button.btn, .nc-btn {
   font-family: var(--ui-font) !important;
-  border-radius: var(--ui-r-pill, 999px) !important;
+  border-radius: var(--ui-r, 10px) !important;
   box-shadow: none !important;
   text-shadow: none !important;
   font-weight: 700;
