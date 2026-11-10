@@ -50,13 +50,22 @@
     tObs.observe(r, { attributes: true, attributeFilter: ['class', 'data-theme'] });
   } catch (e) {}
 
-  /* ---------- 顶栏搜索：回车回大厅 ---------- */
+  /* ---------- 顶栏搜索：回车回大厅 ----------
+     文案跟随统一内核的语言状态（历史版本硬编码中文，EN 下不变） */
+  function setSearchPh() {
+    var box = d.querySelector('.nc-search input');
+    if (!box) return;
+    var en = (window.NETCN && NETCN.lang && NETCN.lang() === 'en') ||
+             (!window.NETCN && d.documentElement.lang === 'en');
+    box.setAttribute('placeholder', en ? 'Search games... (Enter for lobby)' : '搜游戏…（回车回大厅）');
+    box.setAttribute('aria-label', en ? 'Search games' : '搜索游戏');
+  }
   function wireSearch() {
     var box = d.querySelector('.nc-search input');
     if (!box || box.dataset.familyWired) return;
     box.dataset.familyWired = '1';
-    box.setAttribute('placeholder', '搜游戏（回车回大厅）');
-    box.setAttribute('aria-label', '搜索游戏');
+    setSearchPh();
+    d.addEventListener('ncn:lang', setSearchPh);
     box.addEventListener('keydown', function (e) {
       if (e.key !== 'Enter') return;
       e.preventDefault();

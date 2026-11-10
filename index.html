@@ -40,9 +40,9 @@
 (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}if(document.documentElement){document.documentElement.setAttribute("lang",lang==="en"?"en":"zh-CN");}})();
 </script>
 <link rel="stylesheet" href="assets/css/theme.css">
-<link rel="stylesheet" href="shell/netcn-shell.css?v=20261107c6">
-<link rel="stylesheet" href="shell/netcn-ui.css?v=20261107c6">
-<script src="shell/shell.js?v=20261107c6"></script>
+<link rel="stylesheet" href="shell/netcn-shell.css?v=20261110a1">
+<link rel="stylesheet" href="shell/netcn-ui.css?v=20261110a1">
+<script src="shell/shell.js?v=20261110a1"></script>
 <style>
   :root{
     --ui-ac-site:#7c5cff;
@@ -182,12 +182,22 @@
   var qEl = document.getElementById('q');
   var activeCat = '';
 
+  /* 搜索索引同时收录中英游戏名与描述：EN 界面下用英文关键词也能搜到游戏 */
+  function haystack(g) {
+    var dd = (window.Arcade && Arcade.i18n && Arcade.i18n.dicts) || {};
+    var zh = dd.zh || {}, en = dd.en || {};
+    return [g.title, g.desc, g.id, g.category,
+      zh['g.' + g.id + '.t'] || '', zh['g.' + g.id + '.d'] || '',
+      en['g.' + g.id + '.t'] || '', en['g.' + g.id + '.d'] || '',
+      zh['cat.' + g.category] || '', en['cat.' + g.category] || ''
+    ].join(' ').toLowerCase();
+  }
   function card(g, color) {
     var meta = '<span class="tag">' + esc(T('cat.' + g.category, g.category)) + '</span>';
     if (g.lvl) meta += '<span class="tag dim">' + esc(g.lvl) + '</span>';
     if (g.time) meta += '<span class="tag dim">' + esc(g.time) + '</span>';
     return '<a class="gc" href="' + esc(g.path) + '" data-id="' + esc(g.id) + '" ' +
-      'data-text="' + esc((g.title + ' ' + g.desc + ' ' + g.id + ' ' + g.category).toLowerCase()) + '" ' +
+      'data-text="' + esc(haystack(g)) + '" ' +
       'style="--c:' + esc(color) + '">' +
       '<span class="ico" aria-hidden="true">' + esc(g.icon) + '</span>' +
       '<span class="tt">' + esc(gameTitle(g)) + '</span>' +

@@ -1,7 +1,7 @@
 {
-  "name": "游戏街机厅 · ARCADE HALL",
-  "short_name": "游戏街机厅",
-  "description": "53 款经典小游戏——街机、逻辑、空间、动作、棋类、牌骰、球类，全部打开即玩，纪录仅存本地。",
+  "name": "游戏厅 · Arcade | game.netcn.org",
+  "short_name": "游戏厅",
+  "description": "53 款游戏打开即玩 · 53 games, play instantly. Scores stay local.",
   "lang": "zh-CN",
   "dir": "ltr",
   "start_url": "./",
@@ -9,8 +9,8 @@
   "id": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#05060c",
-  "theme_color": "#05060c",
+  "background_color": "#fafbfc",
+  "theme_color": "#7c5cff",
   "categories": ["games", "entertainment"],
   "icons": [
     { "src": "favicon.ico", "sizes": "48x48", "type": "image/x-icon", "purpose": "any" },
@@ -19,6 +19,6 @@
     { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
-    { "name": "游戏街机厅", "url": "./", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] }
+    { "name": "游戏厅 · Arcade", "url": "./", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] }
   ]
 }

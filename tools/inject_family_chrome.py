@@ -15,7 +15,7 @@ import os
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VER = '20261107c6'
+VER = '20261110a1'
 
 HEAD_LINKS = '''<link rel="stylesheet" href="../../shell/netcn-shell.css?v={v}">
 <link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">

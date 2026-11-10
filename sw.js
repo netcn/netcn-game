@@ -1,11 +1,11 @@
 /* ============================================================
    游戏街机厅 Service Worker（game/ 子站）
-   —— 缓存版本：arcade-hall-v12（2026-11-09 53 页统一家族 UI + 背景乐下线）
+   —— 缓存版本：arcade-hall-v13（2026-11-10 统一运行时内核 / 中英字典 / App 壳）
    —— 策略：HTML 导航 network-first（离线回退缓存）；
            静态资源（JS/CSS/字体/图片）cache-first
    —— 预缓存：2D 首页 + 53 款游戏页 + 子站 assets 核心
    ============================================================ */
-var CACHE = 'arcade-hall-v12';
+var CACHE = 'arcade-hall-v13';
 /* 与 53 个游戏页内脚本引用保持一致，预缓存带版本号的 URL，
    避免离线打开时因 ?v= 未命中缓存而加载失败 */
 var ASSET_VER = '20261105i';
@@ -51,9 +51,9 @@ var CORE = [
   './assets/icons/icon-maskable-512.png',
   './assets/icons/og-share.png',
   './shell/mk-game.png',
-  './shell/netcn-shell.css?v=20261107c6',
-  './shell/netcn-ui.css?v=20261107c6',
-  './shell/shell.js?v=20261107c6',
+  './shell/netcn-shell.css?v=20261110a1',
+  './shell/netcn-ui.css?v=20261110a1',
+  './shell/shell.js?v=20261110a1',
 ];
 
 /* 53 款游戏页 + 各自三件套（注册表在 sw.js 同级：./games.js）
