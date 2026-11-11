@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a12">
+  <meta name="theme-color" content="#fafbfc">
   <link rel="manifest" href="../../manifest.webmanifest">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="游戏厅">
   <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
-  <title>迷宫 · 游戏街机厅</title>
-  <meta name="description" content="游戏街机厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。">
+  <title>迷宫 · 游戏厅</title>
+  <meta name="description" content="游戏厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://game.netcn.org/games/maze/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
-  <meta property="og:title" content="迷宫 · 游戏街机厅">
-  <meta property="og:description" content="游戏街机厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:site_name" content="游戏厅 · Arcade">
+  <meta property="og:title" content="迷宫 · 游戏厅">
+  <meta property="og:description" content="游戏厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。">
   <meta property="og:url" content="https://game.netcn.org/games/maze/">
   <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="迷宫 · 游戏街机厅">
-  <meta name="twitter:description" content="游戏街机厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:title" content="迷宫 · 游戏厅">
+  <meta name="twitter:description" content="游戏厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <script type="application/ld+json">
   {
@@ -32,8 +32,8 @@
     "url": "https://game.netcn.org/games/maze/",
     "applicationCategory": "Game",
     "inLanguage": "zh-CN",
-    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
-    "description": "游戏街机厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。"
+    "isPartOf": { "@type": "WebSite", "name": "游戏厅 · Arcade", "url": "https://game.netcn.org/" },
+    "description": "游戏厅 · 迷宫：在随机迷宫里找到通往终点的路。 打开即玩，最高分记录保存在本地浏览器。"
   }
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
@@ -45,11 +45,11 @@
 <link rel="stylesheet" href="../../assets/css/theme.css">
   <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
   <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261110a1"></script>
+<script src="../../shell/shell.js?v=20261111b1"></script>
   <style>
     .mz-wrap {
       --mz-a: #00f0ff; --mz-b: #ff2d95;
@@ -91,7 +91,7 @@
     .mz-diffrow-t { font-size: 10px; color: var(--text-dim); white-space: nowrap; padding: 0 2px; }
     .mz-diffchip {
       flex: 1; min-height: 44px; padding: 6px 4px; border-radius: 10px; cursor: pointer;
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(24,32,52,0.05); border: 1px solid rgba(24,32,52,0.16);
       color: var(--text-dim); font: inherit; font-size: 11px;
       transition: border-color .12s ease, color .12s ease, background .12s ease;
     }
@@ -102,7 +102,7 @@
     .mz-themes { display: flex; flex: 1; min-width: 0; gap: 6px; }
     .mz-themechip {
       flex: 1; min-width: 0; min-height: 44px; padding: 6px 3px; border-radius: 10px; cursor: pointer;
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(24,32,52,0.05); border: 1px solid rgba(24,32,52,0.16);
       color: var(--text-dim); font: inherit; font-size: 10px; white-space: nowrap;
       transition: border-color .12s ease, color .12s ease, background .12s ease;
     }
@@ -113,7 +113,7 @@
     .mz-hud { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin: 0 0 8px; }
     .mz-pill {
       display: flex; align-items: center; gap: 5px; padding: 4px 9px; border-radius: 999px;
-      background: rgba(255,255,255,0.05); border: 1px solid var(--mz-a-line);
+      background: rgba(24,32,52,0.05); border: 1px solid var(--mz-a-line);
       font-size: 10px; color: var(--text-dim); white-space: nowrap;
     }
     .mz-pill b { font-family: ui-monospace, monospace; font-size: 11px; color: var(--text-main); }
@@ -134,8 +134,8 @@
     .mz-sp { display: block; }
     .mz-dpad button {
       min-width: 44px; min-height: 44px;
-      font-size: 20px; border-radius: 12px; background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.18); color: var(--text); cursor: pointer;
+      font-size: 20px; border-radius: 12px; background: rgba(24,32,52,0.10);
+      border: 1px solid rgba(24,32,52,0.18); color: var(--text); cursor: pointer;
       touch-action: none; transition: transform .08s ease, background .08s ease;
     }
     .mz-dpad button:active { transform: translateY(1px); background: rgba(0,240,255,0.20); border-color: rgba(0,240,255,0.5); }
@@ -143,7 +143,7 @@
     .mz-mini {
       min-height: 44px; min-width: 44px;
       font-size: 11px; padding: 9px 12px; border-radius: 10px; cursor: pointer;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); color: var(--text-dim);
+      background: rgba(24,32,52,0.07); border: 1px solid rgba(24,32,52,0.16); color: var(--text-dim);
       white-space: nowrap;
     }
     .mz-mini:active { transform: translateY(1px); }
@@ -151,7 +151,7 @@
       position: absolute; left: 50%; top: 50%; z-index: 6; pointer-events: none;
       transform: translate(-50%, -50%) scale(.88); opacity: 0; white-space: nowrap; text-align: center;
       padding: 12px 18px; border-radius: 14px; color: var(--neon-cyan);
-      background: rgba(5,8,16,0.92); border: 1px solid currentColor;
+      background: var(--nc-stage-2); border: 1px solid currentColor;
       box-shadow: 0 0 30px currentColor;
       font-family: var(--font-pixel); font-size: 14px; letter-spacing: 1px;
       transition: opacity .25s ease, transform .34s cubic-bezier(.2,1.4,.4,1);
@@ -160,12 +160,12 @@
     .mz-banner small { display: block; font-family: ui-monospace, monospace; font-size: 10px; color: var(--text-main); margin-top: 6px; letter-spacing: .08em; }
     .mz-overlay {
       position: absolute; inset: 0; z-index: 7; display: flex; align-items: center; justify-content: center;
-      padding: 10px; border-radius: 12px; background: rgba(5,8,16,0.88);
+      padding: 10px; border-radius: 12px; background: var(--nc-stage-2);
       -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
     }
     .mz-card {
       width: min(320px, 100%); max-height: 100%; overflow: auto; padding: 15px 14px; border-radius: 14px;
-      text-align: center; background: linear-gradient(160deg, rgba(18,26,48,0.98), rgba(8,9,20,0.98));
+      text-align: center; background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid var(--mz-a-line);
       box-shadow: 0 0 26px var(--mz-glow), inset 0 0 18px var(--mz-b-soft2);
     }
@@ -173,7 +173,7 @@
     .mz-card h2.win { color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255,230,0,0.6); }
     .mz-card .mz-sub { font-size: 11px; color: var(--text-dim); line-height: 1.6; margin: 0 0 10px; }
     .mz-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 8px 0 2px; }
-    .mz-stat { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.09); border-radius: 8px; padding: 6px 8px; text-align: left; font-size: 10px; color: var(--text-dim); }
+    .mz-stat { background: rgba(24,32,52,0.045); border: 1px solid rgba(24,32,52,0.09); border-radius: 8px; padding: 6px 8px; text-align: left; font-size: 10px; color: var(--text-dim); }
     .mz-stat b { display: block; font-family: ui-monospace, monospace; font-size: 13px; color: var(--text-main); margin-top: 2px; }
     .mz-stat.score b { color: var(--neon-yellow); }
     .mz-newrec {
@@ -207,7 +207,7 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <div class="nc-search has-icon">
     <span class="search-icon" aria-hidden="true">⌕</span>
@@ -238,9 +238,9 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
-  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
 <script src="../../assets/js/family-bridge.js?v=2"></script>

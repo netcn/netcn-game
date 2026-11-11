@@ -89,7 +89,7 @@ Arcade.shell = (function () {
     return gameTitle + ' · 玩法';
   }
 
-  /* 动态 <title>：语言切换后跟随当前语言（如「铁壁防线 · 游戏街机厅」） */
+  /* 动态 <title>：语言切换后跟随当前语言（如「铁壁防线 · 游戏厅」） */
   try {
     if (gameId && Arcade.i18n) {
       document.title = Arcade.i18n.t('g.' + gameId + '.t') + Arcade.i18n.t('app.titleSuffix');

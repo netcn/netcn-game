@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>页面未找到 Page Not Found | 游戏厅</title>
+<meta name="description" content="这个游戏好像不在大厅里 / This game is not in the arcade.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#fafbfc">
+<link rel="icon" href="/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" href="/assets/icons/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261111b1">
+<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261111b1">
+<script src="/shell/shell.js?v=20261111b1"></script>
+<style>
+  main{max-width:720px;margin:0 auto;padding:72px 24px 96px;text-align:center}
+  main .ico{font-size:56px;line-height:1}
+  main h1{font-size:64px;margin:14px 0 6px;letter-spacing:-2px}
+  main h1 small{font-size:16px;letter-spacing:0;font-weight:600;color:var(--ui-ink2, #5b6478);display:block;margin-top:6px}
+  main p{color:var(--ui-ink2, #5b6478);margin:10px 0}
+  main .back{display:inline-block;margin-top:24px;padding:11px 24px;border-radius:10px;background:#7c5cff;color:#fff;text-decoration:none;font-weight:650}
+  main .back:hover{background:#6a48e8}
+</style>
+</head>
+<body>
+<nav class="nc-shell" aria-label="netcn 站点导航">
+  <a class="nc-brand" href="/" aria-label="返回首页"><span class="nc-mk" aria-hidden="true"></span><span class="nc-brand-txt">游戏厅</span></a>
+  <nav class="nc-sw" aria-label="netcn 站点">
+    <a href="https://netcn.org/" data-nc-to="nav">导航</a><a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a><a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a><a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+  </nav>
+  <form class="nc-search has-icon" action="/" method="get"><span class="search-icon" aria-hidden="true">⌕</span><input type="search" name="q" placeholder="搜索游戏…" aria-label="搜索游戏"></form>
+  <div class="nc-tools"><button class="nc-tool" id="ncTheme" type="button" aria-label="切换明暗">☾</button><button class="nc-tool" id="ncLang" type="button" aria-label="切换语言">EN</button></div>
+</nav>
+<main>
+  <div class="ico">🕹️</div>
+  <h1>404<small>页面未找到 / Page Not Found</small></h1>
+  <p data-zh="这个游戏好像不在大厅里，换个入口试试。" data-en="This game is not in the arcade. Try another entry.">这个游戏好像不在大厅里，换个入口试试。</p>
+  <a class="back" href="/" data-zh="回游戏厅首页" data-en="Back to Arcade">回游戏厅首页</a>
+</main>
+<footer class="nc-foot">
+  <nav class="nc-foot-nav" aria-label="netcn 站点">
+    <a href="https://netcn.org/" data-nc-to="nav">导航</a><a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a><a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a><a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+  </nav>
+  <span class="nc-foot-note">© 2011–2026 netcn.org</span>
+  <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+</footer>
+<script>
+(function(){
+  function apply(l){
+    var k = l === 'en' ? 'data-en' : 'data-zh';
+    document.querySelectorAll('[' + k + ']').forEach(function(e){
+      var v = e.getAttribute(k); if (v) e.textContent = v;
+    });
+    document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
+  }
+  function cur(){
+    try { var s = localStorage.getItem('arcade_lang'); if (s === 'zh' || s === 'en') return s; } catch (e) {}
+    return /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+  }
+  apply(cur());
+  window.addEventListener('ncn:lang', function(e){ apply(e.detail && e.detail.lang || cur()); });
+})();
+</script>
+</body>
+</html>

@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a12">
+  <meta name="theme-color" content="#fafbfc">
   <link rel="manifest" href="../../manifest.webmanifest">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="游戏厅">
   <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
-  <title>21点 · 游戏街机厅</title>
-  <meta name="description" content="游戏街机厅 · 21点：与庄家比点数，攒满筹码即胜的纸牌对决。 打开即玩，最高分记录保存在本地浏览器。">
+  <title>21点 · 游戏厅</title>
+  <meta name="description" content="游戏厅 · 21点：与庄家比点数，攒满筹码即胜的纸牌对决。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://game.netcn.org/games/blackjack/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
-  <meta property="og:title" content="21点 · 游戏街机厅">
-  <meta property="og:description" content="游戏街机厅 · 21点：与庄家比点数，攒满筹码即胜的纸牌对决。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:site_name" content="游戏厅 · Arcade">
+  <meta property="og:title" content="21点 · 游戏厅">
+  <meta property="og:description" content="游戏厅 · 21点：与庄家比点数，攒满筹码即胜的纸牌对决。 打开即玩，最高分记录保存在本地浏览器。">
   <meta property="og:url" content="https://game.netcn.org/games/blackjack/">
   <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="21点 · 游戏街机厅">
-  <meta name="twitter:description" content="游戏街机厅 · 21点：与庄家比点数，攒满筹码即胜的纸牌对决。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:title" content="21点 · 游戏厅">
+  <meta name="twitter:description" content="游戏厅 · 21点：与庄家比点数，攒满筹码即胜的纸牌对决。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <script type="application/ld+json">
   {
@@ -32,8 +32,8 @@
     "url": "https://game.netcn.org/games/blackjack/",
     "applicationCategory": "Game",
     "inLanguage": "zh-CN",
-    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
-    "description": "游戏街机厅 · 21点：与庄家比点数，攒满筹码即胜的纸牌对决。 打开即玩，最高分记录保存在本地浏览器。"
+    "isPartOf": { "@type": "WebSite", "name": "游戏厅 · Arcade", "url": "https://game.netcn.org/" },
+    "description": "游戏厅 · 21点：与庄家比点数，攒满筹码即胜的纸牌对决。 打开即玩，最高分记录保存在本地浏览器。"
   }
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
@@ -45,11 +45,11 @@
 <link rel="stylesheet" href="../../assets/css/theme.css">
   <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
   <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261110a1"></script>
+<script src="../../shell/shell.js?v=20261111b1"></script>
   <style>
     .bj-wrap { padding: 12px 12px 22px; width: min(520px, 96vw); text-align: center; position: relative; }
     .bj-wrap .hidden { display: none !important; }
@@ -61,23 +61,23 @@
 
     .bj-modes { display: flex; gap: 8px; justify-content: center; margin-bottom: 8px; }
     .bj-mode { flex: 1 1 0; min-height: 44px; padding: 7px 8px; border-radius: 9px; cursor: pointer;
-      background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.14); color: var(--text-dim);
+      background: rgba(24,32,52,0.045); border: 1px solid rgba(24,32,52,0.14); color: var(--text-dim);
       font-family: var(--font-pixel); font-size: 10px; letter-spacing: 1px; transition: border-color .2s, box-shadow .2s, color .2s; }
-    .bj-mode.active { color: var(--neon-cyan); border-color: rgba(0,240,255,0.7); box-shadow: 0 0 14px rgba(0,240,255,0.22), inset 0 0 10px rgba(0,240,255,0.08); }
+    .bj-mode.active { color: var(--neon-cyan); border-color: rgba(0,240,255,0.7); box-shadow: var(--ui-shadow); }
     .bj-mode:disabled { opacity: .4; cursor: not-allowed; }
     .bj-tourinfo { font-size: 11px; color: var(--neon-yellow); letter-spacing: .5px; margin: 0 0 8px; line-height: 1.6; }
 
     .bj-table { position: relative; border-radius: 16px; padding: 8px; overflow: hidden; isolation: isolate;
       background:
         radial-gradient(120% 90% at 50% 0%, rgba(0,240,255,0.10), transparent 62%),
-        linear-gradient(160deg, #10162b, #090c17 68%);
+        linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(0,240,255,0.20); box-shadow: inset 0 0 34px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.38);
       transition: box-shadow .35s; }
     .bj-table.bj-win-glow { box-shadow: 0 0 0 1px rgba(57,255,20,0.55), 0 0 34px rgba(57,255,20,0.30), inset 0 0 34px rgba(0,0,0,0.55); }
     .bj-felt { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
     .bj-table-in { position: relative; z-index: 2; }
     .bj-side { padding: 8px; border-radius: 10px; text-align: left; }
-    .bj-side.dealer { border-bottom: 1px dashed rgba(255,255,255,0.10); }
+    .bj-side.dealer { border-bottom: 1px dashed rgba(24,32,52,0.10); }
     .bj-side-head { display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 2px; color: var(--text-dim); margin-bottom: 6px; }
     .bj-val { font-family: var(--font-mono); color: var(--neon-cyan); font-size: 12px; letter-spacing: 0; text-shadow: 0 0 10px rgba(0,240,255,0.3); }
     .bj-cards { display: flex; flex-wrap: wrap; gap: 6px; min-height: 76px; align-items: center; }
@@ -86,23 +86,23 @@
     .bj-card.down .bj-card-inner { transform: rotateY(180deg); }
     .bj-face, .bj-back { position: absolute; inset: 0; border-radius: 9px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
     .bj-face { background: linear-gradient(158deg, #fffef8 0%, #f3ead6 55%, #ddd0b7 100%);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.7); color: #1b2033;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(24,32,52,0.7); color: #1b2033;
       display: flex; align-items: center; justify-content: center; }
-    .bj-face .bj-suit { font-size: 26px; line-height: 1; color: #22263a; text-shadow: 0 1px 0 rgba(255,255,255,0.6); }
+    .bj-face .bj-suit { font-size: 26px; line-height: 1; color: #22263a; text-shadow: 0 1px 0 rgba(24,32,52,0.6); }
     .bj-card.red .bj-face .bj-suit, .bj-card.red .bj-rank { color: #c22b52; }
     .bj-rank { position: absolute; font-size: 12px; font-weight: 700; line-height: 1; color: #22263a; }
     .bj-rank.tl { top: 5px; left: 5px; }
     .bj-rank.br { bottom: 5px; right: 5px; transform: rotate(180deg); }
     .bj-back { transform: rotateY(180deg); background:
       repeating-linear-gradient(45deg, #22305a 0 5px, #2a3a6a 5px 10px);
-      border: 2px solid #3c4f8a; box-shadow: 0 4px 12px rgba(0,0,0,0.45), inset 0 0 14px rgba(0,240,255,0.20);
+      border: 2px solid #3c4f8a; box-shadow: var(--ui-shadow);
       display: flex; align-items: center; justify-content: center; }
     .bj-back span { font-family: var(--font-pixel); font-size: 13px; color: rgba(0,240,255,0.7); text-shadow: 0 0 10px rgba(0,240,255,0.45); }
     .bj-card.flip { animation: bjFlip .55s ease both; }
     @keyframes bjFlip { from { transform: rotateY(88deg) scale(.94); } to { transform: none; } }
 
     .bj-hand-panel { margin: 6px 0; padding: 6px 8px 8px; border-radius: 10px; border: 1px solid transparent; transition: border-color .25s, box-shadow .25s, background .25s; }
-    .bj-hand-panel.active { border-color: rgba(0,240,255,0.62); background: rgba(0,240,255,0.045); box-shadow: 0 0 16px rgba(0,240,255,0.20); }
+    .bj-hand-panel.active { border-color: rgba(0,240,255,0.62); background: rgba(0,240,255,0.045); box-shadow: var(--ui-shadow); }
     .bj-hand-panel.done { opacity: .88; }
     .bj-hand-panel.busted { opacity: .55; }
     .bj-hand-hd { display: flex; justify-content: space-between; gap: 6px; font-size: 10px; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 4px; }
@@ -117,7 +117,7 @@
 
     .bj-betinfo { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
     .bj-betinfo b { color: var(--neon-yellow); font-family: var(--font-mono); }
-    .bj-mini { min-height: 44px; padding: 7px 11px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.17);
+    .bj-mini { min-height: 44px; padding: 7px 11px; background: rgba(24,32,52,0.06); border: 1px solid rgba(24,32,52,0.17);
       color: var(--text-dim); border-radius: 8px; font-size: 11px; cursor: pointer; transition: border-color .18s, color .18s, background .18s; }
     .bj-mini:hover:not(:disabled) { border-color: rgba(0,240,255,0.5); color: var(--neon-cyan); }
     .bj-mini:disabled { opacity: .4; cursor: not-allowed; }
@@ -129,11 +129,11 @@
     .bj-count-btn { min-width: 44px; padding: 7px 10px; font-family: var(--font-mono); }
     .bj-betplans { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 8px; }
     .bj-plan { min-height: 44px; min-width: 76px; padding: 6px 12px; display: inline-flex; align-items: center; justify-content: space-between; gap: 10px;
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16); border-radius: 9px; color: var(--text-dim); cursor: pointer; font-size: 11px; }
+      background: rgba(24,32,52,0.05); border: 1px solid rgba(24,32,52,0.16); border-radius: 9px; color: var(--text-dim); cursor: pointer; font-size: 11px; }
     .bj-plan b { font-family: var(--font-mono); color: var(--neon-yellow); }
-    .bj-plan.active { border-color: rgba(0,240,255,0.66); box-shadow: 0 0 12px rgba(0,240,255,0.2); color: var(--neon-cyan); }
+    .bj-plan.active { border-color: rgba(0,240,255,0.66); box-shadow: var(--ui-shadow); color: var(--neon-cyan); }
 
-    .bj-sidebox { border-top: 1px dashed rgba(255,255,255,0.12); padding: 7px 0 2px; margin-bottom: 9px; }
+    .bj-sidebox { border-top: 1px dashed rgba(24,32,52,0.12); padding: 7px 0 2px; margin-bottom: 9px; }
     .bj-sidebox-hd { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 8px; font-size: 11px; color: var(--neon-purple); letter-spacing: 1px; margin-bottom: 5px; }
     .bj-sidebox-note { color: var(--text-dim); font-size: 10px; letter-spacing: 0; }
     .bj-side-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; font-size: 11px; margin-bottom: 6px; }
@@ -143,9 +143,9 @@
     .bj-side-minus, .bj-side-plus { min-width: 44px; min-height: 44px; padding: 0; }
 
     .bj-chips-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
-    .bj-chip { width: 52px; height: 52px; min-width: 44px; min-height: 44px; border-radius: 50%; border: 3px dashed rgba(255,255,255,0.35); cursor: pointer;
-      font-family: var(--font-pixel); font-size: 11px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-      box-shadow: 0 4px 0 rgba(0,0,0,0.35), inset 0 0 12px rgba(255,255,255,0.25);
+    .bj-chip { width: 52px; height: 52px; min-width: 44px; min-height: 44px; border-radius: 50%; border: 3px dashed rgba(24,32,52,0.35); cursor: pointer;
+      font-family: var(--font-pixel); font-size: 11px; color: var(--text-main); text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+      box-shadow: 0 4px 0 rgba(0,0,0,0.35), inset 0 0 12px rgba(24,32,52,0.25);
       transition: transform .16s, box-shadow .16s; }
     .bj-chip:hover:not(:disabled) { transform: translateY(-2px); }
     .bj-chip:active:not(:disabled) { transform: translateY(1px); box-shadow: 0 2px 0 rgba(0,0,0,0.35); }
@@ -165,30 +165,30 @@
     .bj-toggles { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 9px 0 0; }
 
     .bj-result { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 16px;
-      background: rgba(3,6,14,0.84); backdrop-filter: blur(5px); border-radius: 16px; z-index: 5; }
+      background: var(--nc-stage-2); backdrop-filter: blur(5px); border-radius: 16px; z-index: 5; }
     .bj-result.show { display: flex; animation: bjFade .25s ease both; }
     @keyframes bjFade { from { opacity: 0; } to { opacity: 1; } }
     .bj-result-box { width: min(340px, 100%); max-height: 100%; overflow: auto; padding: 20px 16px; border-radius: 15px; text-align: center;
-      background: linear-gradient(160deg, #151b32, #0b0f1c); border: 1px solid rgba(0,240,255,0.32);
-      box-shadow: 0 12px 44px rgba(0,0,0,0.65), 0 0 26px rgba(0,240,255,0.14); }
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgba(0,240,255,0.32);
+      box-shadow: var(--ui-shadow); }
     .bj-result-title { font-family: var(--font-pixel); font-size: 17px; margin-bottom: 10px; line-height: 1.5; }
     .bj-result-net { font-family: var(--font-mono); font-size: 21px; margin-bottom: 8px; }
     .bj-result-sub { font-size: 12px; color: var(--text-dim); line-height: 1.65; margin-bottom: 10px; }
-    .bj-result-details { text-align: left; font-size: 11px; line-height: 1.75; margin: 0 0 14px; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.14); max-height: 140px; overflow: auto; }
+    .bj-result-details { text-align: left; font-size: 11px; line-height: 1.75; margin: 0 0 14px; padding-top: 8px; border-top: 1px dashed rgba(24,32,52,0.14); max-height: 140px; overflow: auto; }
     .bj-detail { color: var(--text-dim); display: flex; justify-content: space-between; gap: 8px; }
     .bj-detail.good { color: var(--neon-green); }
     .bj-detail.bad { color: var(--neon-pink); }
     .bj-result-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
     .bj-pauseov { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 16px;
-      background: rgba(3,6,14,0.86); backdrop-filter: blur(5px); border-radius: 16px; z-index: 7; }
+      background: var(--nc-stage-2); backdrop-filter: blur(5px); border-radius: 16px; z-index: 7; }
     .bj-pauseov.show { display: flex; animation: bjFade .2s ease both; }
     .bj-pause-box { width: min(300px, 100%); padding: 20px 16px; border-radius: 14px; text-align: center;
-      background: linear-gradient(160deg, #151b32, #0b0f1c); border: 1px solid rgba(255,230,0,0.35);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgba(255,230,0,0.35);
       box-shadow: 0 12px 44px rgba(0,0,0,0.65), 0 0 26px rgba(255,230,0,0.12); }
 
     .bj-help { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-top: 12px; text-align: left;
-      background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 12px; }
+      background: rgba(24,32,52,0.04); border-radius: 8px; padding: 10px 12px; }
 
     @media (max-width: 400px) {
       .bj-card { width: 45px; height: 65px; }
@@ -216,7 +216,7 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <div class="nc-search has-icon">
     <span class="search-icon" aria-hidden="true">⌕</span>
@@ -246,9 +246,9 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
-  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
 <script src="../../assets/js/family-bridge.js?v=2"></script>

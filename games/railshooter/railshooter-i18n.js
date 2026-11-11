@@ -1,4 +1,4 @@
-/* 游戏街机厅 · railshooter 游戏内文案（zh/en 对称）
+/* 游戏厅 · railshooter 游戏内文案（zh/en 对称）
    旗舰版：6 波 + 双阶段 Boss、弹匣换弹、生命/护甲、平民误伤、补给掉落 */
 (function () {
   var d = Arcade.i18n.dicts;

@@ -1,4 +1,4 @@
-/* 游戏街机厅 · circuit 游戏内文案（zh/en 对称） */
+/* 游戏厅 · circuit 游戏内文案（zh/en 对称） */
 (function () {
   var d = Arcade.i18n.dicts;
   d.zh['gs.circuit.tutTitle'] = '电路连接 · 玩法';

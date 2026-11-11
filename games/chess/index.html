@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a12">
+  <meta name="theme-color" content="#fafbfc">
   <link rel="manifest" href="../../manifest.webmanifest">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="游戏厅">
   <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
-  <title>国际象棋 · 游戏街机厅</title>
-  <meta name="description" content="游戏街机厅 · 国际象棋：标准走法规则，三档 AI 挑战你的棋力。 打开即玩，最高分记录保存在本地浏览器。">
+  <title>国际象棋 · 游戏厅</title>
+  <meta name="description" content="游戏厅 · 国际象棋：标准走法规则，三档 AI 挑战你的棋力。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://game.netcn.org/games/chess/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
-  <meta property="og:title" content="国际象棋 · 游戏街机厅">
-  <meta property="og:description" content="游戏街机厅 · 国际象棋：标准走法规则，三档 AI 挑战你的棋力。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:site_name" content="游戏厅 · Arcade">
+  <meta property="og:title" content="国际象棋 · 游戏厅">
+  <meta property="og:description" content="游戏厅 · 国际象棋：标准走法规则，三档 AI 挑战你的棋力。 打开即玩，最高分记录保存在本地浏览器。">
   <meta property="og:url" content="https://game.netcn.org/games/chess/">
   <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="国际象棋 · 游戏街机厅">
-  <meta name="twitter:description" content="游戏街机厅 · 国际象棋：标准走法规则，三档 AI 挑战你的棋力。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:title" content="国际象棋 · 游戏厅">
+  <meta name="twitter:description" content="游戏厅 · 国际象棋：标准走法规则，三档 AI 挑战你的棋力。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <script type="application/ld+json">
   {
@@ -32,8 +32,8 @@
     "url": "https://game.netcn.org/games/chess/",
     "applicationCategory": "Game",
     "inLanguage": "zh-CN",
-    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
-    "description": "游戏街机厅 · 国际象棋：标准走法规则，三档 AI 挑战你的棋力。 打开即玩，最高分记录保存在本地浏览器。"
+    "isPartOf": { "@type": "WebSite", "name": "游戏厅 · Arcade", "url": "https://game.netcn.org/" },
+    "description": "游戏厅 · 国际象棋：标准走法规则，三档 AI 挑战你的棋力。 打开即玩，最高分记录保存在本地浏览器。"
   }
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
@@ -45,11 +45,11 @@
 <link rel="stylesheet" href="../../assets/css/theme.css">
   <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
   <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261110a1"></script>
+<script src="../../shell/shell.js?v=20261111b1"></script>
   <style>
     .ch-wrap { padding: 14px 10px 24px; width: min(560px, 96vw); text-align: center; }
     #ch-mode .mode-btn, #ch-diff .mode-btn, #ch-time .mode-btn, #ch-puzzles .mode-btn { min-height: 44px; }
@@ -63,8 +63,8 @@
       background: rgba(0,240,255,.05); transition: border-color .18s, box-shadow .18s; }
     .ch-clock i { font-style: normal; font-size: 10px; color: var(--text-dim); letter-spacing: .06em; }
     .ch-clock b { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-cyan); }
-    .ch-clock.active { border-color: var(--neon-cyan); box-shadow: 0 0 12px rgba(0,240,255,.28); }
-    .ch-clock.active b { color: #fff; }
+    .ch-clock.active { border-color: var(--neon-cyan); box-shadow: var(--ui-shadow); }
+    .ch-clock.active b { color: var(--text-main); }
     .ch-clock b.low { color: #ff3b6b; text-shadow: 0 0 10px rgba(255,59,107,.7); animation: chLow 1s ease-in-out infinite; }
     @keyframes chLow { 0%,100% { opacity: .65; } 50% { opacity: 1; } }
     .ch-ov-note { margin: 4px 0 8px; font-size: 12px; color: var(--neon-yellow); }
@@ -79,16 +79,16 @@
     .ch-grid { display: grid; grid-template-columns: repeat(8, 1fr); width: min(480px, 92vw); margin: 0 auto;
       border-radius: 10px; overflow: hidden; padding: 5px;
       background: linear-gradient(150deg, #2b2119, #100b07);
-      box-shadow: 0 8px 30px rgba(0,0,0,.55), inset 0 0 0 2px rgba(255,255,255,.07); }
+      box-shadow: 0 8px 30px rgba(0,0,0,.55), inset 0 0 0 2px rgba(24,32,52,.07); }
     .ch-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative;
       cursor: pointer; user-select: none; overflow: hidden; }
     .ch-cell.light { background: linear-gradient(145deg, #f2e6ca, #d9c49c); }
     .ch-cell.dark { background: linear-gradient(145deg, #7a5c3c, #4f3823); }
     .ch-piece { font-size: clamp(19px, 5.6vw, 33px); line-height: 1; pointer-events: none; }
     .ch-piece.white { color: #fffaf0; -webkit-text-stroke: 1px rgba(60,40,10,.55); text-shadow: 0 2px 3px rgba(0,0,0,.5), 0 0 10px rgba(255,246,220,.35); }
-    .ch-piece.black { color: #1d1a24; -webkit-text-stroke: 1px rgba(255,255,255,.35); text-shadow: 0 2px 3px rgba(0,0,0,.45), 0 0 10px rgba(120,140,255,.28); }
+    .ch-piece.black { color: #1d1a24; -webkit-text-stroke: 1px rgba(24,32,52,.35); text-shadow: 0 2px 3px rgba(0,0,0,.45), 0 0 10px rgba(120,140,255,.28); }
     .ch-piece.king { filter: drop-shadow(0 0 6px rgba(255,230,0,.55)); }
-    .ch-cell.last::before { content: ''; position: absolute; inset: 0; background: rgba(0,240,255,.16); box-shadow: inset 0 0 0 2px rgba(0,240,255,.5); }
+    .ch-cell.last::before { content: ''; position: absolute; inset: 0; background: rgba(0,240,255,.16); box-shadow: var(--ui-shadow); }
     .ch-cell.sel { box-shadow: inset 0 0 0 3px var(--neon-yellow), 0 0 16px rgba(255,230,0,.55); z-index: 2; }
     .ch-cell.move::after { content: ''; position: absolute; width: 30%; height: 30%; border-radius: 50%;
       background: radial-gradient(circle, rgba(57,255,20,.95), rgba(57,255,20,.3));
@@ -108,14 +108,14 @@
     @keyframes chCheck { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
     .ch-msg { min-height: 18px; font-size: 13px; color: var(--neon-green); margin: 10px 0 8px; }
     .ch-help { font-size: 12px; color: var(--text-dim); line-height: 1.7; margin-top: 8px; text-align: left;
-      background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 12px; }
+      background: rgba(24,32,52,0.04); border-radius: 8px; padding: 10px 12px; }
     .ch-overlay, .ch-promo { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
-      padding: 20px; background: radial-gradient(circle at 50% 40%, rgba(10,16,32,.88), rgba(3,4,10,.97));
+      padding: 20px; background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       animation: chFade .26s ease-out; }
     @keyframes chFade { from { opacity: 0; } to { opacity: 1; } }
     .ch-ov-card { width: min(400px, 92vw); text-align: center; padding: 22px 18px; border-radius: 16px;
-      border: 1px solid rgba(0,240,255,.35); background: linear-gradient(160deg, rgba(18,26,48,.98), rgba(8,11,22,.98));
-      box-shadow: 0 0 34px rgba(0,240,255,.2), inset 0 1px 0 rgba(255,255,255,.07);
+      border: 1px solid rgba(0,240,255,.35); background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
+      box-shadow: var(--ui-shadow);
       animation: chCard .3s cubic-bezier(.2,.9,.3,1.25); }
     @keyframes chCard { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
     .ch-ov-icon { font-size: 34px; line-height: 1; margin-bottom: 8px; animation: chPop .42s cubic-bezier(.2,.9,.3,1.5); }
@@ -137,10 +137,13 @@
     .ch-promo-btn { width: 56px; height: 56px; border-radius: 12px; cursor: pointer;
       font-size: 30px; line-height: 1; color: #fffaf0;
       background: linear-gradient(160deg, #3a4d6e, #18202f); border: 1px solid rgba(0,240,255,.45);
-      box-shadow: 0 0 14px rgba(0,240,255,.25), inset 0 1px 0 rgba(255,255,255,.15);
+      box-shadow: var(--ui-shadow);
       transition: transform .14s ease, box-shadow .14s ease; }
-    .ch-promo-btn:hover, .ch-promo-btn:active { transform: translateY(-2px) scale(1.05); box-shadow: 0 0 20px rgba(0,240,255,.5); }
-  </style>
+    .ch-promo-btn:hover, .ch-promo-btn:active { transform: translateY(-2px) scale(1.05); box-shadow: var(--ui-shadow); }
+  
+    /* 触屏点击兜底：消除双击缩放延迟，保留滚动；不加 !important 以免破坏滑动类游戏 */
+    button, [role="button"], .card, .cell, .tile, .piece { touch-action: manipulation; }
+</style>
 </head>
 <body data-game-id="chess" data-game-title="国际象棋" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -149,7 +152,7 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <div class="nc-search has-icon">
     <span class="search-icon" aria-hidden="true">⌕</span>
@@ -179,9 +182,9 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
-  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
 <script src="../../assets/js/family-bridge.js?v=2"></script>

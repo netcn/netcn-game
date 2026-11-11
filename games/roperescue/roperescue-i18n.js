@@ -1,4 +1,4 @@
-/* 游戏街机厅 · roperescue 游戏内文案（zh/en 对称） */
+/* 游戏厅 · roperescue 游戏内文案（zh/en 对称） */
 (function () {
   var d = Arcade.i18n.dicts;
   var zh = d.zh, en = d.en;

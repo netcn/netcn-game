@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a12">
+  <meta name="theme-color" content="#fafbfc">
   <link rel="manifest" href="../../manifest.webmanifest">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="游戏厅">
   <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
-  <title>小行星 · 游戏街机厅</title>
-  <meta name="description" content="游戏街机厅 · 小行星：击碎小行星群，飞船别被撞毁。 打开即玩，最高分记录保存在本地浏览器。">
+  <title>小行星 · 游戏厅</title>
+  <meta name="description" content="游戏厅 · 小行星：击碎小行星群，飞船别被撞毁。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://game.netcn.org/games/asteroidf/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
-  <meta property="og:title" content="小行星 · 游戏街机厅">
-  <meta property="og:description" content="游戏街机厅 · 小行星：击碎小行星群，飞船别被撞毁。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:site_name" content="游戏厅 · Arcade">
+  <meta property="og:title" content="小行星 · 游戏厅">
+  <meta property="og:description" content="游戏厅 · 小行星：击碎小行星群，飞船别被撞毁。 打开即玩，最高分记录保存在本地浏览器。">
   <meta property="og:url" content="https://game.netcn.org/games/asteroidf/">
   <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="小行星 · 游戏街机厅">
-  <meta name="twitter:description" content="游戏街机厅 · 小行星：击碎小行星群，飞船别被撞毁。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:title" content="小行星 · 游戏厅">
+  <meta name="twitter:description" content="游戏厅 · 小行星：击碎小行星群，飞船别被撞毁。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <script type="application/ld+json">
   {
@@ -32,8 +32,8 @@
     "url": "https://game.netcn.org/games/asteroidf/",
     "applicationCategory": "Game",
     "inLanguage": "zh-CN",
-    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
-    "description": "游戏街机厅 · 小行星：击碎小行星群，飞船别被撞毁。 打开即玩，最高分记录保存在本地浏览器。"
+    "isPartOf": { "@type": "WebSite", "name": "游戏厅 · Arcade", "url": "https://game.netcn.org/" },
+    "description": "游戏厅 · 小行星：击碎小行星群，飞船别被撞毁。 打开即玩，最高分记录保存在本地浏览器。"
   }
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
@@ -45,11 +45,11 @@
 <link rel="stylesheet" href="../../assets/css/theme.css">
   <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
   <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261110a1"></script>
+<script src="../../shell/shell.js?v=20261111b1"></script>
   <style>
     .as-wrap { padding: 10px 10px 16px; width: min(660px, 100%); margin: 0 auto; text-align: center; }
     .as-hud {
@@ -71,7 +71,7 @@
     .as-pause-ico { position: relative; display: block; width: 13px; height: 15px; }
     .as-pause-ico::before, .as-pause-ico::after {
       content: ''; position: absolute; top: 0; width: 5px; height: 100%; border-radius: 1px;
-      background: var(--neon-cyan); box-shadow: 0 0 8px rgba(0,240,255,0.8);
+      background: var(--neon-cyan); box-shadow: var(--ui-shadow);
     }
     .as-pause-ico::before { left: 0; }
     .as-pause-ico::after { right: 0; }
@@ -81,24 +81,24 @@
     .as-meter b { font-family: Consolas, 'Courier New', monospace; font-size: 11px; color: var(--neon-cyan); min-width: 26px; text-align: left; }
     .as-meter.spread b { color: var(--neon-purple); }
     .as-meter.rapid b { color: var(--neon-orange); }
-    .as-shield-bar { width: 70px; height: 7px; border-radius: 4px; overflow: hidden; background: rgba(255,255,255,0.07); border: 1px solid rgba(0,240,255,0.28); }
-    .as-shield-fill { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, #0a8ea8, #00f0ff 62%, #d6feff); box-shadow: 0 0 8px rgba(0,240,255,0.8); transition: width .12s linear; }
-    .as-dot-shield { width: 9px; height: 11px; border: 1px solid var(--neon-cyan); border-radius: 50% 50% 42% 42% / 26% 26% 74% 74%; box-shadow: 0 0 6px rgba(0,240,255,0.5); }
+    .as-shield-bar { width: 70px; height: 7px; border-radius: 4px; overflow: hidden; background: rgba(24,32,52,0.07); border: 1px solid rgba(0,240,255,0.28); }
+    .as-shield-fill { display: block; height: 100%; width: 0%; background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); box-shadow: var(--ui-shadow); transition: width .12s linear; }
+    .as-dot-shield { width: 9px; height: 11px; border: 1px solid var(--neon-cyan); border-radius: 50% 50% 42% 42% / 26% 26% 74% 74%; box-shadow: var(--ui-shadow); }
     .as-stage {
       position: relative; width: 100%; max-width: 640px; margin: 0 auto; border-radius: 12px;
       overflow: hidden; filter: drop-shadow(0 0 16px rgba(0,240,255,0.10));
     }
     .as-canvas {
-      display: block; width: 100%; height: auto; border-radius: 12px; background: #03040c;
-      border: 1px solid rgba(0,240,255,0.30); box-shadow: 0 0 22px rgba(0,240,255,0.12);
+      display: block; width: 100%; height: auto; border-radius: 12px; background: var(--nc-stage-2);
+      border: 1px solid rgba(0,240,255,0.30); box-shadow: var(--ui-shadow);
       touch-action: none; max-width: 100%;
     }
     .as-wave-banner {
       position: absolute; left: 50%; top: 15%; transform: translate(-50%, 10px) scale(0.86);
       z-index: 4; pointer-events: none; opacity: 0; white-space: nowrap; text-align: center;
       font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow);
-      text-shadow: 0 0 12px currentColor, 0 0 26px currentColor;
-      padding: 8px 14px; border-radius: 12px; background: rgba(6,8,16,0.86);
+      text-shadow: none;
+      padding: 8px 14px; border-radius: 12px; background: var(--nc-stage-2);
       border: 1px solid currentColor; box-shadow: 0 0 22px currentColor;
       transition: opacity .28s ease, transform .28s cubic-bezier(.2,1.5,.4,1);
     }
@@ -106,14 +106,14 @@
     .as-wave-banner small { display: block; margin-top: 4px; font-family: Consolas, monospace; font-size: 9px; color: var(--neon-cyan); letter-spacing: .1em; }
     .as-overlay {
       position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center;
-      background: rgba(4,6,16,0.86); border-radius: 12px;
+      background: var(--nc-stage-2); border-radius: 12px;
       -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
     }
     .as-card {
       width: min(330px, 92%); max-height: 94%; overflow: auto; padding: 15px 14px; text-align: center;
       border-radius: 14px; border: 1px solid rgba(0,240,255,0.35);
-      background: linear-gradient(160deg, rgba(20,28,48,0.98), rgba(10,10,22,0.98));
-      box-shadow: 0 0 24px rgba(0,240,255,0.18), inset 0 0 16px rgba(255,45,149,0.08);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
+      box-shadow: var(--ui-shadow);
     }
     .as-card h2 {
       margin: 0 0 8px; font-family: var(--font-pixel); font-size: 14px; line-height: 1.5;
@@ -138,47 +138,47 @@
     .as-deck { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; margin-top: 8px; touch-action: none; -webkit-user-select: none; user-select: none; }
     .as-stick {
       position: relative; width: 132px; height: 132px; min-width: 120px; min-height: 120px; border-radius: 50%;
-      touch-action: none; background: radial-gradient(circle at 50% 42%, rgba(0,240,255,0.13), rgba(8,10,24,0.75) 60%, rgba(3,5,12,0.92));
-      border: 2px solid rgba(0,240,255,0.30); box-shadow: inset 0 0 22px rgba(0,240,255,0.14), 0 0 14px rgba(0,240,255,0.10);
+      touch-action: none; background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
+      border: 2px solid rgba(0,240,255,0.30); box-shadow: var(--ui-shadow);
     }
     .as-stick::before { content: ''; position: absolute; inset: 20px; border-radius: 50%; border: 1px dashed rgba(0,240,255,0.22); }
     .as-stick::after { content: ''; position: absolute; left: 50%; top: 50%; width: 86px; height: 86px; margin: -43px 0 0 -43px; border-radius: 50%; border: 1px solid rgba(185,103,255,0.14); }
-    .as-stick.active { border-color: rgba(0,240,255,0.72); box-shadow: inset 0 0 26px rgba(0,240,255,0.26), 0 0 18px rgba(0,240,255,0.4); }
+    .as-stick.active { border-color: rgba(0,240,255,0.72); box-shadow: var(--ui-shadow); }
     .as-stick-knob {
       position: absolute; left: 50%; top: 50%; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%;
       touch-action: none; pointer-events: none; will-change: transform;
-      background: radial-gradient(circle at 38% 30%, rgba(226,255,255,0.96), rgba(64,226,255,0.92) 34%, rgba(0,142,178,0.95) 68%, rgba(2,32,48,0.96));
-      border: 1px solid rgba(170,252,255,0.9); box-shadow: 0 0 16px rgba(0,240,255,0.55), inset 0 0 10px rgba(255,255,255,0.3);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
+      border: 1px solid rgba(170,252,255,0.9); box-shadow: var(--ui-shadow);
     }
-    .as-stick-knob::after { content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: rgba(255,255,255,0.9); box-shadow: 0 0 8px #fff; }
+    .as-stick-knob::after { content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--nc-stage-2); box-shadow: 0 0 8px #fff; }
     .as-acts { display: grid; grid-template-columns: 76px 60px; grid-template-rows: 70px 70px; gap: 8px; touch-action: none; }
     .as-act {
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
       min-width: 56px; min-height: 56px; padding: 0; border-radius: 12px; touch-action: none; cursor: pointer;
       font-family: var(--font-pixel); font-size: 9px; letter-spacing: .08em;
       color: var(--neon-yellow); border: 2px solid var(--neon-yellow);
-      background: radial-gradient(circle at 50% 20%, rgba(255,230,0,0.14), rgba(10,10,22,0.85) 72%);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       box-shadow: 0 0 10px rgba(255,230,0,0.26), inset 0 0 12px rgba(255,230,0,0.10);
       transition: transform .08s ease, box-shadow .1s ease, background .1s ease;
       -webkit-user-select: none; user-select: none;
     }
     .as-act.fire { grid-row: 1 / span 2; }
-    .as-act.shield { grid-column: 2; grid-row: 1; color: var(--neon-cyan); border-color: var(--neon-cyan); background: radial-gradient(circle at 50% 20%, rgba(0,240,255,0.14), rgba(10,10,22,0.85) 72%); box-shadow: 0 0 10px rgba(0,240,255,0.26), inset 0 0 12px rgba(0,240,255,0.10); }
-    .as-act.dash { grid-column: 2; grid-row: 2; color: var(--neon-purple); border-color: var(--neon-purple); background: radial-gradient(circle at 50% 20%, rgba(185,103,255,0.16), rgba(10,10,22,0.85) 72%); box-shadow: 0 0 10px rgba(185,103,255,0.26), inset 0 0 12px rgba(185,103,255,0.10); }
-    .as-act.pressed { transform: scale(0.93); box-shadow: 0 0 24px currentColor, inset 0 0 20px rgba(255,255,255,0.18); }
+    .as-act.shield { grid-column: 2; grid-row: 1; color: var(--neon-cyan); border-color: var(--neon-cyan); background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); box-shadow: var(--ui-shadow); }
+    .as-act.dash { grid-column: 2; grid-row: 2; color: var(--neon-purple); border-color: var(--neon-purple); background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); box-shadow: 0 0 10px rgba(185,103,255,0.26), inset 0 0 12px rgba(185,103,255,0.10); }
+    .as-act.pressed { transform: scale(0.93); box-shadow: 0 0 24px currentColor, inset 0 0 20px rgba(24,32,52,0.18); }
     .as-act span { pointer-events: none; line-height: 1; }
     .as-ico-fire { position: relative; width: 9px; height: 24px; border-radius: 5px; background: linear-gradient(180deg, #ffffff, #ffe600 45%, #ff8a00); box-shadow: 0 0 12px rgba(255,230,0,0.9); }
     .as-ico-fire::before, .as-ico-fire::after { content: ''; position: absolute; left: -9px; width: 6px; height: 16px; border-radius: 3px; background: linear-gradient(180deg, rgba(255,230,0,0.85), rgba(255,120,0,0.25)); }
     .as-ico-fire::before { top: 1px; transform: rotate(-24deg); }
     .as-ico-fire::after { top: 7px; transform: rotate(24deg); }
-    .as-ico-shield { width: 20px; height: 24px; border: 2px solid var(--neon-cyan); border-radius: 50% 50% 42% 42% / 26% 26% 74% 74%; box-shadow: 0 0 10px rgba(0,240,255,0.55), inset 0 0 8px rgba(0,240,255,0.25); }
+    .as-ico-shield { width: 20px; height: 24px; border: 2px solid var(--neon-cyan); border-radius: 50% 50% 42% 42% / 26% 26% 74% 74%; box-shadow: var(--ui-shadow); }
     .as-ico-dash { position: relative; width: 26px; height: 20px; }
     .as-ico-dash::before, .as-ico-dash::after { content: ''; position: absolute; top: 50%; left: 2px; width: 12px; height: 12px; margin-top: -6px; border-top: 2px solid var(--neon-purple); border-right: 2px solid var(--neon-purple); transform: rotate(45deg); box-shadow: 3px -3px 8px rgba(185,103,255,0.5); }
     .as-ico-dash::after { left: 11px; opacity: .55; }
     .as-msg { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
     .as-help {
       margin-top: 12px; padding: 10px 12px; font-size: 12px; line-height: 1.8; text-align: left;
-      color: var(--text-dim); background: rgba(255,255,255,0.04); border-radius: 8px;
+      color: var(--text-dim); background: rgba(24,32,52,0.04); border-radius: 8px;
     }
     @media (max-width: 420px) {
       .as-wrap { padding: 6px 6px 12px; }
@@ -207,7 +207,7 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <div class="nc-search has-icon">
     <span class="search-icon" aria-hidden="true">⌕</span>
@@ -238,9 +238,9 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
-  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
 <script src="../../assets/js/family-bridge.js?v=2"></script>

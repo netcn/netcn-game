@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a12">
+  <meta name="theme-color" content="#fafbfc">
   <link rel="manifest" href="../../manifest.webmanifest">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="游戏厅">
   <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
-  <title>2048 · 游戏街机厅</title>
-  <meta name="description" content="游戏街机厅 · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。">
+  <title>2048 · 游戏厅</title>
+  <meta name="description" content="游戏厅 · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://game.netcn.org/games/g2048/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
-  <meta property="og:title" content="2048 · 游戏街机厅">
-  <meta property="og:description" content="游戏街机厅 · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:site_name" content="游戏厅 · Arcade">
+  <meta property="og:title" content="2048 · 游戏厅">
+  <meta property="og:description" content="游戏厅 · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。">
   <meta property="og:url" content="https://game.netcn.org/games/g2048/">
   <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="2048 · 游戏街机厅">
-  <meta name="twitter:description" content="游戏街机厅 · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:title" content="2048 · 游戏厅">
+  <meta name="twitter:description" content="游戏厅 · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <script type="application/ld+json">
   {
@@ -32,8 +32,8 @@
     "url": "https://game.netcn.org/games/g2048/",
     "applicationCategory": "Game",
     "inLanguage": "zh-CN",
-    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
-    "description": "游戏街机厅 · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。"
+    "isPartOf": { "@type": "WebSite", "name": "游戏厅 · Arcade", "url": "https://game.netcn.org/" },
+    "description": "游戏厅 · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。"
   }
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
@@ -45,11 +45,11 @@
 <link rel="stylesheet" href="../../assets/css/theme.css">
   <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
   <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261110a1"></script>
+<script src="../../shell/shell.js?v=20261111b1"></script>
   <style>
     .g2k-head { width: min(420px, 92vw); margin: 0 auto; text-align: center; }
     .g2k-brand {
@@ -75,14 +75,14 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
       font-family: var(--font-pixel); font-size: 10px; line-height: 1.3;
       padding: 6px 6px; border-radius: 12px; cursor: pointer;
-      color: var(--text-dim); background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-dim); background: rgba(24,32,52,0.04);
+      border: 1px solid rgba(24,32,52,0.14);
       transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
     }
     .g2k-mode small { font-size: 9px; color: var(--text-dim); letter-spacing: 0.04em; }
     .g2k-mode.active {
       color: var(--neon-cyan); border-color: var(--neon-cyan);
-      background: rgba(0, 240, 255, 0.1); box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+      background: rgba(0, 240, 255, 0.1); box-shadow: var(--ui-shadow);
     }
     .g2k-mode.active small { color: var(--neon-cyan); }
 
@@ -100,9 +100,9 @@
     }
     .g2k-stat {
       position: relative; min-width: 0; padding: 7px 5px 8px; border-radius: 11px; text-align: center;
-      background: linear-gradient(160deg, rgba(20, 28, 48, 0.92), rgba(9, 11, 22, 0.92));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
+      border: 1px solid rgba(24,32,52,0.08);
+      box-shadow: inset 0 1px 0 rgba(24,32,52,0.05);
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .g2k-stat span {
@@ -127,7 +127,7 @@
     }
     .g2k-stat.danger b, .g2k-stat.danger span { color: var(--neon-pink); }
     @keyframes g2k-danger {
-      0%, 100% { box-shadow: 0 0 6px rgba(255, 45, 149, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05); }
+      0%, 100% { box-shadow: 0 0 6px rgba(255, 45, 149, 0.2), inset 0 1px 0 rgba(24,32,52,0.05); }
       50% { box-shadow: 0 0 18px rgba(255, 45, 149, 0.55), inset 0 0 12px rgba(255, 45, 149, 0.18); }
     }
 
@@ -139,9 +139,9 @@
       position: relative; display: flex; align-items: center; justify-content: center; gap: 5px;
       min-height: 46px; padding: 6px 6px; border-radius: 11px; cursor: pointer;
       font-family: var(--font-body, sans-serif); font-size: 11px; color: var(--text-main);
-      background: linear-gradient(160deg, rgba(22, 28, 46, 0.9), rgba(9, 11, 20, 0.9));
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(0, 240, 255, 0.22);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0 1px 0 rgba(24,32,52,0.05);
       transition: opacity 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
     }
     .g2k-prop svg { width: 18px; height: 18px; flex: none; color: var(--neon-cyan); }
@@ -177,12 +177,9 @@
       background:
         radial-gradient(circle at 18% 0%, rgba(0, 240, 255, 0.16), transparent 55%),
         radial-gradient(circle at 84% 100%, rgba(255, 45, 149, 0.15), transparent 55%),
-        linear-gradient(160deg, #131b2e, #0a0d17 58%, #130f1f);
+        linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(0, 240, 255, 0.3);
-      box-shadow:
-        0 18px 42px rgba(0, 0, 0, 0.55),
-        0 0 26px rgba(0, 240, 255, 0.1),
-        inset 0 0 26px rgba(0, 0, 0, 0.5);
+      box-shadow: var(--ui-shadow);
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .g2048-board.danger {
@@ -214,10 +211,10 @@
     }
     .g2048-gcell {
       border-radius: 9px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(0, 0, 0, 0.18));
+      background: linear-gradient(145deg, rgba(24,32,52,0.045), rgba(0, 0, 0, 0.18));
       box-shadow:
         inset 0 3px 8px rgba(0, 0, 0, 0.55),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+        inset 0 -1px 0 rgba(24,32,52,0.06);
     }
     .g2048-gcell.blocked {
       border-radius: 9px;
@@ -244,8 +241,8 @@
     .g2048-tile-inner {
       position: relative; width: 100%; height: 100%; border-radius: 9px;
       display: flex; align-items: center; justify-content: center; overflow: hidden;
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 2px 6px rgba(0, 0, 0, 0.35);
+      background: rgba(24,32,52,0.05);
+      box-shadow: inset 0 1px 0 rgba(24,32,52,0.08), 0 2px 6px rgba(0, 0, 0, 0.35);
       transition: background 0.12s ease, box-shadow 0.12s ease;
     }
     .g2048-tile-inner span {
@@ -277,19 +274,19 @@
       font-size: calc(var(--cell) * 0.215);
       background: linear-gradient(180deg, #2b1300, #7a3600);
       -webkit-background-clip: text; background-clip: text; color: transparent;
-      filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.35));
+      filter: drop-shadow(0 1px 0 rgba(24,32,52,0.35));
     }
     .vsuper {
-      background: linear-gradient(135deg, #ff2d95, #b967ff 25%, #00f0ff 50%, #39ff14 72%, #ffe600);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       background-size: 300% 300%;
-      box-shadow: 0 0 32px rgba(255, 45, 149, 0.7), 0 0 18px rgba(0, 240, 255, 0.5);
+      box-shadow: var(--ui-shadow);
       animation: g2048-rainbow 3s linear infinite;
     }
     .vsuper span {
       font-size: calc(var(--cell) * 0.18);
       background: linear-gradient(180deg, #12061c, #3d0a28);
       -webkit-background-clip: text; background-clip: text; color: transparent;
-      filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.4));
+      filter: drop-shadow(0 1px 0 rgba(24,32,52,0.4));
     }
     @keyframes g2048-gold {
       0%, 100% { box-shadow: 0 0 24px rgba(255, 200, 0, 0.7), inset 0 0 18px rgba(255, 255, 200, 0.3); }
@@ -317,7 +314,7 @@
     .g2048-tile-inner.tile-new { animation: g2048-pop 0.18s cubic-bezier(0.2, 1.4, 0.4, 1); }
     .g2048-tile-inner.tile-merged {
       animation: g2048-merge 0.24s cubic-bezier(0.2, 1.4, 0.4, 1);
-      box-shadow: 0 0 26px currentColor, inset 0 0 14px rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 26px currentColor, inset 0 0 14px rgba(24,32,52,0.25);
     }
     .g2048-tile-inner.tile-hammer { animation: g2048-hammer 0.24s ease-in forwards; }
 
@@ -325,7 +322,7 @@
     .g2k-layer {
       position: fixed; inset: 0; z-index: 70; display: flex;
       align-items: center; justify-content: center; padding: 20px;
-      background: radial-gradient(circle at 50% 38%, rgba(22, 26, 50, 0.94), rgba(4, 5, 11, 0.97));
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
       animation: g2k-fade 0.22s ease;
     }
@@ -337,9 +334,9 @@
     .g2k-panel {
       position: relative; width: min(360px, 92vw); max-height: 88vh; overflow-y: auto;
       padding: 22px 18px 18px; border-radius: 18px; text-align: center;
-      background: linear-gradient(160deg, rgba(26, 34, 60, 0.98), rgba(9, 10, 20, 0.98));
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(0, 240, 255, 0.35);
-      box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 30px rgba(255, 45, 149, 0.06);
+      box-shadow: var(--ui-shadow);
       animation: g2k-pop 0.3s cubic-bezier(0.2, 1.5, 0.4, 1);
     }
     .g2k-layer.win .g2k-panel {
@@ -373,7 +370,7 @@
     .g2k-res-stats { display: flex; gap: 8px; margin: 4px 0 12px; }
     .g2k-res-stats div {
       flex: 1; min-width: 0; padding: 9px 4px; border-radius: 10px;
-      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(24,32,52,0.04); border: 1px solid rgba(24,32,52,0.08);
     }
     .g2k-res-stats span { display: block; font-size: 9px; color: var(--text-dim); }
     .g2k-res-stats b {
@@ -396,8 +393,8 @@
       display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 2px 8px;
       min-height: 54px; padding: 8px 10px; border-radius: 11px; cursor: pointer; text-align: left;
       font-family: var(--font-body, sans-serif); color: var(--text-main);
-      background: linear-gradient(150deg, rgba(22, 30, 52, 0.94), rgba(9, 11, 20, 0.94));
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
+      border: 1px solid rgba(24,32,52,0.12);
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
     .g2k-level .lv-no { font-family: var(--font-pixel); font-size: 14px; color: var(--neon-cyan); }
@@ -436,7 +433,7 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <div class="nc-search has-icon">
     <span class="search-icon" aria-hidden="true">⌕</span>
@@ -466,9 +463,9 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
-  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
 <script src="../../assets/js/family-bridge.js?v=2"></script>

@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a12">
+  <meta name="theme-color" content="#fafbfc">
   <link rel="manifest" href="../../manifest.webmanifest">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="游戏厅">
   <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
-  <title>跳棋 · 游戏街机厅</title>
-  <meta name="description" content="游戏街机厅 · 跳棋：英式 8×8 人机与双人同屏、国际 10×10 飞王、残局挑战。自绘棋盘、限时 AI、断点续玩，打开即玩。">
+  <title>跳棋 · 游戏厅</title>
+  <meta name="description" content="游戏厅 · 跳棋：英式 8×8 人机与双人同屏、国际 10×10 飞王、残局挑战。自绘棋盘、限时 AI、断点续玩，打开即玩。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://game.netcn.org/games/checkers/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
-  <meta property="og:title" content="跳棋 · 游戏街机厅">
-  <meta property="og:description" content="游戏街机厅 · 跳棋：斜走跳吃升王，吃掉 AI 全部棋子。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:site_name" content="游戏厅 · Arcade">
+  <meta property="og:title" content="跳棋 · 游戏厅">
+  <meta property="og:description" content="游戏厅 · 跳棋：斜走跳吃升王，吃掉 AI 全部棋子。 打开即玩，最高分记录保存在本地浏览器。">
   <meta property="og:url" content="https://game.netcn.org/games/checkers/">
   <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="跳棋 · 游戏街机厅">
-  <meta name="twitter:description" content="游戏街机厅 · 跳棋：斜走跳吃升王，吃掉 AI 全部棋子。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:title" content="跳棋 · 游戏厅">
+  <meta name="twitter:description" content="游戏厅 · 跳棋：斜走跳吃升王，吃掉 AI 全部棋子。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <script type="application/ld+json">
   {
@@ -32,8 +32,8 @@
     "url": "https://game.netcn.org/games/checkers/",
     "applicationCategory": "Game",
     "inLanguage": "zh-CN",
-    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
-    "description": "游戏街机厅 · 跳棋：斜走跳吃升王，吃掉 AI 全部棋子。 打开即玩，最高分记录保存在本地浏览器。"
+    "isPartOf": { "@type": "WebSite", "name": "游戏厅 · Arcade", "url": "https://game.netcn.org/" },
+    "description": "游戏厅 · 跳棋：斜走跳吃升王，吃掉 AI 全部棋子。 打开即玩，最高分记录保存在本地浏览器。"
   }
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
@@ -45,33 +45,33 @@
 <link rel="stylesheet" href="../../assets/css/theme.css">
   <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
   <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261110a1"></script>
+<script src="../../shell/shell.js?v=20261111b1"></script>
   <style>
     .ck-wrap { padding: 12px 10px calc(24px + env(safe-area-inset-bottom)); width: min(560px, 100%); box-sizing: border-box; margin: 0 auto; text-align: center; }
     .ck-topbar { display: flex; gap: 6px; justify-content: center; margin: 0 auto 7px; width: 100%; }
     .ck-mode-btn { flex: 1 1 0; min-width: 0; min-height: 44px; padding: 6px 4px; border-radius: 10px;
-      border: 1px solid rgba(0,240,255,.20); background: linear-gradient(160deg, rgba(21,30,52,.9), rgba(9,13,24,.9));
+      border: 1px solid rgba(0,240,255,.20); background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       color: var(--text-dim); font-size: 11px; font-family: inherit; letter-spacing: .02em; cursor: pointer;
       transition: border-color .18s, color .18s, box-shadow .18s, background .18s; }
     .ck-mode-btn:active { transform: translateY(1px); }
     .ck-mode-btn.active { color: var(--neon-cyan); border-color: rgba(0,240,255,.8);
-      background: linear-gradient(160deg, rgba(0,240,255,.16), rgba(17,22,40,.92));
-      box-shadow: 0 0 14px rgba(0,240,255,.22), inset 0 0 10px rgba(0,240,255,.08); }
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
+      box-shadow: var(--ui-shadow); }
     .ck-diff { display: none; gap: 6px; justify-content: center; margin: 0 auto 8px; }
     .ck-diff.on { display: flex; }
     .ck-diff-btn { flex: 1 1 0; min-height: 44px; padding: 6px 10px; border-radius: 9px; cursor: pointer;
-      border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.035); color: var(--text-dim);
+      border: 1px solid rgba(24,32,52,.12); background: rgba(24,32,52,.035); color: var(--text-dim);
       font-size: 11px; font-family: inherit; transition: all .18s; }
     .ck-diff-btn.active { color: var(--neon-yellow); border-color: rgba(255,230,0,.55);
       background: rgba(255,230,0,.09); box-shadow: 0 0 12px rgba(255,230,0,.14); }
     .ck-hud { display: grid; grid-template-columns: 1.35fr .8fr .9fr 1.1fr; gap: 4px; width: min(520px, 100%); box-sizing: border-box;
       margin: 0 auto 9px; padding: 8px 5px; border-radius: 12px;
       background: linear-gradient(90deg, rgba(0,240,255,.08), rgba(255,45,149,.05));
-      border: 1px solid rgba(0,240,255,.25); box-shadow: inset 0 1px 0 rgba(255,255,255,.05); }
+      border: 1px solid rgba(0,240,255,.25); box-shadow: inset 0 1px 0 rgba(24,32,52,.05); }
     .ck-stat { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 0; }
     .ck-stat span { font-size: 9px; color: var(--text-dim); letter-spacing: .08em; white-space: nowrap; }
     .ck-stat b { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-cyan); max-width: 100%;
@@ -101,11 +101,11 @@
     .ck-msg { min-height: 20px; font-size: 13px; color: var(--neon-green); margin: 4px 0 8px; line-height: 1.5; }
     .ck-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     .ck-act { flex: 1 1 0; min-width: 88px; min-height: 44px; padding: 8px 12px; border-radius: 10px; cursor: pointer;
-      border: 1px solid rgba(0,240,255,.28); background: linear-gradient(160deg, rgba(18,28,48,.92), rgba(8,12,22,.92));
+      border: 1px solid rgba(0,240,255,.28); background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       color: var(--text-main); font-size: 13px; font-family: inherit; transition: all .18s; }
     .ck-act:active:not(:disabled) { transform: translateY(1px); }
     .ck-act:disabled { opacity: .38; cursor: not-allowed; }
-    .ck-act:hover:not(:disabled) { border-color: rgba(0,240,255,.7); box-shadow: 0 0 12px rgba(0,240,255,.16); }
+    .ck-act:hover:not(:disabled) { border-color: rgba(0,240,255,.7); box-shadow: var(--ui-shadow); }
     .ck-puzbar { display: none; align-items: center; justify-content: space-between; gap: 8px;
       width: min(520px, 96vw); margin: 9px auto 0; padding: 8px 10px; border-radius: 10px;
       border: 1px solid rgba(255,230,0,.25); background: rgba(255,230,0,.06); font-size: 11px; color: var(--text-dim); text-align: left; }
@@ -115,18 +115,18 @@
       border: 1px solid rgba(255,230,0,.35); background: rgba(255,230,0,.08); color: var(--neon-yellow);
       font-size: 11px; font-family: inherit; }
     .ck-help { font-size: 12px; color: var(--text-dim); line-height: 1.7; margin: 10px auto 0; text-align: left;
-      width: min(520px, 100%); box-sizing: border-box; background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.06);
+      width: min(520px, 100%); box-sizing: border-box; background: rgba(24,32,52,.035); border: 1px solid rgba(24,32,52,.06);
       border-radius: 10px; padding: 9px 12px; }
     .ck-lore { margin-top: 7px; font-size: 11px; line-height: 1.75; opacity: .9; }
     .ck-overlay { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
-      padding: 16px; overflow-y: auto; background: radial-gradient(circle at 50% 38%, rgba(10,16,32,.9), rgba(3,4,10,.97));
+      padding: 16px; overflow-y: auto; background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       animation: ckFade .26s ease-out; }
     .ck-overlay.hidden { display: none !important; }
     @keyframes ckFade { from { opacity: 0; } to { opacity: 1; } }
     .ck-ov-card { width: min(400px, 92vw); max-height: 88vh; overflow-y: auto; text-align: center;
       padding: 20px 16px; border-radius: 16px; border: 1px solid rgba(0,240,255,.35);
-      background: linear-gradient(160deg, rgba(18,26,48,.98), rgba(8,11,22,.98));
-      box-shadow: 0 0 34px rgba(0,240,255,.2), inset 0 1px 0 rgba(255,255,255,.07);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
+      box-shadow: var(--ui-shadow);
       animation: ckCard .3s cubic-bezier(.2,.9,.3,1.25); }
     @keyframes ckCard { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
     .ck-small { width: min(360px, 90vw); }
@@ -139,7 +139,7 @@
     #ck-res-sub, #ck-do-sub, #ck-pk-sub { margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.85; }
     .ck-res-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin: 14px 0 2px; }
     .ck-res-cell { display: flex; flex-direction: column; gap: 2px; padding: 7px 8px; border-radius: 9px;
-      background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.07); min-width: 0; }
+      background: rgba(24,32,52,.045); border: 1px solid rgba(24,32,52,.07); min-width: 0; }
     .ck-res-cell span { font-size: 9px; letter-spacing: .09em; color: var(--text-dim); }
     .ck-res-cell b { font-size: 12px; color: var(--text-main); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .ck-res-cell b.new { color: var(--neon-yellow); text-shadow: 0 0 10px rgba(255,230,0,.5); }
@@ -150,12 +150,12 @@
     .ck-pk-head h2 { margin: 0; font-family: var(--font-pixel); font-size: 16px; color: var(--neon-cyan);
       text-shadow: 0 0 12px rgba(0,240,255,.4); }
     .ck-pk-close { width: 40px; height: 40px; flex: 0 0 40px; border-radius: 9px; cursor: pointer;
-      border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05); color: var(--text-main); font-size: 18px; }
+      border: 1px solid rgba(24,32,52,.14); background: rgba(24,32,52,.05); color: var(--text-main); font-size: 18px; }
     .ck-pk-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 10px;
       max-height: 56vh; overflow-y: auto; padding: 2px; }
     .ck-pk-card { display: flex; flex-direction: column; gap: 2px; min-height: 78px; padding: 9px 10px; text-align: left;
       border-radius: 10px; cursor: pointer; border: 1px solid rgba(0,240,255,.22);
-      background: linear-gradient(160deg, rgba(20,30,52,.95), rgba(8,12,22,.95)); color: var(--text-main); font-family: inherit; }
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); color: var(--text-main); font-family: inherit; }
     .ck-pk-card:hover { border-color: rgba(0,240,255,.65); }
     .ck-pk-card b { font-size: 12px; }
     .ck-pk-tier { font-size: 9px; letter-spacing: .1em; color: var(--neon-green); }
@@ -182,7 +182,7 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <div class="nc-search has-icon">
     <span class="search-icon" aria-hidden="true">⌕</span>
@@ -212,9 +212,9 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
-  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
 <script src="../../assets/js/family-bridge.js?v=2"></script>

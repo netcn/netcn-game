@@ -1,5 +1,5 @@
 /* ============================================================
-   游戏街机厅 · PWA 引导 + 更新接管（D4 修订）
+   游戏厅 · PWA 引导 + 更新接管（D4 修订）
    - 注册 Service Worker（仅 http/https，file:// 下自动跳过）
    - 新版本就绪即自动 SKIP_WAITING（不再依赖用户点击后才接管，
      避免旧缓存栈滞留导致的「假存档/旧功能」问题；
@@ -65,15 +65,6 @@
       navigator.serviceWorker.addEventListener('message', function (ev) {
         if (ev.data && ev.data.type === 'NEW_VERSION' && navigator.serviceWorker.controller) {
           toastUpdate();
-        }
-        /* P3-11：SW 缓存命中统计 → 本地 localStorage（每打开页 +1；绝不上传） */
-        if (ev.data && ev.data.type === 'SW_STATS' && ev.data.kind) {
-          try {
-            var s = JSON.parse(localStorage.getItem('arcade_sw_stats') || '{}');
-            s[ev.data.kind] = (s[ev.data.kind] || 0) + 1;
-            s.t = Date.now();
-            localStorage.setItem('arcade_sw_stats', JSON.stringify(s));
-          } catch (e2) {}
         }
       });
     });

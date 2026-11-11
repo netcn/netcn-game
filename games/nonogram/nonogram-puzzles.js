@@ -1,4 +1,4 @@
-/* 游戏街机厅 · 数织程序生成题库（唯一解，seed 固化）
+/* 游戏厅 · 数织程序生成题库（唯一解，seed 固化）
    由 nonogram-core.js 的求解器生成；浏览器通过 NGCore.__setGenerated 注入。
    重新加载顺序：nonogram-core.js → nonogram-puzzles.js → nonogram.js */
 (function () {

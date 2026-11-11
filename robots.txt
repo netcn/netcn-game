@@ -1,0 +1,57 @@
+Sitemap: https://game.netcn.org/sitemap.xml
+
+User-agent: *
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+Disallow: /404.html
+
+User-agent: GPTBot
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+
+User-agent: CCBot
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+
+User-agent: Diffbot
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /favicon/
+Disallow: /tools/

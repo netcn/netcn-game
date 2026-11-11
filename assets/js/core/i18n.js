@@ -36,12 +36,9 @@ Arcade.i18n = (function () {
     return v !== undefined ? v : key;
   }
 
-  function setLang(l) {
-    if (l !== 'zh' && l !== 'en') return;
-    lang = l;
-    try { localStorage.setItem(KEY, l); } catch (e) {}
-    location.reload();
-  }
+  /* 全站语言由 shell.js 的 ncn:lang 统一派发；保留 setLang 兼容旧调用，
+     但不再整页刷新（刷新会中断进行中的游戏）。 */
+  function setLang(l) { setLangLive(l); }
   /* 顶栏统一切换：只更新内存语言，不刷新（页面自行重渲染） */
   function setLangLive(l) {
     if (l !== 'zh' && l !== 'en') return;

@@ -1,4 +1,4 @@
-/* 游戏街机厅 · pixeldino 游戏内文案（zh/en 对称）
+/* 游戏厅 · pixeldino 游戏内文案（zh/en 对称）
    旗舰版：金币/道具/任务/Boss/天气/结算；显示名统一为「恐龙快跑」 */
 (function () {
   var d = Arcade.i18n.dicts;

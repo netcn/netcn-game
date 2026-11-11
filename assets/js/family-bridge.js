@@ -74,36 +74,13 @@
     });
   }
 
-  /* ---------- 快捷栏去重 + 背景乐开关下线 ---------- */
-  function dedupeQuickbar() {
-    var bar = d.getElementById('arcade-quickbar');
-    if (!bar) return;
-    var T = (window.Arcade && Arcade.i18n && Arcade.i18n.t) ? Arcade.i18n.t : function (k) { return k; };
-    [].slice.call(bar.querySelectorAll('.qb-btn')).forEach(function (b, i) {
-      var label = (b.getAttribute('aria-label') || '') + ' ' + (b.getAttribute('title') || '');
-      if (b.classList.contains('qb-lang')) { b.classList.add('qb-family-dup'); return; }
-      /* 第 2 个按钮固定是背景乐开关；背景乐已整体下线，连开关一并收起 */
-      if (i === 1 || /音乐|Music|BGM/i.test(label)) {
-        b.classList.add('qb-music');
-        b.setAttribute('aria-hidden', 'true');
-        return;
-      }
-      if (label.indexOf(T('settings.theme')) >= 0 || /主题|Theme/i.test(label)) {
-        b.classList.add('qb-family-dup');
-      }
-    });
-  }
-
   function init() {
     wireSearch();
-    dedupeQuickbar();
     /* 页脚在早期版本带 data-nc-tone="dark"，会与其余四站深浅不同 */
     var foot = d.querySelector('.nc-foot[data-nc-tone]');
     if (foot) foot.removeAttribute('data-nc-tone');
     lockTheme(curTheme());
-    var obs = new MutationObserver(function () { dedupeQuickbar(); });
-    obs.observe(d.body, { childList: true, subtree: true });
-    setTimeout(function () { obs.disconnect(); }, 3000);
+    /* 重复的音乐 / 语言 / 主题按钮已在 extras.js 停止生成，无需再去重观察 */
   }
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', init); else init();
 })();

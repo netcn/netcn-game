@@ -20,24 +20,24 @@
    这里一次性重定义，53 页自动换肤；明暗只由 html.dark /
    html[data-theme] 驱动，与其余四站同一个开关。 */
 :root,
-html[data-theme="light"],
-html.theme-daylight,
-html.theme-daylight[data-theme="light"] {
-  --nc-stage: #1d2534;          /* 浅色主题下的游戏舞台 */
-  --nc-stage-2: #273145;
-  --nc-stage-line: rgba(255, 255, 255, .13);
-  --bg-deep: var(--nc-stage);
+html[data-theme="light"] {
+  /* 纸感舞台（2026-11-11）：浅色主题下是白色卡片，与全站 --ui-* 同源；
+     深色主题下是深灰卡片。两者都不再有霓虹底/扫描线/发光。 */
+  --nc-stage: #ffffff;
+  --nc-stage-2: #f4f6fa;
+  --nc-stage-line: rgba(24, 32, 52, .12);
+  --bg-deep: var(--ui-bg, #fafbfc);
   --bg-panel: var(--nc-stage-2);
-  --bg-panel-2: #323d54;
-  --text-main: #eef2f8;
-  --text-dim: #c3ccdd;
+  --bg-panel-2: #e9ecf4;
+  --text-main: #1b2030;
+  --text-dim: #5b6478;
   --card-border: var(--nc-stage-line);
-  --neon-cyan: #a98cff;
-  --neon-purple: #b79dff;
-  --neon-pink: #f293b8;
-  --neon-green: #6fd8a6;
-  --neon-yellow: #e6bf62;
-  --neon-orange: #f2a768;
+  --neon-cyan: #6a4fd0;
+  --neon-purple: #7c5cff;
+  --neon-pink: #cf4f87;
+  --neon-green: #16855c;
+  --neon-yellow: #9c6b12;
+  --neon-orange: #bd6120;
   --accent: var(--ui-ac, #7c5cff);
   --on-accent: #fff;
   --font-pixel: var(--ui-font);
@@ -46,14 +46,15 @@ html.theme-daylight[data-theme="light"] {
 }
 html.dark,
 html[data-theme="dark"],
-.dark,
-html.dark.theme-daylight,
-html[data-theme="dark"].theme-daylight {
-  --nc-stage: #0b1019;
-  --nc-stage-2: #151c29;
-  --bg-panel-2: #1d2635;
-  --text-main: #e6eaf2;
-  --text-dim: #9aa5b7;
+.dark {
+  --nc-stage: #1b2130;
+  --nc-stage-2: #232c3e;
+  --nc-stage-line: rgba(255, 255, 255, .12);
+  --bg-deep: #121821;
+  --bg-panel: var(--nc-stage-2);
+  --bg-panel-2: #2b3549;
+  --text-main: #eef1f7;
+  --text-dim: #b2bdd0;
   --neon-cyan: #c0a8ff;
   --neon-purple: #cbb8ff;
   --neon-pink: #f7a8c6;
@@ -110,8 +111,9 @@ main#game-root {
   box-shadow: var(--ui-shadow-up) !important;
   scroll-margin-top: 60px;
 }
-/* 画布是游戏画面，不改绘制内容；只把外框换成家族规格 */
+/* 画布置于纸感舞台：外框/底色跟随主题，绘制内容由游戏自绘 */
 canvas {
+  background: var(--nc-stage-2) !important;
   border-color: var(--nc-stage-line) !important;
   border-radius: var(--ui-r-card, 12px) !important;
   outline: 1px solid var(--nc-stage-line);
@@ -233,9 +235,6 @@ body:not(.has-nav) .qb-btn {
   border-radius: var(--ui-r-pill, 999px) !important;
 }
 /* 顶栏已有明暗 / 中英 / 搜索；游戏快捷条里的重复项与背景乐开关不再显示 */
-#arcade-quickbar .qb-lang,
-#arcade-quickbar .qb-family-dup,
-#arcade-quickbar .qb-music { display: none !important; }
 
 /* ---------- 7. 通用组件：按钮 / 卡片 / 徽章 / 输入 / 胶囊 ---------- */
 .btn, button.btn, .nc-btn {
@@ -327,10 +326,21 @@ input[type="search"], input[type="text"], input[type="number"], select, .search-
   color: var(--neon-cyan) !important;
 }
 .game-canvas {
-  background: #07070d !important;
+  background: var(--nc-stage-2) !important;
   border-color: var(--nc-stage-line) !important;
   border-radius: var(--ui-r-card, 12px) !important;
   box-shadow: var(--ui-shadow) !important;
+}
+/* 纸感化：游戏内联样式里的霓虹发光与彩色描边光晕，在纸底上一律收敛 */
+#game-root [class*="-hud"], #game-root [class*="-panel"],
+#game-root [class*="-stage"], #game-root [class*="-card"],
+#game-root [class*="-board"], #game-root [class*="-info"],
+#game-root [class*="-btn"], #game-root [class*="-cell"] {
+  text-shadow: none !important;
+}
+#game-root [class*="-hud"], #game-root [class*="-panel"],
+#game-root [class*="-stage"], #game-root [class*="-board"] {
+  filter: none !important;
 }
 .skip-link {
   background: var(--ui-card) !important;
@@ -382,7 +392,20 @@ input[type="search"], input[type="text"], input[type="number"], select, .search-
 .toast-item.win { color: #2f9e6b !important; border-color: #2f9e6b !important; }
 .toast-item.warn { color: #b58412 !important; border-color: #b58412 !important; }
 
-/* ---------- 10. 响应式：与全站栅格同步收窄 ---------- */
+/* ---------- 10. 顺手完善：全站一致的减弱动效偏好 ----------
+   45 个游戏页此前没有 prefers-reduced-motion 处理，这里一处覆盖 53 页；
+   只收敛动画时长，不改游戏逻辑与计时器。 */
+@media (prefers-reduced-motion: reduce) {
+  #game-root *, #game-root *::before, #game-root *::after,
+  .shell-header *, .shell-header *::before, .shell-header *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- 11. 响应式：与全站栅格同步收窄 ---------- */
 @media (max-width: 560px) {
   .shell-header { --ui-pad: 10px; gap: 5px; }
   .shell-back, .shell-help, .shell-restart, .shell-fs, .shell-more-btn {

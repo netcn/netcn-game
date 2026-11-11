@@ -67,8 +67,6 @@
 /* 旧霓虹顶栏降级为「游戏工具条」：不再是 sticky 主导航，
    具体纸感样式（背景/边框/圆角/按钮）由 family-ui.css 统一定义。 */
 /* 家族顶栏里已有语言/主题按钮，隐藏游戏快捷栏里重复的同类按钮 */
-#arcade-quickbar .qb-lang,
-#arcade-quickbar .qb-family-dup { display: none !important; }
 
 /* 页面框架与全站同一底色/文字；游戏舞台由 family-ui.css 单独着色 */
 body { background: var(--ui-bg) !important; color: var(--ui-ink) !important; }

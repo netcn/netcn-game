@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a12">
+  <meta name="theme-color" content="#fafbfc">
   <link rel="manifest" href="../../manifest.webmanifest">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="游戏厅">
   <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
-  <title>扫雷 · 游戏街机厅</title>
-  <meta name="description" content="游戏街机厅 · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。">
+  <title>扫雷 · 游戏厅</title>
+  <meta name="description" content="游戏厅 · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://game.netcn.org/games/minesweeper/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
-  <meta property="og:title" content="扫雷 · 游戏街机厅">
-  <meta property="og:description" content="游戏街机厅 · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:site_name" content="游戏厅 · Arcade">
+  <meta property="og:title" content="扫雷 · 游戏厅">
+  <meta property="og:description" content="游戏厅 · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。">
   <meta property="og:url" content="https://game.netcn.org/games/minesweeper/">
   <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="扫雷 · 游戏街机厅">
-  <meta name="twitter:description" content="游戏街机厅 · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:title" content="扫雷 · 游戏厅">
+  <meta name="twitter:description" content="游戏厅 · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <script type="application/ld+json">
   {
@@ -32,8 +32,8 @@
     "url": "https://game.netcn.org/games/minesweeper/",
     "applicationCategory": "Game",
     "inLanguage": "zh-CN",
-    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
-    "description": "游戏街机厅 · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。"
+    "isPartOf": { "@type": "WebSite", "name": "游戏厅 · Arcade", "url": "https://game.netcn.org/" },
+    "description": "游戏厅 · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。"
   }
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
@@ -45,11 +45,11 @@
 <link rel="stylesheet" href="../../assets/css/theme.css">
   <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
   <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261110a1"></script>
+<script src="../../shell/shell.js?v=20261111b1"></script>
   <style>
     /* ---------- 扫雷 · 旗舰版 ---------- */
     .ms-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; }
@@ -65,7 +65,7 @@
       display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
       min-height: 46px; padding: 6px 16px;
       font-family: var(--font-pixel); color: var(--text-dim);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(24,32,52,0.03);
       border: 1px solid rgba(0, 240, 255, 0.28);
       border-radius: 10px; cursor: pointer;
       transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.15s;
@@ -80,7 +80,7 @@
     .ms-diff-btn.is-active {
       border-color: var(--neon-cyan);
       background: linear-gradient(180deg, rgba(0, 240, 255, 0.2), rgba(0, 240, 255, 0.06));
-      box-shadow: 0 0 14px rgba(0, 240, 255, 0.35), inset 0 0 10px rgba(0, 240, 255, 0.12);
+      box-shadow: var(--ui-shadow);
     }
     .ms-diff-btn.is-active b { color: #eaffff; text-shadow: 0 0 8px rgba(0, 240, 255, 0.8); }
     .ms-diff-btn.is-active small { color: rgba(220, 250, 255, 0.8); }
@@ -110,9 +110,9 @@
       display: inline-flex; align-items: center; gap: 8px;
       min-height: 40px; padding: 7px 12px;
       font-size: 11px; line-height: 1.4; color: var(--text-dim);
-      background: linear-gradient(180deg, rgba(20, 24, 48, 0.92), rgba(9, 11, 22, 0.92));
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(0, 240, 255, 0.24);
-      border-radius: 10px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      border-radius: 10px; box-shadow: inset 0 1px 0 rgba(24,32,52,0.06);
     }
     .ms-hud-item .stat-value {
       color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 14px;
@@ -132,18 +132,15 @@
 
     .ms-board {
       margin: 0 auto; gap: 3px; padding: 6px;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.1), transparent 55%),
-        linear-gradient(160deg, rgba(18, 22, 44, 0.98), rgba(7, 9, 18, 0.99));
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(0, 240, 255, 0.32);
       border-radius: 12px;
-      box-shadow: 0 0 24px rgba(0, 240, 255, 0.12), 0 10px 26px rgba(0, 0, 0, 0.45),
-        inset 0 0 28px rgba(0, 0, 0, 0.55);
+      box-shadow: var(--ui-shadow);
       touch-action: manipulation;
       outline: none;
     }
     .ms-board:focus-visible {
-      box-shadow: 0 0 0 2px var(--neon-yellow), 0 0 24px rgba(0, 240, 255, 0.12);
+      box-shadow: var(--ui-shadow);
     }
     .ms-board.d-easy { width: min(420px, calc(100vw - 16px)); }
     .ms-board.d-mid { width: min(560px, calc(100vw - 16px)); gap: 2px; }
@@ -156,11 +153,11 @@
       color: var(--text-main);
       background-color: #1a1d38;
       background-image:
-        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 45%),
+        radial-gradient(circle at 30% 25%, rgba(24,32,52,0.16), rgba(255, 255, 255, 0) 45%),
         linear-gradient(150deg, #30365f 0%, #1b1f3d 52%, #12152a 100%);
       border: 1px solid rgba(110, 160, 255, 0.24);
       border-radius: 5px;
-      box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.16),
+      box-shadow: inset 1px 1px 1px rgba(24,32,52,0.16),
         inset -1px -1px 2px rgba(0, 0, 0, 0.55), 0 2px 3px rgba(0, 0, 0, 0.35);
       cursor: pointer; overflow: hidden;
       user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
@@ -176,7 +173,7 @@
     .ms-board.d-hard .ms-cell { font-size: 10px; border-radius: 3px; }
 
     .ms-cell.open {
-      background: linear-gradient(180deg, #0c101e, #080a13);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border-color: rgba(0, 240, 255, 0.08);
       box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.7), inset 0 0 6px rgba(0, 0, 0, 0.4);
       cursor: default;
@@ -190,7 +187,7 @@
 
     .ms-cell.flagged {
       background-image:
-        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.2), transparent 45%),
+        radial-gradient(circle at 30% 25%, rgba(24,32,52,0.2), transparent 45%),
         linear-gradient(150deg, #4a3a12, #241b08);
       border-color: rgba(255, 230, 0, 0.45);
       animation: ms-flag 0.32s cubic-bezier(0.2, 1.5, 0.5, 1) both;
@@ -242,7 +239,7 @@
     }
     .ms-cell.boom {
       background: radial-gradient(circle, #ffffff 0%, #ff6fae 25%, #ff2d95 55%, #4a0520 100%);
-      border-color: #ffffff;
+      border-color: var(--text-main);
       box-shadow: 0 0 18px rgba(255, 45, 149, 0.95);
       z-index: 2;
       animation: ms-boom 0.5s ease-out both;
@@ -278,16 +275,16 @@
     .ms-result {
       position: absolute; inset: 0; z-index: 10; padding: 10px;
       display: flex; align-items: center; justify-content: center;
-      background: radial-gradient(circle at 50% 40%, rgba(10, 14, 28, 0.72), rgba(4, 6, 12, 0.92));
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
       border-radius: 12px;
     }
     .ms-result-card {
       width: min(330px, 94%); max-height: 100%; overflow: auto;
       padding: 16px 14px 14px; text-align: center; border-radius: 14px;
-      background: linear-gradient(160deg, rgba(22, 28, 52, 0.98), rgba(9, 10, 22, 0.98));
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(0, 240, 255, 0.4);
-      box-shadow: 0 0 28px rgba(0, 240, 255, 0.2), inset 0 0 18px rgba(255, 45, 149, 0.08);
+      box-shadow: var(--ui-shadow);
       animation: ms-card-in 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
     }
     @keyframes ms-card-in {
@@ -358,7 +355,7 @@
       min-height: 44px; min-width: 44px; padding: 6px 12px;
       font-family: var(--font-pixel); font-size: 9px; letter-spacing: 0.5px;
       color: var(--text-dim); cursor: pointer;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(24,32,52,0.03);
       border: 1px solid rgba(0, 240, 255, 0.22);
       border-radius: 10px;
       transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, color 0.15s;
@@ -373,7 +370,7 @@
     .ms-tool-btn.is-on {
       color: var(--neon-cyan); border-color: var(--neon-cyan);
       background: linear-gradient(180deg, rgba(0, 240, 255, 0.18), rgba(0, 240, 255, 0.04));
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.28);
+      box-shadow: var(--ui-shadow);
     }
     .ms-tool-btn.is-done { color: var(--neon-green); border-color: rgba(57, 255, 20, 0.5); }
     .ms-tool-btn.is-done small { color: var(--neon-green); }
@@ -436,7 +433,7 @@
     }
     .ms-cell.mine.won::before {
       background: radial-gradient(circle at 35% 30%, #e7ffff 0%, #6ff3ff 30%, #00b8d4 65%, #004a5c 100%);
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.85), inset -2px -2px 4px rgba(0, 0, 0, 0.5);
+      box-shadow: var(--ui-shadow);
     }
     .ms-board.d-expert { margin: 0; touch-action: manipulation; display: block; }
     .ms-board.d-expert .ms-cell { position: absolute; font-size: 11px; border-radius: 4px; }
@@ -478,13 +475,13 @@
     .ms-ach-overlay {
       position: fixed; inset: 0; z-index: 9999; padding: 16px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(4, 6, 12, 0.84);
+      background: var(--nc-stage-2);
       -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
     }
     .ms-ach-panel {
       width: min(430px, 100%); max-height: min(82vh, 580px);
       display: flex; flex-direction: column; overflow: hidden;
-      background: linear-gradient(160deg, rgba(22, 28, 52, 0.99), rgba(8, 10, 20, 0.99));
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(255, 230, 0, 0.4);
       border-radius: 14px;
       box-shadow: 0 0 30px rgba(255, 230, 0, 0.16), 0 18px 44px rgba(0, 0, 0, 0.6);
@@ -510,12 +507,12 @@
     .ms-ach-item {
       display: flex; align-items: center; gap: 10px; min-height: 48px;
       padding: 8px 10px; border-radius: 10px;
-      background: rgba(255, 255, 255, 0.025); border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(24,32,52,0.025); border: 1px solid rgba(24,32,52,0.08);
     }
     .ms-ach-item.got { border-color: rgba(255, 230, 0, 0.4); background: rgba(255, 230, 0, 0.06); }
     .ms-ach-ico {
       position: relative; flex: none; width: 30px; height: 30px; border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.16); opacity: 0.55;
+      border: 2px solid rgba(24,32,52,0.16); opacity: 0.55;
     }
     .ms-ach-item.got .ms-ach-ico {
       border-color: var(--neon-yellow); opacity: 1;
@@ -541,7 +538,7 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <div class="nc-search has-icon">
     <span class="search-icon" aria-hidden="true">⌕</span>
@@ -571,9 +568,9 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
-  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
 <script src="../../assets/js/family-bridge.js?v=2"></script>

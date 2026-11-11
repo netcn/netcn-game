@@ -1,4 +1,4 @@
-/* 游戏街机厅 · towerdefense 游戏内文案（zh/en 对称）
+/* 游戏厅 · towerdefense 游戏内文案（zh/en 对称）
    旗舰版：30 波/Boss 波、12 条升级分支、多类敌人、暂停/结算遮罩、升级/分支/出售面板、1x/2x */
 (function () {
   var d = Arcade.i18n.dicts;

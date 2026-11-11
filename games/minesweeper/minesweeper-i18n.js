@@ -1,4 +1,4 @@
-/* 游戏街机厅 · minesweeper 游戏内文案（zh/en 对称）
+/* 游戏厅 · minesweeper 游戏内文案（zh/en 对称）
    由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
 (function () {
   var d = Arcade.i18n.dicts;

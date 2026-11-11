@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a12">
+  <meta name="theme-color" content="#fafbfc">
   <link rel="manifest" href="../../manifest.webmanifest">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="游戏街机厅">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="游戏厅">
   <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
-  <title>黑白棋 · 游戏街机厅</title>
-  <meta name="description" content="游戏街机厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。">
+  <title>黑白棋 · 游戏厅</title>
+  <meta name="description" content="游戏厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://game.netcn.org/games/reversi/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="游戏街机厅 · ARCADE HALL">
-  <meta property="og:title" content="黑白棋 · 游戏街机厅">
-  <meta property="og:description" content="游戏街机厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:site_name" content="游戏厅 · Arcade">
+  <meta property="og:title" content="黑白棋 · 游戏厅">
+  <meta property="og:description" content="游戏厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。">
   <meta property="og:url" content="https://game.netcn.org/games/reversi/">
   <meta property="og:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="黑白棋 · 游戏街机厅">
-  <meta name="twitter:description" content="游戏街机厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:title" content="黑白棋 · 游戏厅">
+  <meta name="twitter:description" content="游戏厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。">
   <meta name="twitter:image" content="https://game.netcn.org/assets/icons/icon-512.png">
   <script type="application/ld+json">
   {
@@ -32,8 +32,8 @@
     "url": "https://game.netcn.org/games/reversi/",
     "applicationCategory": "Game",
     "inLanguage": "zh-CN",
-    "isPartOf": { "@type": "WebSite", "name": "游戏街机厅 · ARCADE HALL", "url": "https://game.netcn.org/" },
-    "description": "游戏街机厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。"
+    "isPartOf": { "@type": "WebSite", "name": "游戏厅 · Arcade", "url": "https://game.netcn.org/" },
+    "description": "游戏厅 · 黑白棋：翻转棋盘攻城略地，可与电脑 AI 切磋。 打开即玩，最高分记录保存在本地浏览器。"
   }
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
@@ -45,11 +45,11 @@
 <link rel="stylesheet" href="../../assets/css/theme.css">
   <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
   <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261110a1">
+<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b1">
 <link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261110a1"></script>
+<script src="../../shell/shell.js?v=20261111b1"></script>
   <style>
     /* ---------- 黑白棋 · 旗舰版 ---------- */
     .rv-hud {
@@ -59,23 +59,23 @@
     .rv-side {
       display: flex; flex-direction: column; align-items: center; gap: 2px;
       min-width: 58px; padding: 6px 10px; border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(8, 12, 24, 0.72);
+      border: 1px solid rgba(24,32,52,0.18);
+      background: var(--nc-stage-2);
       box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
     }
-    .rv-side-black { border-color: rgba(0, 240, 255, 0.45); box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.55), 0 0 10px rgba(0, 240, 255, 0.15); }
+    .rv-side-black { border-color: rgba(0, 240, 255, 0.45); box-shadow: var(--ui-shadow); }
     .rv-side-white { border-color: rgba(255, 45, 149, 0.45); box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.45), 0 0 10px rgba(255, 45, 149, 0.15); }
     .rv-side-label { font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
     .rv-side-count { font-family: var(--font-pixel); font-size: 20px; line-height: 1.1; }
     .rv-side-black .rv-side-count { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 240, 255, 0.55); }
-    .rv-side-white .rv-side-count { color: #fff; text-shadow: 0 0 10px rgba(255, 45, 149, 0.55); }
+    .rv-side-white .rv-side-count { color: var(--text-main); text-shadow: 0 0 10px rgba(255, 45, 149, 0.55); }
     .rv-mid { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
     .rv-bar {
       height: 12px; border-radius: 999px; overflow: hidden; display: flex;
-      background: #10131f; border: 1px solid rgba(255, 255, 255, 0.16);
+      background: #10131f; border: 1px solid rgba(24,32,52,0.16);
       box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
     }
-    .rv-bar-b { height: 100%; width: 50%; background: linear-gradient(90deg, rgba(0, 240, 255, 0.35), var(--neon-cyan)); transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 0 10px rgba(0, 240, 255, 0.6); }
+    .rv-bar-b { height: 100%; width: 50%; background: linear-gradient(90deg, rgba(0, 240, 255, 0.35), var(--neon-cyan)); transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: var(--ui-shadow); }
     .rv-bar-w { height: 100%; width: 50%; background: linear-gradient(90deg, #fff, rgba(255, 45, 149, 0.55)); transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 0 10px rgba(255, 45, 149, 0.45); }
     .rv-turn { text-align: center; font-size: 10px; letter-spacing: 0.5px; color: var(--text-dim); min-height: 14px; }
     .rv-turn.black { color: var(--neon-cyan); }
@@ -102,10 +102,10 @@
       display: grid;
       grid-template-columns: repeat(8, var(--cell));
       padding: 2px; gap: 0;
-      background: linear-gradient(145deg, #08251d, #061a15);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(0, 240, 255, 0.4);
       border-radius: 12px;
-      box-shadow: 0 0 22px rgba(0, 240, 255, 0.16), inset 0 0 26px rgba(0, 0, 0, 0.55);
+      box-shadow: var(--ui-shadow);
       width: fit-content; margin: 0 auto;
       user-select: none; touch-action: manipulation;
       transition: box-shadow 0.4s ease, border-color 0.4s ease;
@@ -114,12 +114,12 @@
       width: var(--cell); height: var(--cell);
       position: relative; display: flex; align-items: center; justify-content: center;
       background: #0c352a;
-      box-shadow: inset 0 0 0 1px rgba(0, 240, 255, 0.08);
+      box-shadow: var(--ui-shadow);
       cursor: default;
     }
     .rv-cell.alt { background: #0f3e31; }
     .rv-cell.rv-legal { cursor: pointer; }
-    .rv-cell.rv-legal:hover { box-shadow: inset 0 0 0 2px rgba(0, 240, 255, 0.5), inset 0 0 14px rgba(0, 240, 255, 0.18); }
+    .rv-cell.rv-legal:hover { box-shadow: var(--ui-shadow); }
     .rv-cell.rv-cursor::after {
       content: ''; position: absolute; inset: 2px; border: 2px dashed rgba(255, 230, 0, 0.85);
       border-radius: 4px; pointer-events: none; z-index: 3;
@@ -139,18 +139,17 @@
     }
     .rv-disc::before {
       content: ''; position: absolute; left: 17%; top: 11%; width: 34%; height: 23%;
-      border-radius: 50%; background: rgba(255, 255, 255, 0.34);
+      border-radius: 50%; background: rgba(24,32,52,0.34);
       filter: blur(1px); transform: rotate(-18deg);
     }
     .rv-disc.black {
       background: radial-gradient(circle at 34% 28%, #43557a 0%, #161d2e 38%, #05060b 100%);
       border: 1px solid rgba(0, 240, 255, 0.28);
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.7), inset 0 -3px 5px rgba(0, 0, 0, 0.75),
-        inset 0 2px 4px rgba(255, 255, 255, 0.12), 0 0 9px rgba(0, 240, 255, 0.32);
+      box-shadow: var(--ui-shadow);
     }
     .rv-disc.white {
       background: radial-gradient(circle at 34% 28%, #ffffff 0%, #eef2ff 42%, #b8c6df 100%);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(24,32,52,0.7);
       box-shadow: 0 3px 5px rgba(0, 0, 0, 0.55), inset 0 -3px 6px rgba(120, 140, 180, 0.55),
         inset 0 2px 5px #ffffff, 0 0 11px rgba(255, 45, 149, 0.38);
     }
@@ -177,7 +176,7 @@
     .rv-legal-dot {
       width: 26%; height: 26%; border-radius: 50%;
       background: var(--neon-cyan);
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.8), inset 0 0 4px #fff;
+      box-shadow: var(--ui-shadow);
       animation: rvBreathe 1.7s ease-in-out infinite;
     }
     .rv-hint-best .rv-legal-dot { background: var(--neon-yellow); box-shadow: 0 0 12px rgba(255, 230, 0, 0.9); animation-duration: 0.9s; }
@@ -214,11 +213,11 @@
 
     .rv-pause-mask {
       position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center;
-      background: rgba(4, 8, 14, 0.72); backdrop-filter: blur(3px);
+      background: var(--nc-stage-2); backdrop-filter: blur(3px);
       border-radius: 12px;
     }
     .rv-pause-mask.hidden { display: none; }
-    .rv-pause-card { text-align: center; padding: 14px 20px; border: 1px solid rgba(255, 230, 0, 0.45); border-radius: 12px; background: rgba(10, 14, 26, 0.9); box-shadow: 0 0 22px rgba(255, 230, 0, 0.2); }
+    .rv-pause-card { text-align: center; padding: 14px 20px; border: 1px solid rgba(255, 230, 0, 0.45); border-radius: 12px; background: var(--nc-stage-2); box-shadow: 0 0 22px rgba(255, 230, 0, 0.2); }
     .rv-pause-title { font-family: var(--font-pixel); font-size: 14px; color: var(--neon-yellow); margin-bottom: 6px; }
     .rv-pause-sub { font-size: 10px; color: var(--text-dim); }
 
@@ -227,7 +226,7 @@
     .rv-act:disabled { opacity: 0.42; cursor: not-allowed; }
     .rv-key {
       position: absolute; top: 3px; right: 4px; font-size: 7px; line-height: 1;
-      padding: 1px 2px; border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 1px 2px; border: 1px solid rgba(24,32,52,0.4);
       border-radius: 3px; opacity: 0.7; pointer-events: none;
     }
     .rv-act.rv-cooling { overflow: hidden; }
@@ -241,7 +240,7 @@
     .mode-btn { min-width: 44px; min-height: 44px; font-size: 10px; padding: 4px 6px; }
     .mode-btn.active {
       background: var(--neon-cyan); color: #04121a; text-shadow: none;
-      box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
+      box-shadow: var(--ui-shadow);
     }
     .mode-btn.pink.active { background: var(--neon-pink); color: #1a0410; box-shadow: 0 0 16px rgba(255, 45, 149, 0.6); }
     .mode-btn:disabled { opacity: .42; cursor: default; box-shadow: none; }
@@ -249,13 +248,13 @@
 
     .rv-overlay {
       position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
-      background: rgba(4, 6, 12, 0.82); backdrop-filter: blur(4px); padding: 16px;
+      background: var(--nc-stage-2); backdrop-filter: blur(4px); padding: 16px;
     }
     .rv-overlay.hidden { display: none; }
     .rv-ov-card {
       width: min(360px, 92vw); max-height: 92vh; overflow: auto;
       padding: 22px 20px; text-align: center;
-      background: linear-gradient(160deg, rgba(16, 20, 36, 0.98), rgba(8, 10, 20, 0.98));
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border: 1px solid rgba(255, 230, 0, 0.4); border-radius: 18px;
       box-shadow: 0 0 40px rgba(255, 230, 0, 0.2), inset 0 0 22px rgba(0, 0, 0, 0.6);
       animation: rvCard 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
@@ -270,10 +269,10 @@
     .rv-ov-side { font-size: 11px; color: var(--text-dim); }
     .rv-ov-side b { display: block; font-family: var(--font-pixel); font-size: 24px; margin-top: 6px; }
     .rv-ov-side.black b { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
-    .rv-ov-side.white b { color: #fff; text-shadow: 0 0 10px rgba(255, 45, 149, 0.55); }
+    .rv-ov-side.white b { color: var(--text-main); text-shadow: 0 0 10px rgba(255, 45, 149, 0.55); }
     .rv-ov-vs { font-family: var(--font-pixel); color: var(--text-dim); }
     .rv-ov-rows { margin: 10px 0 4px; display: flex; flex-direction: column; gap: 6px; }
-    .rv-ov-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-bottom: 1px dashed rgba(255, 255, 255, 0.12); padding: 4px 2px; }
+    .rv-ov-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-bottom: 1px dashed rgba(24,32,52,0.12); padding: 4px 2px; }
     .rv-ov-row b { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-yellow); }
     .rv-ov-btns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
     .rv-ov-btn { min-width: 44px; min-height: 44px; font-size: 10px; padding: 4px 6px; }
@@ -289,7 +288,10 @@
       .rv-disc, .rv-legal-dot, .rv-last-ring, .rv-hint-badge, .rv-board.thinking,
       .rv-cell.rv-hint-best, .rv-ov-card { animation: none !important; }
     }
-  </style>
+  
+    /* 触屏点击兜底：消除双击缩放延迟，保留滚动；不加 !important 以免破坏滑动类游戏 */
+    button, [role="button"], .card, .cell, .tile, .piece { touch-action: manipulation; }
+</style>
 </head>
 <body data-game-id="reversi" data-game-title="黑白棋" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -298,7 +300,7 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <div class="nc-search has-icon">
     <span class="search-icon" aria-hidden="true">⌕</span>
@@ -328,9 +330,9 @@
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
     <a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a>
     <a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a>
-    <a href="https://game.netcn.org/" data-nc-to="game">玩游戏</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
+    <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
-  <span class="nc-foot-note">© 2011-2026 游戏街机厅 game.netcn.org</span>
+  <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
 <script src="../../assets/js/family-bridge.js?v=2"></script>

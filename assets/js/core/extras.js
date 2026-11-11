@@ -1,11 +1,112 @@
 /* ============================================================
-   游戏街机厅 · 扩展基座
+   游戏厅 · 扩展基座
    模块：settings / audio / fx / ui / tutorial
    纯静态零依赖；须在 storage.js 之后加载
    游戏页由 shell.js 自动注入；大厅在 index.html 直接引入
    ============================================================ */
 
 window.Arcade = window.Arcade || {};
+
+/* ---------------- 主题绘制层：让 canvas 跟随全站明暗 ----------------
+   游戏画布由各游戏自行绘制，旧代码多为「深色底 + 白色文字」，在纸感浅色
+   主题下会变成一块黑。这里在绘制 API 层统一适配，53 个游戏无需改动：
+     · 覆盖整屏的 fillRect（清屏）→ 改用舞台底色
+     · 近白色的 fillText / stroke → 改用主文字色 / 次级线条色
+     · 同时关闭发光阴影，避免浅底上出现彩色光晕
+   只在浅色主题生效；深色主题完全保持游戏原始绘制，零副作用。 */
+Arcade.paper = (function () {
+  var state = {
+    bg: '#f4f6fa', ink: '#1b2030', dim: '#5b6478',
+    line: 'rgba(24,32,52,.35)', dark: false
+  };
+  function read(name, fb) {
+    try {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fb;
+    } catch (e) { return fb; }
+  }
+  function refresh() {
+    state.bg = read('--nc-stage-2', '#f4f6fa');
+    state.ink = read('--text-main', '#1b2030');
+    state.dim = read('--text-dim', '#5b6478');
+    state.dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  }
+  function nearWhite(v) {
+    if (typeof v !== 'string') return false;
+    var s = v.trim().toLowerCase();
+    if (s === '#fff' || s === '#ffffff' || s === 'white') return true;
+    var m = s.match(/^#([0-9a-f]{6})$/);
+    if (m) {
+      var n = parseInt(m[1], 16);
+      return ((n >> 16) & 255) >= 200 && ((n >> 8) & 255) >= 200 && (n & 255) >= 200;
+    }
+    m = s.match(/^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+)\s*)?\)$/);
+    if (!m) return false;
+    var a = m[4] === undefined ? 1 : parseFloat(m[4]);
+    return a >= 0.45 && +m[1] >= 200 && +m[2] >= 200 && +m[3] >= 200;
+  }
+  var api = {
+    refresh: refresh,
+    bg: function () { return state.bg; },
+    ink: function () { return state.ink; },
+    dim: function () { return state.dim; },
+    line: function () { return state.line; },
+    isDark: function () { return state.dark; }
+  };
+  refresh();
+  document.addEventListener('ncn:theme', function () {
+    refresh();
+    try { document.dispatchEvent(new CustomEvent('ncn:paper', { detail: { dark: state.dark } })); } catch (e) {}
+  });
+  document.addEventListener('DOMContentLoaded', refresh);
+
+  var P = window.CanvasRenderingContext2D && window.CanvasRenderingContext2D.prototype;
+  if (!P || P.__ncnPaper) return api;
+  P.__ncnPaper = true;
+
+  var _fillRect = P.fillRect;
+  P.fillRect = function (x, y, w, h) {
+    /* 从左上角起、面积占画布两成以上的填充视为清屏；
+       0.2 的门槛兼容 hiDPI（逻辑坐标只有实际像素的一半）。 */
+    if (!state.dark && x <= 2 && y <= 2 && w >= 80 && h >= 80 && this.canvas) {
+      if (w * h >= this.canvas.width * this.canvas.height * 0.2) {
+        this.save();
+        this.fillStyle = state.bg;
+        _fillRect.call(this, x, y, w, h);
+        this.restore();
+        return;
+      }
+    }
+    return _fillRect.apply(this, arguments);
+  };
+
+  var _fillText = P.fillText;
+  P.fillText = function () {
+    if (!state.dark && nearWhite(this.fillStyle)) {
+      this.save();
+      this.fillStyle = state.ink;
+      this.shadowBlur = 0;
+      _fillText.apply(this, arguments);
+      this.restore();
+      return;
+    }
+    return _fillText.apply(this, arguments);
+  };
+
+  var _stroke = P.stroke;
+  P.stroke = function () {
+    if (!state.dark && nearWhite(this.strokeStyle)) {
+      this.save();
+      this.strokeStyle = state.line;
+      this.shadowBlur = 0;
+      _stroke.call(this);
+      this.restore();
+      return;
+    }
+    return _stroke.apply(this, arguments);
+  };
+  return api;
+})();
 
 /* ---------------- 公共 DOM 工具 ---------------- */
 /* HTML 转义：任何外部/动态字符串（URL 参数、localStorage 恢复、分享链接等）
@@ -19,11 +120,9 @@ Arcade.escapeHtml = function (s) {
 /* ---------------- 设置：音效 / 音乐 / 语言 / 主题 / 触感 ---------------- */
 Arcade.settings = (function () {
   var KEY = 'arcade_settings';
-  var THEMES = ['neon', 'daylight'];
-  /* 各主题的主题色（meta theme-color / iOS 状态栏联动；与 theme.css 配色一致） */
-  var THEME_COLORS = { neon: '#0a0a12', daylight: '#f2ead8' };
-  /* 默认街机霓虹（neon）；历史存档中的 auto/已下线主题一律迁移回默认 */
-  var state = { sound: true, music: true, reducedMotion: false, theme: 'neon', haptic: true };
+  /* 主题 / 语言 / 背景乐已由全站内核与顶栏接管；这里只保留游戏内偏好。
+     历史存档里的 theme / music 字段会因为不在 state 中而被自动忽略。 */
+  var state = { sound: true, reducedMotion: false, haptic: true };
 
   try {
     var raw = localStorage.getItem(KEY);
@@ -32,28 +131,13 @@ Arcade.settings = (function () {
       for (var k in state) if (s[k] !== undefined) state[k] = s[k];
     }
   } catch (e) {}
-  if (THEMES.indexOf(state.theme) < 0) { state.theme = 'neon'; save(); }
 
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     state.reducedMotion = true;
   }
 
-  /* 主题色联动：meta theme-color（安卓地址栏/状态栏）+ iOS 状态栏样式随主题切换 */
-  function syncThemeColor(t) {
-    var color = THEME_COLORS[t] || '#0a0a12';
-    var m = document.querySelector('meta[name="theme-color"]');
-    if (m) m.setAttribute('content', color);
-    var sb = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
-    if (sb) sb.setAttribute('content', t === 'daylight' ? 'default' : 'black-translucent');
-  }
-
   function apply() {
-    var root = document.documentElement;
-    root.classList.remove('theme-daylight');
-    var t = THEMES.indexOf(state.theme) >= 0 ? state.theme : 'neon';
-    if (t !== 'neon') root.classList.add('theme-' + t);
-    root.classList.toggle('reduced-motion', !!state.reducedMotion);
-    syncThemeColor(t);
+    document.documentElement.classList.toggle('reduced-motion', !!state.reducedMotion);
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
   apply();
@@ -62,10 +146,9 @@ Arcade.settings = (function () {
   function set(k, v) {
     state[k] = v; save(); apply();
     if (k === 'sound' && Arcade.audio) Arcade.audio.setMuted(!v);
-    /* 背景乐已下线：music 只作为历史存档字段保留，不再驱动任何播放器 */
   }
 
-  return { get: get, set: set, THEMES: THEMES };
+  return { get: get, set: set };
 })();
 
 /* B3：存储写入失败一次性提示（隐私模式/配额满），会话内仅提示一次 */
@@ -288,57 +371,7 @@ Arcade.ui = (function () {
     });
     bar.appendChild(soundBtn);
 
-    // 音乐：背景乐已整体下线，按钮保留 DOM 位次（顶栏图标按 nth-child 映射）
-    // 但统一由 family-ui.css 隐藏，不再出现在任何游戏页 UI 中。
-    var musicBtn = document.createElement('button');
-    musicBtn.className = 'qb-btn qb-music' + (s.music ? '' : ' off');
-    musicBtn.setAttribute('aria-label', T('settings.music'));
-    musicBtn.title = T('settings.music');
-    musicBtn.innerHTML = '<span class="qb-tip">' + T('settings.music') + '</span>';
-    musicBtn.addEventListener('click', function () {
-      var v = !Arcade.settings.get().music;
-      Arcade.settings.set('music', v);
-      musicBtn.classList.toggle('off', !v);
-      if (Arcade.audio) Arcade.audio.play('ui');
-    });
-    bar.appendChild(musicBtn);
-
-    // 语言：按钮文字 = 目标语言（当前 zh → EN，当前 en → 中），悬浮提示同义
-    var langBtn = document.createElement('button');
-    langBtn.className = 'qb-btn qb-lang';
-    langBtn.setAttribute('aria-label', T('settings.language'));
-    langBtn.title = T('settings.language');
-    var toZh = Arcade.i18n.getLang() === 'en';
-    langBtn.innerHTML = (toZh ? '中' : 'EN') + '<span class="qb-tip">' + (toZh ? '中文' : 'English') + '</span>';
-    langBtn.addEventListener('click', function () {
-      var next = Arcade.i18n.getLang() === 'zh' ? 'en' : 'zh';
-      Arcade.i18n.setLang(next); // reload
-    });
-    bar.appendChild(langBtn);
-
-    // 主题：点击按 THEMES 顺序循环切换（街机霓虹 → 晨光档案 → 街机霓虹）
-    var themeBtn = document.createElement('button');
-    themeBtn.className = 'qb-btn';
-    themeBtn.setAttribute('aria-label', T('settings.theme'));
-    themeBtn.title = T('settings.theme');
-    themeBtn.innerHTML = '<span class="qb-tip">' + T('theme.' + Arcade.settings.get().theme) + '</span>';
-    themeBtn.addEventListener('click', function () {
-      var cur = Arcade.settings.get().theme;
-      var themes = Arcade.settings.THEMES;
-      var i = themes.indexOf(cur);
-      var next = themes[(i + 1) % themes.length];
-      Arcade.settings.set('theme', next);
-      // 提示显示在图标旁（qb-tip 短暂亮起显示主题名）
-      var tip = themeBtn.querySelector('.qb-tip');
-      if (tip) {
-        tip.textContent = T('theme.' + next);
-        tip.classList.add('show');
-        clearTimeout(themeBtn._tipTimer);
-        themeBtn._tipTimer = setTimeout(function () { tip.classList.remove('show'); }, 1600);
-      }
-      if (Arcade.audio) Arcade.audio.play('ui');
-    });
-    bar.appendChild(themeBtn);
+    // 音乐 / 语言 / 主题按钮已下线：全站顶栏是唯一入口，避免重复控件。
 
     // 搜索：游戏搜索浮层
     var searchBtn = document.createElement('button');
