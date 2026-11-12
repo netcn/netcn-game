@@ -5,14 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>页面未找到 Page Not Found | 游戏厅</title>
 <meta name="description" content="这个游戏好像不在大厅里 / This game is not in the arcade.">
-<meta name="robots" content="noindex">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://game.netcn.org/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="游戏厅 · Arcade">
+<meta property="og:title" content="页面未找到 · 游戏厅">
+<meta property="og:description" content="这个游戏好像不在大厅里，换个入口试试。">
+<meta property="og:url" content="https://game.netcn.org/404.html">
+<meta property="og:image" content="https://game.netcn.org/assets/icons/og-share.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#fafbfc">
 <link rel="icon" href="/favicon.ico" sizes="16x16 24x24 32x32 48x48">
 <link rel="icon" href="/assets/icons/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261111b3">
-<script src="/shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261112b">
+<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261112b">
+<script src="/shell/shell.js?v=20261112b"></script>
 <style>
   main{max-width:720px;margin:0 auto;padding:72px 24px 96px;text-align:center}
   main .ico{font-size:56px;line-height:1}
@@ -42,7 +50,7 @@
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a><a href="https://ask.netcn.org/" data-nc-to="ask">科学问答</a><a href="https://quiz.netcn.org/" data-nc-to="quiz">头脑体操</a><a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
-  <span class="nc-foot-note">© 2011–2026 netcn.org</span>
+  <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
 <script>
@@ -53,13 +61,19 @@
       var v = e.getAttribute(k); if (v) e.textContent = v;
     });
     document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
+    document.title = l === 'en' ? 'Page Not Found | Arcade' : '页面未找到 | 游戏厅';
+    var dm = document.querySelector('meta[name="description"]');
+    if (dm) dm.setAttribute('content', l === 'en'
+      ? 'This game is not in the arcade. Try another entry.'
+      : '这个游戏好像不在大厅里，换个入口试试。');
   }
+  /* 语言以全站内核为唯一真源（ncn_lang 跨域 cookie / localStorage） */
   function cur(){
-    try { var s = localStorage.getItem('arcade_lang'); if (s === 'zh' || s === 'en') return s; } catch (e) {}
-    return /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+    try { if (window.NETCN && NETCN.lang) return NETCN.lang(); } catch (e) {}
+    return document.documentElement.lang === 'en' ? 'en' : 'zh';
   }
   apply(cur());
-  window.addEventListener('ncn:lang', function(e){ apply(e.detail && e.detail.lang || cur()); });
+  document.addEventListener('ncn:lang', function(e){ apply(e.detail && e.detail.lang || cur()); });
 })();
 </script>
 </body>

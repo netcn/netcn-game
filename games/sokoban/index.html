@@ -38,34 +38,29 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .sk-wrap { padding: 14px 12px 22px; width: min(480px, 100%); text-align: center; }
     .sk-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
     .sk-hud { flex: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; font-size: 11px; color: var(--text-dim); }
     .sk-hud b { color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 11px; }
-    .sk-btn { font-size: 11px; padding: 7px 10px; border-radius: 7px; background: rgba(24,32,52,0.06); border: 1px solid rgba(0,240,255,0.28); color: var(--text); cursor: pointer; font-family: inherit; white-space: nowrap; min-height: 44px; min-width: 44px; }
+    .sk-btn { font-size: 11px; padding: 7px 10px; border-radius: 7px; background: rgba(24,32,52,0.06); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.28); color: var(--text); cursor: pointer; font-family: inherit; white-space: nowrap; min-height: 44px; min-width: 44px; }
     .sk-btn:hover { border-color: var(--neon-cyan); box-shadow: var(--ui-shadow); }
     .sk-btn.tall { height: 44px; min-width: 62px; }
     .sk-canvas { display: block; width: 100% !important; max-width: 460px; height: auto !important; margin: 0 auto; border-radius: 14px; background: #070b16; box-shadow: var(--ui-shadow); touch-action: none; cursor: pointer; }
     .sk-msg { min-height: 18px; font-size: 12px; line-height: 1.5; color: var(--neon-pink); margin-top: 6px; }
     .sk-touch { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 8px; }
     .sk-side { display: flex; flex-direction: column; gap: 8px; }
-    .sk-overlay .sk-panel { background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgba(0,240,255,0.3); border-radius: 16px; padding: 22px 18px; width: min(400px, 94vw); box-shadow: var(--ui-shadow); }
+    .sk-overlay .sk-panel { background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.3); border-radius: 16px; padding: 22px 18px; width: min(400px, 94vw); box-shadow: var(--ui-shadow); }
     .sk-overlay .btn { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
     .sk-panel-title { font-family: var(--font-pixel); font-size: 15px; line-height: 1.6; color: var(--neon-cyan); margin-bottom: 14px; letter-spacing: 1px; }
-    .sk-panel-title.win { color: var(--neon-green); text-shadow: 0 0 14px rgba(57,255,20,0.55); }
+    .sk-panel-title.win { color: var(--neon-green); text-shadow: 0 0 14px rgb(var(--nc-green-rgb) / 0.55); }
     .sk-panel-title.dead { color: #ff4d6d; text-shadow: 0 0 14px rgba(255,77,109,0.65); }
     .sk-deadlock-panel { border-color: rgba(255,77,109,0.55) !important; animation: skDeadPulse 1.5s ease-in-out infinite; }
     @keyframes skDeadPulse {
@@ -74,10 +69,10 @@
     }
     .sk-lv-scroll { max-height: min(58vh, 440px); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; margin-bottom: 16px; padding-right: 2px; }
     .sk-chapter { text-align: left; margin-bottom: 12px; }
-    .sk-chapter-title { position: sticky; top: 0; z-index: 1; padding: 6px 2px; margin-bottom: 6px; font-family: var(--font-pixel); font-size: 10px; letter-spacing: 1px; color: var(--neon-purple); background: var(--nc-stage-2); border-bottom: 1px solid rgba(185,103,255,0.22); }
+    .sk-chapter-title { position: sticky; top: 0; z-index: 1; padding: 6px 2px; margin-bottom: 6px; font-family: var(--font-pixel); font-size: 10px; letter-spacing: 1px; color: var(--neon-purple); background: var(--nc-stage-2); border-bottom: 1px solid rgb(var(--nc-purple-rgb) / 0.22); }
     .sk-lv-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-    .sk-lvl { position: relative; aspect-ratio: 1; min-height: 44px; border-radius: 9px; border: 1px solid rgba(0,240,255,0.26); background: rgba(0,240,255,0.05); color: var(--text); cursor: pointer; font-family: var(--font-pixel); font-size: 13px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
-    .sk-lvl.done { border-color: rgba(57,255,20,0.55); background: rgba(57,255,20,0.08); }
+    .sk-lvl { position: relative; aspect-ratio: 1; min-height: 44px; border-radius: 9px; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.26); background: rgb(var(--nc-cyan-rgb) / 0.05); color: var(--text); cursor: pointer; font-family: var(--font-pixel); font-size: 13px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+    .sk-lvl.done { border-color: rgb(var(--nc-green-rgb) / 0.55); background: rgb(var(--nc-green-rgb) / 0.08); }
     .sk-lvl.cur { box-shadow: var(--ui-shadow); }
     .sk-lvl.locked { opacity: 0.45; cursor: not-allowed; }
     .sk-lvl-lock { font-size: 11px; color: var(--text-dim); }
@@ -116,19 +111,20 @@
 </nav>
   <h1 class="seo-h1">推箱子</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="sokoban-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="../_shared/kit.js"></script>
-  <script src="sokoban.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="sokoban-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="../_shared/kit.js?v=20261112b"></script>
+  <script src="sokoban.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -139,6 +135,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

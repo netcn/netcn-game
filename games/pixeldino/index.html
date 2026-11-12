@@ -38,28 +38,23 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .dn-wrap { position: relative; padding: 14px; width: min(640px, 96vw); margin: 0 auto; text-align: center; }
     .dn-stage { position: relative; width: 100%; max-width: 640px; margin: 0 auto;
-      filter: drop-shadow(0 0 16px rgba(57,255,20,0.14)); }
+      filter: drop-shadow(0 0 16px rgb(var(--nc-green-rgb) / 0.14)); }
     .dn-canvas { display: block; width: 100%; height: auto; border-radius: 12px; background: var(--nc-stage-2);
-      border: 1px solid rgba(57,255,20,0.28); touch-action: none; }
+      border: 1px solid rgb(var(--nc-green-rgb) / 0.28); touch-action: none; }
     .dn-top { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 3px 10px;
       font-size: 12px; color: var(--text-dim); margin: 0 0 8px; padding: 7px 10px; border-radius: 8px;
-      background: linear-gradient(90deg, rgba(57,255,20,0.08), rgba(0,240,255,0.05));
-      border: 1px solid rgba(57,255,20,0.22); }
+      background: linear-gradient(90deg, rgb(var(--nc-green-rgb) / 0.08), rgb(var(--nc-cyan-rgb) / 0.05));
+      border: 1px solid rgb(var(--nc-green-rgb) / 0.22); }
     .dn-top span { white-space: nowrap; }
     .dn-top b { color: var(--neon-yellow); font-family: 'Consolas', 'Courier New', monospace; }
     .dn-weather { color: var(--neon-cyan); }
@@ -68,11 +63,11 @@
     /* 自绘图标（纯 CSS，不用 emoji 当美术） */
     .dn-ico { display: inline-block; position: relative; width: 14px; height: 14px; flex: none; vertical-align: -2px; }
     .dn-ico-coin { border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff9c4, #ffe600 48%, #c58f00 100%);
-      box-shadow: 0 0 6px rgba(255,230,0,0.65), inset 0 0 0 1px rgba(110,74,0,0.55); }
+      box-shadow: 0 0 6px rgb(var(--nc-yellow-rgb) / 0.65), inset 0 0 0 1px rgba(110,74,0,0.55); }
     .dn-ico-coin::after { content: ''; position: absolute; left: 6px; top: 3px; width: 2px; height: 5px;
       background: var(--nc-stage-2); border-radius: 1px; }
     .dn-ico-magnet::before { content: ''; position: absolute; inset: 1px 1px 2px; border: 3px solid #ff2d95;
-      border-top: 0; border-radius: 0 0 7px 7px; box-shadow: 0 0 6px rgba(255,45,149,0.55); }
+      border-top: 0; border-radius: 0 0 7px 7px; box-shadow: 0 0 6px rgb(var(--nc-pink-rgb) / 0.55); }
     .dn-ico-magnet::after { content: ''; position: absolute; left: 0; right: 0; top: 1px; height: 4px;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border-radius: 2px; }
     .dn-ico-shield::before { content: ''; position: absolute; inset: 0;
@@ -82,7 +77,7 @@
     .dn-ico-shield::after { content: ''; position: absolute; left: 6px; top: 4px; width: 2px; height: 6px;
       background: var(--nc-stage-2); border-radius: 1px; }
     .dn-ico-slow::before { content: ''; position: absolute; inset: 0; border-radius: 50%;
-      border: 2px solid #b967ff; background: rgba(185,103,255,0.16); box-shadow: 0 0 6px rgba(185,103,255,0.7); }
+      border: 2px solid #b967ff; background: rgb(var(--nc-purple-rgb) / 0.16); box-shadow: 0 0 6px rgb(var(--nc-purple-rgb) / 0.7); }
     .dn-ico-slow::after { content: ''; position: absolute; left: 6px; top: 3px; width: 2px; height: 5px;
       background: #ddc0ff; transform-origin: 50% 100%; transform: rotate(28deg);
       box-shadow: 2px 4px 0 -1px #ddc0ff; }
@@ -103,9 +98,9 @@
       border: 1px solid rgba(24,32,52,0.12); background: rgba(24,32,52,0.03);
       opacity: 0.32; transition: opacity 0.2s, border-color 0.2s, box-shadow 0.2s; }
     .dn-pw.on { opacity: 1; }
-    .dn-pw[data-pw="magnet"].on { border-color: #ff2d95; box-shadow: 0 0 8px rgba(255,45,149,0.3) inset; }
+    .dn-pw[data-pw="magnet"].on { border-color: #ff2d95; box-shadow: 0 0 8px rgb(var(--nc-pink-rgb) / 0.3) inset; }
     .dn-pw[data-pw="shield"].on { border-color: #00f0ff; box-shadow: var(--ui-shadow); }
-    .dn-pw[data-pw="slow"].on { border-color: #b967ff; box-shadow: 0 0 8px rgba(185,103,255,0.3) inset; }
+    .dn-pw[data-pw="slow"].on { border-color: #b967ff; box-shadow: 0 0 8px rgb(var(--nc-purple-rgb) / 0.3) inset; }
     .dn-pw i { display: block; width: 24px; height: 3px; border-radius: 2px; background: rgba(24,32,52,0.16); overflow: hidden; }
     .dn-pw i em { display: block; height: 100%; width: 0; background: currentColor; }
     .dn-pw[data-pw="magnet"] { color: #ff2d95; }
@@ -114,8 +109,8 @@
 
     /* Boss 血条 / 追逐进度 */
     .dn-boss { margin: 8px 2px 0; padding: 6px 8px; border-radius: 8px; text-align: left;
-      background: var(--nc-stage-2); border: 1px solid rgba(255,45,149,0.45);
-      box-shadow: 0 0 14px rgba(255,45,149,0.18) inset; }
+      background: var(--nc-stage-2); border: 1px solid rgb(var(--nc-pink-rgb) / 0.45);
+      box-shadow: 0 0 14px rgb(var(--nc-pink-rgb) / 0.18) inset; }
     .dn-boss-top { display: flex; justify-content: space-between; align-items: center; font-size: 10px;
       letter-spacing: 1px; color: var(--neon-pink); margin-bottom: 4px; }
     .dn-boss-top b { color: var(--neon-yellow); font-family: 'Consolas', 'Courier New', monospace; }
@@ -123,20 +118,20 @@
     .dn-boss-bar + .dn-boss-bar { margin-top: 3px; height: 3px; }
     .dn-boss-bar i { display: block; height: 100%; width: 100%; }
     .dn-boss-hp i { background: linear-gradient(90deg, #ff2d95, #ff9f1c); transition: width 0.16s ease-out; }
-    .dn-boss-chase i { background: linear-gradient(90deg, rgba(255,230,0,0.55), #ffe600); transition: width 0.12s linear; }
+    .dn-boss-chase i { background: linear-gradient(90deg, rgb(var(--nc-yellow-rgb) / 0.55), #ffe600); transition: width 0.12s linear; }
 
     /* 任务面板 */
     .dn-tasks { display: flex; flex-direction: column; gap: 4px; margin: 8px 2px 0; text-align: left; }
     .dn-tasks.idle { display: none; }
     .dn-task { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 1px 8px;
       padding: 4px 7px; border-radius: 6px; font-size: 11px; color: var(--text-dim);
-      background: rgba(24,32,52,0.03); border: 1px solid rgba(0,240,255,0.12); }
+      background: rgba(24,32,52,0.03); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.12); }
     .dn-task-nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .dn-task-val { color: var(--neon-cyan); font-family: 'Consolas', 'Courier New', monospace; }
     .dn-task-bar { grid-column: 1 / -1; height: 4px; border-radius: 999px; background: rgba(24,32,52,0.1); overflow: hidden; }
     .dn-task-bar i { display: block; height: 100%; width: 0; border-radius: 999px;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); transition: width 0.18s ease-out; }
-    .dn-task.done { border-color: rgba(57,255,20,0.5); color: var(--neon-green); }
+    .dn-task.done { border-color: rgb(var(--nc-green-rgb) / 0.5); color: var(--neon-green); }
     .dn-task.done .dn-task-val { color: var(--neon-green); }
     .dn-task.done .dn-task-bar i { background: var(--neon-green); }
 
@@ -146,10 +141,10 @@
       -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
     .dn-card { margin: auto; width: min(360px, 92%); padding: 16px 14px; border-radius: 14px; text-align: center;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(57,255,20,0.32);
+      border: 1px solid rgb(var(--nc-green-rgb) / 0.32);
       box-shadow: var(--ui-shadow); }
     .dn-title { font-family: var(--font-pixel); font-size: 15px; color: var(--neon-green);
-      text-shadow: 0 0 12px rgba(57,255,20,0.55); margin-bottom: 8px; }
+      text-shadow: 0 0 12px rgb(var(--nc-green-rgb) / 0.55); margin-bottom: 8px; }
     .dn-hint { font-size: 12px; color: var(--text-dim); line-height: 1.7; margin-bottom: 8px; }
     .dn-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; font-size: 12px;
       color: var(--text-dim); margin: 4px 0; }
@@ -161,7 +156,7 @@
     .dn-diff-lbl { font-size: 11px; color: var(--text-dim); width: 100%; }
     .dn-diff .mode-btn { padding: 8px 12px; font-size: 11px; min-height: 44px; min-width: 44px; }
     .dn-diff .mode-btn.selected { border-color: var(--neon-yellow); color: var(--neon-yellow);
-      box-shadow: 0 0 10px rgba(255,230,0,0.25) inset; }
+      box-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / 0.25) inset; }
     .dn-card > .btn { display: block; width: 100%; margin-top: 8px; min-height: 44px; }
     .dn-touch { display: none; gap: 12px; justify-content: center; margin: 10px 0 4px; }
     .dn-touch.show { display: flex; }
@@ -205,19 +200,20 @@
 </nav>
   <h1 class="seo-h1">恐龙快跑</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="pixeldino-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="../_shared/kit.js"></script>
-  <script src="pixeldino.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="pixeldino-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="../_shared/kit.js?v=20261112b"></script>
+  <script src="pixeldino.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -228,6 +224,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

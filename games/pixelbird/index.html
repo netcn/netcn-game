@@ -38,18 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .pb-wrap { width: min(400px, 92vw); margin: 0 auto; padding: 4px 0 14px; text-align: center; }
     .pixelbird-stage, .pb-stage { position: relative; width: 100%; }
@@ -58,7 +53,7 @@
       box-shadow: var(--ui-shadow); }
     .pb-pause { position: absolute; right: 8px; top: 8px; z-index: 6;
       width: 44px; height: 44px; min-width: 44px; min-height: 44px;
-      border-radius: 8px; border: 1px solid rgba(0,240,255,0.45);
+      border-radius: 8px; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.45);
       background: var(--nc-stage-2); color: var(--neon-cyan);
       font-family: var(--font-pixel); font-size: 13px; cursor: pointer; }
     .pb-pause[hidden] { display: none; }
@@ -66,17 +61,17 @@
       align-items: center; justify-content: flex-start; gap: 8px; padding: 14px 12px;
       overflow-y: auto; overscroll-behavior: contain;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border-radius: 12px; border: 1px solid rgba(0,240,255,0.22); box-sizing: border-box;
+      border-radius: 12px; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.22); box-sizing: border-box;
       text-align: center; }
     .pb-overlay[hidden], .pb-pause-veil[hidden] { display: none; }
     .pb-title { font-family: var(--font-pixel); font-size: 18px; line-height: 1.4;
-      color: var(--neon-pink); text-shadow: 0 0 14px rgba(255,45,149,0.8); letter-spacing: 1px; }
+      color: var(--neon-pink); text-shadow: 0 0 14px rgb(var(--nc-pink-rgb) / 0.8); letter-spacing: 1px; }
     .pb-sub { font-size: 11px; color: var(--text-dim); line-height: 1.6; }
     .pb-bestline { font-size: 11px; color: var(--neon-yellow); font-family: var(--font-pixel);
       line-height: 1.6; }
     .pb-daily { width: 100%; max-width: 330px; display: flex; flex-direction: column; gap: 2px;
-      padding: 7px 9px; border-radius: 8px; background: rgba(255,230,0,0.06);
-      border: 1px solid rgba(255,230,0,0.28); font-size: 10px; color: var(--text-dim); line-height: 1.5; }
+      padding: 7px 9px; border-radius: 8px; background: rgb(var(--nc-yellow-rgb) / 0.06);
+      border: 1px solid rgb(var(--nc-yellow-rgb) / 0.28); font-size: 10px; color: var(--text-dim); line-height: 1.5; }
     .pb-daily b { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 10px; }
     .pb-daily span { color: var(--text-main); }
     .pb-daily em { font-style: normal; color: var(--neon-green); }
@@ -85,14 +80,14 @@
       padding: 5px 9px; border-radius: 6px; background: rgba(24,32,52,0.04);
       border: 1px solid rgba(24,32,52,0.08); font-size: 10px; color: var(--text-dim); line-height: 1.4; }
     .pb-task em { font-style: normal; color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 9px; }
-    .pb-task.done { border-color: rgba(57,255,20,0.5); color: var(--neon-green); }
+    .pb-task.done { border-color: rgb(var(--nc-green-rgb) / 0.5); color: var(--neon-green); }
     .pb-task.done em { color: var(--neon-green); }
     .pb-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 3px; }
     .pb-btns .btn { min-height: 44px; min-width: 110px; }
     .pb-how { font-size: 10px; color: var(--text-dim); line-height: 1.6; max-width: 320px; }
     .pb-scorebig { display: flex; align-items: baseline; gap: 8px; font-size: 11px; color: var(--text-dim); }
     .pb-scorebig b { font-family: var(--font-pixel); font-size: 26px; color: var(--neon-yellow);
-      text-shadow: 0 0 12px rgba(255,230,0,0.7); }
+      text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / 0.7); }
     .pb-res-line { font-size: 10px; color: var(--text-dim); line-height: 1.5; }
     .pb-medal { font-size: 11px; color: var(--neon-green); font-family: var(--font-pixel);
       line-height: 1.5; }
@@ -101,20 +96,20 @@
       background: var(--nc-stage-2); border-radius: 12px; text-align: center; }
     .pb-firehud { display: flex; align-items: center; justify-content: center; gap: 8px;
       width: fit-content; max-width: 100%; margin: 8px auto 0; padding: 3px 4px 3px 10px;
-      border-radius: 10px; border: 1px solid rgba(255,45,149,0.3);
-      background: rgba(255,45,149,0.08); }
+      border-radius: 10px; border: 1px solid rgb(var(--nc-pink-rgb) / 0.3);
+      background: rgb(var(--nc-pink-rgb) / 0.08); }
     .pb-firehud[hidden] { display: none; }
     .pb-ammo { display: flex; gap: 4px; }
     .pb-ammo i { display: block; width: 9px; height: 12px; border-radius: 2px;
-      background: #ff2d95; box-shadow: 0 0 6px rgba(255,45,149,0.7); }
+      background: #ff2d95; box-shadow: 0 0 6px rgb(var(--nc-pink-rgb) / 0.7); }
     .pb-ammo i.off { background: rgba(24,32,52,0.14); box-shadow: none; }
     .pb-fire { display: block; min-width: 96px; min-height: 44px; margin: 0;
       padding: 0 12px; border-radius: 8px; box-sizing: border-box;
-      border: 1px solid rgba(255,45,149,0.55); background: rgba(255,45,149,0.14);
+      border: 1px solid rgb(var(--nc-pink-rgb) / 0.55); background: rgb(var(--nc-pink-rgb) / 0.14);
       color: var(--neon-pink); font-family: var(--font-pixel); font-size: 12px;
       letter-spacing: 1px; cursor: pointer; touch-action: manipulation;
       -webkit-tap-highlight-color: transparent; }
-    .pb-fire:active { background: rgba(255,45,149,0.3); }
+    .pb-fire:active { background: rgb(var(--nc-pink-rgb) / 0.3); }
     .pb-fire.empty { color: var(--text-dim); border-color: rgba(24,32,52,0.18);
       background: rgba(24,32,52,0.04); }
     .pb-fire:disabled { opacity: .45; cursor: default; }
@@ -151,19 +146,20 @@
 </nav>
   <h1 class="seo-h1">像素飞鸟</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="pixelbird-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="../_shared/kit.js"></script>
-  <script src="pixelbird.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="pixelbird-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="../_shared/kit.js?v=20261112b"></script>
+  <script src="pixelbird.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -174,6 +170,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

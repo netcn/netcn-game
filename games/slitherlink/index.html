@@ -38,40 +38,35 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .sl-wrap { padding: 12px 10px 20px; width: min(680px, 100%); box-sizing: border-box; text-align: center; }
     .sl-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; margin: 8px 2px; color: var(--text-dim); }
     .sl-top .stat-value { font-family: var(--font-pixel); }
     .sl-msg { min-height: 20px; font-size: 13px; color: var(--neon-pink); margin: 6px 0; line-height: 1.6; }
-    .sl-board { display: grid; gap: 0; background: var(--bg-panel); border: 1px solid rgba(0,240,255,0.25); border-radius: 10px; padding: 10px; margin: 0 auto; width: fit-content; touch-action: none; -webkit-user-select: none; user-select: none; }
+    .sl-board { display: grid; gap: 0; background: var(--bg-panel); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.25); border-radius: 10px; padding: 10px; margin: 0 auto; width: fit-content; touch-action: none; -webkit-user-select: none; user-select: none; }
     .sl-pack { position: fixed; inset: 0; z-index: 58; display: flex; align-items: center; justify-content: center; background: var(--nc-stage-2); backdrop-filter: blur(4px); padding: 14px; }
     .sl-pack.hidden { display: none; }
-    .sl-pack-card { width: min(360px, 92vw); box-sizing: border-box; padding: 16px 14px; background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgba(185,103,255,.5); border-radius: 16px; box-shadow: 0 0 36px rgba(185,103,255,.28); animation: slCard .4s cubic-bezier(.2,1.4,.4,1) both; }
+    .sl-pack-card { width: min(360px, 92vw); box-sizing: border-box; padding: 16px 14px; background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgb(var(--nc-purple-rgb) / .5); border-radius: 16px; box-shadow: 0 0 36px rgb(var(--nc-purple-rgb) / .28); animation: slCard .4s cubic-bezier(.2,1.4,.4,1) both; }
     .sl-pack-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-pixel); font-size: 13px; color: var(--neon-purple); margin-bottom: 12px; }
     .sl-pack-close { min-width: 44px; min-height: 44px; border-radius: 10px; background: rgba(24,32,52,.08); border: 1px solid rgba(24,32,52,.18); color: var(--text); font-size: 16px; cursor: pointer; }
     .sl-pack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .sl-pack-lv { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 58px; border-radius: 10px; border: 1px solid rgba(0,240,255,.35); background: rgba(0,240,255,.08); color: var(--text); cursor: pointer; transition: transform .12s ease, box-shadow .18s ease, background .18s ease; }
+    .sl-pack-lv { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 58px; border-radius: 10px; border: 1px solid rgb(var(--nc-cyan-rgb) / .35); background: rgb(var(--nc-cyan-rgb) / .08); color: var(--text); cursor: pointer; transition: transform .12s ease, box-shadow .18s ease, background .18s ease; }
     .sl-pack-lv:hover { transform: translateY(-2px); box-shadow: var(--ui-shadow); }
     .sl-pack-lv b { font-family: var(--font-pixel); font-size: 14px; color: var(--neon-cyan); }
     .sl-pack-lv span { font-size: 9px; color: var(--text-dim); }
-    .sl-pack-lv.active { border-color: var(--neon-green); background: rgba(57,255,20,.12); }
+    .sl-pack-lv.active { border-color: var(--neon-green); background: rgb(var(--nc-green-rgb) / .12); }
     .sl-pack-lv.locked { opacity: .45; cursor: not-allowed; border-color: rgba(24,32,52,.14); background: rgba(24,32,52,.04); }
     .sl-pack-lv em { font-style: normal; font-size: 9px; color: var(--text-dim); }
     .sl-pack-tip { margin-top: 12px; font-size: 11px; line-height: 1.6; color: var(--text-dim); }
     .sl-dot { background: transparent; }
-    .sl-cell { display: flex; align-items: center; justify-content: center; font-family: var(--font-pixel); font-size: 14px; color: var(--neon-cyan); text-shadow: 0 0 6px rgba(0,240,255,.5); }
+    .sl-cell { display: flex; align-items: center; justify-content: center; font-family: var(--font-pixel); font-size: 14px; color: var(--neon-cyan); text-shadow: 0 0 6px rgb(var(--nc-cyan-rgb) / .5); }
     .sl-cell.zero { color: var(--text-dim); text-shadow: none; }
     .sl-edge { position: relative; cursor: pointer; border: none; background: transparent; padding: 0; }
     .sl-edge .bar { position: absolute; background: transparent; }
@@ -88,16 +83,16 @@
     .sl-edge.on .bar { background: var(--neon-cyan); box-shadow: var(--ui-shadow); }
     .sl-edge.h.on .bar { width: 100%; }
     .sl-edge.v.on .bar { height: 100%; }
-    .sl-edge.err .bar { background: var(--neon-pink); box-shadow: 0 0 10px rgba(255,45,149,.9); animation: slErrPulse .7s ease-in-out infinite alternate; }
+    .sl-edge.err .bar { background: var(--neon-pink); box-shadow: 0 0 10px rgb(var(--nc-pink-rgb) / .9); animation: slErrPulse .7s ease-in-out infinite alternate; }
     @keyframes slErrPulse { from { opacity: .55; } to { opacity: 1; } }
-    .sl-edge.need .bar { background: rgba(255,230,0,.55); box-shadow: 0 0 7px rgba(255,230,0,.5); }
+    .sl-edge.need .bar { background: rgb(var(--nc-yellow-rgb) / .55); box-shadow: 0 0 7px rgb(var(--nc-yellow-rgb) / .5); }
     .sl-edge.need.h .bar { width: 100%; }
     .sl-edge.need.v .bar { height: 100%; animation: slNeed 1s ease-in-out infinite alternate; }
     .sl-edge.need.h .bar { animation: slNeed 1s ease-in-out infinite alternate; }
     @keyframes slNeed { from { opacity: .3; } to { opacity: .85; } }
     .sl-edge.x .bar { background: transparent; }
-    .sl-board.solved { box-shadow: 0 0 30px rgba(57,255,20,.35), inset 0 0 26px rgba(57,255,20,.12); border-color: rgba(57,255,20,.55); transition: box-shadow .6s ease, border-color .6s ease; }
-    .sl-board.solved .sl-edge.on .bar { background: var(--neon-green); box-shadow: 0 0 12px rgba(57,255,20,.9); }
+    .sl-board.solved { box-shadow: 0 0 30px rgb(var(--nc-green-rgb) / .35), inset 0 0 26px rgb(var(--nc-green-rgb) / .12); border-color: rgb(var(--nc-green-rgb) / .55); transition: box-shadow .6s ease, border-color .6s ease; }
+    .sl-board.solved .sl-edge.on .bar { background: var(--neon-green); box-shadow: 0 0 12px rgb(var(--nc-green-rgb) / .9); }
     .sl-overlay {
       position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
       background: var(--nc-stage-2); backdrop-filter: blur(4px);
@@ -106,17 +101,17 @@
     .sl-ov-card {
       width: min(330px, 88vw); padding: 26px 22px; text-align: center;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(57,255,20,.45); border-radius: 18px;
-      box-shadow: 0 0 40px rgba(57,255,20,.25);
+      border: 1px solid rgb(var(--nc-green-rgb) / .45); border-radius: 18px;
+      box-shadow: 0 0 40px rgb(var(--nc-green-rgb) / .25);
       animation: slCard .5s cubic-bezier(.2,1.4,.4,1) both;
     }
     @keyframes slCard { from { opacity: 0; transform: translateY(18px) scale(.9); } to { opacity: 1; transform: none; } }
-    .sl-ov-title { font-family: var(--font-pixel); font-size: 17px; color: var(--neon-green); text-shadow: 0 0 12px rgba(57,255,20,.7); margin-bottom: 12px; }
+    .sl-ov-title { font-family: var(--font-pixel); font-size: 17px; color: var(--neon-green); text-shadow: 0 0 12px rgb(var(--nc-green-rgb) / .7); margin-bottom: 12px; }
     .sl-ov-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
     .sl-ov-sub b { font-family: var(--font-pixel); color: var(--neon-cyan); font-size: 15px; }
     .sl-edge.x::after {
       content: '✕'; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
-      font-size: 12px; color: var(--neon-pink); text-shadow: 0 0 6px rgba(255,45,149,.7);
+      font-size: 12px; color: var(--neon-pink); text-shadow: 0 0 6px rgb(var(--nc-pink-rgb) / .7);
     }
     .sl-edge:focus-visible { outline: 2px solid var(--accent, #00f0ff); outline-offset: 1px; }
     @media (max-width: 480px) {
@@ -131,17 +126,17 @@
     .sl-board {
       position: relative;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(0,240,255,.34);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / .34);
       border-radius: 14px;
       box-shadow: var(--ui-shadow);
       transition: box-shadow .55s ease, border-color .55s ease;
     }
     .sl-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; border-radius: 14px; }
     .sl-board.solved {
-      border-color: rgba(57,255,20,.6);
-      box-shadow: 0 0 34px rgba(57,255,20,.38), inset 0 0 30px rgba(57,255,20,.14);
+      border-color: rgb(var(--nc-green-rgb) / .6);
+      box-shadow: 0 0 34px rgb(var(--nc-green-rgb) / .38), inset 0 0 30px rgb(var(--nc-green-rgb) / .14);
     }
-    .sl-board.solved .sl-cell { background-image: linear-gradient(180deg, #eaffea, var(--neon-green)); filter: drop-shadow(0 0 8px rgba(57,255,20,.55)); }
+    .sl-board.solved .sl-cell { background-image: linear-gradient(180deg, #eaffea, var(--neon-green)); filter: drop-shadow(0 0 8px rgb(var(--nc-green-rgb) / .55)); }
 
     .sl-dot { position: relative; }
     .sl-cell {
@@ -151,7 +146,7 @@
       background-image: linear-gradient(180deg, #e6feff, var(--neon-cyan));
       -webkit-background-clip: text;
       background-clip: text;
-      filter: drop-shadow(0 0 6px rgba(0,240,255,.45));
+      filter: drop-shadow(0 0 6px rgb(var(--nc-cyan-rgb) / .45));
       transition: filter .28s ease;
       z-index: 1;
     }
@@ -160,7 +155,7 @@
       position: absolute;
       inset: 3px;
       border-radius: 8px;
-      background: radial-gradient(circle, rgba(0,240,255,.09), transparent 70%);
+      background: radial-gradient(circle, rgb(var(--nc-cyan-rgb) / .09), transparent 70%);
       opacity: .8;
       pointer-events: none;
     }
@@ -172,17 +167,17 @@
     }
     .sl-cell.full {
       background-image: linear-gradient(180deg, #eeffee, var(--neon-green));
-      filter: drop-shadow(0 0 9px rgba(57,255,20,.75));
+      filter: drop-shadow(0 0 9px rgb(var(--nc-green-rgb) / .75));
     }
     .sl-cell.full::before {
-      background: radial-gradient(circle, rgba(57,255,20,.22), transparent 72%);
+      background: radial-gradient(circle, rgb(var(--nc-green-rgb) / .22), transparent 72%);
       animation: slCellGlow 1.7s ease-in-out infinite;
     }
     .sl-cell.over {
       background-image: linear-gradient(180deg, #ffe6f2, var(--neon-pink));
-      filter: drop-shadow(0 0 9px rgba(255,45,149,.75));
+      filter: drop-shadow(0 0 9px rgb(var(--nc-pink-rgb) / .75));
     }
-    .sl-cell.over::before { background: radial-gradient(circle, rgba(255,45,149,.2), transparent 72%); }
+    .sl-cell.over::before { background: radial-gradient(circle, rgb(var(--nc-pink-rgb) / .2), transparent 72%); }
     @keyframes slCellGlow {
       0%, 100% { transform: scale(.92); opacity: .55; }
       50% { transform: scale(1.08); opacity: 1; }
@@ -194,7 +189,7 @@
       position: absolute;
       inset: 1px;
       border-radius: 6px;
-      background: radial-gradient(circle, rgba(0,240,255,.2), transparent 72%);
+      background: radial-gradient(circle, rgb(var(--nc-cyan-rgb) / .2), transparent 72%);
       opacity: 0;
       transition: opacity .16s ease;
       pointer-events: none;
@@ -218,8 +213,8 @@
       100% { transform: translateX(-50%) scaleY(1); }
     }
     .sl-edge.need .bar {
-      background: linear-gradient(90deg, rgba(255,230,0,.75), rgba(255,159,28,.95));
-      box-shadow: 0 0 10px rgba(255,230,0,.8), 0 0 20px rgba(255,159,28,.35);
+      background: linear-gradient(90deg, rgb(var(--nc-yellow-rgb) / .75), rgb(var(--nc-orange-rgb) / .95));
+      box-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / .8), 0 0 20px rgb(var(--nc-orange-rgb) / .35);
     }
     .sl-edge.need.h .bar { width: 100%; }
     .sl-edge.need.v .bar { height: 100%; }
@@ -237,7 +232,7 @@
     }
     .sl-star.on {
       background: linear-gradient(180deg, #fff9bd, var(--neon-yellow) 58%, var(--neon-orange));
-      filter: drop-shadow(0 0 4px rgba(255,230,0,.8));
+      filter: drop-shadow(0 0 4px rgb(var(--nc-yellow-rgb) / .8));
     }
     .sl-star.big { width: 26px; height: 26px; }
     .sl-star.mid { width: 14px; height: 14px; }
@@ -254,8 +249,8 @@
     .sl-pack-lv { min-height: 80px; padding: 6px 2px; gap: 3px; }
     .sl-pack-lv .sl-stars-row { margin: 1px 0; }
     .sl-pack-lv em { min-height: 12px; }
-    .sl-pack-lv.active { box-shadow: 0 0 16px rgba(57,255,20,.28); }
-    .sl-pack-lv.done { border-color: rgba(57,255,20,.42); }
+    .sl-pack-lv.active { box-shadow: 0 0 16px rgb(var(--nc-green-rgb) / .28); }
+    .sl-pack-lv.done { border-color: rgb(var(--nc-green-rgb) / .42); }
     .sl-pack-ach {
       width: 100%;
       min-height: 44px;
@@ -263,13 +258,13 @@
       font-family: var(--font-pixel);
       font-size: 10px;
       color: var(--neon-yellow);
-      border: 1px solid rgba(255,230,0,.5);
+      border: 1px solid rgb(var(--nc-yellow-rgb) / .5);
       border-radius: 8px;
-      background: rgba(255,230,0,.07);
+      background: rgb(var(--nc-yellow-rgb) / .07);
       cursor: pointer;
       transition: background .15s ease, box-shadow .15s ease;
     }
-    .sl-pack-ach:hover { background: rgba(255,230,0,.16); box-shadow: 0 0 14px rgba(255,230,0,.25); }
+    .sl-pack-ach:hover { background: rgb(var(--nc-yellow-rgb) / .16); box-shadow: 0 0 14px rgb(var(--nc-yellow-rgb) / .25); }
 
     /* ---- 成就与纪录面板 ---- */
     .sl-ach { position: fixed; inset: 0; z-index: 59; display: flex; align-items: flex-start; justify-content: center; background: var(--nc-stage-2); backdrop-filter: blur(4px); padding: calc(150px + env(safe-area-inset-top, 0px)) 14px 16px; }
@@ -282,7 +277,7 @@
       box-sizing: border-box;
       padding: 16px 14px;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(0,240,255,.42);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / .42);
       border-radius: 16px;
       box-shadow: var(--ui-shadow);
       animation: slCard .42s cubic-bezier(.2,1.4,.4,1) both;
@@ -303,9 +298,9 @@
     }
     .sl-ach-item.got {
       opacity: 1;
-      border-color: rgba(255,230,0,.45);
-      background: linear-gradient(90deg, rgba(255,230,0,.1), rgba(0,240,255,.04));
-      box-shadow: 0 0 14px rgba(255,230,0,.09);
+      border-color: rgb(var(--nc-yellow-rgb) / .45);
+      background: linear-gradient(90deg, rgb(var(--nc-yellow-rgb) / .1), rgb(var(--nc-cyan-rgb) / .04));
+      box-shadow: 0 0 14px rgb(var(--nc-yellow-rgb) / .09);
     }
     .sl-medal {
       width: 30px;
@@ -319,14 +314,14 @@
       background: radial-gradient(circle, rgba(24,32,52,.08), transparent 70%);
     }
     .sl-ach-item.got .sl-medal {
-      border-color: rgba(255,230,0,.7);
-      box-shadow: 0 0 12px rgba(255,230,0,.32);
+      border-color: rgb(var(--nc-yellow-rgb) / .7);
+      box-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / .32);
     }
     .sl-ach-body { min-width: 0; text-align: left; }
     .sl-ach-body b { display: block; font-size: 12px; color: var(--text-main); line-height: 1.4; }
     .sl-ach-body small { display: block; font-size: 10px; color: var(--text-dim); line-height: 1.5; margin-top: 1px; }
     .sl-ach-item.got .sl-ach-body b { color: var(--neon-yellow); }
-    .sl-rec-wrap { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(0,240,255,.24); display: flex; flex-direction: column; min-height: 0; flex: 1 1 auto; overflow: hidden; }
+    .sl-rec-wrap { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgb(var(--nc-cyan-rgb) / .24); display: flex; flex-direction: column; min-height: 0; flex: 1 1 auto; overflow: hidden; }
     .sl-rec-title { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); letter-spacing: 1px; }
     .sl-rec-sub { font-size: 10px; color: var(--text-dim); margin: 4px 0 8px; }
     .sl-rec-list { overflow-y: auto; max-height: none; min-height: 0; flex: 1 1 auto; }
@@ -343,7 +338,7 @@
     .sl-ach-pop-item {
       display: flex; align-items: center; gap: 10px;
       padding: 10px 12px;
-      border: 1px solid rgba(255,230,0,.65);
+      border: 1px solid rgb(var(--nc-yellow-rgb) / .65);
       border-radius: 12px;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       box-shadow: var(--ui-shadow);
@@ -401,18 +396,19 @@
 </nav>
   <h1 class="seo-h1">数回</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="slitherlink-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="slitherlink.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="slitherlink-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="slitherlink.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -423,6 +419,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

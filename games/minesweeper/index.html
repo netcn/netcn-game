@@ -38,18 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     /* ---------- 扫雷 · 旗舰版 ---------- */
     .ms-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; }
@@ -66,7 +61,7 @@
       min-height: 46px; padding: 6px 16px;
       font-family: var(--font-pixel); color: var(--text-dim);
       background: rgba(24,32,52,0.03);
-      border: 1px solid rgba(0, 240, 255, 0.28);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / 0.28);
       border-radius: 10px; cursor: pointer;
       transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.15s;
     }
@@ -75,24 +70,24 @@
       font-family: var(--font-body); font-size: 9px; letter-spacing: 0.5px;
       color: var(--text-dim); white-space: nowrap;
     }
-    .ms-diff-btn:hover { border-color: rgba(0, 240, 255, 0.7); background: rgba(0, 240, 255, 0.07); }
+    .ms-diff-btn:hover { border-color: rgb(var(--nc-cyan-rgb) / 0.7); background: rgb(var(--nc-cyan-rgb) / 0.07); }
     .ms-diff-btn:active { transform: scale(0.97); }
     .ms-diff-btn.is-active {
       border-color: var(--neon-cyan);
-      background: linear-gradient(180deg, rgba(0, 240, 255, 0.2), rgba(0, 240, 255, 0.06));
+      background: linear-gradient(180deg, rgb(var(--nc-cyan-rgb) / 0.2), rgb(var(--nc-cyan-rgb) / 0.06));
       box-shadow: var(--ui-shadow);
     }
-    .ms-diff-btn.is-active b { color: #eaffff; text-shadow: 0 0 8px rgba(0, 240, 255, 0.8); }
+    .ms-diff-btn.is-active b { color: #eaffff; text-shadow: 0 0 8px rgb(var(--nc-cyan-rgb) / 0.8); }
     .ms-diff-btn.is-active small { color: rgba(220, 250, 255, 0.8); }
     .ms-custom-toggle {
       margin-top: 7px; min-height: 34px; padding: 5px 12px;
       font-family: var(--font-pixel); font-size: 9px; color: var(--text-dim);
-      background: transparent; border: 1px dashed rgba(185, 103, 255, 0.35);
+      background: transparent; border: 1px dashed rgb(var(--nc-purple-rgb) / 0.35);
       border-radius: 8px; cursor: pointer;
     }
     .ms-custom-toggle:hover, .ms-custom-toggle.is-active {
       color: var(--neon-purple); border-color: var(--neon-purple);
-      background: rgba(185, 103, 255, 0.1);
+      background: rgb(var(--nc-purple-rgb) / 0.1);
     }
 
     .ms-custom { margin: 8px 0 0; }
@@ -111,19 +106,19 @@
       min-height: 40px; padding: 7px 12px;
       font-size: 11px; line-height: 1.4; color: var(--text-dim);
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(0, 240, 255, 0.24);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / 0.24);
       border-radius: 10px; box-shadow: inset 0 1px 0 rgba(24,32,52,0.06);
     }
     .ms-hud-item .stat-value {
       color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 14px;
-      text-shadow: 0 0 8px rgba(0, 240, 255, 0.55);
+      text-shadow: 0 0 8px rgb(var(--nc-cyan-rgb) / 0.55);
     }
     .ms-hud-item .stat-value.neg {
-      color: var(--neon-pink); text-shadow: 0 0 8px rgba(255, 45, 149, 0.6);
+      color: var(--neon-pink); text-shadow: 0 0 8px rgb(var(--nc-pink-rgb) / 0.6);
     }
-    .ms-best { border-color: rgba(255, 230, 0, 0.36); }
+    .ms-best { border-color: rgb(var(--nc-yellow-rgb) / 0.36); }
     .ms-best .stat-value {
-      color: var(--neon-yellow); text-shadow: 0 0 8px rgba(255, 230, 0, 0.6);
+      color: var(--neon-yellow); text-shadow: 0 0 8px rgb(var(--nc-yellow-rgb) / 0.6);
     }
     .ms-best.flash { animation: best-flash 0.35s ease 3; }
 
@@ -133,7 +128,7 @@
     .ms-board {
       margin: 0 auto; gap: 3px; padding: 6px;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(0, 240, 255, 0.32);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / 0.32);
       border-radius: 12px;
       box-shadow: var(--ui-shadow);
       touch-action: manipulation;
@@ -165,7 +160,7 @@
       transition: filter 0.12s, transform 0.12s, border-color 0.12s;
     }
     .ms-cell:not(.open):not(.mine):hover {
-      filter: brightness(1.25); border-color: rgba(0, 240, 255, 0.5);
+      filter: brightness(1.25); border-color: rgb(var(--nc-cyan-rgb) / 0.5);
     }
     .ms-cell:not(.open):not(.mine):active { transform: translateY(1px) scale(0.97); }
     .ms-board.d-easy .ms-cell { font-size: 16px; }
@@ -174,7 +169,7 @@
 
     .ms-cell.open {
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border-color: rgba(0, 240, 255, 0.08);
+      border-color: rgb(var(--nc-cyan-rgb) / 0.08);
       box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.7), inset 0 0 6px rgba(0, 0, 0, 0.4);
       cursor: default;
       animation: ms-reveal 0.24s cubic-bezier(0.2, 0.75, 0.3, 1) both;
@@ -189,7 +184,7 @@
       background-image:
         radial-gradient(circle at 30% 25%, rgba(24,32,52,0.2), transparent 45%),
         linear-gradient(150deg, #4a3a12, #241b08);
-      border-color: rgba(255, 230, 0, 0.45);
+      border-color: rgb(var(--nc-yellow-rgb) / 0.45);
       animation: ms-flag 0.32s cubic-bezier(0.2, 1.5, 0.5, 1) both;
     }
     @keyframes ms-flag {
@@ -201,26 +196,26 @@
       content: ''; position: absolute; left: 47%; top: 23%;
       width: 2px; height: 52%;
       background: linear-gradient(180deg, #ffe600, #b58b00);
-      box-shadow: 0 0 4px rgba(255, 230, 0, 0.7);
+      box-shadow: 0 0 4px rgb(var(--nc-yellow-rgb) / 0.7);
     }
     .ms-cell.flagged::after {
       content: ''; position: absolute; left: 49%; top: 23%;
       width: 32%; height: 28%;
       background: linear-gradient(135deg, #ff6fae, #ff2d95);
       clip-path: polygon(0 0, 100% 50%, 0 100%);
-      filter: drop-shadow(0 0 3px rgba(255, 45, 149, 0.7));
+      filter: drop-shadow(0 0 3px rgb(var(--nc-pink-rgb) / 0.7));
     }
     .ms-cell.wrong {
       background: linear-gradient(150deg, #4a1018, #20060a);
-      border-color: rgba(255, 45, 149, 0.6);
+      border-color: rgb(var(--nc-pink-rgb) / 0.6);
       color: var(--neon-pink) !important;
-      text-shadow: 0 0 6px rgba(255, 45, 149, 0.7) !important;
+      text-shadow: 0 0 6px rgb(var(--nc-pink-rgb) / 0.7) !important;
     }
     .ms-cell.wrong::before, .ms-cell.wrong::after { display: none; }
 
     .ms-cell.mine {
       background: radial-gradient(circle at 50% 45%, #3a1424, #18080f 70%);
-      border-color: rgba(255, 45, 149, 0.35);
+      border-color: rgb(var(--nc-pink-rgb) / 0.35);
       animation: ms-mine-in 0.22s ease both;
     }
     @keyframes ms-mine-in {
@@ -230,7 +225,7 @@
     .ms-cell.mine::before {
       content: ''; position: absolute; width: 54%; height: 54%; border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #ffd8e5 0%, #ff5aa0 30%, #c10c5a 65%, #5c0529 100%);
-      box-shadow: 0 0 9px rgba(255, 45, 149, 0.85), inset -2px -2px 4px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 0 9px rgb(var(--nc-pink-rgb) / 0.85), inset -2px -2px 4px rgba(0, 0, 0, 0.55);
     }
     .ms-cell.mine::after {
       content: ''; position: absolute; left: 38%; top: 32%;
@@ -240,7 +235,7 @@
     .ms-cell.boom {
       background: radial-gradient(circle, #ffffff 0%, #ff6fae 25%, #ff2d95 55%, #4a0520 100%);
       border-color: var(--text-main);
-      box-shadow: 0 0 18px rgba(255, 45, 149, 0.95);
+      box-shadow: 0 0 18px rgb(var(--nc-pink-rgb) / 0.95);
       z-index: 2;
       animation: ms-boom 0.5s ease-out both;
     }
@@ -262,13 +257,13 @@
 
     .ms-cell.cursor {
       outline: 2px solid var(--neon-yellow); outline-offset: -2px;
-      box-shadow: inset 0 0 0 2px rgba(255, 230, 0, 0.85), 0 0 10px rgba(255, 230, 0, 0.5);
+      box-shadow: inset 0 0 0 2px rgb(var(--nc-yellow-rgb) / 0.85), 0 0 10px rgb(var(--nc-yellow-rgb) / 0.5);
       z-index: 1;
     }
     .ms-cell.win-wave { animation: ms-wave 0.55s ease both; }
     @keyframes ms-wave {
       0%   { transform: scale(1); }
-      35%  { transform: scale(1.08); box-shadow: inset 0 0 12px rgba(57, 255, 20, 0.55), 0 0 10px rgba(57, 255, 20, 0.35); }
+      35%  { transform: scale(1.08); box-shadow: inset 0 0 12px rgb(var(--nc-green-rgb) / 0.55), 0 0 10px rgb(var(--nc-green-rgb) / 0.35); }
       100% { transform: scale(1); }
     }
 
@@ -283,7 +278,7 @@
       width: min(330px, 94%); max-height: 100%; overflow: auto;
       padding: 16px 14px 14px; text-align: center; border-radius: 14px;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(0, 240, 255, 0.4);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / 0.4);
       box-shadow: var(--ui-shadow);
       animation: ms-card-in 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
     }
@@ -293,10 +288,10 @@
     }
     .ms-result-title {
       margin-bottom: 6px; font-family: var(--font-pixel); font-size: 16px;
-      color: var(--neon-pink); text-shadow: 0 0 12px rgba(255, 45, 149, 0.6);
+      color: var(--neon-pink); text-shadow: 0 0 12px rgb(var(--nc-pink-rgb) / 0.6);
     }
     .ms-result-title.win {
-      color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255, 230, 0, 0.65);
+      color: var(--neon-yellow); text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / 0.65);
     }
     .ms-result-sub {
       margin-bottom: 10px; font-size: 11px; line-height: 1.7; color: var(--text-dim);
@@ -310,7 +305,7 @@
     .ms-result-stats div:last-child b { color: var(--neon-yellow); }
     .ms-record {
       margin: 4px 0 8px; font-family: var(--font-pixel); font-size: 10px;
-      color: var(--neon-green); text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+      color: var(--neon-green); text-shadow: 0 0 8px rgb(var(--nc-green-rgb) / 0.6);
       animation: best-flash 0.35s ease 3;
     }
     .ms-result-again { width: 100%; margin-top: 4px; }
@@ -319,10 +314,10 @@
     .ms-mini-btn {
       min-height: 38px; padding: 9px 10px;
       font-family: var(--font-pixel); font-size: 9px; color: var(--neon-cyan);
-      background: transparent; border: 1px solid rgba(0, 240, 255, 0.35);
+      background: transparent; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.35);
       border-radius: 7px; cursor: pointer;
     }
-    .ms-mini-btn:hover { background: rgba(0, 240, 255, 0.14); }
+    .ms-mini-btn:hover { background: rgb(var(--nc-cyan-rgb) / 0.14); }
 
     .ms-controls { margin-top: 12px; }
 
@@ -356,11 +351,11 @@
       font-family: var(--font-pixel); font-size: 9px; letter-spacing: 0.5px;
       color: var(--text-dim); cursor: pointer;
       background: rgba(24,32,52,0.03);
-      border: 1px solid rgba(0, 240, 255, 0.22);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / 0.22);
       border-radius: 10px;
       transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, color 0.15s;
     }
-    .ms-tool-btn:hover { border-color: rgba(0, 240, 255, 0.6); background: rgba(0, 240, 255, 0.07); }
+    .ms-tool-btn:hover { border-color: rgb(var(--nc-cyan-rgb) / 0.6); background: rgb(var(--nc-cyan-rgb) / 0.07); }
     .ms-tool-btn:active { transform: scale(0.97); }
     .ms-tool-btn .ms-tool-txt { white-space: nowrap; }
     .ms-tool-btn small {
@@ -369,10 +364,10 @@
     }
     .ms-tool-btn.is-on {
       color: var(--neon-cyan); border-color: var(--neon-cyan);
-      background: linear-gradient(180deg, rgba(0, 240, 255, 0.18), rgba(0, 240, 255, 0.04));
+      background: linear-gradient(180deg, rgb(var(--nc-cyan-rgb) / 0.18), rgb(var(--nc-cyan-rgb) / 0.04));
       box-shadow: var(--ui-shadow);
     }
-    .ms-tool-btn.is-done { color: var(--neon-green); border-color: rgba(57, 255, 20, 0.5); }
+    .ms-tool-btn.is-done { color: var(--neon-green); border-color: rgb(var(--nc-green-rgb) / 0.5); }
     .ms-tool-btn.is-done small { color: var(--neon-green); }
     .ms-tool-ic {
       position: relative; flex: none; width: 16px; height: 16px; display: inline-block;
@@ -389,7 +384,7 @@
       background: currentColor; box-shadow: 5px 0 0 currentColor;
     }
     .ms-tool-ic.ic-ach {
-      background: linear-gradient(160deg, currentColor, rgba(255, 230, 0, 0.35));
+      background: linear-gradient(160deg, currentColor, rgb(var(--nc-yellow-rgb) / 0.35));
       clip-path: polygon(50% 0, 92% 18%, 82% 72%, 50% 100%, 18% 72%, 8% 18%);
       opacity: 0.9;
     }
@@ -401,7 +396,7 @@
       border: 2px solid currentColor; border-bottom: none; border-radius: 5px 5px 0 0;
     }
     .ms-daily-hud .stat-value { color: var(--text-dim); font-size: 11px; text-shadow: none; }
-    .ms-daily-hud .stat-value.done { color: var(--neon-green); text-shadow: 0 0 8px rgba(57, 255, 20, 0.55); }
+    .ms-daily-hud .stat-value.done { color: var(--neon-green); text-shadow: 0 0 8px rgb(var(--nc-green-rgb) / 0.55); }
 
     .ms-custom-toggle { min-height: 44px; }
     .ms-custom input { min-height: 44px; }
@@ -421,14 +416,14 @@
     }
     .ms-scroll.is-expert { padding-bottom: 0; }
     .ms-scroll::-webkit-scrollbar { height: 6px; }
-    .ms-scroll::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.35); border-radius: 3px; }
+    .ms-scroll::-webkit-scrollbar-thumb { background: rgb(var(--nc-cyan-rgb) / 0.35); border-radius: 3px; }
     .ms-expert-board {
       position: absolute; left: 0; top: 0; margin: 0;
       width: max-content; max-width: none;
     }
     .ms-cell.mine.won {
       background: radial-gradient(circle at 50% 45%, #132a34, #07141a 70%);
-      border-color: rgba(0, 240, 255, 0.4);
+      border-color: rgb(var(--nc-cyan-rgb) / 0.4);
       animation: ms-mine-in 0.22s ease both;
     }
     .ms-cell.mine.won::before {
@@ -467,7 +462,7 @@
     .ms-ach-new-lbl { color: var(--text-dim); }
     .ms-ach-chip {
       padding: 3px 7px; border-radius: 9px; font-size: 10px; color: var(--neon-yellow);
-      background: rgba(255, 230, 0, 0.1); border: 1px solid rgba(255, 230, 0, 0.45);
+      background: rgb(var(--nc-yellow-rgb) / 0.1); border: 1px solid rgb(var(--nc-yellow-rgb) / 0.45);
       white-space: nowrap;
     }
 
@@ -482,46 +477,46 @@
       width: min(430px, 100%); max-height: min(82vh, 580px);
       display: flex; flex-direction: column; overflow: hidden;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(255, 230, 0, 0.4);
+      border: 1px solid rgb(var(--nc-yellow-rgb) / 0.4);
       border-radius: 14px;
-      box-shadow: 0 0 30px rgba(255, 230, 0, 0.16), 0 18px 44px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 30px rgb(var(--nc-yellow-rgb) / 0.16), 0 18px 44px rgba(0, 0, 0, 0.6);
       animation: ms-card-in 0.25s ease both;
     }
     .ms-ach-head {
       display: flex; align-items: center; gap: 10px; padding: 10px 12px;
-      border-bottom: 1px solid rgba(255, 230, 0, 0.2); flex: none;
+      border-bottom: 1px solid rgb(var(--nc-yellow-rgb) / 0.2); flex: none;
     }
     .ms-ach-title {
       font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow);
-      text-shadow: 0 0 10px rgba(255, 230, 0, 0.5);
+      text-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / 0.5);
     }
     .ms-ach-prog { font-size: 11px; color: var(--text-dim); margin-left: auto; }
     .ms-ach-close {
       min-width: 64px; min-height: 44px; padding: 6px 12px;
       font-family: var(--font-pixel); font-size: 9px; color: var(--neon-cyan);
-      background: transparent; border: 1px solid rgba(0, 240, 255, 0.4);
+      background: transparent; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.4);
       border-radius: 9px; cursor: pointer;
     }
-    .ms-ach-close:hover { background: rgba(0, 240, 255, 0.12); }
+    .ms-ach-close:hover { background: rgb(var(--nc-cyan-rgb) / 0.12); }
     .ms-ach-list { padding: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
     .ms-ach-item {
       display: flex; align-items: center; gap: 10px; min-height: 48px;
       padding: 8px 10px; border-radius: 10px;
       background: rgba(24,32,52,0.025); border: 1px solid rgba(24,32,52,0.08);
     }
-    .ms-ach-item.got { border-color: rgba(255, 230, 0, 0.4); background: rgba(255, 230, 0, 0.06); }
+    .ms-ach-item.got { border-color: rgb(var(--nc-yellow-rgb) / 0.4); background: rgb(var(--nc-yellow-rgb) / 0.06); }
     .ms-ach-ico {
       position: relative; flex: none; width: 30px; height: 30px; border-radius: 50%;
       border: 2px solid rgba(24,32,52,0.16); opacity: 0.55;
     }
     .ms-ach-item.got .ms-ach-ico {
       border-color: var(--neon-yellow); opacity: 1;
-      background: radial-gradient(circle, rgba(255, 230, 0, 0.22), transparent 70%);
+      background: radial-gradient(circle, rgb(var(--nc-yellow-rgb) / 0.22), transparent 70%);
     }
     .ms-ach-item.got .ms-ach-ico::after {
       content: ''; position: absolute; left: 8px; top: 5px; width: 10px; height: 6px;
       border-left: 3px solid var(--neon-yellow); border-bottom: 3px solid var(--neon-yellow);
-      transform: rotate(-40deg); filter: drop-shadow(0 0 5px rgba(255, 230, 0, 0.8));
+      transform: rotate(-40deg); filter: drop-shadow(0 0 5px rgb(var(--nc-yellow-rgb) / 0.8));
     }
     .ms-ach-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
     .ms-ach-body b { font-family: var(--font-pixel); font-size: 10px; font-weight: 400; color: var(--text-main); }
@@ -551,18 +546,19 @@
 </nav>
   <h1 class="seo-h1">扫雷</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="minesweeper-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="minesweeper.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="minesweeper-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="minesweeper.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -573,6 +569,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

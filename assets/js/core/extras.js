@@ -64,18 +64,45 @@ Arcade.paper = (function () {
   if (!P || P.__ncnPaper) return api;
   P.__ncnPaper = true;
 
+  /* 每帧、每个画布只允许一次「清屏替换」。
+     很多游戏在帧首画全屏背景（渐变），又在帧尾画全屏暗角 / 星云 / 白闪；
+     旧实现把每一次全屏 fillRect 都换成不透明纸感底色，结果帧尾那一次
+     把整帧游戏画面盖成一块纯色（弹幕射击曾因此完全看不见）。
+     借 rAF 回调划分帧边界；不走 rAF 的循环用 120ms 时间兜底。 */
+  var frameId = 0;
+  var clearDone = new WeakMap();
+  var _raf = window.requestAnimationFrame;
+  if (typeof _raf === 'function') {
+    window.requestAnimationFrame = function (cb) {
+      return _raf.call(window, function (ts) {
+        frameId++;
+        return cb(ts);
+      });
+    };
+  }
+  function allowClear(canvas) {
+    var now = (window.performance && performance.now) ? performance.now() : Date.now();
+    var rec = clearDone.get(canvas);
+    if (!rec || rec.frame !== frameId || now - rec.time > 120) {
+      clearDone.set(canvas, { frame: frameId, time: now });
+      return true;
+    }
+    return false;
+  }
+
   var _fillRect = P.fillRect;
   P.fillRect = function (x, y, w, h) {
     /* 从左上角起、面积占画布两成以上的填充视为清屏；
        0.2 的门槛兼容 hiDPI（逻辑坐标只有实际像素的一半）。 */
-    if (!state.dark && x <= 2 && y <= 2 && w >= 80 && h >= 80 && this.canvas) {
-      if (w * h >= this.canvas.width * this.canvas.height * 0.2) {
-        this.save();
-        this.fillStyle = state.bg;
-        _fillRect.call(this, x, y, w, h);
-        this.restore();
-        return;
-      }
+    if (!state.dark && x <= 2 && y <= 2 && w >= 80 && h >= 80 && this.canvas &&
+        this.globalAlpha >= 0.95 &&
+        w * h >= this.canvas.width * this.canvas.height * 0.2 &&
+        allowClear(this.canvas)) {
+      this.save();
+      this.fillStyle = state.bg;
+      _fillRect.call(this, x, y, w, h);
+      this.restore();
+      return;
     }
     return _fillRect.apply(this, arguments);
   };

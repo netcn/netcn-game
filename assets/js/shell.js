@@ -23,7 +23,8 @@ if (!window.__arcadeExtrasLoaded) {
     '../../assets/js/core/i18n-dict.js',
     gid ? gid + '-i18n.js' : '',
     '../../assets/js/core/extras.js',
-    '../../assets/js/rank.js',
+    '../../assets/js/core/i18n-extra.js',
+    '../../assets/js/core/i18n-live.js',
     '../../assets/js/pwa.js'
   ];
   for (var __i = 0; __i < __arcadeExtras.length && !__staticChain; __i++) {
@@ -320,9 +321,7 @@ Arcade.shell = (function () {
   function submitScore(score) {
 
     var isNew = Arcade.storage.submitBest(gameId, score, bestMode);
-    // 跨游戏军衔经验：完成一局 +2，破纪录额外 +3（纯本地生涯累计）
-    // 0 分/负分不写 BEST，也不发放 XP，避免空提交刷经验
-    if (score > 0 && Arcade.rank) Arcade.rank.add(isNew ? 5 : 2);
+    // 跨游戏军衔 / XP 已下线（档案页与 rank.js 一并移除），这里只保留成绩提交。
     // D8 月度足迹：按月累计完成局数（档案页热力条数据源；旧纪录无时间戳显示为「早期」）
     try {
       var d = new Date();

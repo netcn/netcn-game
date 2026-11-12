@@ -38,18 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .bw-top {
       display: flex; justify-content: space-between; align-items: center; gap: 6px;
@@ -63,20 +58,20 @@
     .bw-stage {
       position: relative; width: min(440px, calc(100vw - 30px)); margin: 8px auto;
       border-radius: 14px; overflow: hidden; background: #05060f;
-      border: 1px solid rgba(255, 230, 0, 0.25);
-      box-shadow: 0 0 28px rgba(255, 230, 0, 0.1), inset 0 0 30px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgb(var(--nc-yellow-rgb) / 0.25);
+      box-shadow: 0 0 28px rgb(var(--nc-yellow-rgb) / 0.1), inset 0 0 30px rgba(0, 0, 0, 0.6);
     }
     .bw-canvas { display: block; width: 100%; height: auto; touch-action: none; }
     .bw-msg {
       position: absolute; left: 0; right: 0; top: 33%; text-align: center; padding: 0 12px;
       font-family: var(--font-pixel); font-size: 19px; line-height: 1.5;
-      color: var(--neon-yellow); text-shadow: 0 0 16px rgba(255, 230, 0, 0.85);
+      color: var(--neon-yellow); text-shadow: 0 0 16px rgb(var(--nc-yellow-rgb) / 0.85);
       opacity: 0; transform: scale(0.82); pointer-events: none; z-index: 3;
       transition: opacity 0.18s, transform 0.18s;
     }
     .bw-msg.show { opacity: 1; transform: scale(1); }
-    .bw-msg.spare { color: var(--neon-cyan); text-shadow: 0 0 16px rgba(0, 240, 255, 0.8); }
-    .bw-msg.gutter { color: var(--neon-pink); text-shadow: 0 0 16px rgba(255, 45, 149, 0.8); }
+    .bw-msg.spare { color: var(--neon-cyan); text-shadow: 0 0 16px rgb(var(--nc-cyan-rgb) / 0.8); }
+    .bw-msg.gutter { color: var(--neon-pink); text-shadow: 0 0 16px rgb(var(--nc-pink-rgb) / 0.8); }
     .bw-overlay {
       position: absolute; inset: 0; z-index: 5; display: flex; align-items: center;
       justify-content: center; padding: 12px; background: var(--nc-stage-2);
@@ -84,9 +79,9 @@
     }
     .bw-card {
       width: 100%; max-width: 300px; text-align: center; padding: 16px 14px;
-      border-radius: 12px; border: 1px solid rgba(255, 230, 0, 0.35);
+      border-radius: 12px; border: 1px solid rgb(var(--nc-yellow-rgb) / 0.35);
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      box-shadow: 0 0 26px rgba(255, 230, 0, 0.16);
+      box-shadow: 0 0 26px rgb(var(--nc-yellow-rgb) / 0.16);
     }
     .bw-card h2 {
       margin: 0 0 8px; font-size: 15px; line-height: 1.5;
@@ -96,7 +91,7 @@
     .bw-final-lab { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
     .bw-final {
       font-family: var(--font-pixel); font-size: 34px; line-height: 1.1; margin: 2px 0 10px;
-      color: var(--neon-cyan); text-shadow: 0 0 18px rgba(0, 240, 255, 0.7);
+      color: var(--neon-cyan); text-shadow: 0 0 18px rgb(var(--nc-cyan-rgb) / 0.7);
     }
     .bw-ov-stats {
       display: flex; justify-content: space-around; gap: 6px; flex-wrap: wrap;
@@ -108,7 +103,7 @@
     }
     .bw-record {
       font-size: 12px; color: var(--neon-yellow); margin-bottom: 8px;
-      text-shadow: 0 0 12px rgba(255, 230, 0, 0.8);
+      text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / 0.8);
     }
     .bw-ov-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     .bw-ov-btns .btn { min-height: 44px; font-size: 11px; padding: 9px 14px; }
@@ -121,8 +116,8 @@
       border-radius: 6px; padding: 3px 1px; text-align: center; overflow: hidden;
     }
     .bw-frame.active {
-      border-color: rgba(255, 230, 0, 0.75); background: rgba(255, 230, 0, 0.08);
-      box-shadow: 0 0 9px rgba(255, 230, 0, 0.3);
+      border-color: rgb(var(--nc-yellow-rgb) / 0.75); background: rgb(var(--nc-yellow-rgb) / 0.08);
+      box-shadow: 0 0 9px rgb(var(--nc-yellow-rgb) / 0.3);
     }
     .bw-fn { font-size: 9px; color: var(--text-dim); line-height: 1.2; }
     .bw-fr {
@@ -149,10 +144,10 @@
     }
     .bw-chip {
       display: inline-block; padding: 3px 8px; border-radius: 999px;
-      border: 1px solid rgba(185, 103, 255, 0.35); background: rgba(185, 103, 255, 0.08);
+      border: 1px solid rgb(var(--nc-purple-rgb) / 0.35); background: rgb(var(--nc-purple-rgb) / 0.08);
       color: var(--neon-purple); white-space: nowrap;
     }
-    .bw-chip-oil { border-color: rgba(0, 240, 255, 0.4); background: rgba(0, 240, 255, 0.07); color: var(--neon-cyan); }
+    .bw-chip-oil { border-color: rgb(var(--nc-cyan-rgb) / 0.4); background: rgb(var(--nc-cyan-rgb) / 0.07); color: var(--neon-cyan); }
     .bw-pick-row {
       display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px;
       width: min(440px, calc(100vw - 30px)); margin: 6px auto 0;
@@ -166,22 +161,22 @@
     .bw-pick b { display: block; font-family: var(--font-pixel); font-size: 10px; color: var(--neon-cyan); }
     .bw-pick small { display: block; font-size: 8px; color: var(--text-dim); margin-top: 2px; }
     .bw-pick.selected {
-      border-color: rgba(255, 230, 0, 0.8); background: linear-gradient(180deg, rgba(255, 230, 0, 0.2), rgba(255, 230, 0, 0.08));
-      color: var(--text-main); box-shadow: 0 0 10px rgba(255, 230, 0, 0.22);
+      border-color: rgb(var(--nc-yellow-rgb) / 0.8); background: linear-gradient(180deg, rgb(var(--nc-yellow-rgb) / 0.2), rgb(var(--nc-yellow-rgb) / 0.08));
+      color: var(--text-main); box-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / 0.22);
     }
     .bw-pick.selected b { color: var(--neon-yellow); }
     .bw-pick.selected small { color: var(--text-main); }
     .bw-card-wide { max-width: 330px; }
     .bw-games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 0 0 8px; }
     .bw-game-item {
-      border-radius: 6px; border: 1px solid rgba(0, 240, 255, 0.22); background: rgba(0, 240, 255, 0.05);
+      border-radius: 6px; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.22); background: rgb(var(--nc-cyan-rgb) / 0.05);
       padding: 3px 2px; font-size: 9px; color: var(--text-dim);
     }
     .bw-game-item b { display: block; margin-top: 1px; font-family: var(--font-pixel); font-size: 12px; color: var(--neon-cyan); }
     .bw-champion, .bw-rank, .bw-lead {
       font-size: 10px; line-height: 1.5; margin: 4px 0; color: var(--text-dim);
     }
-    .bw-champion { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255, 230, 0, 0.6); }
+    .bw-champion { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow); text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / 0.6); }
     .bw-rank { color: var(--neon-cyan); }
     .bw-lead { color: var(--neon-purple); }
     .bw-note { font-size: 9px; line-height: 1.55; color: var(--text-dim); margin: 4px 0 8px; }
@@ -189,13 +184,13 @@
     .bw-card { box-sizing: border-box; max-height: calc(100% - 6px); overflow-y: auto; }
     .bw-meter {
       position: relative; height: 18px; margin-bottom: 8px; overflow: hidden;
-      border-radius: 9px; border: 1px solid rgba(0, 240, 255, 0.35);
+      border-radius: 9px; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.35);
       background: rgba(0, 0, 0, 0.5);
     }
     .bw-meter-fill {
       height: 100%; width: 72%;
       background: linear-gradient(90deg, #39ff14, #ffe600 58%, #ff2d95);
-      box-shadow: 0 0 12px rgba(255, 230, 0, 0.55);
+      box-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / 0.55);
       transition: width 0.05s linear;
     }
     .bw-meter-txt {
@@ -214,7 +209,7 @@
     }
     .bw-step {
       min-width: 44px; min-height: 44px; padding: 0; border-radius: 8px; line-height: 1;
-      border: 1px solid rgba(185, 103, 255, 0.4); background: rgba(24,32,52,0.04);
+      border: 1px solid rgb(var(--nc-purple-rgb) / 0.4); background: rgba(24,32,52,0.04);
       color: var(--neon-purple); font-size: 17px; cursor: pointer; touch-action: manipulation;
     }
     .bw-step:active { background: var(--neon-purple); color: #12041a; }
@@ -271,19 +266,20 @@
 </nav>
   <h1 class="seo-h1">保龄球</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="bowling-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="../_shared/kit.js"></script>
-  <script src="bowling.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="bowling-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="../_shared/kit.js?v=20261112b"></script>
+  <script src="bowling.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -294,7 +290,7 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>
 

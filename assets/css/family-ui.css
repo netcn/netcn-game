@@ -8,8 +8,9 @@
    2) 游戏画面本身装进一张统一规格的「舞台卡片」：画布由游戏自行绘制，
       舞台底色/边框/文字亮度随全站明暗一起切换。
    3) 53 页只靠这一个文件 + netcn-ui.css 换肤，不在单页里写特例。
-   加载顺序：theme.css → shell.css → netcn-shell.css →
-             family-bridge.css → netcn-ui.css → family-ui.css
+   加载顺序（2026-11-12 起）：assets/css/game-core.css → game-ui.css
+   两个 bundle 由 tools/build_css_bundle.py 从 6 个源文件按原顺序生成，
+   顺序语义不变；首页 / 404 仍直接引用源文件。
    ============================================================ */
 
 /* ---------- 1. 站点主色：与游戏厅首页保持一致 ---------- */
@@ -38,6 +39,14 @@ html[data-theme="light"] {
   --neon-green: #16855c;
   --neon-yellow: #9c6b12;
   --neon-orange: #bd6120;
+  /* 53 页内联 CSS 里的硬编码霓虹 rgba 统一改写成 rgb(var(--nc-*-rgb) / a)，
+     明暗两态自动跟随，不再需要逐页写第二套颜色。 */
+  --nc-cyan-rgb: 106 79 208;
+  --nc-purple-rgb: 124 92 255;
+  --nc-pink-rgb: 207 79 135;
+  --nc-green-rgb: 22 133 92;
+  --nc-yellow-rgb: 156 107 18;
+  --nc-orange-rgb: 189 97 32;
   --accent: var(--ui-ac, #7c5cff);
   --on-accent: #fff;
   --font-pixel: var(--ui-font);
@@ -61,6 +70,12 @@ html[data-theme="dark"],
   --neon-green: #86e3bb;
   --neon-yellow: #f0cc7c;
   --neon-orange: #f7b884;
+  --nc-cyan-rgb: 192 168 255;
+  --nc-purple-rgb: 203 184 255;
+  --nc-pink-rgb: 247 168 198;
+  --nc-green-rgb: 134 227 187;
+  --nc-yellow-rgb: 240 204 124;
+  --nc-orange-rgb: 247 184 132;
 }
 
 /* ---------- 3. 清掉街机氛围：扫描线 / 光晕 / 像素字 / 发光 ---------- */
@@ -124,7 +139,10 @@ canvas {
 .shell-header {
   position: relative !important;
   top: auto !important;
-  z-index: 1;
+  /* 开局 / 结算浮层（body 级 fixed，z 60~90）不能盖住共享工具条，
+     否则「玩法 / 重开 / BEST / 全屏」在弹层期间全部点不到。
+     200 仍低于 extras.js 的全局弹层（9800），那些弹层照常覆盖。 */
+  z-index: 200;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -417,4 +435,23 @@ input[type="search"], input[type="text"], input[type="number"], select, .search-
     overflow-x: clip;
   }
   #arcade-quickbar .qb-btn { width: 34px !important; height: 34px !important; }
+}
+
+/* 53 页原先各写一遍的 .seo-h1 视觉隐藏规则，统一收归此处 */
+.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- 键盘可达性：游戏内自定义按钮也必须有清晰焦点环 ----------
+   53 个游戏各写各的按钮类名，统一用「#game-root / 浮层内的可交互元素」兜底，
+   不依赖具体类名；outline 用纸感主色，明暗两态都可见。 */
+#game-root button:focus-visible,
+#game-root [role="button"]:focus-visible,
+#game-root a:focus-visible,
+#game-root input:focus-visible,
+#game-root select:focus-visible,
+.tut-overlay button:focus-visible,
+.game-overlay button:focus-visible,
+[class$="-overlay"] button:focus-visible {
+  outline: 2px solid var(--ui-ac, #7c5cff) !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgb(var(--nc-cyan-rgb) / .18);
 }

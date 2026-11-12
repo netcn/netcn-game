@@ -38,27 +38,22 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .dg-wrap { padding: 12px 10px 20px; width: min(560px, 98vw); text-align: center; }
     .dg-canvas {
       width: 100%; height: auto; border-radius: 10px; background: #05050b;
       box-shadow: var(--ui-shadow); touch-action: none; max-width: 100%; }
     .dg-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; margin: 8px 2px; color: var(--text-dim); }
-    .dg-top .hp { color: var(--neon-green); font-family: var(--font-pixel); text-shadow: 0 0 6px rgba(57,255,20,.5); }
-    .dg-top .lv { color: var(--neon-purple); font-family: var(--font-pixel); text-shadow: 0 0 6px rgba(185,103,255,.5); }
-    .dg-top .atk { color: var(--neon-yellow); font-family: var(--font-pixel); text-shadow: 0 0 6px rgba(255,230,0,.5); }
+    .dg-top .hp { color: var(--neon-green); font-family: var(--font-pixel); text-shadow: 0 0 6px rgb(var(--nc-green-rgb) / .5); }
+    .dg-top .lv { color: var(--neon-purple); font-family: var(--font-pixel); text-shadow: 0 0 6px rgb(var(--nc-purple-rgb) / .5); }
+    .dg-top .atk { color: var(--neon-yellow); font-family: var(--font-pixel); text-shadow: 0 0 6px rgb(var(--nc-yellow-rgb) / .5); }
     .dg-msg { min-height: 20px; font-size: 13px; color: var(--neon-pink); margin: 6px 0; line-height: 1.6; }
     .dg-overlay {
       position: absolute; inset: 0; z-index: 2; border-radius: 10px;
@@ -67,8 +62,8 @@
     }
     .dg-overlay.hidden { display: none; }
     .dg-stage { position: relative; }
-    .dg-ov-title { font-family: var(--font-pixel); font-size: 18px; color: var(--neon-pink); text-shadow: 0 0 10px rgba(255,45,149,.6); }
-    .dg-ov-title.win { color: var(--neon-green); text-shadow: 0 0 10px rgba(57,255,20,.6); }
+    .dg-ov-title { font-family: var(--font-pixel); font-size: 18px; color: var(--neon-pink); text-shadow: 0 0 10px rgb(var(--nc-pink-rgb) / .6); }
+    .dg-ov-title.win { color: var(--neon-green); text-shadow: 0 0 10px rgb(var(--nc-green-rgb) / .6); }
     .dg-ov-sub { font-size: 13px; color: var(--text-dim); line-height: 1.8; }
     .dg-ov-sub b { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 12px; }
     .dg-leg { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; font-size: 11px; color: var(--text-dim); margin-top: 6px; }
@@ -76,12 +71,12 @@
     .dg-dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; }
     .dg-top .hp, .dg-top .lv, .dg-top .atk { display: inline-block; }
     .dg-hpwrap { display: inline-flex; align-items: center; gap: 5px; }
-    .dg-hpbar { display: inline-block; width: 58px; height: 7px; border-radius: 4px; background: rgba(24,32,52,0.08); border: 1px solid rgba(57,255,20,0.28); overflow: hidden; }
+    .dg-hpbar { display: inline-block; width: 58px; height: 7px; border-radius: 4px; background: rgba(24,32,52,0.08); border: 1px solid rgb(var(--nc-green-rgb) / 0.28); overflow: hidden; }
     .dg-hpfill { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #39ff14, #b6ff9c); transition: width .18s ease; }
-    .dg-pausebtn { background: rgba(24,32,52,0.06); border: 1px solid rgba(0,240,255,0.35); color: var(--neon-cyan); border-radius: 8px; padding: 2px 8px; font-size: 13px; cursor: pointer; }
+    .dg-pausebtn { background: rgba(24,32,52,0.06); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.35); color: var(--neon-cyan); border-radius: 8px; padding: 2px 8px; font-size: 13px; cursor: pointer; }
     .dg-pause { position: absolute; inset: 0; z-index: 3; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: var(--nc-stage-2); backdrop-filter: blur(2px); }
     .dg-pause.hidden { display: none; }
-    .dg-pause-t { font-family: var(--font-pixel); font-size: 16px; color: var(--neon-yellow); text-shadow: 0 0 10px rgba(255,230,0,.55); }
+    .dg-pause-t { font-family: var(--font-pixel); font-size: 16px; color: var(--neon-yellow); text-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / .55); }
     .dg-pause-d { font-size: 12px; color: var(--text-dim); }
     .dg-ov-stats { font-size: 12px; color: var(--neon-yellow); min-height: 16px; letter-spacing: .4px; }
     .dg-overlay .game-controls { flex-wrap: wrap; justify-content: center; }
@@ -100,8 +95,8 @@
     .dg-top .dg-chip { display: inline-flex; align-items: center; gap: 2px; white-space: nowrap; }
     .dg-pausebtn { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; padding: 0; }
     .dg-pausebtn i { display: block; width: 3px; height: 13px; background: var(--neon-cyan); box-shadow: var(--ui-shadow); }
-    .dg-menu { margin: 4px 0 10px; padding: 10px; border: 1px solid rgba(0,240,255,.16); border-radius: 12px; background: var(--nc-stage-2); text-align: center; }
-    .dg-menu-title { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.5); line-height: 1.7; }
+    .dg-menu { margin: 4px 0 10px; padding: 10px; border: 1px solid rgb(var(--nc-cyan-rgb) / .16); border-radius: 12px; background: var(--nc-stage-2); text-align: center; }
+    .dg-menu-title { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-cyan); text-shadow: 0 0 10px rgb(var(--nc-cyan-rgb) / .5); line-height: 1.7; }
     .dg-menu-sub { font-size: 11px; color: var(--text-dim); line-height: 1.7; margin: 6px 0 8px; }
     .dg-classes { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 6px; }
     .dg-class { min-width: 0; min-height: 58px; padding: 6px 5px; border-radius: 10px; cursor: pointer; text-align: center;
@@ -123,7 +118,7 @@
     .dg-slot-l { display: block; font-size: 9px; letter-spacing: 1px; color: var(--text-dim); }
     .dg-slot-n { display: block; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
     .dg-eq-sum { margin-top: 5px; font-size: 10px; color: var(--text-dim); line-height: 1.6; word-break: break-word; }
-    .dg-eqp { margin: 6px 0; padding: 8px; border-radius: 10px; border: 1px solid rgba(185,103,255,.5); background: rgba(185,103,255,.08); text-align: left; }
+    .dg-eqp { margin: 6px 0; padding: 8px; border-radius: 10px; border: 1px solid rgb(var(--nc-purple-rgb) / .5); background: rgb(var(--nc-purple-rgb) / .08); text-align: left; }
     .dg-eqp-t { font-size: 12px; color: var(--neon-yellow); margin-bottom: 5px; font-weight: 700; }
     .dg-eqp-compare { font-size: 10px; line-height: 1.55; }
     .dg-eqp-row { display: flex; gap: 6px; align-items: baseline; margin: 2px 0; }
@@ -138,9 +133,9 @@
     .dg-eqp-btns .btn { flex: 1; min-height: 44px; }
     .dg-skillbar { display: flex; gap: 10px; justify-content: center; margin: 8px 0 4px; }
     .dg-skill { position: relative; min-width: 82px; min-height: 48px; padding: 6px 8px; border-radius: 10px; cursor: pointer;
-      color: var(--neon-cyan); background: rgba(0,240,255,.06); border: 1px solid rgba(0,240,255,.4);
+      color: var(--neon-cyan); background: rgb(var(--nc-cyan-rgb) / .06); border: 1px solid rgb(var(--nc-cyan-rgb) / .4);
       font-family: inherit; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; }
-    .dg-skill:hover:not(:disabled) { box-shadow: 0 0 12px -2px rgba(0,240,255,.6); }
+    .dg-skill:hover:not(:disabled) { box-shadow: 0 0 12px -2px rgb(var(--nc-cyan-rgb) / .6); }
     .dg-skill:disabled { opacity: .9; cursor: default; }
     .dg-skill .dg-sk-key { font-family: var(--font-pixel); font-size: 9px; color: var(--neon-yellow); }
     .dg-skill .dg-sk-name { font-size: 11px; letter-spacing: .5px; }
@@ -198,19 +193,20 @@
 </nav>
   <h1 class="seo-h1">地牢探险</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="dungeon-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="../_shared/kit.js"></script>
-  <script src="dungeon.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="dungeon-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="../_shared/kit.js?v=20261112b"></script>
+  <script src="dungeon.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -221,6 +217,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

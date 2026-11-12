@@ -38,25 +38,20 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     :root { --c4-red: #ff2d6f; --c4-red-deep: #a8003d; --c4-gold: #ffd400; --c4-gold-deep: #b07d00; }
     .c4-wrap { position: relative; width: 100%; max-width: 420px; padding: 10px 0 22px; text-align: center; }
 
     /* ---------- 模式选择 ---------- */
     .c4-pick { padding: 8px 4px 2px; }
-    .c4-pick-t { font-family: var(--font-pixel); font-size: 18px; letter-spacing: 1px; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.6); }
+    .c4-pick-t { font-family: var(--font-pixel); font-size: 18px; letter-spacing: 1px; color: var(--neon-cyan); text-shadow: 0 0 10px rgb(var(--nc-cyan-rgb) / .6); }
     .c4-pick-d { max-width: 300px; margin: 10px auto 16px; font-size: 12px; line-height: 1.8; color: var(--text-dim); }
     .c4-modes { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; max-width: 320px; margin: 0 auto; }
     .c4-mode-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 58px; padding: 12px 8px; border-radius: 12px; line-height: 1.4; }
@@ -68,13 +63,13 @@
     .c4-mode-btn:hover .c4-mode-ic { color: var(--text-main); }
     .c4-mode-btn.active .c4-mode-ic, .c4-mode-btn.selected .c4-mode-ic { color: #0a0a12; }
     .c4-pick-best { margin-top: 16px; font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); }
-    .c4-pick-best b { color: var(--neon-yellow); text-shadow: 0 0 8px rgba(255,230,0,.5); }
+    .c4-pick-best b { color: var(--neon-yellow); text-shadow: 0 0 8px rgb(var(--nc-yellow-rgb) / .5); }
     .c4-pick-daily { margin-top: 8px; font-family: var(--font-pixel); font-size: 9px; line-height: 1.7; color: var(--text-dim); }
     .c4-pick-daily::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); vertical-align: middle; }
 
     /* ---------- HUD ---------- */
     .c4-hud { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 10px; }
-    .c4-chip { padding: 5px 8px; border: 1px solid rgba(0,240,255,.22); border-radius: 999px; background: rgba(0,240,255,.05); font-family: var(--font-pixel); font-size: 9px; color: var(--text-dim); white-space: nowrap; }
+    .c4-chip { padding: 5px 8px; border: 1px solid rgb(var(--nc-cyan-rgb) / .22); border-radius: 999px; background: rgb(var(--nc-cyan-rgb) / .05); font-family: var(--font-pixel); font-size: 9px; color: var(--text-dim); white-space: nowrap; }
     .c4-chip b { color: var(--neon-yellow); }
     #c4-chip-first { border-color: rgba(255,212,0,.3); color: #ffe37a; }
     #c4-chip-score { color: var(--text-main); }
@@ -85,7 +80,7 @@
       --c4-gap: clamp(3px, 1.1vw, 5px);
       position: relative; display: grid; grid-template-columns: repeat(7, minmax(0,1fr));
       gap: var(--c4-gap); width: 100%; max-width: 380px; margin: 0 auto; padding: 9px;
-      border: 1px solid rgba(0,240,255,.25); border-radius: 16px; overflow: hidden;
+      border: 1px solid rgb(var(--nc-cyan-rgb) / .25); border-radius: 16px; overflow: hidden;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       box-shadow:
         inset 0 2px 1px rgba(24,32,52,.1),
@@ -96,7 +91,7 @@
     }
     .c4-board::before {
       content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; border-radius: inherit;
-      background: linear-gradient(110deg, rgba(0,240,255,.09), transparent 32%, transparent 68%, rgba(185,103,255,.1));
+      background: linear-gradient(110deg, rgb(var(--nc-cyan-rgb) / .09), transparent 32%, transparent 68%, rgb(var(--nc-purple-rgb) / .1));
     }
     .c4-cell {
       position: relative; z-index: 1; aspect-ratio: 1 / 1; border-radius: 50%; cursor: pointer;
@@ -171,7 +166,7 @@
       animation: c4ripple .55s ease-out forwards;
     }
     .c4-ripple.p1 { border-color: rgba(255,120,150,.85); }
-    .c4-ripple.p2 { border-color: rgba(255,230,0,.85); }
+    .c4-ripple.p2 { border-color: rgb(var(--nc-yellow-rgb) / .85); }
     @keyframes c4ripple {
       from { opacity: .85; transform: translate(-50%, -50%) scale(.35); }
       to   { opacity: 0; transform: translate(-50%, -50%) scale(1.35); }
@@ -216,7 +211,7 @@
     .c4-status.thinking { color: var(--neon-yellow); }
     .c4-status.win { color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255,212,0,.55); }
     .c4-status.lose { color: #ff6b9d; text-shadow: 0 0 10px rgba(255,45,111,.4); }
-    .c4-status.draw { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.35); }
+    .c4-status.draw { color: var(--neon-cyan); text-shadow: 0 0 10px rgb(var(--nc-cyan-rgb) / .35); }
     .c4-dots { display: inline-flex; gap: 3px; margin-left: 5px; vertical-align: middle; }
     .c4-dots i { width: 4px; height: 4px; border-radius: 50%; background: currentColor; animation: c4dot 1s infinite; }
     .c4-dots i:nth-child(2) { animation-delay: .15s; }
@@ -238,21 +233,21 @@
     .c4-overlay { z-index: 70; background: var(--nc-stage-2); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
     .c4-card {
       width: min(340px, 88vw); padding: 24px 20px 22px; text-align: center; border-radius: 16px;
-      border: 1px solid rgba(0,240,255,.35);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / .35);
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       box-shadow: var(--ui-shadow);
     }
     .c4-card h2 { font-size: 18px; line-height: 1.4; }
-    .c4-card h2.win { color: var(--neon-green); text-shadow: 0 0 14px rgba(57,255,20,.5); }
-    .c4-card h2.lose { color: var(--neon-pink); text-shadow: 0 0 14px rgba(255,45,149,.55); }
-    .c4-card h2.draw { color: var(--neon-yellow); text-shadow: 0 0 14px rgba(255,230,0,.45); }
+    .c4-card h2.win { color: var(--neon-green); text-shadow: 0 0 14px rgb(var(--nc-green-rgb) / .5); }
+    .c4-card h2.lose { color: var(--neon-pink); text-shadow: 0 0 14px rgb(var(--nc-pink-rgb) / .55); }
+    .c4-card h2.draw { color: var(--neon-yellow); text-shadow: 0 0 14px rgb(var(--nc-yellow-rgb) / .45); }
     .c4-card p { margin: 10px 0 0; font-size: 12px; line-height: 1.8; color: var(--text-dim); }
     .c4-stats { display: flex; flex-wrap: wrap; gap: 14px 20px; justify-content: center; margin: 16px 0 4px; }
     .c4-stats span { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); }
-    .c4-stats b { font-size: 19px; color: var(--neon-yellow); text-shadow: 0 0 10px rgba(255,230,0,.45); }
+    .c4-stats b { font-size: 19px; color: var(--neon-yellow); text-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / .45); }
     .c4-record {
-      display: inline-block; margin-top: 10px; padding: 5px 10px; border: 1px solid rgba(255,230,0,.5); border-radius: 99px;
-      background: rgba(255,230,0,.1); font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow);
+      display: inline-block; margin-top: 10px; padding: 5px 10px; border: 1px solid rgb(var(--nc-yellow-rgb) / .5); border-radius: 99px;
+      background: rgb(var(--nc-yellow-rgb) / .1); font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow);
       animation: c4record 1s ease-in-out infinite;
     }
     @keyframes c4record { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
@@ -312,18 +307,19 @@
 </nav>
   <h1 class="seo-h1">四子棋</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="fourline-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="fourline.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="fourline-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="fourline.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -334,6 +330,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

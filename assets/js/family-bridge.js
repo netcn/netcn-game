@@ -74,8 +74,27 @@
     });
   }
 
+  /* 顶栏「↻ 重开」默认在没有 GAME_RESTART 时整页刷新。少数游戏只写了
+     游戏内的「重新开始」按钮，没把这个钩子接出来。这里做一次通用兜底：
+     动态找到游戏自己的重开按钮并触发它，走游戏原本的重置逻辑，
+     不刷新页面、不丢滚动位置；找不到时才回退到刷新。 */
+  function wireRestartFallback() {
+    if (typeof window.GAME_RESTART === 'function') return;
+    window.GAME_RESTART = function () {
+      var btns = d.querySelectorAll('#game-root button, #game-root [role="button"]');
+      for (var i = 0; i < btns.length; i++) {
+        var t = (btns[i].textContent || '').trim().replace(/\s+/g, ' ');
+        if (/^(?:↻\s*)?(?:重新开始|重开|再来一次|再玩一次|再来一局|再玩一局|重新挑战|开始冒险|重试|新游戏|Restart|Play Again|Retry|New Game)/i.test(t)) {
+          try { btns[i].click(); return; } catch (e) {}
+        }
+      }
+      location.reload();
+    };
+  }
+
   function init() {
     wireSearch();
+    wireRestartFallback();
     /* 页脚在早期版本带 data-nc-tone="dark"，会与其余四站深浅不同 */
     var foot = d.querySelector('.nc-foot[data-nc-tone]');
     if (foot) foot.removeAttribute('data-nc-tone');

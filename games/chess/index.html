@@ -38,18 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .ch-wrap { padding: 14px 10px 24px; width: min(560px, 96vw); text-align: center; }
     #ch-mode .mode-btn, #ch-diff .mode-btn, #ch-time .mode-btn, #ch-puzzles .mode-btn { min-height: 44px; }
@@ -59,8 +54,8 @@
     .ch-time-row .mode-btn { min-width: 62px; }
     .ch-clocks { display: flex; gap: 8px; width: min(440px, 92vw); margin: 0 auto 8px; }
     .ch-clock { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 6px;
-      padding: 6px 10px; border-radius: 9px; border: 1px solid rgba(0,240,255,.2);
-      background: rgba(0,240,255,.05); transition: border-color .18s, box-shadow .18s; }
+      padding: 6px 10px; border-radius: 9px; border: 1px solid rgb(var(--nc-cyan-rgb) / .2);
+      background: rgb(var(--nc-cyan-rgb) / .05); transition: border-color .18s, box-shadow .18s; }
     .ch-clock i { font-style: normal; font-size: 10px; color: var(--text-dim); letter-spacing: .06em; }
     .ch-clock b { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-cyan); }
     .ch-clock.active { border-color: var(--neon-cyan); box-shadow: var(--ui-shadow); }
@@ -69,8 +64,8 @@
     @keyframes chLow { 0%,100% { opacity: .65; } 50% { opacity: 1; } }
     .ch-ov-note { margin: 4px 0 8px; font-size: 12px; color: var(--neon-yellow); }
     .ch-hud { display: flex; justify-content: space-around; width: min(440px, 92vw); margin: 0 auto 10px;
-      background: linear-gradient(90deg, rgba(0,240,255,.07), rgba(255,45,149,.05));
-      border: 1px solid rgba(0,240,255,.25); border-radius: 12px; padding: 8px 6px; }
+      background: linear-gradient(90deg, rgb(var(--nc-cyan-rgb) / .07), rgb(var(--nc-pink-rgb) / .05));
+      border: 1px solid rgb(var(--nc-cyan-rgb) / .25); border-radius: 12px; padding: 8px 6px; }
     .ch-stat { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
     .ch-stat span { font-size: 10px; color: var(--text-dim); letter-spacing: .08em; }
     .ch-stat b { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-cyan); white-space: nowrap; overflow: hidden; max-width: 40vw; }
@@ -87,21 +82,21 @@
     .ch-piece { font-size: clamp(19px, 5.6vw, 33px); line-height: 1; pointer-events: none; }
     .ch-piece.white { color: #fffaf0; -webkit-text-stroke: 1px rgba(60,40,10,.55); text-shadow: 0 2px 3px rgba(0,0,0,.5), 0 0 10px rgba(255,246,220,.35); }
     .ch-piece.black { color: #1d1a24; -webkit-text-stroke: 1px rgba(24,32,52,.35); text-shadow: 0 2px 3px rgba(0,0,0,.45), 0 0 10px rgba(120,140,255,.28); }
-    .ch-piece.king { filter: drop-shadow(0 0 6px rgba(255,230,0,.55)); }
-    .ch-cell.last::before { content: ''; position: absolute; inset: 0; background: rgba(0,240,255,.16); box-shadow: var(--ui-shadow); }
-    .ch-cell.sel { box-shadow: inset 0 0 0 3px var(--neon-yellow), 0 0 16px rgba(255,230,0,.55); z-index: 2; }
+    .ch-piece.king { filter: drop-shadow(0 0 6px rgb(var(--nc-yellow-rgb) / .55)); }
+    .ch-cell.last::before { content: ''; position: absolute; inset: 0; background: rgb(var(--nc-cyan-rgb) / .16); box-shadow: var(--ui-shadow); }
+    .ch-cell.sel { box-shadow: inset 0 0 0 3px var(--neon-yellow), 0 0 16px rgb(var(--nc-yellow-rgb) / .55); z-index: 2; }
     .ch-cell.move::after { content: ''; position: absolute; width: 30%; height: 30%; border-radius: 50%;
-      background: radial-gradient(circle, rgba(57,255,20,.95), rgba(57,255,20,.3));
-      box-shadow: 0 0 12px rgba(57,255,20,.7); animation: chDot 1.2s ease-in-out infinite; }
+      background: radial-gradient(circle, rgb(var(--nc-green-rgb) / .95), rgb(var(--nc-green-rgb) / .3));
+      box-shadow: 0 0 12px rgb(var(--nc-green-rgb) / .7); animation: chDot 1.2s ease-in-out infinite; }
     .ch-cell.capture::after { content: ''; position: absolute; inset: 8%; border-radius: 50%;
-      border: 3px solid rgba(255,45,149,.9); box-shadow: 0 0 12px rgba(255,45,149,.6);
+      border: 3px solid rgb(var(--nc-pink-rgb) / .9); box-shadow: 0 0 12px rgb(var(--nc-pink-rgb) / .6);
       box-sizing: border-box; animation: chRing 1.1s ease-in-out infinite; }
     .ch-cell.promo::after { content: ''; position: absolute; width: 34%; height: 34%; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,230,0,.95), rgba(255,230,0,.25));
-      box-shadow: 0 0 14px rgba(255,230,0,.8); animation: chDot 1.2s ease-in-out infinite; }
+      background: radial-gradient(circle, rgb(var(--nc-yellow-rgb) / .95), rgb(var(--nc-yellow-rgb) / .25));
+      box-shadow: 0 0 14px rgb(var(--nc-yellow-rgb) / .8); animation: chDot 1.2s ease-in-out infinite; }
     @keyframes chDot { 0%,100% { transform: scale(.8); opacity: .75; } 50% { transform: scale(1.12); opacity: 1; } }
     @keyframes chRing { 0%,100% { transform: scale(.94); } 50% { transform: scale(1.05); } }
-    .ch-cell.cursor { outline: 2px dashed rgba(0,240,255,.85); outline-offset: -2px; z-index: 3; }
+    .ch-cell.cursor { outline: 2px dashed rgb(var(--nc-cyan-rgb) / .85); outline-offset: -2px; z-index: 3; }
     .ch-cell.check::before { content: ''; position: absolute; inset: 0;
       background: radial-gradient(circle, rgba(255,30,60,.75), rgba(255,30,60,.1) 72%);
       animation: chCheck 1s ease-in-out infinite; }
@@ -114,20 +109,20 @@
       animation: chFade .26s ease-out; }
     @keyframes chFade { from { opacity: 0; } to { opacity: 1; } }
     .ch-ov-card { width: min(400px, 92vw); text-align: center; padding: 22px 18px; border-radius: 16px;
-      border: 1px solid rgba(0,240,255,.35); background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
+      border: 1px solid rgb(var(--nc-cyan-rgb) / .35); background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       box-shadow: var(--ui-shadow);
       animation: chCard .3s cubic-bezier(.2,.9,.3,1.25); }
     @keyframes chCard { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
     .ch-ov-icon { font-size: 34px; line-height: 1; margin-bottom: 8px; animation: chPop .42s cubic-bezier(.2,.9,.3,1.5); }
     @keyframes chPop { 0% { transform: scale(.3); opacity: 0; } 70% { transform: scale(1.12); opacity: 1; } 100% { transform: scale(1); } }
     #ch-ov-title { margin: 0 0 8px; font-family: var(--font-pixel); font-size: clamp(14px, 4.4vw, 19px);
-      letter-spacing: 1px; color: var(--neon-pink); text-shadow: 0 0 14px rgba(255,45,149,.6); }
-    #ch-ov-title.win { color: var(--neon-green); text-shadow: 0 0 14px rgba(57,255,20,.65); }
+      letter-spacing: 1px; color: var(--neon-pink); text-shadow: 0 0 14px rgb(var(--nc-pink-rgb) / .6); }
+    #ch-ov-title.win { color: var(--neon-green); text-shadow: 0 0 14px rgb(var(--nc-green-rgb) / .65); }
     #ch-ov-text { margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.9; }
     #ch-ov-text b { color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 13px; }
     .ch-ov-line { margin-top: 8px; color: var(--text-main); font-family: var(--font-pixel); font-size: 12px; }
     .ch-ov-best { margin-top: 4px; font-size: 12px; color: var(--text-dim); }
-    .ch-ov-best.new { color: var(--neon-yellow); text-shadow: 0 0 10px rgba(255,230,0,.6); }
+    .ch-ov-best.new { color: var(--neon-yellow); text-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / .6); }
     .ch-ov-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
     .ch-ov-btns .btn { font-size: 12px; padding: 9px 15px; }
     .ch-promo .ch-ov-card { width: min(330px, 88vw); }
@@ -136,7 +131,7 @@
     .ch-promo-btns { display: flex; gap: 10px; justify-content: center; }
     .ch-promo-btn { width: 56px; height: 56px; border-radius: 12px; cursor: pointer;
       font-size: 30px; line-height: 1; color: #fffaf0;
-      background: linear-gradient(160deg, #3a4d6e, #18202f); border: 1px solid rgba(0,240,255,.45);
+      background: linear-gradient(160deg, #3a4d6e, #18202f); border: 1px solid rgb(var(--nc-cyan-rgb) / .45);
       box-shadow: var(--ui-shadow);
       transition: transform .14s ease, box-shadow .14s ease; }
     .ch-promo-btn:hover, .ch-promo-btn:active { transform: translateY(-2px) scale(1.05); box-shadow: var(--ui-shadow); }
@@ -165,18 +160,19 @@
 </nav>
   <h1 class="seo-h1">国际象棋</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="chess-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="chess.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="chess-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="chess.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -187,7 +183,7 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>
 

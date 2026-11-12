@@ -1,14 +1,14 @@
 /* ============================================================
    游戏厅 Service Worker（game/ 子站）
-   —— 缓存版本：arcade-hall-v14（2026-11-11 主题绘制层 + 纸感覆盖层 + 明暗跨站保持）
+   —— 缓存版本：arcade-hall-v16（2026-11-12 玩法可玩性修复：纸感绘制层 / 工具条层级 / 重开）
    —— 策略：HTML 导航 network-first（离线回退缓存）；
            静态资源（JS/CSS/字体/图片）cache-first
    —— 预缓存：2D 首页 + 53 款游戏页 + 子站 assets 核心
+   版本号约定：全站所有本地 js/css/woff2 只用 ASSET_VER 一个值，
+   HTML 由 tools/normalize_pages.py 统一注入，改版只需改这里 + 工具里的 VER。
    ============================================================ */
-var CACHE = 'arcade-hall-v13';
-/* 与 53 个游戏页内脚本引用保持一致，预缓存带版本号的 URL，
-   避免离线打开时因 ?v= 未命中缓存而加载失败 */
-var ASSET_VER = '20261105i';
+var CACHE = 'arcade-hall-v16';
+var ASSET_VER = '20261112b';
 
 /* 各游戏目录内的额外脚本（非 <id>.js / <id>-i18n.js），
    需与 index.html 中同版本号一起预缓存 */
@@ -22,27 +22,28 @@ var EXTRA_SCRIPTS = {
 var CORE = [
   './',
   './index.html',
-  './games.js',
+  './games.js?v=' + ASSET_VER,
   './manifest.webmanifest',
-  './assets/css/theme.css',
-  './assets/css/shell.css',
-  './assets/css/family-bridge.css?v=2',
-  './assets/css/family-ui.css?v=2',
-  './assets/js/family-bridge.js?v=2',
-  './assets/fonts/fusion-pixel-site.woff2',
-  './assets/fonts/press-start-2p.woff2',
-  './assets/js/core/storage.js',
-  './assets/js/core/input.js',
-  './assets/js/core/loop.js',
-  './assets/js/core/i18n.js',
-  './assets/js/core/i18n-dict.js',
-  './assets/js/core/extras.js',
-  './assets/js/rank.js',
-  './assets/js/shell.js',
-  './assets/js/pwa.js',
-  /* 32 款游戏共用的画布工具库（未带版本号，游戏页按原路径引用） */
-  './games/_shared/kit.js',
-  './games/_shared/pipegen.js',
+  /* 内页：2 层 bundle（6 层已合并）；首页 / 404 仍用下面三个源文件 */
+  './assets/css/game-core.css?v=' + ASSET_VER,
+  './assets/css/game-ui.css?v=' + ASSET_VER,
+  './assets/css/theme.css?v=' + ASSET_VER,
+  './assets/js/family-bridge.js?v=' + ASSET_VER,
+  './assets/fonts/fusion-pixel-site.woff2?v=' + ASSET_VER,
+  './assets/fonts/press-start-2p.woff2?v=' + ASSET_VER,
+  './assets/js/core/storage.js?v=' + ASSET_VER,
+  './assets/js/core/input.js?v=' + ASSET_VER,
+  './assets/js/core/loop.js?v=' + ASSET_VER,
+  './assets/js/core/i18n.js?v=' + ASSET_VER,
+  './assets/js/core/i18n-dict.js?v=' + ASSET_VER,
+  './assets/js/core/i18n-extra.js?v=' + ASSET_VER,
+  './assets/js/core/i18n-live.js?v=' + ASSET_VER,
+  './assets/js/core/extras.js?v=' + ASSET_VER,
+  './assets/js/shell.js?v=' + ASSET_VER,
+  './assets/js/pwa.js?v=' + ASSET_VER,
+  /* 32 款游戏共用的画布工具库（与游戏页同版本号） */
+  './games/_shared/kit.js?v=' + ASSET_VER,
+  './games/_shared/pipegen.js?v=' + ASSET_VER,
   /* 2026-11-06 蘑菇品牌资产 + 家族壳层，离线也要完整 */
   './favicon.ico',
   './assets/icons/apple-touch-icon.png',
@@ -51,9 +52,9 @@ var CORE = [
   './assets/icons/icon-maskable-512.png',
   './assets/icons/og-share.png',
   './shell/mk-game.png',
-  './shell/netcn-shell.css?v=20261111b3',
-  './shell/netcn-ui.css?v=20261111b3',
-  './shell/shell.js?v=20261111b3',
+  './shell/netcn-shell.css?v=' + ASSET_VER,
+  './shell/netcn-ui.css?v=' + ASSET_VER,
+  './shell/shell.js?v=' + ASSET_VER,
 ];
 
 /* 53 款游戏页 + 各自三件套（注册表在 sw.js 同级：./games.js）
@@ -150,7 +151,8 @@ self.addEventListener('fetch', function (event) {
      导致明暗/中英按钮点了没反应；离线时才回退（忽略版本号）。 */
   if (url.pathname.indexOf('/shell/') >= 0 ||
       /family-(bridge|ui)\.(css|js)$/.test(url.pathname) ||
-      /netcn-ui\.css$/.test(url.pathname)) {
+      /netcn-ui\.css$/.test(url.pathname) ||
+      /game-(core|ui)\.css$/.test(url.pathname)) {
     event.respondWith(
       fetch(req).then(function (res) { putInCache(req, res); return res; })
         .catch(function () { return caches.match(req, { ignoreSearch: true }); })

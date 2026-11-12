@@ -38,18 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .ss-wrap { padding: 14px; width: min(520px, 96vw); margin: 0 auto; text-align: center; }
     .ss-hud { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px;
@@ -57,27 +52,27 @@
     .ss-hud-item { display: inline-flex; align-items: baseline; gap: 6px; }
     .ss-hud-item em { font-style: normal; font-size: 10px; letter-spacing: 1px; opacity: .8; }
     .ss-hud-item b { font-family: var(--font-pixel); font-weight: 400; font-size: 12px;
-      color: var(--neon-cyan); text-shadow: 0 0 8px rgba(0, 240, 255, 0.45); }
+      color: var(--neon-cyan); text-shadow: 0 0 8px rgb(var(--nc-cyan-rgb) / 0.45); }
     .ss-stage { position: relative; width: min(480px, 92vw); margin: 0 auto; }
     .ss-canvas { display: block; width: 100% !important; height: auto !important;
       border-radius: 12px; background: #05060f; touch-action: none;
-      border: 1px solid rgba(0, 240, 255, 0.22);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / 0.22);
       box-shadow: var(--ui-shadow); }
     .ss-bossbar { position: absolute; top: 10px; left: 16px; right: 16px; z-index: 5;
       display: flex; align-items: center; gap: 8px; }
     .ss-bossbar span { font-family: var(--font-pixel); font-size: 9px; color: var(--neon-pink);
-      text-shadow: 0 0 10px rgba(255, 45, 149, 0.8); }
+      text-shadow: 0 0 10px rgb(var(--nc-pink-rgb) / 0.8); }
     .ss-bossbar i { flex: 1; height: 10px; display: block; overflow: hidden; border-radius: 5px;
-      border: 1px solid rgba(255, 45, 149, 0.6); background: var(--nc-stage-2); }
+      border: 1px solid rgb(var(--nc-pink-rgb) / 0.6); background: var(--nc-stage-2); }
     .ss-bossbar b { display: block; height: 100%; width: 100%;
       background: linear-gradient(90deg, #ff2d95, #ffe600);
-      box-shadow: 0 0 12px rgba(255, 45, 149, 0.7); transition: width 0.1s linear; }
+      box-shadow: 0 0 12px rgb(var(--nc-pink-rgb) / 0.7); transition: width 0.1s linear; }
     .ss-overlay { position: absolute; inset: 0; z-index: 6; display: flex; flex-direction: column;
       align-items: center; justify-content: center; gap: 14px; padding: 24px;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       border-radius: 12px; backdrop-filter: blur(3px); }
     .ss-overlay h2 { margin: 0; font-family: var(--font-pixel); font-size: 15px; line-height: 1.6;
-      color: var(--neon-cyan); text-shadow: 0 0 14px rgba(0, 240, 255, 0.65); }
+      color: var(--neon-cyan); text-shadow: 0 0 14px rgb(var(--nc-cyan-rgb) / 0.65); }
     .ss-ov-text { font-size: 13px; line-height: 1.9; color: var(--text-dim); max-width: 320px; }
     .ss-ov-btns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
     .ss-msg { min-height: 20px; font-size: 12px; color: var(--neon-cyan); margin: 8px 0 4px;
@@ -114,19 +109,20 @@
 </nav>
   <h1 class="seo-h1">太空射击</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="spaceshooter-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="../_shared/kit.js"></script>
-  <script src="spaceshooter.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="spaceshooter-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="../_shared/kit.js?v=20261112b"></script>
+  <script src="spaceshooter.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -137,6 +133,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

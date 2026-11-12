@@ -38,18 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .bj-wrap { padding: 12px 12px 22px; width: min(520px, 96vw); text-align: center; position: relative; }
     .bj-wrap .hidden { display: none !important; }
@@ -63,23 +58,23 @@
     .bj-mode { flex: 1 1 0; min-height: 44px; padding: 7px 8px; border-radius: 9px; cursor: pointer;
       background: rgba(24,32,52,0.045); border: 1px solid rgba(24,32,52,0.14); color: var(--text-dim);
       font-family: var(--font-pixel); font-size: 10px; letter-spacing: 1px; transition: border-color .2s, box-shadow .2s, color .2s; }
-    .bj-mode.active { color: var(--neon-cyan); border-color: rgba(0,240,255,0.7); box-shadow: var(--ui-shadow); }
+    .bj-mode.active { color: var(--neon-cyan); border-color: rgb(var(--nc-cyan-rgb) / 0.7); box-shadow: var(--ui-shadow); }
     .bj-mode:disabled { opacity: .4; cursor: not-allowed; }
     .bj-tourinfo { font-size: 11px; color: var(--neon-yellow); letter-spacing: .5px; margin: 0 0 8px; line-height: 1.6; }
 
     .bj-table { position: relative; border-radius: 16px; padding: 8px; overflow: hidden; isolation: isolate;
       background:
-        radial-gradient(120% 90% at 50% 0%, rgba(0,240,255,0.10), transparent 62%),
+        radial-gradient(120% 90% at 50% 0%, rgb(var(--nc-cyan-rgb) / 0.10), transparent 62%),
         linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(0,240,255,0.20); box-shadow: inset 0 0 34px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.38);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / 0.20); box-shadow: inset 0 0 34px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.38);
       transition: box-shadow .35s; }
-    .bj-table.bj-win-glow { box-shadow: 0 0 0 1px rgba(57,255,20,0.55), 0 0 34px rgba(57,255,20,0.30), inset 0 0 34px rgba(0,0,0,0.55); }
+    .bj-table.bj-win-glow { box-shadow: 0 0 0 1px rgb(var(--nc-green-rgb) / 0.55), 0 0 34px rgb(var(--nc-green-rgb) / 0.30), inset 0 0 34px rgba(0,0,0,0.55); }
     .bj-felt { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
     .bj-table-in { position: relative; z-index: 2; }
     .bj-side { padding: 8px; border-radius: 10px; text-align: left; }
     .bj-side.dealer { border-bottom: 1px dashed rgba(24,32,52,0.10); }
     .bj-side-head { display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 2px; color: var(--text-dim); margin-bottom: 6px; }
-    .bj-val { font-family: var(--font-mono); color: var(--neon-cyan); font-size: 12px; letter-spacing: 0; text-shadow: 0 0 10px rgba(0,240,255,0.3); }
+    .bj-val { font-family: var(--font-mono); color: var(--neon-cyan); font-size: 12px; letter-spacing: 0; text-shadow: 0 0 10px rgb(var(--nc-cyan-rgb) / 0.3); }
     .bj-cards { display: flex; flex-wrap: wrap; gap: 6px; min-height: 76px; align-items: center; }
     .bj-card { width: 52px; height: 74px; perspective: 760px; flex: 0 0 auto; }
     .bj-card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .55s cubic-bezier(.2,.78,.25,1.12); }
@@ -97,12 +92,12 @@
       repeating-linear-gradient(45deg, #22305a 0 5px, #2a3a6a 5px 10px);
       border: 2px solid #3c4f8a; box-shadow: var(--ui-shadow);
       display: flex; align-items: center; justify-content: center; }
-    .bj-back span { font-family: var(--font-pixel); font-size: 13px; color: rgba(0,240,255,0.7); text-shadow: 0 0 10px rgba(0,240,255,0.45); }
+    .bj-back span { font-family: var(--font-pixel); font-size: 13px; color: rgb(var(--nc-cyan-rgb) / 0.7); text-shadow: 0 0 10px rgb(var(--nc-cyan-rgb) / 0.45); }
     .bj-card.flip { animation: bjFlip .55s ease both; }
     @keyframes bjFlip { from { transform: rotateY(88deg) scale(.94); } to { transform: none; } }
 
     .bj-hand-panel { margin: 6px 0; padding: 6px 8px 8px; border-radius: 10px; border: 1px solid transparent; transition: border-color .25s, box-shadow .25s, background .25s; }
-    .bj-hand-panel.active { border-color: rgba(0,240,255,0.62); background: rgba(0,240,255,0.045); box-shadow: var(--ui-shadow); }
+    .bj-hand-panel.active { border-color: rgb(var(--nc-cyan-rgb) / 0.62); background: rgb(var(--nc-cyan-rgb) / 0.045); box-shadow: var(--ui-shadow); }
     .bj-hand-panel.done { opacity: .88; }
     .bj-hand-panel.busted { opacity: .55; }
     .bj-hand-hd { display: flex; justify-content: space-between; gap: 6px; font-size: 10px; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 4px; }
@@ -111,17 +106,17 @@
 
     .bj-msg { min-height: 20px; font-size: 13px; margin: 9px 0 7px; line-height: 1.55; }
     .bj-hint { font-size: 11px; line-height: 1.6; color: var(--neon-cyan); text-align: left; margin: 0 0 7px; padding: 8px 10px;
-      border-radius: 9px; background: rgba(0,240,255,0.055); border: 1px solid rgba(0,240,255,0.22); }
+      border-radius: 9px; background: rgb(var(--nc-cyan-rgb) / 0.055); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.22); }
     .bj-count { font-size: 11px; font-family: var(--font-mono); color: var(--neon-yellow); text-align: left; margin: 0 0 7px; padding: 7px 10px;
-      border-radius: 9px; background: rgba(255,230,0,0.055); border: 1px solid rgba(255,230,0,0.22); }
+      border-radius: 9px; background: rgb(var(--nc-yellow-rgb) / 0.055); border: 1px solid rgb(var(--nc-yellow-rgb) / 0.22); }
 
     .bj-betinfo { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
     .bj-betinfo b { color: var(--neon-yellow); font-family: var(--font-mono); }
     .bj-mini { min-height: 44px; padding: 7px 11px; background: rgba(24,32,52,0.06); border: 1px solid rgba(24,32,52,0.17);
       color: var(--text-dim); border-radius: 8px; font-size: 11px; cursor: pointer; transition: border-color .18s, color .18s, background .18s; }
-    .bj-mini:hover:not(:disabled) { border-color: rgba(0,240,255,0.5); color: var(--neon-cyan); }
+    .bj-mini:hover:not(:disabled) { border-color: rgb(var(--nc-cyan-rgb) / 0.5); color: var(--neon-cyan); }
     .bj-mini:disabled { opacity: .4; cursor: not-allowed; }
-    .bj-mini.active { color: var(--neon-yellow); border-color: rgba(255,230,0,0.6); }
+    .bj-mini.active { color: var(--neon-yellow); border-color: rgb(var(--nc-yellow-rgb) / 0.6); }
 
     .bj-handpick { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 8px; margin-bottom: 7px; }
     .bj-handpick-lbl { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; }
@@ -131,7 +126,7 @@
     .bj-plan { min-height: 44px; min-width: 76px; padding: 6px 12px; display: inline-flex; align-items: center; justify-content: space-between; gap: 10px;
       background: rgba(24,32,52,0.05); border: 1px solid rgba(24,32,52,0.16); border-radius: 9px; color: var(--text-dim); cursor: pointer; font-size: 11px; }
     .bj-plan b { font-family: var(--font-mono); color: var(--neon-yellow); }
-    .bj-plan.active { border-color: rgba(0,240,255,0.66); box-shadow: var(--ui-shadow); color: var(--neon-cyan); }
+    .bj-plan.active { border-color: rgb(var(--nc-cyan-rgb) / 0.66); box-shadow: var(--ui-shadow); color: var(--neon-cyan); }
 
     .bj-sidebox { border-top: 1px dashed rgba(24,32,52,0.12); padding: 7px 0 2px; margin-bottom: 9px; }
     .bj-sidebox-hd { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 8px; font-size: 11px; color: var(--neon-purple); letter-spacing: 1px; margin-bottom: 5px; }
@@ -169,7 +164,7 @@
     .bj-result.show { display: flex; animation: bjFade .25s ease both; }
     @keyframes bjFade { from { opacity: 0; } to { opacity: 1; } }
     .bj-result-box { width: min(340px, 100%); max-height: 100%; overflow: auto; padding: 20px 16px; border-radius: 15px; text-align: center;
-      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgba(0,240,255,0.32);
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.32);
       box-shadow: var(--ui-shadow); }
     .bj-result-title { font-family: var(--font-pixel); font-size: 17px; margin-bottom: 10px; line-height: 1.5; }
     .bj-result-net { font-family: var(--font-mono); font-size: 21px; margin-bottom: 8px; }
@@ -184,8 +179,8 @@
       background: var(--nc-stage-2); backdrop-filter: blur(5px); border-radius: 16px; z-index: 7; }
     .bj-pauseov.show { display: flex; animation: bjFade .2s ease both; }
     .bj-pause-box { width: min(300px, 100%); padding: 20px 16px; border-radius: 14px; text-align: center;
-      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgba(255,230,0,0.35);
-      box-shadow: 0 12px 44px rgba(0,0,0,0.65), 0 0 26px rgba(255,230,0,0.12); }
+      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); border: 1px solid rgb(var(--nc-yellow-rgb) / 0.35);
+      box-shadow: 0 12px 44px rgba(0,0,0,0.65), 0 0 26px rgb(var(--nc-yellow-rgb) / 0.12); }
 
     .bj-help { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-top: 12px; text-align: left;
       background: rgba(24,32,52,0.04); border-radius: 8px; padding: 10px 12px; }
@@ -229,18 +224,19 @@
 </nav>
   <h1 class="seo-h1">21点</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="blackjack-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="blackjack.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="blackjack-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="blackjack.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -251,7 +247,7 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>
 

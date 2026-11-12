@@ -710,6 +710,11 @@ html.reduced-motion .fx-shake { animation: none !important; }
 [class$="-overlay"] p b, .game-overlay p b, .overlay p b { color: var(--neon-yellow); }
 [class$="-overlay"] .win, .game-overlay .win, .overlay .win { color: var(--neon-green); text-shadow: 0 0 14px rgba(57, 255, 20, 0.5); }
 
+/* 上面的通用遮罩基座会把 .tut-overlay / .search-overlay 一起压到 60，
+   而游戏开局 / 结算浮层可到 90，导致点「玩法」后教程被挡在后面看不见。
+   这里后置声明恢复它们的模态层级（仍低于 9999 的 toast）。 */
+.tut-overlay, .search-overlay { z-index: 9800; }
+
 /* ---------- 移动端紧凑（置于末尾确保覆盖先前的桌面定义） ---------- */
 @media (max-width: 480px) {
   .mode-btn { font-size: 11px; padding: 6px 11px; }

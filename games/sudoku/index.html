@@ -38,18 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .su-wrap { padding: 14px 10px 22px; width: min(420px, 96vw); box-sizing: border-box; text-align: center; }
     .su-top { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 10px; margin-bottom: 10px; font-size: 13px; color: var(--text-dim); }
@@ -63,26 +58,26 @@
     .su-zoomers { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 0 0 8px; }
     .su-zoomers button { min-height: 44px; min-width: 44px; padding: 0 12px; border-radius: 9px; border: 1px solid rgba(24,32,52,0.18); background: rgba(24,32,52,0.08); color: var(--text); font-family: var(--font-mono); font-size: 13px; cursor: pointer; transition: background .15s, box-shadow .15s; }
     .su-zoomers button:active { transform: translateY(1px); }
-    .su-zoomers button.selected { background: rgba(0,240,255,0.18); box-shadow: var(--ui-shadow); color: var(--accent); }
+    .su-zoomers button.selected { background: rgb(var(--nc-cyan-rgb) / 0.18); box-shadow: var(--ui-shadow); color: var(--accent); }
     .su-zoomers .su-zlbl { font-size: 10px; color: var(--text-dim); min-width: 68px; letter-spacing: .04em; font-family: var(--font-mono); }
     .su-zoomtip { font-size: 10px; color: var(--text-dim); margin: -6px 0 6px; letter-spacing: .04em; }
     .su-cell { aspect-ratio: 1 / 1; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-family: var(--font-pixel); font-size: 19px; background: #11131a; color: var(--neon-cyan); cursor: pointer; user-select: none; }
     .su-cell.fixed { color: var(--text); }
-    .su-cell.sel { background: rgba(0,240,255,0.22); box-shadow: inset 0 0 0 2px var(--accent); }
+    .su-cell.sel { background: rgb(var(--nc-cyan-rgb) / 0.22); box-shadow: inset 0 0 0 2px var(--accent); }
     .su-cell.peer { background: rgba(24,32,52,0.05); }
-    .su-cell.wrong { color: var(--neon-pink); background: rgba(255,45,149,0.16); box-shadow: inset 0 0 0 2px rgba(255,45,149,.7); }
+    .su-cell.wrong { color: var(--neon-pink); background: rgb(var(--nc-pink-rgb) / 0.16); box-shadow: inset 0 0 0 2px rgb(var(--nc-pink-rgb) / .7); }
     .su-cell.wrongfx { animation: suWrong .35s cubic-bezier(.2,1.4,.4,1); }
     @keyframes suWrong { 0% { transform: scale(1); } 35% { transform: scale(1.18) rotate(-4deg); } 70% { transform: scale(.94) rotate(3deg); } 100% { transform: none; } }
     .su-board.won .su-cell { animation: suWinCell .5s ease-out both; }
     @keyframes suWinCell {
-      0% { background: rgba(57,255,20,0); }
-      40% { background: rgba(57,255,20,.55); color: var(--text-main); transform: scale(1.06); }
+      0% { background: rgb(var(--nc-green-rgb) / 0); }
+      40% { background: rgb(var(--nc-green-rgb) / .55); color: var(--text-main); transform: scale(1.06); }
       100% { background: #11131a; transform: none; }
     }
     .su-cell .su-notes { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; height: 100%; padding: 2px; box-sizing: border-box; }
     .su-cell .su-notes span { display: flex; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 8.5px; color: var(--text-dim); line-height: 1; }
-    .su-cell.x-mode { background-image: linear-gradient(135deg, rgba(185,103,255,.10), transparent 42%, transparent 58%, rgba(185,103,255,.10)); }
-    .su-cell.hintfx { background: rgba(255,230,0,.24) !important; box-shadow: inset 0 0 0 2px var(--neon-yellow), 0 0 14px rgba(255,230,0,.6); animation: suHint .8s cubic-bezier(.2,1.4,.4,1); }
+    .su-cell.x-mode { background-image: linear-gradient(135deg, rgb(var(--nc-purple-rgb) / .10), transparent 42%, transparent 58%, rgb(var(--nc-purple-rgb) / .10)); }
+    .su-cell.hintfx { background: rgb(var(--nc-yellow-rgb) / .24) !important; box-shadow: inset 0 0 0 2px var(--neon-yellow), 0 0 14px rgb(var(--nc-yellow-rgb) / .6); animation: suHint .8s cubic-bezier(.2,1.4,.4,1); }
     @keyframes suHint { 0% { transform: scale(1); } 30% { transform: scale(1.14); } 100% { transform: scale(1); } }
     .su-cell:nth-child(3n) { margin-right: 1px; }
     .su-pad { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; width: fit-content; margin: 0 auto; }
@@ -106,12 +101,12 @@
     .su-ov-card {
       width: min(340px, 88vw); padding: 26px 22px; text-align: center;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgba(57,255,20,.45); border-radius: 18px;
+      border: 1px solid rgb(var(--nc-green-rgb) / .45); border-radius: 18px;
       box-shadow: var(--ui-shadow);
       animation: suCard .5s cubic-bezier(.2,1.4,.4,1) both;
     }
     @keyframes suCard { from { opacity: 0; transform: translateY(18px) scale(.9); } to { opacity: 1; transform: none; } }
-    .su-ov-title { font-family: var(--font-pixel); font-size: 18px; color: var(--neon-green); text-shadow: 0 0 12px rgba(57,255,20,.7); margin-bottom: 14px; }
+    .su-ov-title { font-family: var(--font-pixel); font-size: 18px; color: var(--neon-green); text-shadow: 0 0 12px rgb(var(--nc-green-rgb) / .7); margin-bottom: 14px; }
     .su-ov-row { display: flex; justify-content: center; gap: 22px; margin: 10px 0; font-size: 12px; color: var(--text-dim); }
     .su-ov-row b { display: block; font-family: var(--font-pixel); font-size: 16px; color: var(--neon-cyan); margin-top: 4px; }
     .su-ov-row .err b { color: var(--neon-pink); }
@@ -138,18 +133,19 @@
 </nav>
   <h1 class="seo-h1">数独</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="sudoku-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="sudoku.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="sudoku-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="sudoku.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -160,6 +156,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

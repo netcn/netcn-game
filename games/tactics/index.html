@@ -38,18 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/theme.css">
-  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
-  <link rel="stylesheet" href="../../assets/css/shell.css">
-<link rel="stylesheet" href="../../shell/netcn-shell.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-bridge.css?v=2">
-<link rel="stylesheet" href="../../shell/netcn-ui.css?v=20261111b3">
-<link rel="stylesheet" href="../../assets/css/family-ui.css?v=2">
-<script src="../../shell/shell.js?v=20261111b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
+<script src="../../shell/shell.js?v=20261112b"></script>
   <style>
     .tk-wrap { padding: 12px 10px 20px; width: min(640px, 98vw); text-align: center; margin: 0 auto; }
     .tk-top { display: flex; justify-content: center; align-items: center; gap: 6px 12px; flex-wrap: wrap; font-size: 12px; margin: 4px 2px 2px; color: var(--text-dim); }
@@ -60,17 +55,17 @@
 
     /* ---------- 关卡选择 ---------- */
     .tk-pick { padding: 4px 0 2px; }
-    .tk-pick-title { font-family: var(--font-pixel); font-size: 15px; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.55); margin: 6px 0 6px; }
+    .tk-pick-title { font-family: var(--font-pixel); font-size: 15px; color: var(--neon-cyan); text-shadow: 0 0 10px rgb(var(--nc-cyan-rgb) / .55); margin: 6px 0 6px; }
     .tk-pick-sub { font-size: 12px; color: var(--text-dim); line-height: 1.7; margin: 0 auto 8px; max-width: 430px; }
-    .tk-pick-best { display: inline-block; font-size: 11px; color: var(--neon-yellow); border: 1px dashed rgba(255,230,0,.4); border-radius: 999px; padding: 4px 12px; margin-bottom: 12px; }
+    .tk-pick-best { display: inline-block; font-size: 11px; color: var(--neon-yellow); border: 1px dashed rgb(var(--nc-yellow-rgb) / .4); border-radius: 999px; padding: 4px 12px; margin-bottom: 12px; }
     .tk-levels { display: flex; flex-direction: column; gap: 10px; max-width: 440px; margin: 0 auto 14px; }
-    .tk-lvl { display: flex; align-items: center; gap: 12px; text-align: left; min-height: 74px; padding: 10px 14px; border: 2px solid rgba(0,240,255,.4); border-radius: 10px; background: linear-gradient(135deg, rgba(0,240,255,.10), rgba(255,45,149,.06)); color: var(--text-main); cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .12s; font-family: inherit; }
+    .tk-lvl { display: flex; align-items: center; gap: 12px; text-align: left; min-height: 74px; padding: 10px 14px; border: 2px solid rgb(var(--nc-cyan-rgb) / .4); border-radius: 10px; background: linear-gradient(135deg, rgb(var(--nc-cyan-rgb) / .10), rgb(var(--nc-pink-rgb) / .06)); color: var(--text-main); cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .12s; font-family: inherit; }
     .tk-lvl:active { transform: scale(.98); }
     .tk-lvl:hover { border-color: var(--neon-cyan); box-shadow: var(--ui-shadow); }
     .tk-lvl.locked { opacity: .45; cursor: not-allowed; border-color: rgba(24,32,52,.16); background: rgba(24,32,52,.04); }
     .tk-lvl-num { font-family: var(--font-pixel); font-size: 17px; color: var(--neon-cyan); min-width: 36px; text-align: center; }
     .tk-lvl-body { flex: 1; min-width: 0; }
-    .tk-lvl-t { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); text-shadow: 0 0 6px rgba(255,230,0,.4); margin-bottom: 4px; line-height: 1.5; }
+    .tk-lvl-t { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); text-shadow: 0 0 6px rgb(var(--nc-yellow-rgb) / .4); margin-bottom: 4px; line-height: 1.5; }
     .tk-lvl-d { font-size: 11px; color: var(--text-dim); line-height: 1.55; }
     .tk-lvl-stars { display: flex; gap: 3px; margin-top: 6px; }
     .tk-lvl-state { font-size: 11px; color: var(--neon-green); white-space: nowrap; font-family: var(--font-pixel); }
@@ -88,14 +83,14 @@
       -webkit-overflow-scrolling: touch; scrollbar-width: thin;
     }
     .tk-boardView::-webkit-scrollbar { width: 6px; height: 6px; }
-    .tk-boardView::-webkit-scrollbar-thumb { background: rgba(0,240,255,.32); border-radius: 3px; }
+    .tk-boardView::-webkit-scrollbar-thumb { background: rgb(var(--nc-cyan-rgb) / .32); border-radius: 3px; }
     .tk-boardView.zoomed { cursor: grab; }
     .tk-boardView.dragging { cursor: grabbing; }
     .tk-boardWrap { position: relative; width: fit-content; margin: 0 auto; }
     .tk-board {
       display: grid; gap: 2px; padding: 6px; margin: 0 auto; width: fit-content;
       background: linear-gradient(160deg, #1d3b27 0%, #102019 55%, #152b1e 100%);
-      border: 1px solid rgba(0,240,255,.22); border-radius: 12px;
+      border: 1px solid rgb(var(--nc-cyan-rgb) / .22); border-radius: 12px;
       box-shadow: 0 10px 32px rgba(0,0,0,.5), inset 0 0 26px rgba(0,0,0,.45);
       user-select: none; touch-action: manipulation;
     }
@@ -106,20 +101,20 @@
     }
     .tk-cell.grass { background: linear-gradient(160deg, #2c5a35, #1e3d28); box-shadow: inset 0 0 0 1px rgba(120,200,140,.08); }
     .tk-cell.alt { background: linear-gradient(160deg, #31633b, #214530); }
-    .tk-cell.hill { background: linear-gradient(160deg, #55713c, #2c4527); box-shadow: inset 0 0 0 1px rgba(255,230,0,.16); }
-    .tk-cell.forest { background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); box-shadow: inset 0 0 0 1px rgba(57,255,20,.18); }
+    .tk-cell.hill { background: linear-gradient(160deg, #55713c, #2c4527); box-shadow: inset 0 0 0 1px rgb(var(--nc-yellow-rgb) / .16); }
+    .tk-cell.forest { background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); box-shadow: inset 0 0 0 1px rgb(var(--nc-green-rgb) / .18); }
     .tk-cell.wall { background: linear-gradient(160deg, #4a5470, #222a3d); box-shadow: inset 0 0 0 1px rgba(24,32,52,.14), inset 0 -6px 10px rgba(0,0,0,.4); cursor: default; }
     .tk-cell.wall::after { content: ''; position: absolute; inset: 3px; border-radius: 3px; background: linear-gradient(135deg, rgba(24,32,52,.14), transparent 52%); }
-    .tk-cell.hill::before { content: ''; position: absolute; left: 50%; bottom: 16%; transform: translateX(-50%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 9px solid rgba(255,230,0,.28); }
+    .tk-cell.hill::before { content: ''; position: absolute; left: 50%; bottom: 16%; transform: translateX(-50%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 9px solid rgb(var(--nc-yellow-rgb) / .28); }
     .tk-cell.forest::before { content: ''; position: absolute; inset: 14%; background:
-      radial-gradient(circle at 30% 34%, rgba(57,255,20,.30) 0 9%, transparent 10%),
-      radial-gradient(circle at 66% 46%, rgba(57,255,20,.24) 0 11%, transparent 12%),
-      radial-gradient(circle at 44% 74%, rgba(0,240,255,.10) 0 8%, transparent 9%); }
-    .tk-cell.canmove { background: rgba(0,240,255,.22); box-shadow: var(--ui-shadow); }
-    .tk-cell.canatk { background: rgba(255,45,149,.16); box-shadow: inset 0 0 0 2px rgba(255,45,149,.55), 0 0 12px rgba(255,45,149,.35); }
-    .tk-cell.canmove.canatk { background: linear-gradient(135deg, rgba(0,240,255,.22), rgba(255,45,149,.20)); box-shadow: inset 0 0 0 2px rgba(185,103,255,.6), 0 0 12px rgba(185,103,255,.4); }
-    .tk-cell.sel { box-shadow: inset 0 0 0 3px var(--neon-yellow), 0 0 18px rgba(255,230,0,.55); z-index: 2; }
-    .tk-cell.target { box-shadow: inset 0 0 0 2px rgba(255,45,149,.85), 0 0 14px rgba(255,45,149,.6); animation: tkTarget 1s ease-in-out infinite; }
+      radial-gradient(circle at 30% 34%, rgb(var(--nc-green-rgb) / .30) 0 9%, transparent 10%),
+      radial-gradient(circle at 66% 46%, rgb(var(--nc-green-rgb) / .24) 0 11%, transparent 12%),
+      radial-gradient(circle at 44% 74%, rgb(var(--nc-cyan-rgb) / .10) 0 8%, transparent 9%); }
+    .tk-cell.canmove { background: rgb(var(--nc-cyan-rgb) / .22); box-shadow: var(--ui-shadow); }
+    .tk-cell.canatk { background: rgb(var(--nc-pink-rgb) / .16); box-shadow: inset 0 0 0 2px rgb(var(--nc-pink-rgb) / .55), 0 0 12px rgb(var(--nc-pink-rgb) / .35); }
+    .tk-cell.canmove.canatk { background: linear-gradient(135deg, rgb(var(--nc-cyan-rgb) / .22), rgb(var(--nc-pink-rgb) / .20)); box-shadow: inset 0 0 0 2px rgb(var(--nc-purple-rgb) / .6), 0 0 12px rgb(var(--nc-purple-rgb) / .4); }
+    .tk-cell.sel { box-shadow: inset 0 0 0 3px var(--neon-yellow), 0 0 18px rgb(var(--nc-yellow-rgb) / .55); z-index: 2; }
+    .tk-cell.target { box-shadow: inset 0 0 0 2px rgb(var(--nc-pink-rgb) / .85), 0 0 14px rgb(var(--nc-pink-rgb) / .6); animation: tkTarget 1s ease-in-out infinite; }
     .tk-cell.cursor { outline: 2px dashed rgba(24,32,52,.65); outline-offset: -4px; }
     @keyframes tkTarget { 0%,100% { filter: brightness(1); } 50% { filter: brightness(1.35); } }
 
@@ -130,8 +125,8 @@
     .tk-chip.atk b { color: var(--neon-yellow); }
     .tk-chip.rng b { color: var(--neon-purple); }
     .tk-chip.mov b { color: #6fa8ff; }
-    .tk-chip.warn { border-color: rgba(255,45,149,.45); color: var(--neon-pink); }
-    .tk-chip.good { border-color: rgba(57,255,20,.35); color: var(--neon-green); }
+    .tk-chip.warn { border-color: rgb(var(--nc-pink-rgb) / .45); color: var(--neon-pink); }
+    .tk-chip.good { border-color: rgb(var(--nc-green-rgb) / .35); color: var(--neon-green); }
     .tk-endturn { margin: 4px auto 8px; min-width: 150px; }
     .tk-zoom-bar { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 8px auto 2px; }
     .tk-zoom-bar .btn { min-width: 44px; min-height: 44px; padding: 0 10px; font-size: 12px; }
@@ -153,8 +148,8 @@
       box-shadow: 0 0 30px color-mix(in srgb, var(--accent, #00f0ff) 25%, transparent);
     }
     .tk-modal h2 { font-family: var(--font-pixel); font-size: 15px; margin-bottom: 10px; line-height: 1.5; }
-    .tk-modal h2.win { color: var(--neon-green); text-shadow: 0 0 10px rgba(57,255,20,.6); }
-    .tk-modal h2.lose { color: var(--neon-pink); text-shadow: 0 0 10px rgba(255,45,149,.6); }
+    .tk-modal h2.win { color: var(--neon-green); text-shadow: 0 0 10px rgb(var(--nc-green-rgb) / .6); }
+    .tk-modal h2.lose { color: var(--neon-pink); text-shadow: 0 0 10px rgb(var(--nc-pink-rgb) / .6); }
     .tk-modal p { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-bottom: 12px; }
     .tk-result { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 14px; }
     .tk-result div { border: 1px solid rgba(24,32,52,.12); border-radius: 8px; padding: 7px 8px; font-size: 11px; color: var(--text-dim); }
@@ -187,19 +182,20 @@
 </nav>
   <h1 class="seo-h1">战棋对决</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js"></script>
-  <script src="../../assets/js/core/input.js"></script>
-  <script src="../../assets/js/core/loop.js"></script>
-    <script src="../../assets/js/core/i18n.js"></script>
-  <script src="../../assets/js/core/i18n-dict.js"></script>
-<script src="../../games.js"></script>
-  <script src="tactics-i18n.js?v=20261105i"></script>
-  <script src="../../assets/js/core/extras.js"></script>
-  <script src="../../assets/js/rank.js"></script>
-<script src="../../assets/js/shell.js"></script>
-  <script src="../_shared/kit.js"></script>
-  <script src="tactics.js?v=20261105i"></script>
-  <script src="../../assets/js/pwa.js"></script>
+  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
+  <script src="../../assets/js/core/input.js?v=20261112b"></script>
+  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
+<script src="../../games.js?v=20261112b"></script>
+  <script src="tactics-i18n.js?v=20261112b"></script>
+  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
+<script src="../../assets/js/shell.js?v=20261112b"></script>
+  <script src="../_shared/kit.js?v=20261112b"></script>
+  <script src="tactics.js?v=20261112b"></script>
+  <script src="../../assets/js/pwa.js?v=20261112b"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -210,6 +206,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=2"></script>
+<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
 </body>
 </html>

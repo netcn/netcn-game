@@ -18,8 +18,8 @@
   d.en['gs.diceluck.tut3'] = 'The first 6 categories sum matching dice (reach 63+ for a +35 bonus); the last 7 are patterns.';
   d.zh['gs.diceluck.tut4t'] = '计分';
   d.en['gs.diceluck.tut4t'] = 'Scoring';
-  d.zh['gs.diceluck.tut4'] = '成绩=13 类总分。';
-  d.en['gs.diceluck.tut4'] = 'Score = total of all 13 categories.';
+  d.zh['gs.diceluck.tut4'] = '13 类全部填完即完成一局，成绩为各类得分总和；前 6 类合计满 63 分另有 +35 奖励。最高分保存在本机。';
+  d.en['gs.diceluck.tut4'] = 'A round ends once all 13 categories are filled. Your score is their total, plus a +35 bonus when the first six reach 63. Your best score is saved on this device.';
   d.zh['gs.diceluck.rollBtn'] = '掷骰子（剩 {n} 次）';
   d.en['gs.diceluck.rollBtn'] = 'Roll dice ({n} left)';
   d.zh['gs.diceluck.msgStart'] = '掷骰 → 点骰子锁定 → 选类别记分';
