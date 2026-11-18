@@ -1,0 +1,6 @@
+# 游戏厅
+
+> 中文轻量网页游戏集合：53 款游戏，打开即玩，无需下载。
+
+- 首页：https://game.netcn.org/
+- Sitemap：https://game.netcn.org/sitemap.xml

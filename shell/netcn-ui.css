@@ -225,8 +225,9 @@ input[type="search"],input[type="text"],.search-input{
   border:1px solid var(--ui-line)!important;border-radius:var(--ui-r-pill)!important;
 }
 .quiz-answer{
-  background:var(--ui-ac-soft)!important;color:var(--ui-ac)!important;
-  border:1px solid var(--ui-line)!important;border-radius:var(--ui-r)!important;
+  background:var(--ui-ac-soft)!important;color:var(--ui-ink)!important;
+  border:1px solid var(--ui-line)!important;border-left:4px solid var(--ui-ac)!important;
+  border-radius:var(--ui-r)!important;
 }
 /* 主按钮：选择器要压过上面的 button.btn（0,1,1） */
 button.btn-answer,.btn.btn-answer{
@@ -234,7 +235,7 @@ button.btn-answer,.btn.btn-answer{
   box-shadow:none!important;
 }
 button.btn-answer:hover,.btn.btn-answer:hover{background:var(--ui-ac)!important;color:#fff!important}
-button.btn-answer.hide-answer,.btn.btn-answer.hide-answer{background:#dc2626!important;border-color:#dc2626!important}
+button.btn-answer.hide-answer,.btn.btn-answer.hide-answer{background:var(--ui-card)!important;color:var(--ui-ink2)!important;border-color:var(--ui-line)!important}
 .quiz-controls{
   background:var(--ui-card)!important;border:1px solid var(--ui-line)!important;
   border-radius:var(--ui-r)!important;box-shadow:var(--ui-shadow)!important;
