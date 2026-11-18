@@ -1,5 +1,5 @@
 /* ============================================================
-   netcn 统一运行时内核 · v20261118a2
+   netcn 统一运行时内核 · v20261118b3
    ------------------------------------------------------------
    五站共用一份：判站、明暗、中英字典、顶栏/页脚/搜索/无障碍文案、
    首页标题、移动端 App 底部 Tab、状态栏颜色、PWA 安装钩子。
@@ -81,8 +81,8 @@
       installTitle: '把 netcn 装到桌面，用起来更像 App', installBtn: '安装', installNo: '不用了'
     },
     en: {
-      site: { nav: 'Nav', ask: 'Science Q&A', quiz: 'Brain Teasers', game: 'Arcade', sky: 'Sky Watch', chenhua: '出尘入画', xiqi: '稀奇奇', chidu: '尺度' },
-      tab: { nav: 'Nav', ask: 'Ask', quiz: 'Quiz', game: 'Games', sky: 'Sky', chenhua: '尘画', xiqi: '稀奇', chidu: '尺度' },
+      site: { nav: 'Nav', ask: 'Science Q&A', quiz: 'Brain Teasers', game: 'Arcade', sky: 'Sky Watch', chenhua: 'Chenhua', xiqi: 'Xiqiqi', chidu: 'Chidu' },
+      tab: { nav: 'Nav', ask: 'Ask', quiz: 'Quiz', game: 'Games', sky: 'Sky', chenhua: 'Chenhua', xiqi: 'Xiqiqi', chidu: 'Chidu' },
       brand: { nav: 'Simple Nav', ask: 'Science Q&A', quiz: 'Brain Teasers', game: 'Arcade', sky: 'Sky Watch' },
       ph: {
         nav: 'Search sites...', ask: 'Search science questions, or just wander…',
@@ -229,7 +229,7 @@
       th.setAttribute('aria-label', curTheme() === 'dark' ? t.themeLight : t.themeDark);
     }
     if (lg) {
-      lg.textContent = l === 'en' ? '中' : 'EN';
+      lg.textContent = l === 'en' ? 'ZH' : 'EN';
       lg.setAttribute('aria-label', l === 'en' ? t.langToZh : t.langToEn);
     }
     /* 页脚 */
