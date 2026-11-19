@@ -7,8 +7,8 @@
    版本号约定：全站所有本地 js/css/woff2 只用 ASSET_VER 一个值，
    HTML 由 tools/normalize_pages.py 统一注入，改版只需改这里 + 工具里的 VER。
    ============================================================ */
-var CACHE = 'arcade-hall-v16';
-var ASSET_VER = '20261112b';
+var CACHE = 'arcade-hall-v22';
+var ASSET_VER = '20261118h';
 
 /* 各游戏目录内的额外脚本（非 <id>.js / <id>-i18n.js），
    需与 index.html 中同版本号一起预缓存 */

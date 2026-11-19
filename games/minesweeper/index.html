@@ -38,20 +38,20 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     /* ---------- 扫雷 · 旗舰版 ---------- */
     .ms-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; }
 
     .ms-pick { width: min(640px, 100%); text-align: center; margin: 0 auto 2px; }
     .ms-pick-title {
-      font-family: var(--font-pixel); font-size: 9px; letter-spacing: 2px;
+      font-family: var(--font-pixel); font-size: 10px; letter-spacing: 2px;
       color: var(--text-dim); margin-bottom: 6px;
     }
     .ms-diff-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
@@ -67,7 +67,7 @@
     }
     .ms-diff-btn b { font-weight: 400; font-size: 11px; color: var(--text-main); white-space: nowrap; }
     .ms-diff-btn small {
-      font-family: var(--font-body); font-size: 9px; letter-spacing: 0.5px;
+      font-family: var(--font-body); font-size: 10px; letter-spacing: 0.5px;
       color: var(--text-dim); white-space: nowrap;
     }
     .ms-diff-btn:hover { border-color: rgb(var(--nc-cyan-rgb) / 0.7); background: rgb(var(--nc-cyan-rgb) / 0.07); }
@@ -81,7 +81,7 @@
     .ms-diff-btn.is-active small { color: rgba(220, 250, 255, 0.8); }
     .ms-custom-toggle {
       margin-top: 7px; min-height: 34px; padding: 5px 12px;
-      font-family: var(--font-pixel); font-size: 9px; color: var(--text-dim);
+      font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim);
       background: transparent; border: 1px dashed rgb(var(--nc-purple-rgb) / 0.35);
       border-radius: 8px; cursor: pointer;
     }
@@ -165,7 +165,7 @@
     .ms-cell:not(.open):not(.mine):active { transform: translateY(1px) scale(0.97); }
     .ms-board.d-easy .ms-cell { font-size: 16px; }
     .ms-board.d-mid .ms-cell { font-size: 12px; border-radius: 4px; }
-    .ms-board.d-hard .ms-cell { font-size: 10px; border-radius: 3px; }
+    .ms-board.d-hard .ms-cell { font-size: 11px; border-radius: 3px; }
 
     .ms-cell.open {
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
@@ -299,21 +299,21 @@
     .ms-result-stats { display: flex; justify-content: center; gap: 18px; margin: 6px 0 8px; }
     .ms-result-stats div {
       display: flex; flex-direction: column; gap: 4px;
-      font-size: 10px; color: var(--text-dim);
+      font-size: 11px; color: var(--text-dim);
     }
     .ms-result-stats b { font-family: var(--font-pixel); font-size: 14px; color: var(--neon-cyan); }
     .ms-result-stats div:last-child b { color: var(--neon-yellow); }
     .ms-record {
-      margin: 4px 0 8px; font-family: var(--font-pixel); font-size: 10px;
+      margin: 4px 0 8px; font-family: var(--font-pixel); font-size: 11px;
       color: var(--neon-green); text-shadow: 0 0 8px rgb(var(--nc-green-rgb) / 0.6);
       animation: best-flash 0.35s ease 3;
     }
     .ms-result-again { width: 100%; margin-top: 4px; }
-    .ms-result-change { margin: 10px 0 6px; font-size: 10px; color: var(--text-dim); }
+    .ms-result-change { margin: 10px 0 6px; font-size: 11px; color: var(--text-dim); }
     .ms-result-diffs { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
     .ms-mini-btn {
       min-height: 38px; padding: 9px 10px;
-      font-family: var(--font-pixel); font-size: 9px; color: var(--neon-cyan);
+      font-family: var(--font-pixel); font-size: 10px; color: var(--neon-cyan);
       background: transparent; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.35);
       border-radius: 7px; cursor: pointer;
     }
@@ -322,21 +322,54 @@
     .ms-controls { margin-top: 12px; }
 
     @media (max-width: 480px) {
-      .ms-pick-title { font-size: 8px; letter-spacing: 1px; }
+      .ms-pick-title { font-size: 9.5px; letter-spacing: 1px; }
       .ms-diff-btn { min-height: 42px; padding: 5px 11px; }
-      .ms-diff-btn b { font-size: 10px; }
-      .ms-diff-btn small { font-size: 8px; }
+      .ms-diff-btn b { font-size: 11px; }
+      .ms-diff-btn small { font-size: 9.5px; }
       .ms-hud { gap: 6px; margin-top: 10px; }
-      .ms-hud-item { min-height: 36px; padding: 6px 9px; font-size: 10px; gap: 6px; }
+      .ms-hud-item { min-height: 36px; padding: 6px 9px; font-size: 11px; gap: 6px; }
       .ms-hud-item .stat-value { font-size: 12px; }
       .ms-board { padding: 4px; gap: 1px; }
       .ms-board.d-mid, .ms-board.d-hard { gap: 1px; }
       .ms-board.d-easy .ms-cell { font-size: 15px; border-radius: 4px; }
-      .ms-board.d-mid .ms-cell { font-size: 10px; border-radius: 3px; }
+      .ms-board.d-mid .ms-cell { font-size: 11px; border-radius: 3px; }
       .ms-board.d-hard .ms-cell { font-size: 8.5px; border-radius: 2px; }
       .ms-result-card { padding: 12px 10px; }
       .ms-result-title { font-size: 14px; }
-      .ms-result-sub { font-size: 10px; }
+      .ms-result-sub { font-size: 11px; }
+    }
+
+    /* 平板/桌面：三种难度棋盘按屏幕放大，避免小棋盘悬空 */
+    @media (min-width: 641px) {
+      .ms-board.d-easy { width: min(500px, calc(100vw - 160px)); }
+      .ms-board.d-mid { width: min(600px, calc(100vw - 120px)); }
+      .ms-board.d-hard { width: min(660px, calc(100vw - 100px)); }
+    }
+    /* 1280 桌面：难度/HUD 左栏 + 棋盘右栏 */
+    @media (min-width: 1100px) {
+      main#game-root:has(.ms-wrap) { width: min(980px, calc(100% - 40px)) !important; }
+      .ms-wrap {
+        display: grid;
+        grid-template-columns: minmax(300px, 340px) minmax(0, 1fr);
+        grid-template-areas:
+          "pick board"
+          "tools board"
+          "custom board"
+          "hud board"
+          "msg board";
+        column-gap: 26px;
+        align-items: start;
+        width: 100%;
+      }
+      .ms-pick { grid-area: pick; width: 100%; margin: 0; }
+      .ms-tools { grid-area: tools; width: 100%; margin-top: 12px; }
+      .ms-custom { grid-area: custom; }
+      .ms-hud { grid-area: hud; width: 100%; margin-top: 12px; }
+      .ms-msg { grid-area: msg; width: 100%; }
+      .ms-stage { grid-area: board; align-self: center; margin: 0 auto; }
+      .ms-board.d-easy { width: min(440px, 100%); }
+      .ms-board.d-mid { width: min(560px, 100%); }
+      .ms-board.d-hard { width: min(600px, 100%); }
     }
 
     /* ---------- 工具条 / 每日 / 成就 / 无猜 ---------- */
@@ -348,7 +381,7 @@
       appearance: none; -webkit-appearance: none;
       display: inline-flex; align-items: center; gap: 7px;
       min-height: 44px; min-width: 44px; padding: 6px 12px;
-      font-family: var(--font-pixel); font-size: 9px; letter-spacing: 0.5px;
+      font-family: var(--font-pixel); font-size: 10px; letter-spacing: 0.5px;
       color: var(--text-dim); cursor: pointer;
       background: rgba(24,32,52,0.03);
       border: 1px solid rgb(var(--nc-cyan-rgb) / 0.22);
@@ -359,7 +392,7 @@
     .ms-tool-btn:active { transform: scale(0.97); }
     .ms-tool-btn .ms-tool-txt { white-space: nowrap; }
     .ms-tool-btn small {
-      font-family: var(--font-body); font-size: 9px; letter-spacing: 0;
+      font-family: var(--font-body); font-size: 10px; letter-spacing: 0;
       color: var(--text-dim); white-space: nowrap;
     }
     .ms-tool-btn.is-on {
@@ -457,11 +490,11 @@
     .ms-mini-btn { min-height: 44px; }
     .ms-ach-new {
       display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-      gap: 5px; margin: 2px 0 8px; font-size: 10px; color: var(--neon-green);
+      gap: 5px; margin: 2px 0 8px; font-size: 11px; color: var(--neon-green);
     }
     .ms-ach-new-lbl { color: var(--text-dim); }
     .ms-ach-chip {
-      padding: 3px 7px; border-radius: 9px; font-size: 10px; color: var(--neon-yellow);
+      padding: 3px 7px; border-radius: 9px; font-size: 11px; color: var(--neon-yellow);
       background: rgb(var(--nc-yellow-rgb) / 0.1); border: 1px solid rgb(var(--nc-yellow-rgb) / 0.45);
       white-space: nowrap;
     }
@@ -493,7 +526,7 @@
     .ms-ach-prog { font-size: 11px; color: var(--text-dim); margin-left: auto; }
     .ms-ach-close {
       min-width: 64px; min-height: 44px; padding: 6px 12px;
-      font-family: var(--font-pixel); font-size: 9px; color: var(--neon-cyan);
+      font-family: var(--font-pixel); font-size: 10px; color: var(--neon-cyan);
       background: transparent; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.4);
       border-radius: 9px; cursor: pointer;
     }
@@ -519,14 +552,89 @@
       transform: rotate(-40deg); filter: drop-shadow(0 0 5px rgb(var(--nc-yellow-rgb) / 0.8));
     }
     .ms-ach-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-    .ms-ach-body b { font-family: var(--font-pixel); font-size: 10px; font-weight: 400; color: var(--text-main); }
+    .ms-ach-body b { font-family: var(--font-pixel); font-size: 11px; font-weight: 400; color: var(--text-main); }
     .ms-ach-item.got .ms-ach-body b { color: var(--neon-yellow); }
-    .ms-ach-body small { font-size: 10px; color: var(--text-dim); line-height: 1.5; }
+    .ms-ach-body small { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
   </style>
-<style>@media (max-width:480px){ .ms-stage{margin-top:4px;} .ms-controls{margin-top:4px;} .ms-hud{margin-top:6px;} .ms-board.d-easy,.ms-board.d-mid,.ms-board.d-hard{width:min(640px,calc(100vw - 40px));} }</style>
+<style>
+/* 2026-11-18 手机端：难度一行、工具一行、HUD 一行，棋盘进入首屏 */
+@media (max-width: 640px) {
+  .ms-wrap > .ms-pick { order: 1; margin: 0; }
+  .ms-pick-title { display: none; }
+  .ms-diff-row { flex-wrap: nowrap; gap: 5px; }
+  .ms-diff-btn { flex: 1 1 0; min-width: 0; min-height: 46px; padding: 5px 2px; border-radius: 10px; }
+  .ms-diff-btn b { font-size: 10.5px; }
+  .ms-diff-btn small { font-size: 10px; letter-spacing: -0.02em; }
+  .ms-diff-best { font-size: 9.5px; }
+  #diff-custom { order: 2; min-height: 32px; margin: 5px 0 0; padding: 4px 12px; font-size: 11px; border-radius: 8px; }
+  .ms-tools { order: 3; margin-top: 6px; gap: 5px; flex-wrap: nowrap; }
+  .ms-tool-btn { flex: 1 1 0; min-width: 0; min-height: 38px; padding: 5px 6px; gap: 5px; font-size: 10.5px; border-radius: 9px; }
+  .ms-tool-btn small { display: none; }
+  .ms-tool-ic { width: 14px; height: 14px; }
+  .ms-hud { order: 4; margin-top: 6px; flex-wrap: nowrap; gap: 5px; }
+  .ms-hud-item { flex: 1 1 0; min-width: 0; min-height: 36px; padding: 4px 6px; gap: 5px; font-size: 11px; border-radius: 8px; }
+  .ms-hud-item .stat-value { font-size: 12px; }
+  .ms-msg { order: 5; margin: 4px 0 0; min-height: 16px; font-size: 11.5px; }
+  .ms-stage { order: 6; margin-top: 3px; }
+  .ms-board.d-easy, .ms-board.d-mid, .ms-board.d-hard { width: min(640px, calc(100vw - 32px)); }
+  .ms-controls { order: 7; margin-top: 6px; }
+  .help-text { order: 8; margin: 6px 0 0; font-size: 11.5px; line-height: 1.55; }
+  .ms-hints { order: 9; margin-top: 4px; font-size: 10.5px; line-height: 1.5; }
+}
+
+/* 浅色主题：选中的难度卡是浅紫底，文字必须回到深色 */
+html[data-theme="light"] .ms-diff-btn.is-active b,
+html:not([data-theme="dark"]) .ms-diff-btn.is-active b { color: #2b2350; text-shadow: none; }
+html[data-theme="light"] .ms-diff-btn.is-active small,
+html:not([data-theme="dark"]) .ms-diff-btn.is-active small { color: #5b5470; }
+/* 浅色纸感：盖住的格子改成浅色凹槽，不再是一整块深蓝 */
+html[data-theme="light"] .ms-cell,
+html:not([data-theme="dark"]) .ms-cell {
+  background-color: #dfe6f2;
+  background-image:
+    radial-gradient(circle at 30% 18%, rgba(255, 255, 255, .95), rgba(255, 255, 255, 0) 55%),
+    linear-gradient(150deg, #eff3fa 0%, #dee5f1 58%, #d3dbe9 100%);
+  border-color: rgba(70, 105, 170, .18);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(16, 24, 40, .10);
+}
+html[data-theme="light"] .ms-cell.open,
+html:not([data-theme="dark"]) .ms-cell.open {
+  background: linear-gradient(160deg, #ffffff, #f5f7fb);
+  border-color: rgba(70, 105, 170, .12);
+  box-shadow: inset 0 1px 3px rgba(16, 24, 40, .10);
+}
+html[data-theme="light"] .ms-cell.n1 { color: #2563eb; text-shadow: none; }
+html[data-theme="light"] .ms-cell.n2 { color: #15803d; text-shadow: none; }
+html[data-theme="light"] .ms-cell.n3 { color: #dc2626; text-shadow: none; }
+html[data-theme="light"] .ms-cell.n4 { color: #6d28d9; text-shadow: none; }
+html[data-theme="light"] .ms-cell.n5 { color: #b45309; text-shadow: none; }
+html[data-theme="light"] .ms-cell.n6 { color: #0f766e; text-shadow: none; }
+html[data-theme="light"] .ms-cell.n7 { color: #1f2937; text-shadow: none; }
+html[data-theme="light"] .ms-cell.n8 { color: #6b7280; text-shadow: none; }
+html[data-theme="light"] .ms-cell.flagged {
+  background-image: linear-gradient(150deg, #fff6dc, #f3dfae);
+  border-color: rgba(180, 130, 20, .4);
+}
+/* 2026-11-18 浅色纸面：格子收紧成硬边瓦片，不再像一团棉花 */
+html[data-theme="light"] .ms-board,
+html:not([data-theme="dark"]) .ms-board {
+  gap: 2px; padding: 5px; border-radius: 10px; border-color: rgba(70,105,170,.38);
+}
+html[data-theme="light"] .ms-cell,
+html:not([data-theme="dark"]) .ms-cell {
+  border-radius: 3px;
+  border-color: rgba(70, 105, 170, .30);
+  background-image:
+    linear-gradient(150deg, #f7f9fd 0%, #e6ecf6 62%, #d9e2f0 100%);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 rgba(70,105,170,.10), 0 1px 1px rgba(16,24,40,.08);
+}
+html[data-theme="light"] .ms-cell.open,
+html:not([data-theme="dark"]) .ms-cell.open {
+  border-color: rgba(70, 105, 170, .18);
+  background: #ffffff;
+}
+</style>
 <style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="minesweeper" data-game-title="扫雷" data-best-mode="min">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -548,19 +656,19 @@
 </nav>
   <h1 class="seo-h1">扫雷</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="minesweeper-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="minesweeper.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="minesweeper-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="minesweeper.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -571,6 +679,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

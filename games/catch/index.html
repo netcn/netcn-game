@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     .catch-wrap{width:min(420px,92vw);margin:0 auto;padding-top:16px;text-align:center;}
     .ct-hud{
@@ -53,34 +53,34 @@
       border-radius:10px;background:rgba(24,32,52,0.035);
     }
     .ct-item{display:flex;flex-direction:column;gap:2px;min-width:0;}
-    .ct-lab{font-size:9px;letter-spacing:.06em;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .ct-lab{font-size: 10px;letter-spacing:.06em;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
     .ct-val{font-family:var(--font-pixel);font-size:11px;color:var(--neon-cyan);text-shadow:0 0 6px rgb(var(--nc-cyan-rgb) / 0.5);white-space:nowrap;overflow:hidden;}
     .ct-val.gold{color:var(--neon-yellow);text-shadow:0 0 6px rgb(var(--nc-yellow-rgb) / 0.5);}
     .ct-val.warn{color:var(--neon-pink);text-shadow:0 0 6px rgb(var(--nc-pink-rgb) / 0.6);}
-    .ct-meta{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:var(--text-dim);margin:0 2px 6px;}
+    .ct-meta{display:flex;justify-content:space-between;gap:8px;font-size: 11px;color:var(--text-dim);margin:0 2px 6px;}
     .ct-meta b{color:var(--neon-purple);font-weight:400;}
     .ct-buffs{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:0 2px 6px;}
     .ct-buff{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;
-      font-size:9px;color:var(--c,#fff);border:1px solid var(--c);background:rgba(24,32,52,0.05);}
+      font-size: 10px;color:var(--c,#fff);border:1px solid var(--c);background:rgba(24,32,52,0.05);}
     .ct-buff i{width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 7px var(--c);}
-    .ct-miss{display:flex;flex-direction:column;gap:2px;margin:0 2px 6px;text-align:left;font-size:10px;line-height:1.55;}
+    .ct-miss{display:flex;flex-direction:column;gap:2px;margin:0 2px 6px;text-align:left;font-size: 11px;line-height:1.55;}
     .ct-miss-row{display:flex;align-items:center;gap:5px;color:var(--text-dim);}
-    .ct-miss-row .ico{width:12px;flex:0 0 12px;text-align:center;font-family:var(--font-pixel);font-size:9px;color:rgba(24,32,52,0.32);}
+    .ct-miss-row .ico{width:12px;flex:0 0 12px;text-align:center;font-family:var(--font-pixel);font-size: 10px;color:rgba(24,32,52,0.32);}
     .ct-miss-row.done{color:var(--neon-green);text-shadow:0 0 8px rgb(var(--nc-green-rgb) / 0.35);}
     .ct-miss-row.done .ico{color:var(--neon-green);}
     .ct-miss-row.fail{color:rgba(255,92,122,0.85);}
     .ct-miss-row.fail .ico{color:var(--neon-pink);}
-    .ct-miss-prog{margin-left:auto;font-family:var(--font-pixel);font-size:8px;opacity:.85;white-space:nowrap;}
-    .ct-miss-res{margin-top:7px;font-size:10px;letter-spacing:.04em;color:var(--neon-cyan);text-align:left;}
+    .ct-miss-prog{margin-left:auto;font-family:var(--font-pixel);font-size: 9.5px;opacity:.85;white-space:nowrap;}
+    .ct-miss-res{margin-top:7px;font-size: 11px;letter-spacing:.04em;color:var(--neon-cyan);text-align:left;}
     .ct-lb{margin-top:8px;padding-top:7px;border-top:1px solid rgb(var(--nc-cyan-rgb) / 0.16);text-align:left;}
-    .ct-lb-title{font-size:9px;letter-spacing:.08em;color:var(--text-dim);margin-bottom:4px;}
-    .ct-lb-row{display:flex;align-items:center;gap:6px;padding:1px 5px;border-radius:5px;font-size:10px;line-height:1.75;}
-    .ct-lb-row .rk{width:14px;flex:0 0 14px;font-family:var(--font-pixel);font-size:9px;color:var(--neon-purple);}
-    .ct-lb-row .sc{font-family:var(--font-pixel);font-size:10px;color:var(--neon-yellow);}
-    .ct-lb-row .dt{margin-left:auto;font-size:9px;color:var(--text-dim);white-space:nowrap;}
+    .ct-lb-title{font-size: 10px;letter-spacing:.08em;color:var(--text-dim);margin-bottom:4px;}
+    .ct-lb-row{display:flex;align-items:center;gap:6px;padding:1px 5px;border-radius:5px;font-size: 11px;line-height:1.75;}
+    .ct-lb-row .rk{width:14px;flex:0 0 14px;font-family:var(--font-pixel);font-size: 10px;color:var(--neon-purple);}
+    .ct-lb-row .sc{font-family:var(--font-pixel);font-size: 11px;color:var(--neon-yellow);}
+    .ct-lb-row .dt{margin-left:auto;font-size: 10px;color:var(--text-dim);white-space:nowrap;}
     .ct-lb-row.cur{background:rgb(var(--nc-green-rgb) / 0.12);box-shadow:inset 0 0 0 1px rgb(var(--nc-green-rgb) / 0.35);}
     .ct-lb-row.cur .sc{color:var(--neon-green);}
-    .ct-lb-empty{font-size:10px;color:var(--text-dim);}
+    .ct-lb-empty{font-size: 11px;color:var(--text-dim);}
     .ct-stage{position:relative;border-radius:14px;overflow:hidden;background:var(--nc-stage-2);
       box-shadow: var(--ui-shadow);}
     .ct-stage canvas{display:block;width:100%;height:auto;max-width:100%;margin:0 auto;touch-action:none;background:var(--nc-stage-2);}
@@ -131,13 +131,13 @@
       background:rgba(24,32,52,0.045);border:1px solid rgb(var(--nc-purple-rgb) / 0.45);
       border-radius:10px;transition:background .15s,color .15s,box-shadow .15s;
     }
-    .ct-diff small{font-family:var(--font-body);font-size:10px;color:var(--text-dim);line-height:1.5;}
+    .ct-diff small{font-family:var(--font-body);font-size: 11px;color:var(--text-dim);line-height:1.5;}
     .ct-diff:hover,.ct-diff:focus-visible{background:rgb(var(--nc-purple-rgb) / 0.2);color:var(--text-main);box-shadow:0 0 14px rgb(var(--nc-purple-rgb) / 0.35);}
     .ct-diff:active{transform:scale(0.97);}
     .ct-btns{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px;}
     .ct-btns .btn{min-height:44px;padding:10px 14px;font-size:11px;}
     .ct-stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0 2px;}
-    .ct-stat{padding:6px 8px;border-radius:8px;background:rgba(24,32,52,0.05);font-size:9px;color:var(--text-dim);text-align:left;}
+    .ct-stat{padding:6px 8px;border-radius:8px;background:rgba(24,32,52,0.05);font-size: 10px;color:var(--text-dim);text-align:left;}
     .ct-stat b{display:block;margin-top:3px;font-family:var(--font-pixel);font-size:12px;color:var(--neon-yellow);}
     .ct-record{min-height:16px;margin-top:7px;font-size:11px;color:var(--neon-green);text-shadow:0 0 8px rgb(var(--nc-green-rgb) / 0.55);}
     .ct-touch{display:flex;gap:10px;margin:9px 0 0;}
@@ -147,16 +147,14 @@
     .ct-help{font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:10px;text-align:left;
       background:rgba(24,32,52,0.04);border-radius:8px;padding:10px 12px;}
     @media (max-width:400px){
-      .ct-lab{font-size:8px;letter-spacing:0;}
-      .ct-val{font-size:10px;}
+      .ct-lab{font-size: 9.5px;letter-spacing:0;}
+      .ct-val{font-size: 11px;}
       .ct-card h2{font-size:13px;}
       .ct-card{padding:14px 11px;}
-      .ct-btns .btn{padding:10px 10px;font-size:10px;}
+      .ct-btns .btn{padding:10px 10px;font-size: 11px;}
     }
   </style>
 <style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="catch" data-game-title="接物大作战" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -178,20 +176,20 @@
 </nav>
   <h1 class="seo-h1">接物大作战</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="catch-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="catch.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="catch-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="catch.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -202,7 +200,7 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>
 

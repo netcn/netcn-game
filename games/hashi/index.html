@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     .hs-wrap { padding: 10px 8px 18px; width: min(680px, 100%); box-sizing: border-box; margin: 0 auto; text-align: center; }
     .hs-top { display: flex; justify-content: space-between; align-items: center; gap: 6px 12px; flex-wrap: wrap; font-size: 13px; margin: 6px 2px; color: var(--text-dim); }
@@ -110,32 +110,32 @@
     .hs-pack-lv { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 66px; padding: 5px 2px; border-radius: 10px; border: 1px solid rgb(var(--nc-cyan-rgb) / .35); background: linear-gradient(170deg, rgb(var(--nc-cyan-rgb) / .10), rgb(var(--nc-cyan-rgb) / .03)); color: var(--text); cursor: pointer; transition: transform .12s ease, box-shadow .18s ease, border-color .18s ease; animation: hsFade .34s ease both; }
     .hs-pack-lv:hover { transform: translateY(-2px); box-shadow: var(--ui-shadow); border-color: rgb(var(--nc-cyan-rgb) / .7); }
     .hs-pack-lv b { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-cyan); text-shadow: 0 0 8px rgb(var(--nc-cyan-rgb) / .4); }
-    .hs-pack-lv span { font-size: 9px; color: var(--text-dim); white-space: nowrap; }
+    .hs-pack-lv span { font-size: 10px; color: var(--text-dim); white-space: nowrap; }
     .hs-pack-lv.active { border-color: var(--neon-green); background: rgb(var(--nc-green-rgb) / .12); box-shadow: 0 0 14px rgb(var(--nc-green-rgb) / .22); }
     .hs-pack-lv.locked { opacity: .45; cursor: not-allowed; border-color: rgba(24,32,52,.14); background: rgba(24,32,52,.04); }
-    .hs-pack-lv em { font-style: normal; font-size: 9px; color: var(--text-dim); }
+    .hs-pack-lv em { font-style: normal; font-size: 10px; color: var(--text-dim); }
     .hs-pack-tip { margin-top: 10px; font-size: 10.5px; line-height: 1.65; color: var(--text-dim); flex: none; }
     .hs-meta-sum { font-size: 11px; color: var(--neon-yellow); margin-bottom: 8px; flex: none; }
     .hs-meta-body { overflow-y: auto; min-height: 0; flex: 1 1 auto; padding-right: 2px; }
-    .hs-sec-title { font-family: var(--font-pixel); font-size: 10px; letter-spacing: 1px; color: var(--neon-purple); margin: 12px 2px 7px; }
+    .hs-sec-title { font-family: var(--font-pixel); font-size: 11px; letter-spacing: 1px; color: var(--neon-purple); margin: 12px 2px 7px; }
     .hs-ach-list { display: flex; flex-direction: column; gap: 6px; }
     .hs-ach { display: flex; align-items: center; gap: 9px; padding: 7px 8px; border-radius: 10px; border: 1px solid rgba(24,32,52,.1); background: rgba(24,32,52,.03); animation: hsFade .3s ease both; }
     .hs-ach.on { border-color: rgb(var(--nc-yellow-rgb) / .42); background: linear-gradient(100deg, rgb(var(--nc-yellow-rgb) / .10), rgb(var(--nc-yellow-rgb) / .02)); box-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / .1); }
     .hs-ach.off { opacity: .55; }
     .hs-ach-badge { flex: none; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-      background: rgba(24,32,52,.16); font-family: var(--font-pixel); font-size: 8px; color: #071018; }
+      background: rgba(24,32,52,.16); font-family: var(--font-pixel); font-size: 9.5px; color: #071018; }
     .hs-ach.on .hs-ach-badge { background: linear-gradient(160deg, #fff7a8, #ffe600 45%, #ff9f1c); box-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / .55); }
     .hs-ach-txt { flex: 1; min-width: 0; text-align: left; }
     .hs-ach-txt b { display: block; font-size: 12px; color: var(--text); font-weight: 600; }
     .hs-ach.on .hs-ach-txt b { color: var(--neon-yellow); }
-    .hs-ach-txt span { display: block; font-size: 10px; color: var(--text-dim); line-height: 1.45; }
-    .hs-ach em { flex: none; font-style: normal; font-size: 9px; color: var(--text-dim); }
+    .hs-ach-txt span { display: block; font-size: 11px; color: var(--text-dim); line-height: 1.45; }
+    .hs-ach em { flex: none; font-style: normal; font-size: 10px; color: var(--text-dim); }
     .hs-ach.on em { color: var(--neon-green); }
     .hs-meta-records { display: flex; flex-direction: column; gap: 8px; }
     .hs-rec-block { border: 1px solid rgb(var(--nc-cyan-rgb) / .18); border-radius: 10px; padding: 6px 8px; background: rgb(var(--nc-cyan-rgb) / .03); }
-    .hs-rec-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-family: var(--font-pixel); font-size: 10px; color: var(--neon-cyan); margin-bottom: 4px; }
-    .hs-rec-row { display: flex; justify-content: space-between; gap: 8px; font-size: 10px; color: var(--text-dim); line-height: 1.6; }
+    .hs-rec-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); margin-bottom: 4px; }
+    .hs-rec-row { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--text-dim); line-height: 1.6; }
     .hs-rec-row:first-of-type { color: var(--neon-yellow); }
     .hs-meta-empty { font-size: 11px; color: var(--text-dim); padding: 4px 2px 8px; }
     .hs-kb { display: block; margin-top: 4px; color: rgb(var(--nc-cyan-rgb) / .62); }
@@ -149,8 +149,8 @@
       box-shadow: 0 0 28px rgb(var(--nc-yellow-rgb) / .35), 0 8px 26px rgba(0,0,0,.5);
       opacity: 0; animation: hsToastIn .5s cubic-bezier(.2,1.5,.4,1) forwards; pointer-events: none; }
     .hs-ach-toast.out { animation: hsToastOut .45s ease forwards; }
-    .hs-ach-toast .hs-ach-badge { width: 30px; height: 30px; font-size: 9px; background: linear-gradient(160deg, #fff7a8, #ffe600 45%, #ff9f1c); box-shadow: 0 0 14px rgb(var(--nc-yellow-rgb) / .7); }
-    .hs-ach-toast .t1 { font-family: var(--font-pixel); font-size: 9px; color: var(--neon-yellow); letter-spacing: 1px; }
+    .hs-ach-toast .hs-ach-badge { width: 30px; height: 30px; font-size: 10px; background: linear-gradient(160deg, #fff7a8, #ffe600 45%, #ff9f1c); box-shadow: 0 0 14px rgb(var(--nc-yellow-rgb) / .7); }
+    .hs-ach-toast .t1 { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow); letter-spacing: 1px; }
     .hs-ach-toast .t2 { font-size: 12px; color: var(--text-main); margin-top: 2px; }
     @keyframes hsToastIn { to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
     @keyframes hsToastOut { to { opacity: 0; transform: translate(-50%, 14px) scale(.96); } }
@@ -161,7 +161,7 @@
       .hs-pack-card, .hs-meta-card { padding: 12px 10px; }
       .hs-pack-grid { gap: 5px; }
       .hs-pack-lv { min-height: 62px; }
-      .hs-pack-lv span { font-size: 8px; }
+      .hs-pack-lv span { font-size: 9.5px; }
     }
     @media (max-width: 340px) {
       .hs-pack-grid { grid-template-columns: repeat(3, 1fr); }
@@ -174,8 +174,6 @@
     /* 触屏点击兜底：消除双击缩放延迟，保留滚动；不加 !important 以免破坏滑动类游戏 */
     button, [role="button"], .card, .cell, .tile, .piece { touch-action: manipulation; }
 </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="hashi" data-game-title="岛屿连线" data-best-mode="min">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -197,19 +195,19 @@
 </nav>
   <h1 class="seo-h1">岛屿连线</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="hashi-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="hashi.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="hashi-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="hashi.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -220,6 +218,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

@@ -16,9 +16,15 @@ window.GK = (function () {
   function easeOutBack(t) { var c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); }
   function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
 
-  /** 画布初始化：按 devicePixelRatio 放大 backing store，绘制继续用逻辑坐标 */
+  /** 画布初始化：按 devicePixelRatio 放大 backing store，绘制继续用逻辑坐标
+      2026-11-18：上限从 2 提到 3（手机 Retina 更锐），但给 backing store 设
+      600 万像素预算，长画布/大棋盘自动降档，避免 iPad 上显存与填充率爆掉。 */
   function setup(canvas, w, h) {
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var raw = window.devicePixelRatio || 1;
+    var dpr = Math.min(raw, 3);
+    var budget = 6000000;
+    var maxDpr = Math.sqrt(budget / Math.max(1, w * h));
+    if (dpr > maxDpr) dpr = Math.max(1, Math.floor(maxDpr * 4) / 4);
     canvas.setAttribute('width', String(w));
     canvas.setAttribute('height', String(h));
     canvas.width = Math.round(w * dpr);

@@ -38,21 +38,21 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
-    .tk-wrap { padding: 14px 10px 24px; width: min(640px, 98vw); text-align: center; }
+    .tk-wrap { padding: 14px 10px 24px; width: min(640px, 100%); text-align: center; }
     .tk-pick { padding: 18px 10px; }
     .tk-pick-t { font-family: var(--font-pixel); font-size: 16px; letter-spacing: 2px; color: var(--neon-pink); text-shadow: 0 0 12px rgb(var(--nc-pink-rgb) / 0.5); }
     .tk-pick-d { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin: 10px 0 14px; }
     .tk-pick-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     .tk-pick-btns .mode-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 52px; padding: 8px 14px; text-align: center; }
-    .tk-pick-btns small { display: block; font-size: 10px; color: var(--text-dim); line-height: 1.4; }
+    .tk-pick-btns small { display: block; font-size: 11px; color: var(--text-dim); line-height: 1.4; }
     .gh-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; }
     .tk-mode { display: flex; gap: 8px; justify-content: center; margin: 0 0 14px; flex-wrap: wrap; }
     .tk-mode-btn {
@@ -60,7 +60,7 @@
       flex-direction: column; align-items: center; justify-content: center; gap: 3px;
       font-size: 12px; border-radius: 10px;
     }
-    .tk-mode-btn small { font-size: 10px; color: var(--text-dim); line-height: 1.35; }
+    .tk-mode-btn small { font-size: 11px; color: var(--text-dim); line-height: 1.35; }
     .tk-mode-btn.active {
       border-color: var(--neon-cyan); color: var(--neon-cyan);
       box-shadow: var(--ui-shadow);
@@ -91,7 +91,7 @@
       transition: opacity .3s ease, transform .3s cubic-bezier(.2,1.5,.4,1);
     }
     .tk-wave-banner.show { opacity: 1; transform: translate(-50%, 0) scale(1); }
-    .tk-wave-banner small { display: block; font-family: var(--font-mono); font-size: 9px; color: var(--neon-cyan); margin-top: 4px; letter-spacing: .1em; }
+    .tk-wave-banner small { display: block; font-family: var(--font-mono); font-size: 10px; color: var(--neon-cyan); margin-top: 4px; letter-spacing: .1em; }
     .tk-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 10px 0; flex-wrap: wrap; }
     .tk-dpad { display: grid; grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(3, 48px); gap: 4px; }
     .tk-sp { display: block; }
@@ -148,8 +148,6 @@
       .tk-up-btn { min-height: 54px; padding: 9px 8px; }
     }
   </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="tank" data-game-title="铁壁防线" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -171,20 +169,20 @@
 </nav>
   <h1 class="seo-h1">铁壁防线</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="tank-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="tank.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="tank-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="tank.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -195,6 +193,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

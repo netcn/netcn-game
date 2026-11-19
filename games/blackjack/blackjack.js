@@ -675,7 +675,7 @@ window.GAME_TUTORIAL_STEPS = [
       ctx.fillStyle = sweep;
       ctx.fillRect(0, 0, w, h);
     }
-    ctx.fillStyle = 'rgba(0, 240, 255, 0.10)';
+    ctx.fillStyle = 'rgba(255, 224, 138, 0.16)';
     ctx.font = '600 9px monospace';
     ctx.textAlign = 'center';
     ctx.fillText('BLACKJACK · 21', cx, cy + r * 0.46);

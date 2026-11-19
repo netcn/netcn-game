@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     .as-wrap { padding: 10px 10px 16px; width: min(660px, 100%); margin: 0 auto; text-align: center; }
     .as-hud {
@@ -70,7 +70,7 @@
     }
     .as-pause-ico::before { left: 0; }
     .as-pause-ico::after { right: 0; }
-    .as-meters { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 10px; color: var(--text-dim); }
+    .as-meters { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 11px; color: var(--text-dim); }
     .as-meter { display: inline-flex; align-items: center; gap: 4px; letter-spacing: .04em; }
     .as-meter em { font-style: normal; }
     .as-meter b { font-family: Consolas, 'Courier New', monospace; font-size: 11px; color: var(--neon-cyan); min-width: 26px; text-align: left; }
@@ -84,7 +84,15 @@
       overflow: hidden; filter: drop-shadow(0 0 16px rgb(var(--nc-cyan-rgb) / 0.10));
     }
     .as-canvas {
-      display: block; width: 100%; height: auto; border-radius: 12px; background: var(--nc-stage-2);
+      display: block; width: 100%; height: auto; border-radius: 12px;
+      background-color: #05060f !important;
+      background-image:
+        radial-gradient(1px 1px at 28px 36px, rgba(255, 255, 255, .85), transparent 1.6px),
+        radial-gradient(1px 1px at 92px 120px, rgba(170, 220, 255, .65), transparent 1.6px),
+        radial-gradient(2px 2px at 150px 70px, rgba(255, 245, 210, .8), transparent 2.5px),
+        linear-gradient(180deg, #05060f, #0b1226) !important;
+      background-size: 200px 200px, 260px 260px, 340px 340px, 100% 100%;
+      background-repeat: repeat, repeat, repeat, no-repeat;
       border: 1px solid rgb(var(--nc-cyan-rgb) / 0.30); box-shadow: var(--ui-shadow);
       touch-action: none; max-width: 100%;
     }
@@ -98,11 +106,11 @@
       transition: opacity .28s ease, transform .28s cubic-bezier(.2,1.5,.4,1);
     }
     .as-wave-banner.show { opacity: 1; transform: translate(-50%, 0) scale(1); }
-    .as-wave-banner small { display: block; margin-top: 4px; font-family: Consolas, monospace; font-size: 9px; color: var(--neon-cyan); letter-spacing: .1em; }
-    .as-overlay {
+    .as-wave-banner small { display: block; margin-top: 4px; font-family: Consolas, monospace; font-size: 10px; color: var(--neon-cyan); letter-spacing: .1em; }
+    #game-root .as-overlay {
       position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center;
-      background: var(--nc-stage-2); border-radius: 12px;
-      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+      background: rgba(5, 8, 18, .52) !important; border-radius: 12px;
+      -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
     }
     .as-card {
       width: min(330px, 92%); max-height: 94%; overflow: auto; padding: 15px 14px; text-align: center;
@@ -119,11 +127,11 @@
     .as-card .btn { display: block; width: 100%; margin-top: 8px; }
     .as-diffs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 10px 0 6px; }
     .as-diffs .mode-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; width: auto; flex: 1 1 0; min-width: 0; padding: 9px 6px; }
-    .as-diffs small { font-size: 10px; color: var(--text-dim); }
+    .as-diffs small { font-size: 11px; color: var(--text-dim); }
     .as-ctl-help { margin-top: 9px; padding: 7px 9px; text-align: left; font-size: 11px; line-height: 1.55; color: var(--text-dim); background: rgb(var(--nc-cyan-rgb) / 0.05); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.16); border-radius: 8px; }
-    .as-ctl-help b { display: block; margin-bottom: 2px; font-family: var(--font-pixel); font-size: 9px; letter-spacing: .06em; color: var(--neon-cyan); }
+    .as-ctl-help b { display: block; margin-bottom: 2px; font-family: var(--font-pixel); font-size: 10px; letter-spacing: .06em; color: var(--neon-cyan); }
     .as-ctl-help div + div { margin-top: 6px; }
-    .as-pick-hint { margin-top: 8px; font-size: 10px; letter-spacing: .1em; color: var(--neon-cyan); opacity: .8; }
+    .as-pick-hint { margin-top: 8px; font-size: 11px; letter-spacing: .1em; color: var(--neon-cyan); opacity: .8; }
     .as-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 8px; margin: 8px 0; font-size: 11px; color: var(--text-dim); }
     .as-stats b { display: block; margin-top: 2px; color: var(--neon-yellow); font-family: Consolas, monospace; font-size: 14px; }
     .as-new { margin: 2px 0 8px; font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); text-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / 0.7); animation: asPulse 1.1s ease-in-out infinite; }
@@ -150,7 +158,7 @@
     .as-act {
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
       min-width: 56px; min-height: 56px; padding: 0; border-radius: 12px; touch-action: none; cursor: pointer;
-      font-family: var(--font-pixel); font-size: 9px; letter-spacing: .08em;
+      font-family: var(--font-pixel); font-size: 10px; letter-spacing: .08em;
       color: var(--neon-yellow); border: 2px solid var(--neon-yellow);
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       box-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / 0.26), inset 0 0 12px rgb(var(--nc-yellow-rgb) / 0.10);
@@ -178,9 +186,9 @@
     @media (max-width: 420px) {
       .as-wrap { padding: 6px 6px 12px; }
       .as-hud { padding: 6px 7px; gap: 4px; }
-      .as-stat { font-size: 10px; }
+      .as-stat { font-size: 11px; }
       .as-stat b { font-size: 12px; }
-      .as-meters { gap: 7px; font-size: 9px; }
+      .as-meters { gap: 7px; font-size: 10px; }
       .as-shield-bar { width: 54px; }
       .as-stick { width: 124px; height: 124px; }
       .as-stick-knob { width: 50px; height: 50px; margin: -25px 0 0 -25px; }
@@ -194,8 +202,6 @@
     }
   </style>
 <style>@media (max-width:900px){ main#game-root{padding-top:6px;} }</style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="asteroidf" data-game-title="小行星" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -217,20 +223,20 @@
 </nav>
   <h1 class="seo-h1">小行星</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="asteroidf-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="asteroidf.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="asteroidf-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="asteroidf.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -241,7 +247,7 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>
 

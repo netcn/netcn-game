@@ -230,8 +230,9 @@ input[type="search"],input[type="text"],.search-input{
   border:1px solid var(--ui-line)!important;border-radius:var(--ui-r-pill)!important;
 }
 .quiz-answer{
-  background:var(--ui-ac-soft)!important;color:var(--ui-ac)!important;
-  border:1px solid var(--ui-line)!important;border-radius:var(--ui-r)!important;
+  background:var(--ui-ac-soft)!important;color:var(--ui-ink)!important;
+  border:1px solid var(--ui-line)!important;border-left:4px solid var(--ui-ac)!important;
+  border-radius:var(--ui-r)!important;
 }
 /* 主按钮：选择器要压过上面的 button.btn（0,1,1） */
 button.btn-answer,.btn.btn-answer{
@@ -239,7 +240,7 @@ button.btn-answer,.btn.btn-answer{
   box-shadow:none!important;
 }
 button.btn-answer:hover,.btn.btn-answer:hover{background:var(--ui-ac)!important;color:#fff!important}
-button.btn-answer.hide-answer,.btn.btn-answer.hide-answer{background:#dc2626!important;border-color:#dc2626!important}
+button.btn-answer.hide-answer,.btn.btn-answer.hide-answer{background:var(--ui-card)!important;color:var(--ui-ink2)!important;border-color:var(--ui-line)!important}
 .quiz-controls{
   background:var(--ui-card)!important;border:1px solid var(--ui-line)!important;
   border-radius:var(--ui-r)!important;box-shadow:var(--ui-shadow)!important;
@@ -683,7 +684,9 @@ input[type="search"], input[type="text"], input[type="number"], select, .search-
 }
 /* 舞台内的游戏结算浮层是「盖在画布上」的，家族卡片式样 */
 #game-root [class$="-overlay"], #game-root .game-overlay {
-  background: color-mix(in srgb, var(--nc-stage) 94%, transparent) !important;
+  background: color-mix(in srgb, var(--nc-stage) 88%, transparent) !important;
+  -webkit-backdrop-filter: blur(9px) saturate(1.05);
+  backdrop-filter: blur(9px) saturate(1.05);
   color: var(--text-main) !important;
 }
 [class$="-overlay"] h2, .game-overlay h2, .overlay h2 {
@@ -730,18 +733,148 @@ input[type="search"], input[type="text"], input[type="number"], select, .search-
   }
 }
 
-/* ---------- 11. 响应式：与全站栅格同步收窄 ---------- */
-@media (max-width: 560px) {
-  .shell-header { --ui-pad: 10px; gap: 5px; }
-  .shell-back, .shell-help, .shell-restart, .shell-fs, .shell-more-btn {
-    padding: 5px 9px !important; font-size: 11px !important;
-  }
+/* ---------- 11. 响应式：手机 / 平板 / 横屏统一节奏 ----------
+   2026-11-18 移动端重构：
+   · 手机上把舞台贴到屏幕边缘，把宽度和高度还给游戏本体；
+   · 工具条收薄，快捷图标条缩到 36px，标题不再被挤成两行；
+   · 平板放宽舞台上限，画布类游戏有更大的绘制区；
+   · 底部固定 Tab 的高度进 token，内容与浮层统一避让；
+   · 8~10px 的迷你标签统一抬到 10.5px 可读下限。 */
+:root {
+  --nc-safe-t: env(safe-area-inset-top, 0px);
+  --nc-safe-b: env(safe-area-inset-bottom, 0px);
+  --nc-tabbar-h: 62px;
+}
+
+/* 舞台表面：从纯色改为极轻的上光渐变，画布/卡片不再像贴在白纸上 */
+main#game-root {
+  background:
+    radial-gradient(120% 55% at 50% -8%, rgb(var(--nc-cyan-rgb) / .07), transparent 62%),
+    linear-gradient(180deg, var(--nc-stage) 0%, color-mix(in srgb, var(--nc-stage) 93%, var(--nc-stage-2)) 100%) !important;
+}
+html.dark main#game-root,
+html[data-theme="dark"] main#game-root {
+  background:
+    radial-gradient(120% 55% at 50% -8%, rgb(var(--nc-cyan-rgb) / .10), transparent 62%),
+    linear-gradient(180deg, var(--nc-stage) 0%, color-mix(in srgb, var(--nc-stage) 90%, #0b0f16) 100%) !important;
+}
+canvas {
+  border: 1px solid var(--nc-stage-line) !important;
+  box-shadow:
+    0 8px 24px rgba(16, 24, 40, .10),
+    inset 0 1px 0 rgba(255, 255, 255, .04) !important;
+}
+html.dark canvas, html[data-theme="dark"] canvas {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .38), inset 0 1px 0 rgba(255, 255, 255, .05) !important;
+}
+
+/* 平板 / 窄桌面：舞台上限从 960 提到 1000，内边距更从容 */
+@media (min-width: 641px) and (max-width: 1100px) {
   main#game-root {
-    margin: 10px 8px 20px !important;
-    padding: 12px 10px 18px !important;
-    overflow-x: clip;
+    max-width: 1000px !important;
+    margin: 16px auto 24px !important;
+    padding: 18px 18px 22px !important;
+  }
+}
+
+/* 平板/桌面：舞台实际宽度锁到 720，避免内容按手机宽度缩成一条 */
+@media (min-width: 641px) {
+  main#game-root {
+    width: min(720px, calc(100% - 32px)) !important;
+  }
+}
+
+/* 手机：全面贴边 + 工具条收薄 */
+@media (max-width: 640px) {
+  /* 页面级横向滚动一律禁用：棋盘/牌桌需要横移时由内部容器自己滚 */
+  html, body { overflow-x: hidden !important; max-width: 100% !important; }
+  main#game-root {
+    margin: 8px 6px 12px !important;
+    padding: 12px 9px calc(14px + var(--nc-safe-b)) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 2px 10px rgba(16, 24, 40, .06) !important;
+  }
+  .shell-header {
+    padding: 4px 8px !important;
+    gap: 5px !important;
+  }
+  .shell-title { font-size: 13.5px !important; }
+  .shell-back, .shell-help, .shell-restart, .shell-fs, .shell-more-btn {
+    padding: 4px 9px !important;
+    min-height: 40px;
+    font-size: 11.5px !important;
+  }
+  #arcade-quickbar { gap: 4px !important; }
+  #arcade-quickbar .qb-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    font-size: 14px !important;
+  }
+  /* 迷你标签可读下限：8~9px 的 HOLD/NEXT/提示语统一抬到 10.5px */
+  #game-root [class$="-label"], #game-root [class$="-hint"],
+  #game-root [class$="-tip"], #game-root [class$="-note"],
+  #game-root .help-text, #game-root .game-stats, #game-root .hint {
+    font-size: max(10.5px, .82em);
+  }
+}
+
+/* 超窄机（320/360）：再让 2px */
+@media (max-width: 380px) {
+  main#game-root {
+    margin: 6px 4px 10px !important;
+    padding: 10px 7px calc(12px + var(--nc-safe-b)) !important;
+    border-radius: 14px !important;
+  }
+  .shell-header { padding: 3px 6px !important; gap: 4px !important; }
+  .shell-title { font-size: 12.5px !important; }
+  .shell-back, .shell-more-btn { padding: 3px 7px !important; font-size: 11px !important; }
+  #arcade-quickbar .qb-btn {
+    width: 32px !important; height: 32px !important;
+    min-width: 32px !important; min-height: 32px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* 横屏手机：把非游戏高度压到最低，游戏区最大化 */
+@media (max-height: 560px) and (orientation: landscape) {
+  main#game-root {
+    margin: 4px 8px 8px !important;
+    padding: 8px 12px 10px !important;
+    max-width: none !important;
+  }
+  .shell-header { padding: 2px 9px !important; gap: 6px !important; }
+  .shell-back, .shell-help, .shell-restart, .shell-fs, .shell-more-btn {
+    min-height: 34px; padding: 2px 8px !important; font-size: 11px !important;
   }
   #arcade-quickbar .qb-btn { width: 34px !important; height: 34px !important; }
+}
+
+/* 浮层与提示：避让刘海 / 底部横条 / 固定 Tab */
+@media (max-width: 768px) {
+  .tut-overlay, .search-overlay {
+    padding-top: calc(14px + var(--nc-safe-t)) !important;
+    padding-bottom: calc(14px + var(--nc-safe-b)) !important;
+  }
+  .tut-modal, .search-box {
+    max-height: calc(100svh - 110px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  #arcade-toast {
+    bottom: calc(78px + var(--nc-safe-b)) !important;
+  }
+  body[data-game-id] #arcade-toast {
+    bottom: calc(86px + var(--nc-tabbar-h) + var(--nc-safe-b)) !important;
+  }
+}
+
+/* 触屏设备：可点元素统一 40px 下限（快捷条自带 36px 规格，不参与） */
+@media (pointer: coarse) {
+  #game-root button, #game-root [role="button"], #game-root select {
+    min-height: 40px;
+  }
 }
 
 /* 53 页原先各写一遍的 .seo-h1 视觉隐藏规则，统一收归此处 */

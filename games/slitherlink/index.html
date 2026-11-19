@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     .sl-wrap { padding: 12px 10px 20px; width: min(680px, 100%); box-sizing: border-box; text-align: center; }
     .sl-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; margin: 8px 2px; color: var(--text-dim); }
@@ -60,10 +60,10 @@
     .sl-pack-lv { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 58px; border-radius: 10px; border: 1px solid rgb(var(--nc-cyan-rgb) / .35); background: rgb(var(--nc-cyan-rgb) / .08); color: var(--text); cursor: pointer; transition: transform .12s ease, box-shadow .18s ease, background .18s ease; }
     .sl-pack-lv:hover { transform: translateY(-2px); box-shadow: var(--ui-shadow); }
     .sl-pack-lv b { font-family: var(--font-pixel); font-size: 14px; color: var(--neon-cyan); }
-    .sl-pack-lv span { font-size: 9px; color: var(--text-dim); }
+    .sl-pack-lv span { font-size: 10px; color: var(--text-dim); }
     .sl-pack-lv.active { border-color: var(--neon-green); background: rgb(var(--nc-green-rgb) / .12); }
     .sl-pack-lv.locked { opacity: .45; cursor: not-allowed; border-color: rgba(24,32,52,.14); background: rgba(24,32,52,.04); }
-    .sl-pack-lv em { font-style: normal; font-size: 9px; color: var(--text-dim); }
+    .sl-pack-lv em { font-style: normal; font-size: 10px; color: var(--text-dim); }
     .sl-pack-tip { margin-top: 12px; font-size: 11px; line-height: 1.6; color: var(--text-dim); }
     .sl-dot { background: transparent; }
     .sl-cell { display: flex; align-items: center; justify-content: center; font-family: var(--font-pixel); font-size: 14px; color: var(--neon-cyan); text-shadow: 0 0 6px rgb(var(--nc-cyan-rgb) / .5); }
@@ -131,7 +131,7 @@
       box-shadow: var(--ui-shadow);
       transition: box-shadow .55s ease, border-color .55s ease;
     }
-    .sl-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; border-radius: 14px; }
+    .sl-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; border-radius: 14px; background: transparent !important; }
     .sl-board.solved {
       border-color: rgb(var(--nc-green-rgb) / .6);
       box-shadow: 0 0 34px rgb(var(--nc-green-rgb) / .38), inset 0 0 30px rgb(var(--nc-green-rgb) / .14);
@@ -256,7 +256,7 @@
       min-height: 44px;
       margin-top: 10px;
       font-family: var(--font-pixel);
-      font-size: 10px;
+      font-size: 11px;
       color: var(--neon-yellow);
       border: 1px solid rgb(var(--nc-yellow-rgb) / .5);
       border-radius: 8px;
@@ -319,17 +319,17 @@
     }
     .sl-ach-body { min-width: 0; text-align: left; }
     .sl-ach-body b { display: block; font-size: 12px; color: var(--text-main); line-height: 1.4; }
-    .sl-ach-body small { display: block; font-size: 10px; color: var(--text-dim); line-height: 1.5; margin-top: 1px; }
+    .sl-ach-body small { display: block; font-size: 11px; color: var(--text-dim); line-height: 1.5; margin-top: 1px; }
     .sl-ach-item.got .sl-ach-body b { color: var(--neon-yellow); }
     .sl-rec-wrap { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgb(var(--nc-cyan-rgb) / .24); display: flex; flex-direction: column; min-height: 0; flex: 1 1 auto; overflow: hidden; }
     .sl-rec-title { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); letter-spacing: 1px; }
-    .sl-rec-sub { font-size: 10px; color: var(--text-dim); margin: 4px 0 8px; }
+    .sl-rec-sub { font-size: 11px; color: var(--text-dim); margin: 4px 0 8px; }
     .sl-rec-list { overflow-y: auto; max-height: none; min-height: 0; flex: 1 1 auto; }
     .sl-rec-lv { margin-bottom: 7px; padding: 6px 8px; border-radius: 8px; background: rgba(24,32,52,.03); border: 1px solid rgba(24,32,52,.07); }
-    .sl-rec-lv > b { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-purple); letter-spacing: .5px; }
+    .sl-rec-lv > b { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-purple); letter-spacing: .5px; }
     .sl-rec-lv ol { list-style: none; margin: 4px 0 0; padding: 0; }
     .sl-rec-lv li { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: var(--text-dim); font-size: 11px; line-height: 1.8; }
-    .sl-rec-lv li b { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-cyan); }
+    .sl-rec-lv li b { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); }
     .sl-rec-empty { font-size: 11px; color: var(--text-dim); line-height: 1.8; padding: 8px 0; }
     @keyframes slItemIn { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
 
@@ -349,8 +349,8 @@
     .sl-ach-pop-item .sl-medal { width: 34px; height: 34px; }
     .sl-ach-pop-item .sl-medal .sl-star { width: 16px; height: 16px; }
     .sl-ach-pop-txt { min-width: 0; text-align: left; }
-    .sl-ach-pop-txt b { display: block; font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow); letter-spacing: .5px; line-height: 1.5; }
-    .sl-ach-pop-txt small { display: block; font-size: 10px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sl-ach-pop-txt b { display: block; font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); letter-spacing: .5px; line-height: 1.5; }
+    .sl-ach-pop-txt small { display: block; font-size: 11px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     @keyframes slAchPop { from { opacity: 0; transform: translateY(-14px) scale(.9); } to { opacity: 1; transform: none; } }
 
     /* 难度 chips 触控目标不足 44px（共享 .mode-btn 在窄屏仅 27px 高），本目录内补齐 */
@@ -363,20 +363,43 @@
       .sl-pack-lv { min-height: 76px; }
       .sl-pack-lv b { font-size: 13px; }
       .sl-ach-card { padding: 14px 11px; }
-      .sl-ach-pop-txt small { font-size: 9px; }
+      .sl-ach-pop-txt small { font-size: 10px; }
     }
     @media (max-width: 380px) {
       .sl-pack-grid { gap: 6px; }
       .sl-pack-lv { min-height: 72px; }
-      .sl-pack-lv span, .sl-pack-lv em { font-size: 8px; }
+      .sl-pack-lv span, .sl-pack-lv em { font-size: 9.5px; }
       .sl-star { width: 8px; height: 8px; }
       .sl-star.mid { width: 12px; height: 12px; }
       .sl-star.big { width: 22px; height: 22px; }
-      .sl-rec-lv li { font-size: 10px; }
+      .sl-rec-lv li { font-size: 11px; }
+    }
+
+    /* 2026-11-18 浅色纸面：渐变字在纸底上几乎看不见，改为实色墨字 */
+    html[data-theme="light"] .sl-cell,
+    html:not([data-theme="dark"]) .sl-cell {
+      background-image: none !important;
+      color: #4338ca !important;
+      -webkit-text-fill-color: #4338ca !important;
+      filter: none;
+      text-shadow: 0 1px 0 rgba(255,255,255,.6);
+    }
+    html[data-theme="light"] .sl-cell.zero,
+    html:not([data-theme="dark"]) .sl-cell.zero {
+      color: #8b95a7 !important;
+      -webkit-text-fill-color: #8b95a7 !important;
+    }
+    html[data-theme="light"] .sl-cell.full,
+    html:not([data-theme="dark"]) .sl-cell.full {
+      color: #047857 !important;
+      -webkit-text-fill-color: #047857 !important;
+    }
+    html[data-theme="light"] .sl-cell.over,
+    html:not([data-theme="dark"]) .sl-cell.over {
+      color: #dc2626 !important;
+      -webkit-text-fill-color: #dc2626 !important;
     }
   </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="slitherlink" data-game-title="数回" data-best-mode="min">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -398,19 +421,19 @@
 </nav>
   <h1 class="seo-h1">数回</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="slitherlink-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="slitherlink.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="slitherlink-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="slitherlink.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -421,6 +444,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

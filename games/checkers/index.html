@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     .ck-wrap { padding: 12px 10px calc(24px + env(safe-area-inset-bottom)); width: min(560px, 100%); box-sizing: border-box; margin: 0 auto; text-align: center; }
     .ck-topbar { display: flex; gap: 6px; justify-content: center; margin: 0 auto 7px; width: 100%; }
@@ -68,13 +68,13 @@
       background: linear-gradient(90deg, rgb(var(--nc-cyan-rgb) / .08), rgb(var(--nc-pink-rgb) / .05));
       border: 1px solid rgb(var(--nc-cyan-rgb) / .25); box-shadow: inset 0 1px 0 rgba(24,32,52,.05); }
     .ck-stat { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 0; }
-    .ck-stat span { font-size: 9px; color: var(--text-dim); letter-spacing: .08em; white-space: nowrap; }
+    .ck-stat span { font-size: 10px; color: var(--text-dim); letter-spacing: .08em; white-space: nowrap; }
     .ck-stat b { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-cyan); max-width: 100%;
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.5; }
     .ck-stat:nth-child(2) b { color: var(--neon-yellow); }
     .ck-stat:nth-child(3) b { color: var(--neon-green); }
     .ck-stat:nth-child(4) b { color: var(--neon-pink); font-size: 11px; }
-    #ck-mode-label { font-size: 10px; font-family: inherit; color: var(--neon-cyan); }
+    #ck-mode-label { font-size: 11px; font-family: inherit; color: var(--neon-cyan); }
     .ck-stage { position: relative; width: min(520px, 94vw); margin: 0 auto; border-radius: 16px;
       filter: drop-shadow(0 10px 26px rgba(0,0,0,.55)); }
     .ck-canvas { display: block; width: 100%; aspect-ratio: 1 / 1; border-radius: 16px; touch-action: manipulation;
@@ -102,7 +102,7 @@
     .ck-act:disabled { opacity: .38; cursor: not-allowed; }
     .ck-act:hover:not(:disabled) { border-color: rgb(var(--nc-cyan-rgb) / .7); box-shadow: var(--ui-shadow); }
     .ck-puzbar { display: none; align-items: center; justify-content: space-between; gap: 8px;
-      width: min(520px, 96vw); margin: 9px auto 0; padding: 8px 10px; border-radius: 10px;
+      width: min(520px, 100%); margin: 9px auto 0; padding: 8px 10px; border-radius: 10px;
       border: 1px solid rgb(var(--nc-yellow-rgb) / .25); background: rgb(var(--nc-yellow-rgb) / .06); font-size: 11px; color: var(--text-dim); text-align: left; }
     .ck-puzbar.on { display: flex; }
     .ck-puz-btns { display: flex; gap: 6px; flex: 0 0 auto; }
@@ -135,7 +135,7 @@
     .ck-res-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin: 14px 0 2px; }
     .ck-res-cell { display: flex; flex-direction: column; gap: 2px; padding: 7px 8px; border-radius: 9px;
       background: rgba(24,32,52,.045); border: 1px solid rgba(24,32,52,.07); min-width: 0; }
-    .ck-res-cell span { font-size: 9px; letter-spacing: .09em; color: var(--text-dim); }
+    .ck-res-cell span { font-size: 10px; letter-spacing: .09em; color: var(--text-dim); }
     .ck-res-cell b { font-size: 12px; color: var(--text-main); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .ck-res-cell b.new { color: var(--neon-yellow); text-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / .5); }
     .ck-res-grid > .ck-res-cell:last-child:nth-child(odd) { grid-column: 1 / -1; }
@@ -153,24 +153,71 @@
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); color: var(--text-main); font-family: inherit; }
     .ck-pk-card:hover { border-color: rgb(var(--nc-cyan-rgb) / .65); }
     .ck-pk-card b { font-size: 12px; }
-    .ck-pk-tier { font-size: 9px; letter-spacing: .1em; color: var(--neon-green); }
+    .ck-pk-tier { font-size: 10px; letter-spacing: .1em; color: var(--neon-green); }
     .ck-pk-card.tier-2 .ck-pk-tier { color: var(--neon-yellow); }
     .ck-pk-card.tier-3 .ck-pk-tier { color: var(--neon-pink); }
-    .ck-pk-board { font-size: 9px; color: var(--text-dim); }
-    .ck-pk-state { font-size: 9px; color: var(--text-dim); opacity: .85; }
+    .ck-pk-board { font-size: 10px; color: var(--text-dim); }
+    .ck-pk-state { font-size: 10px; color: var(--text-dim); opacity: .85; }
     .ck-pk-state.done { color: var(--neon-green); }
     @media (max-width: 380px) {
       .ck-wrap { padding-left: 6px; padding-right: 6px; }
-      .ck-mode-btn { font-size: 10px; min-height: 44px; }
+      .ck-mode-btn { font-size: 11px; min-height: 44px; }
       .ck-act { min-width: 80px; font-size: 12px; }
       .ck-help { font-size: 11px; }
+    }
+    @media (max-width: 640px) {
+      .ck-wrap { padding: 4px 6px calc(10px + env(safe-area-inset-bottom)); }
+      .ck-topbar { margin-bottom: 5px; }
+      .ck-mode-btn { min-height: 40px; padding: 4px 2px; font-size: 11px; }
+      .ck-diff { margin-bottom: 6px; }
+      .ck-diff-btn { min-height: 40px; padding: 4px 8px; }
+      .ck-hud { padding: 4px 5px; gap: 3px; }
+      .ck-stat span { font-size: 9px; }
+      .ck-stat b { font-size: 11px; }
+      #ck-mode-label { font-size: 10px; }
+      .ck-stage { width: 100%; }
+      .ck-turnbar { margin: 4px 0 0; }
+      .ck-msg { display: none; }
+      .ck-act { min-height: 40px; }
+    }
+    @media (min-width: 641px) {
+      .ck-wrap { width: min(680px, 100%); }
+      .ck-hud, .ck-stage { width: min(620px, 100%); }
+    }
+    /* 1280 桌面：模式/HUD 左栏 + 棋盘右栏 */
+    @media (min-width: 1100px) {
+      main#game-root:has(.ck-wrap) { width: min(980px, calc(100% - 40px)) !important; }
+      .ck-wrap {
+        display: grid;
+        grid-template-columns: minmax(280px, 320px) minmax(0, 1fr);
+        grid-template-areas:
+          "modes board"
+          "diff board"
+          "hud board"
+          "turn board"
+          "msg board"
+          "actions board"
+          "puz board"
+          "help board";
+        column-gap: 26px;
+        align-items: start;
+        width: 100%;
+      }
+      .ck-topbar { grid-area: modes; width: 100%; }
+      .ck-diff { grid-area: diff; width: 100%; }
+      .ck-hud { grid-area: hud; width: 100%; }
+      .ck-turnbar { grid-area: turn; width: 100%; }
+      .ck-msg { grid-area: msg; width: 100%; }
+      .ck-actions { grid-area: actions; width: 100%; }
+      .ck-puzbar { grid-area: puz; width: 100%; }
+      .ck-help { grid-area: help; width: 100%; }
+      .ck-help.ck-lore { display: none; }
+      .ck-stage { grid-area: board; width: min(560px, 64vh); align-self: center; margin: 0 auto; }
     }
     @media (prefers-reduced-motion: reduce) {
       .ck-stage.ck-shake, .ck-ov-card, .ck-ov-icon { animation: none; }
     }
   </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="checkers" data-game-title="跳棋" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -192,19 +239,19 @@
 </nav>
   <h1 class="seo-h1">跳棋</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="checkers-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="checkers.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="checkers-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="checkers.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -215,7 +262,7 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>
 

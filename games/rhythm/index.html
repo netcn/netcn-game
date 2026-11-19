@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     .rh-wrap { padding: 10px 12px 16px; width: min(420px, 100%); margin: 0 auto; text-align: center; box-sizing: border-box; }
     .rh-stage { position: relative; }
@@ -66,43 +66,43 @@
     #rh-menu { justify-content: flex-start; }
     .rh-screen-title { font-family: var(--font-pixel); font-size: 16px; color: var(--text-main);
       text-shadow: 0 0 14px rgb(var(--nc-pink-rgb) / 0.65); line-height: 1.5; }
-    .rh-screen-sub { font-size: 10px; color: var(--text-dim); line-height: 1.7; max-width: 300px; }
+    .rh-screen-sub { font-size: 11px; color: var(--text-dim); line-height: 1.7; max-width: 300px; }
     .rh-songs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; width: 100%; }
     .rh-song {
       min-height: 48px; padding: 5px 3px; border-radius: 8px; cursor: pointer;
       background: rgba(24,32,52,0.04); border: 1px solid rgba(24,32,52,0.13);
       color: var(--text-dim); font-family: inherit; touch-action: manipulation;
     }
-    .rh-song b { display: block; font-family: var(--font-pixel); font-size: 8px; line-height: 1.5; color: var(--text-main); }
-    .rh-song span { display: block; font-size: 8px; opacity: .75; margin-top: 2px; line-height: 1.4; }
+    .rh-song b { display: block; font-family: var(--font-pixel); font-size: 9.5px; line-height: 1.5; color: var(--text-main); }
+    .rh-song span { display: block; font-size: 9.5px; opacity: .75; margin-top: 2px; line-height: 1.4; }
     .rh-song.selected { border-color: var(--neon-cyan); background: rgb(var(--nc-cyan-rgb) / 0.11); box-shadow: var(--ui-shadow); }
     .rh-diffs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; width: 100%; }
     .rh-diff { display: flex; flex-direction: column; gap: 2px; padding: 7px 3px; border-radius: 8px;
       background: rgba(24,32,52,0.04); border: 1px solid rgba(24,32,52,0.14);
       color: var(--text-dim); cursor: pointer; font-family: inherit; min-height: 48px; }
-    .rh-diff b { font-family: var(--font-pixel); font-size: 10px; color: var(--text-main); }
-    .rh-diff span { font-size: 8px; opacity: 0.8; }
+    .rh-diff b { font-family: var(--font-pixel); font-size: 11px; color: var(--text-main); }
+    .rh-diff span { font-size: 9.5px; opacity: 0.8; }
     .rh-diff.selected { border-color: var(--neon-cyan); background: rgb(var(--nc-cyan-rgb) / 0.12);
       box-shadow: var(--ui-shadow); }
-    .rh-best { font-size: 10px; color: var(--text-dim); }
+    .rh-best { font-size: 11px; color: var(--text-dim); }
     .rh-calib {
       width: 100%; background: rgba(24,32,52,0.035); border: 1px solid rgba(24,32,52,0.12);
       border-radius: 8px; padding: 6px 7px; box-sizing: border-box; text-align: left;
     }
-    .rh-calib-head { display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--text-dim); }
-    .rh-calib-head b { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 10px; }
+    .rh-calib-head { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); }
+    .rh-calib-head b { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 11px; }
     .rh-calib-row { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
     .rh-calib-row input[type=range] { flex: 1 1 auto; min-width: 0; accent-color: var(--neon-cyan); height: 24px; }
     .rh-calib-btn {
       flex: 0 0 auto; min-width: 44px; min-height: 44px; border-radius: 7px; cursor: pointer;
       background: rgba(24,32,52,0.06); border: 1px solid rgba(24,32,52,0.16);
-      color: var(--text-main); font-family: var(--font-pixel); font-size: 9px;
+      color: var(--text-main); font-family: var(--font-pixel); font-size: 10px;
     }
     .rh-calib-foot { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
     .rh-calib-test {
       flex: 1 1 auto; min-height: 44px; border-radius: 7px; cursor: pointer;
       background: rgb(var(--nc-cyan-rgb) / 0.10); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.4);
-      color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 8px;
+      color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 9.5px;
     }
     .rh-calib-dot {
       flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%;
@@ -111,13 +111,13 @@
     }
     .rh-calib-dot.beat { transform: scale(1.45); background: #00f0ff; box-shadow: var(--ui-shadow); }
     .rh-screen-btns { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; }
-    .rh-screen-btns .btn { min-height: 44px; font-size: 10px; }
+    .rh-screen-btns .btn { min-height: 44px; font-size: 11px; }
     .rh-res-grid { display: flex; flex-direction: column; gap: 3px; min-width: 220px;
       background: rgba(24,32,52,0.04); border-radius: 10px; padding: 8px 14px; }
-    .rh-res-row { display: flex; justify-content: space-between; gap: 20px; font-size: 10px;
+    .rh-res-row { display: flex; justify-content: space-between; gap: 20px; font-size: 11px;
       color: var(--text-dim); }
     .rh-res-row b { color: var(--neon-cyan); font-weight: 600; }
-    .rh-res-new { margin-top: 2px; color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 9px; }
+    .rh-res-new { margin-top: 2px; color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 10px; }
     .rh-grade { font-family: var(--font-pixel); font-size: 40px; line-height: 1; font-weight: 700; }
     .grade-S { color: #39ff14; text-shadow: 0 0 22px rgb(var(--nc-green-rgb) / 0.8); }
     .grade-A { color: #00f0ff; text-shadow: 0 0 20px rgb(var(--nc-cyan-rgb) / 0.8); }
@@ -135,13 +135,11 @@
     .rh-wrap > .game-controls .btn:disabled { opacity: .4; cursor: default; }
     @media (max-width: 420px) {
       .rh-wrap { padding: 8px 10px 10px; }
-      .rh-msg { font-size: 10px; line-height: 1.65; margin: 5px 0 2px; }
+      .rh-msg { font-size: 11px; line-height: 1.65; margin: 5px 0 2px; }
       .rh-lanes { margin-top: 5px; }
       .rh-wrap > .game-controls { margin: 6px 0; }
     }
   </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="rhythm" data-game-title="节拍脉冲" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -163,20 +161,20 @@
 </nav>
   <h1 class="seo-h1">节拍脉冲</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="rhythm-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="rhythm.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="rhythm-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="rhythm.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -187,6 +185,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

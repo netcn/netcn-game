@@ -38,15 +38,15 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
-    .ch-wrap { padding: 14px 10px 24px; width: min(560px, 96vw); text-align: center; }
+    .ch-wrap { padding: 14px 10px 24px; width: min(560px, 100%); text-align: center; }
     #ch-mode .mode-btn, #ch-diff .mode-btn, #ch-time .mode-btn, #ch-puzzles .mode-btn { min-height: 44px; }
     #ch-diff { margin-bottom: 6px; }
     #ch-diff .mode-btn, #ch-time .mode-btn { padding: 8px 10px; font-size: 11px; }
@@ -56,7 +56,7 @@
     .ch-clock { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 6px;
       padding: 6px 10px; border-radius: 9px; border: 1px solid rgb(var(--nc-cyan-rgb) / .2);
       background: rgb(var(--nc-cyan-rgb) / .05); transition: border-color .18s, box-shadow .18s; }
-    .ch-clock i { font-style: normal; font-size: 10px; color: var(--text-dim); letter-spacing: .06em; }
+    .ch-clock i { font-style: normal; font-size: 11px; color: var(--text-dim); letter-spacing: .06em; }
     .ch-clock b { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-cyan); }
     .ch-clock.active { border-color: var(--neon-cyan); box-shadow: var(--ui-shadow); }
     .ch-clock.active b { color: var(--text-main); }
@@ -67,7 +67,7 @@
       background: linear-gradient(90deg, rgb(var(--nc-cyan-rgb) / .07), rgb(var(--nc-pink-rgb) / .05));
       border: 1px solid rgb(var(--nc-cyan-rgb) / .25); border-radius: 12px; padding: 8px 6px; }
     .ch-stat { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
-    .ch-stat span { font-size: 10px; color: var(--text-dim); letter-spacing: .08em; }
+    .ch-stat span { font-size: 11px; color: var(--text-dim); letter-spacing: .08em; }
     .ch-stat b { font-family: var(--font-pixel); font-size: 13px; color: var(--neon-cyan); white-space: nowrap; overflow: hidden; max-width: 40vw; }
     .ch-stat:nth-child(2) b { color: var(--neon-yellow); }
     .ch-stat:nth-child(3) b { color: var(--neon-pink); font-size: 15px; }
@@ -80,8 +80,8 @@
     .ch-cell.light { background: linear-gradient(145deg, #f2e6ca, #d9c49c); }
     .ch-cell.dark { background: linear-gradient(145deg, #7a5c3c, #4f3823); }
     .ch-piece { font-size: clamp(19px, 5.6vw, 33px); line-height: 1; pointer-events: none; }
-    .ch-piece.white { color: #fffaf0; -webkit-text-stroke: 1px rgba(60,40,10,.55); text-shadow: 0 2px 3px rgba(0,0,0,.5), 0 0 10px rgba(255,246,220,.35); }
-    .ch-piece.black { color: #1d1a24; -webkit-text-stroke: 1px rgba(24,32,52,.35); text-shadow: 0 2px 3px rgba(0,0,0,.45), 0 0 10px rgba(120,140,255,.28); }
+    .ch-piece.white { color: #fffaf0; -webkit-text-stroke: 1.5px rgba(52,34,8,.78); text-shadow: 0 2px 3px rgba(0,0,0,.55), 0 0 6px rgba(255,246,220,.25); }
+    .ch-piece.black { color: #14111c; -webkit-text-stroke: 1.2px rgba(255,246,214,.62); text-shadow: 0 2px 3px rgba(0,0,0,.5), 0 0 8px rgba(255,240,200,.32); }
     .ch-piece.king { filter: drop-shadow(0 0 6px rgb(var(--nc-yellow-rgb) / .55)); }
     .ch-cell.last::before { content: ''; position: absolute; inset: 0; background: rgb(var(--nc-cyan-rgb) / .16); box-shadow: var(--ui-shadow); }
     .ch-cell.sel { box-shadow: inset 0 0 0 3px var(--neon-yellow), 0 0 16px rgb(var(--nc-yellow-rgb) / .55); z-index: 2; }
@@ -138,9 +138,28 @@
   
     /* 触屏点击兜底：消除双击缩放延迟，保留滚动；不加 !important 以免破坏滑动类游戏 */
     button, [role="button"], .card, .cell, .tile, .piece { touch-action: manipulation; }
+
+    /* 2026-11-18 手机端：模式/难度/时限/比分四行压薄，棋盘完整落在首屏 */
+    @media (max-width: 640px) {
+      .ch-wrap { padding: 2px 2px 8px; }
+      #ch-mode .mode-btn, #ch-diff .mode-btn, #ch-time .mode-btn, #ch-puzzles .mode-btn {
+        min-height: 38px; padding: 4px 6px; font-size: 11px;
+      }
+      #ch-diff { margin-bottom: 4px; }
+      .ch-time-row { margin-top: -4px; }
+      .ch-time-row .mode-btn { min-width: 0; }
+      .ch-hud { margin: 0 auto 4px; padding: 4px 8px; min-height: 40px; }
+      .ch-stat span { font-size: 10px; letter-spacing: .04em; }
+      .ch-stat b { font-size: 12.5px; }
+      .ch-clocks { gap: 6px; margin-bottom: 4px; }
+      .ch-clock { min-height: 36px; padding: 3px 8px; }
+      .ch-clock i { font-size: 10px; }
+      .ch-clock b { font-size: 12px; }
+      .ch-grid { margin-top: 2px; }
+      .ch-msg { margin: 5px 0 3px; min-height: 14px; font-size: 11.5px; }
+      .ch-help { margin-top: 4px; font-size: 11px; line-height: 1.55; }
+    }
 </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="chess" data-game-title="国际象棋" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -162,19 +181,19 @@
 </nav>
   <h1 class="seo-h1">国际象棋</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="chess-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="chess.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="chess-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="chess.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -185,7 +204,7 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>
 

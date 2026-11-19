@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     :root { --c4-red: #ff2d6f; --c4-red-deep: #a8003d; --c4-gold: #ffd400; --c4-gold-deep: #b07d00; }
     .c4-wrap { position: relative; width: 100%; max-width: 420px; padding: 10px 0 22px; text-align: center; }
@@ -55,21 +55,21 @@
     .c4-pick-d { max-width: 300px; margin: 10px auto 16px; font-size: 12px; line-height: 1.8; color: var(--text-dim); }
     .c4-modes { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; max-width: 320px; margin: 0 auto; }
     .c4-mode-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 58px; padding: 12px 8px; border-radius: 12px; line-height: 1.4; }
-    .c4-mode-btn small { font-family: var(--font-pixel); font-size: 8px; letter-spacing: 0; color: var(--text-dim); }
+    .c4-mode-btn small { font-family: var(--font-pixel); font-size: 9.5px; letter-spacing: 0; color: var(--text-dim); }
     .c4-mode-btn:hover small { color: var(--text-main); }
     .c4-mode-btn.active small, .c4-mode-btn.selected small { color: #0a0a12; opacity: .8; }
     .c4-mode-ic { display: block; width: 19px; height: 19px; color: var(--neon-cyan); transition: color .15s; }
     .c4-mode-ic svg { display: block; width: 100%; height: 100%; }
     .c4-mode-btn:hover .c4-mode-ic { color: var(--text-main); }
     .c4-mode-btn.active .c4-mode-ic, .c4-mode-btn.selected .c4-mode-ic { color: #0a0a12; }
-    .c4-pick-best { margin-top: 16px; font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); }
+    .c4-pick-best { margin-top: 16px; font-family: var(--font-pixel); font-size: 11px; color: var(--text-dim); }
     .c4-pick-best b { color: var(--neon-yellow); text-shadow: 0 0 8px rgb(var(--nc-yellow-rgb) / .5); }
-    .c4-pick-daily { margin-top: 8px; font-family: var(--font-pixel); font-size: 9px; line-height: 1.7; color: var(--text-dim); }
+    .c4-pick-daily { margin-top: 8px; font-family: var(--font-pixel); font-size: 10px; line-height: 1.7; color: var(--text-dim); }
     .c4-pick-daily::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); vertical-align: middle; }
 
     /* ---------- HUD ---------- */
     .c4-hud { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 10px; }
-    .c4-chip { padding: 5px 8px; border: 1px solid rgb(var(--nc-cyan-rgb) / .22); border-radius: 999px; background: rgb(var(--nc-cyan-rgb) / .05); font-family: var(--font-pixel); font-size: 9px; color: var(--text-dim); white-space: nowrap; }
+    .c4-chip { padding: 5px 8px; border: 1px solid rgb(var(--nc-cyan-rgb) / .22); border-radius: 999px; background: rgb(var(--nc-cyan-rgb) / .05); font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); white-space: nowrap; }
     .c4-chip b { color: var(--neon-yellow); }
     #c4-chip-first { border-color: rgba(255,212,0,.3); color: #ffe37a; }
     #c4-chip-score { color: var(--text-main); }
@@ -174,7 +174,7 @@
 
     /* ---------- 胜利连线 / Canvas 特效层 ---------- */
     .c4-line-layer { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
-    .c4-fx-canvas { position: absolute; inset: 0; z-index: 5; width: 100%; height: 100%; border-radius: inherit; pointer-events: none; }
+    .c4-fx-canvas { position: absolute; inset: 0; z-index: 5; width: 100%; height: 100%; border-radius: inherit; pointer-events: none; background: transparent !important; box-shadow: none !important; border: 0 !important; }
     .c4-winline {
       position: absolute; height: 6px; border-radius: 99px; transform-origin: 0 50%;
       animation: c4line .38s ease-out both;
@@ -220,12 +220,12 @@
       0%, 80%, 100% { opacity: .25; transform: translateY(0); }
       40% { opacity: 1; transform: translateY(-3px); }
     }
-    .c4-rule { margin-top: 5px; min-height: 16px; font-size: 10px; line-height: 1.65; color: var(--text-dim); }
+    .c4-rule { margin-top: 5px; min-height: 16px; font-size: 11px; line-height: 1.65; color: var(--text-dim); }
     .c4-rule strong, .c4-rule b { color: var(--neon-cyan); font-weight: normal; }
-    .c4-tip { margin-top: 7px; font-size: 10px; line-height: 1.6; color: var(--text-dim); }
+    .c4-tip { margin-top: 7px; font-size: 11px; line-height: 1.6; color: var(--text-dim); }
     .c4-tools { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
     .c4-wrap .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; }
-    .c4-tools .btn { font-size: 10px; padding: 10px 18px; }
+    .c4-tools .btn { font-size: 11px; padding: 10px 18px; }
     .c4-btn-ic { display: inline-flex; width: 15px; height: 15px; }
     .c4-btn-ic svg { display: block; width: 100%; height: 100%; }
 
@@ -243,11 +243,11 @@
     .c4-card h2.draw { color: var(--neon-yellow); text-shadow: 0 0 14px rgb(var(--nc-yellow-rgb) / .45); }
     .c4-card p { margin: 10px 0 0; font-size: 12px; line-height: 1.8; color: var(--text-dim); }
     .c4-stats { display: flex; flex-wrap: wrap; gap: 14px 20px; justify-content: center; margin: 16px 0 4px; }
-    .c4-stats span { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); }
+    .c4-stats span { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-pixel); font-size: 11px; color: var(--text-dim); }
     .c4-stats b { font-size: 19px; color: var(--neon-yellow); text-shadow: 0 0 10px rgb(var(--nc-yellow-rgb) / .45); }
     .c4-record {
       display: inline-block; margin-top: 10px; padding: 5px 10px; border: 1px solid rgb(var(--nc-yellow-rgb) / .5); border-radius: 99px;
-      background: rgb(var(--nc-yellow-rgb) / .1); font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow);
+      background: rgb(var(--nc-yellow-rgb) / .1); font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow);
       animation: c4record 1s ease-in-out infinite;
     }
     @keyframes c4record { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
@@ -255,10 +255,10 @@
     .c4-ov-note {
       margin-top: 12px; padding: 7px 10px; border-radius: 8px;
       border: 1px solid rgba(255,212,0,.28); background: rgba(255,212,0,.07);
-      font-size: 10px; line-height: 1.65; color: #ffe37a;
+      font-size: 11px; line-height: 1.65; color: #ffe37a;
     }
     .c4-ov-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
-    .c4-ov-btns .btn { font-size: 10px; padding: 10px 16px; min-height: 44px; }
+    .c4-ov-btns .btn { font-size: 11px; padding: 10px 16px; min-height: 44px; }
     .c4-pause-overlay { z-index: 74; }
     .c4-pause-overlay .c4-card { width: min(330px, 86vw); }
 
@@ -266,9 +266,9 @@
       .c4-wrap { padding-top: 4px; }
       .c4-pick-t { font-size: 16px; }
       .c4-mode-btn { padding: 10px 6px; }
-      .c4-chip { padding: 4px 7px; font-size: 8px; }
+      .c4-chip { padding: 4px 7px; font-size: 9.5px; }
       .c4-card { padding: 20px 16px; }
-      .c4-ov-btns .btn { font-size: 9px; padding: 9px 12px; }
+      .c4-ov-btns .btn { font-size: 10px; padding: 9px 12px; }
     }
     html.theme-daylight .c4-board .c4-cell {
       background: radial-gradient(circle at 50% 38%, #02040b 0%, #060a16 58%, #121c33 100%);
@@ -286,8 +286,6 @@
     html.reduced-motion .c4-record { animation: none !important; }
   </style>
 <style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="fourline" data-game-title="四子棋" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -309,19 +307,19 @@
 </nav>
   <h1 class="seo-h1">四子棋</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="fourline-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="fourline.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="fourline-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="fourline.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -332,6 +330,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

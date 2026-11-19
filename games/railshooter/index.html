@@ -38,15 +38,15 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
-    .rs-wrap { padding: 14px; width: min(620px, 96vw); text-align: center; }
+    .rs-wrap { padding: 14px; width: min(620px, 100%); text-align: center; }
     .rs-hide { display: none !important; }
     .rs-wrap .btn { min-height: 44px; }
     .rs-stage { position: relative; }
@@ -56,11 +56,11 @@
     .rs-hud { display: flex; flex-direction: column; gap: 5px; margin: 0 2px 8px; }
     .rs-hud-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 10px; }
     .rs-hud-item { display: inline-flex; align-items: baseline; gap: 4px; font-size: 11px; }
-    .rs-hud-item em { font-style: normal; font-size: 9px; letter-spacing: .04em; color: rgba(150,180,220,.7); }
+    .rs-hud-item em { font-style: normal; font-size: 10px; letter-spacing: .04em; color: rgba(150,180,220,.7); }
     .rs-hud-item b { color: var(--neon-cyan); font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; }
-    .rs-gauge { display: flex; align-items: center; gap: 4px; flex: 1 1 92px; min-width: 0; font-size: 9px; }
-    .rs-gauge em { font-style: normal; flex: 0 0 auto; font-size: 9px; color: rgba(150,180,220,.75); }
-    .rs-gauge > span { font-size: 9px; color: var(--text-dim); min-width: 20px; text-align: right; font-variant-numeric: tabular-nums; }
+    .rs-gauge { display: flex; align-items: center; gap: 4px; flex: 1 1 92px; min-width: 0; font-size: 10px; }
+    .rs-gauge em { font-style: normal; flex: 0 0 auto; font-size: 10px; color: rgba(150,180,220,.75); }
+    .rs-gauge > span { font-size: 10px; color: var(--text-dim); min-width: 20px; text-align: right; font-variant-numeric: tabular-nums; }
     .rs-bar { position: relative; flex: 1 1 auto; height: 7px; min-width: 20px; border-radius: 3px;
       background: rgba(24,32,52,0.08); overflow: hidden; }
     .rs-bar i { display: block; width: 100%; height: 100%; border-radius: 3px;
@@ -71,19 +71,19 @@
     .rs-bar.reload { height: 3px; margin-top: 2px; }
     .rs-bar.reload i { background: var(--neon-yellow); }
     .rs-ammo-box { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
-    .rs-ammo { font-size: 10px; color: var(--neon-yellow); font-variant-numeric: tabular-nums; }
+    .rs-ammo { font-size: 11px; color: var(--neon-yellow); font-variant-numeric: tabular-nums; }
     .rs-ammo.low { color: #ff8a00; }
     .rs-ammo.empty { color: #ff3b5c; }
 
     .rs-boss { display: flex; align-items: center; gap: 6px; margin: 0 2px; }
-    .rs-boss em { font-style: normal; flex: 0 0 auto; font-family: var(--font-pixel); font-size: 8px;
+    .rs-boss em { font-style: normal; flex: 0 0 auto; font-family: var(--font-pixel); font-size: 9.5px;
       color: var(--neon-pink); }
     .rs-boss .rs-bar { height: 8px; min-width: 40px; }
     .rs-boss .rs-bar i { background: linear-gradient(90deg, #ff2d95, #ff5c74); }
     .rs-boss.phase2 .rs-bar i { background: linear-gradient(90deg, #ff2d95, #ff7a00); }
-    .rs-boss .rs-boss-pct { flex: 0 0 auto; font-size: 9px; color: var(--text-dim); min-width: 26px;
+    .rs-boss .rs-boss-pct { flex: 0 0 auto; font-size: 10px; color: var(--text-dim); min-width: 26px;
       text-align: right; font-variant-numeric: tabular-nums; }
-    .rs-boss .rs-boss-ph { flex: 0 0 auto; font-family: var(--font-pixel); font-size: 8px;
+    .rs-boss .rs-boss-ph { flex: 0 0 auto; font-family: var(--font-pixel); font-size: 9.5px;
       color: var(--neon-yellow); min-width: 50px; text-align: right; }
 
     .rs-msg { min-height: 18px; font-size: 12px; color: var(--neon-green); margin: 7px 0 0; line-height: 1.7; }
@@ -96,14 +96,14 @@
       text-shadow: 0 0 14px rgb(var(--nc-cyan-rgb) / 0.65); line-height: 1.4; }
     .rs-screen-sub { font-size: 11px; color: var(--text-dim); line-height: 1.7; max-width: 380px; }
     .rs-screen-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-    .rs-keys { font-size: 10px; color: rgba(150,180,220,.75); line-height: 1.8; max-width: 360px; }
+    .rs-keys { font-size: 11px; color: rgba(150,180,220,.75); line-height: 1.8; max-width: 360px; }
     .rs-res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 14px; width: min(340px, 100%);
       background: rgba(24,32,52,0.04); border-radius: 10px; padding: 8px 12px; }
-    .rs-res-row { display: flex; justify-content: space-between; gap: 10px; font-size: 10px;
+    .rs-res-row { display: flex; justify-content: space-between; gap: 10px; font-size: 11px;
       color: var(--text-dim); }
     .rs-res-row b { color: var(--neon-cyan); font-weight: 600; font-variant-numeric: tabular-nums; }
     .rs-res-new { grid-column: 1 / -1; text-align: center; color: var(--neon-yellow);
-      font-family: var(--font-pixel); font-size: 9px; }
+      font-family: var(--font-pixel); font-size: 10px; }
     .rs-pause { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 12px;
       align-items: center; justify-content: center;
       background: var(--nc-stage-2); border-radius: 10px; z-index: 2;
@@ -116,7 +116,7 @@
       font-size: 11px; line-height: 1.2; touch-action: none; user-select: none; cursor: pointer;
       background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
       box-shadow: var(--ui-shadow); }
-    .rs-tbtn.wide { font-size: 9px; letter-spacing: .02em; }
+    .rs-tbtn.wide { font-size: 10px; letter-spacing: .02em; }
     .rs-tbtn.is-down { background: linear-gradient(180deg, rgb(var(--nc-cyan-rgb) / 0.28), rgba(0,80,120,0.5));
       transform: translateY(1px); color: var(--text-main); }
 
@@ -124,13 +124,11 @@
       .rs-screen { padding: 8px; gap: 7px; }
       .rs-screen-title { font-size: 15px; }
       .rs-res-grid { padding: 6px 8px; gap: 2px 8px; }
-      .rs-screen-sub { font-size: 10px; }
+      .rs-screen-sub { font-size: 11px; }
       .rs-keys { display: none; }
       .rs-msg { font-size: 11px; }
     }
   </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="railshooter" data-game-title="轨道射击" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -152,20 +150,20 @@
 </nav>
   <h1 class="seo-h1">轨道射击</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="railshooter-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="railshooter.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="railshooter-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="railshooter.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -176,6 +174,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

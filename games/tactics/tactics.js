@@ -398,9 +398,13 @@ window.GAME_TUTORIAL_STEPS = [
       ".tk-modal { max-height: calc(100vh - 28px); overflow-y: auto; }",
       "",
       ".tk-chapter { margin: 0 0 8px; }",
-      ".tk-ch-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 2px; border-bottom: 1px solid rgba(0,240,255,.18); margin-bottom: 8px; }",
+      ".tk-ch-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 2px; border-bottom: 1px solid rgba(0,240,255,.18); margin-bottom: 8px; cursor: pointer; user-select: none; }",
       ".tk-ch-title { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); text-shadow: 0 0 8px rgba(0,240,255,.5); white-space: nowrap; flex: 0 0 auto; }",
       ".tk-ch-stars { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text-dim); white-space: nowrap; flex: 0 0 auto; }",
+      ".tk-ch-chev { display: inline-block; font-style: normal; font-size: 11px; color: var(--neon-cyan); margin-left: 2px; transition: transform .16s; transform: rotate(-90deg); }",
+      ".tk-chapter.is-open .tk-ch-chev { transform: rotate(0deg); }",
+      ".tk-chapter .tk-levels { display: none; }",
+      ".tk-chapter.is-open .tk-levels { display: flex; }",
       ".tk-chapter .tk-levels { margin-bottom: 10px; }",
       ".tk-star { display: inline-block; width: 12px; height: 12px; background: #3a3f55; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }",
       ".tk-star.on { background: var(--neon-yellow); filter: drop-shadow(0 0 4px rgba(255,230,0,.7)); }",
@@ -1651,13 +1655,29 @@ window.GAME_TUTORIAL_STEPS = [
     pickTools.appendChild(goldChip);
 
     levelsEl.innerHTML = '';
+    var currentCh = 0;
+    for (var ci = 0; ci < 9; ci++) {
+      if (!cleared[ci] && levelUnlocked(ci, cleared)) { currentCh = Math.floor(ci / 3); break; }
+    }
     for (var ch = 0; ch < 3; ch++) {
       var sec = document.createElement('div');
-      sec.className = 'tk-chapter';
+      var open = ch === currentCh;
+      sec.className = 'tk-chapter' + (open ? ' is-open' : '');
       sec.innerHTML =
-        '<div class="tk-ch-head"><span class="tk-ch-title">' + T('gs.tactics.chapter' + (ch + 1)) + '</span>' +
+        '<div class="tk-ch-head" role="button" tabindex="0" aria-expanded="' + (open ? 'true' : 'false') + '"><span class="tk-ch-title">' + T('gs.tactics.chapter' + (ch + 1)) + '</span>' +
         '<span class="tk-ch-stars">' + starsHtml(chapterStars(ch) > 0 ? 1 : 0, 1) + ' ' +
-        T('gs.tactics.chapterStars').replace('{n}', chapterStars(ch)).replace('{m}', 9) + '</span></div>';
+        T('gs.tactics.chapterStars').replace('{n}', chapterStars(ch)).replace('{m}', 9) + '<i class="tk-ch-chev">▾</i></span></div>';
+      var head = sec.querySelector('.tk-ch-head');
+      (function (sec, head) {
+        head.addEventListener('click', function () {
+          var isOpen = sec.classList.toggle('is-open');
+          head.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          audio('ui');
+        });
+        head.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); head.click(); }
+        });
+      })(sec, head);
       var list = document.createElement('div');
       list.className = 'tk-levels';
       for (var i = ch * 3; i < ch * 3 + 3; i++) {

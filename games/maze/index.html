@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     .mz-wrap {
       --mz-a: #00f0ff; --mz-b: #ff2d95;
@@ -53,12 +53,13 @@
       --mz-a-line: rgb(var(--nc-cyan-rgb) / 0.30); --mz-a-line2: rgb(var(--nc-cyan-rgb) / 0.68);
       --mz-glow: rgb(var(--nc-cyan-rgb) / 0.18); --mz-glow-b: rgb(var(--nc-pink-rgb) / 0.55);
       --mz-bg: #070b14;
-      padding: 14px 10px 24px; width: min(420px, 98vw); text-align: center;
+      padding: 14px 10px 24px; width: min(420px, 100%); text-align: center;
     }
     .mz-hidden { display: none !important; }
     .mz-pick { padding: 14px 4px 8px; }
     .mz-pick-t { font-family: var(--font-pixel); font-size: 17px; letter-spacing: 2px; color: var(--mz-b); text-shadow: 0 0 14px var(--mz-glow-b); }
     .mz-pick-d { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin: 10px 0 16px; }
+    html[data-theme="light"] .mz-pick-t { color: #b03462; text-shadow: none; letter-spacing: 1px; }
     .mz-modes { display: flex; flex-direction: column; gap: 9px; max-width: 330px; margin: 0 auto; }
     .mz-mode {
       display: flex; align-items: center; justify-content: space-between; gap: 10px;
@@ -75,7 +76,7 @@
     .mz-mode:active { transform: translateY(1px); }
     .mz-mode-main { display: block; min-width: 0; }
     .mz-mode-main b { display: block; font-family: var(--font-pixel); font-size: 13px; color: var(--mz-a); letter-spacing: 1px; }
-    .mz-mode-main small { display: block; font-size: 10px; color: var(--text-dim); margin-top: 4px; line-height: 1.5; }
+    .mz-mode-main small { display: block; font-size: 11px; color: var(--text-dim); margin-top: 4px; line-height: 1.5; }
     .mz-daily-meta { display: block; color: var(--neon-yellow) !important; font-family: ui-monospace, monospace; letter-spacing: .04em; }
     .mz-mode-badge {
       flex: 0 0 auto; min-width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
@@ -83,7 +84,7 @@
       font-family: var(--font-pixel); font-size: 12px; box-shadow: inset 0 0 12px rgb(var(--nc-yellow-rgb) / 0.12);
     }
     .mz-diffrow { display: flex; align-items: center; gap: 6px; max-width: 330px; margin: 14px auto 0; }
-    .mz-diffrow-t { font-size: 10px; color: var(--text-dim); white-space: nowrap; padding: 0 2px; }
+    .mz-diffrow-t { font-size: 11px; color: var(--text-dim); white-space: nowrap; padding: 0 2px; }
     .mz-diffchip {
       flex: 1; min-height: 44px; padding: 6px 4px; border-radius: 10px; cursor: pointer;
       background: rgba(24,32,52,0.05); border: 1px solid rgba(24,32,52,0.16);
@@ -93,12 +94,12 @@
     .mz-diffchip.on { color: var(--mz-a); border-color: var(--mz-a-line2); background: var(--mz-a-soft); box-shadow: 0 0 14px var(--mz-glow); }
     .mz-diffchip:active { transform: translateY(1px); }
     .mz-themerow { display: flex; align-items: center; gap: 6px; max-width: 330px; margin: 10px auto 0; }
-    .mz-themerow-t { font-size: 10px; color: var(--text-dim); white-space: nowrap; padding: 0 2px; }
+    .mz-themerow-t { font-size: 11px; color: var(--text-dim); white-space: nowrap; padding: 0 2px; }
     .mz-themes { display: flex; flex: 1; min-width: 0; gap: 6px; }
     .mz-themechip {
       flex: 1; min-width: 0; min-height: 44px; padding: 6px 3px; border-radius: 10px; cursor: pointer;
       background: rgba(24,32,52,0.05); border: 1px solid rgba(24,32,52,0.16);
-      color: var(--text-dim); font: inherit; font-size: 10px; white-space: nowrap;
+      color: var(--text-dim); font: inherit; font-size: 11px; white-space: nowrap;
       transition: border-color .12s ease, color .12s ease, background .12s ease;
     }
     .mz-themechip.on { color: var(--mz-a); border-color: var(--mz-a-line2); background: var(--mz-a-soft); box-shadow: 0 0 14px var(--mz-glow); }
@@ -109,7 +110,7 @@
     .mz-pill {
       display: flex; align-items: center; gap: 5px; padding: 4px 9px; border-radius: 999px;
       background: rgba(24,32,52,0.05); border: 1px solid var(--mz-a-line);
-      font-size: 10px; color: var(--text-dim); white-space: nowrap;
+      font-size: 11px; color: var(--text-dim); white-space: nowrap;
     }
     .mz-pill b { font-family: ui-monospace, monospace; font-size: 11px; color: var(--text-main); }
     .mz-pill.hot b { color: var(--neon-yellow); }
@@ -152,7 +153,7 @@
       transition: opacity .25s ease, transform .34s cubic-bezier(.2,1.4,.4,1);
     }
     .mz-banner.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    .mz-banner small { display: block; font-family: ui-monospace, monospace; font-size: 10px; color: var(--text-main); margin-top: 6px; letter-spacing: .08em; }
+    .mz-banner small { display: block; font-family: ui-monospace, monospace; font-size: 11px; color: var(--text-main); margin-top: 6px; letter-spacing: .08em; }
     .mz-overlay {
       position: absolute; inset: 0; z-index: 7; display: flex; align-items: center; justify-content: center;
       padding: 10px; border-radius: 12px; background: var(--nc-stage-2);
@@ -166,14 +167,16 @@
     }
     .mz-card h2 { margin: 0 0 6px; font-family: var(--font-pixel); font-size: 15px; color: var(--neon-pink); text-shadow: 0 0 12px rgb(var(--nc-pink-rgb) / 0.55); }
     .mz-card h2.win { color: var(--neon-yellow); text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / 0.6); }
+    html[data-theme="light"] .mz-card h2 { color: #b03462 !important; text-shadow: none !important; }
+    html[data-theme="light"] .mz-card h2.win { color: #9a6a09 !important; text-shadow: none !important; }
     .mz-card .mz-sub { font-size: 11px; color: var(--text-dim); line-height: 1.6; margin: 0 0 10px; }
     .mz-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 8px 0 2px; }
-    .mz-stat { background: rgba(24,32,52,0.045); border: 1px solid rgba(24,32,52,0.09); border-radius: 8px; padding: 6px 8px; text-align: left; font-size: 10px; color: var(--text-dim); }
+    .mz-stat { background: rgba(24,32,52,0.045); border: 1px solid rgba(24,32,52,0.09); border-radius: 8px; padding: 6px 8px; text-align: left; font-size: 11px; color: var(--text-dim); }
     .mz-stat b { display: block; font-family: ui-monospace, monospace; font-size: 13px; color: var(--text-main); margin-top: 2px; }
     .mz-stat.score b { color: var(--neon-yellow); }
     .mz-newrec {
       display: none; margin: 9px auto 0; width: fit-content; padding: 3px 11px; border-radius: 999px;
-      font-size: 10px; letter-spacing: .06em; color: var(--neon-yellow); border: 1px solid rgb(var(--nc-yellow-rgb) / 0.55);
+      font-size: 11px; letter-spacing: .06em; color: var(--neon-yellow); border: 1px solid rgb(var(--nc-yellow-rgb) / 0.55);
       box-shadow: 0 0 14px rgb(var(--nc-yellow-rgb) / 0.28);
     }
     .mz-newrec.on { display: block; animation: mzPulse 1s ease-in-out infinite alternate; }
@@ -184,18 +187,16 @@
     @media (max-width: 480px) {
       .mz-dpad { grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(2, 48px); gap: 5px; }
       .mz-controls { gap: 12px; }
-      .mz-mini { padding: 8px 10px; font-size: 10px; }
+      .mz-mini { padding: 8px 10px; font-size: 11px; }
       .mz-card { padding: 12px 11px; }
       .mz-card h2 { font-size: 13px; }
       .mz-mode { min-height: 64px; padding: 9px 12px; }
       .mz-diffrow { gap: 4px; }
       .mz-themerow { gap: 4px; }
-      .mz-themechip { font-size: 9px; }
+      .mz-themechip { font-size: 10px; }
     }
   </style>
 <style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="maze" data-game-title="迷宫" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -217,20 +218,20 @@
 </nav>
   <h1 class="seo-h1">迷宫</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="maze-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="maze.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="maze-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="maze.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -241,6 +242,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

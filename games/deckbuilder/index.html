@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     /* ============ 卡牌构筑 · 旗舰战斗界面 ============ */
     .dk-wrap {
@@ -82,9 +82,9 @@
     .dk-class:hover { transform: translateY(-2px); border-color: var(--neon-purple); box-shadow: 0 0 16px rgb(var(--nc-purple-rgb) / .28); }
     .dk-class:active { transform: scale(.97); }
     .dk-class.sel { border-color: var(--neon-yellow); box-shadow: 0 0 16px rgb(var(--nc-yellow-rgb) / .3); }
-    .dk-class-n { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-cyan); line-height: 1.6; }
+    .dk-class-n { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); line-height: 1.6; }
     .dk-class.sel .dk-class-n { color: var(--neon-yellow); }
-    .dk-class-d { font-size: 9px; line-height: 1.45; color: var(--text-dim); }
+    .dk-class-d { font-size: 10px; line-height: 1.45; color: var(--text-dim); }
     .dk-diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .dk-diff {
       display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left;
@@ -95,11 +95,11 @@
     }
     .dk-diff:hover { transform: translateY(-3px); border-color: var(--neon-cyan); box-shadow: var(--ui-shadow); }
     .dk-diff:active { transform: scale(0.97); }
-    .dk-diff-n { font-family: var(--font-pixel); font-size: 10px; line-height: 1.7; color: var(--neon-cyan); }
+    .dk-diff-n { font-family: var(--font-pixel); font-size: 11px; line-height: 1.7; color: var(--neon-cyan); }
     .dk-diff:nth-child(2) .dk-diff-n { color: var(--neon-yellow); }
     .dk-diff:nth-child(3) .dk-diff-n { color: var(--neon-pink); }
-    .dk-diff-d { font-size: 10px; line-height: 1.6; color: var(--text-dim); }
-    .dk-diff-best { font-family: var(--font-pixel); font-size: 9px; color: var(--neon-yellow); margin-top: 12px; line-height: 1.8; }
+    .dk-diff-d { font-size: 11px; line-height: 1.6; color: var(--text-dim); }
+    .dk-diff-best { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow); margin-top: 12px; line-height: 1.8; }
     .dk-start-btn { width: 100%; margin-top: 12px; min-height: 48px; }
     .dk-pick-help { font-size: 11px; line-height: 1.8; color: var(--text-dim); margin-top: 10px; text-align: left; background: rgba(24,32,52,0.04); border-radius: 8px; padding: 9px 11px; }
 
@@ -108,7 +108,7 @@
     .dk-chip {
       display: inline-flex; align-items: center; gap: 4px; min-height: 30px; padding: 3px 8px;
       background: rgba(0,0,0,0.34); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.2); border-radius: 8px;
-      color: var(--text-dim); font-size: 10px; line-height: 1.2;
+      color: var(--text-dim); font-size: 11px; line-height: 1.2;
     }
     .dk-chip b { font-family: var(--font-mono); font-size: 12px; color: var(--neon-cyan); }
     .dk-chip.hp b { color: var(--neon-pink); }
@@ -116,7 +116,7 @@
     .dk-chip.gold b { color: var(--neon-yellow); }
     .dk-chip.floor { flex: 0 0 auto; }
     .dk-chip.act {
-      font-family: var(--font-pixel); font-size: 9px; color: var(--neon-purple);
+      font-family: var(--font-pixel); font-size: 10px; color: var(--neon-purple);
       border-color: rgb(var(--nc-purple-rgb) / .45); background: rgb(var(--nc-purple-rgb) / .08);
     }
     .dk-hud-spacer { flex: 1 1 auto; }
@@ -130,7 +130,7 @@
       transition: transform .15s;
     }
     .dk-energy-orb b { font-size: 19px; }
-    .dk-energy-orb small { font-size: 8px; opacity: 0.7; }
+    .dk-energy-orb small { font-size: 9.5px; opacity: 0.7; }
     .dk-energy-orb.low { filter: saturate(0.55) brightness(0.8); }
     .dk-energy-orb.pulse { animation: dk-orb 0.35s ease; }
     @keyframes dk-orb { 0%{transform:scale(1)} 40%{transform:scale(1.22)} 100%{transform:scale(1)} }
@@ -139,7 +139,7 @@
       min-width: 42px; min-height: 34px; padding: 3px 5px; cursor: pointer; user-select: none;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       background: rgba(0,0,0,0.3); border: 1px solid rgba(24,32,52,0.16); border-radius: 7px;
-      color: var(--text-dim); font-size: 8px; line-height: 1.2;
+      color: var(--text-dim); font-size: 9.5px; line-height: 1.2;
     }
     .dk-pile b { font-family: var(--font-mono); font-size: 12px; color: var(--text-main); }
     .dk-pile:active { transform: scale(.95); }
@@ -159,13 +159,13 @@
     }
     .dk-enemy-line { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
     .dk-enemy-name { font-size: 12px; font-weight: 600; color: #ffd6e8; text-shadow: 0 0 8px rgb(var(--nc-pink-rgb) / .5); }
-    .dk-enemy-tag { font-family: var(--font-pixel); font-size: 8px; color: var(--neon-pink); }
+    .dk-enemy-tag { font-family: var(--font-pixel); font-size: 9.5px; color: var(--neon-pink); }
     .dk-enemy-bar { height: 8px; border-radius: 4px; background: rgba(24,32,52,0.12); overflow: hidden; margin-top: 5px; }
     .dk-enemy-bar i { display: block; height: 100%; background: linear-gradient(90deg, #ff2d95, #ff9f1c); transition: width .25s; box-shadow: 0 0 8px rgb(var(--nc-pink-rgb) / .7); }
-    .dk-enemy-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 3px; font-size: 9px; color: var(--text-dim); }
+    .dk-enemy-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 3px; font-size: 10px; color: var(--text-dim); }
     .dk-enemy-block { color: var(--neon-cyan); }
     .dk-intent-badge {
-      display: inline-flex; align-items: center; gap: 4px; font-size: 10px; color: var(--neon-yellow);
+      display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--neon-yellow);
       text-shadow: 0 0 8px rgb(var(--nc-yellow-rgb) / .5);
     }
     .dk-intent-badge .ic { font-size: 12px; }
@@ -177,7 +177,7 @@
     .dk-player-hp { flex: 1 1 120px; text-align: left; }
     .dk-player-hp .bar { height: 8px; border-radius: 4px; background: rgba(24,32,52,0.1); overflow: hidden; margin-top: 3px; }
     .dk-player-hp .bar i { display: block; height: 100%; background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); transition: width .25s; }
-    .dk-player-hp .t { font-size: 9px; color: var(--text-dim); }
+    .dk-player-hp .t { font-size: 10px; color: var(--text-dim); }
     .dk-player-hp .t b { font-family: var(--font-mono); color: var(--text-main); font-size: 11px; }
     .dk-shield {
       display: inline-flex; align-items: center; gap: 3px; min-width: 48px; justify-content: center;
@@ -187,7 +187,7 @@
     .dk-shield .sh { width: 11px; height: 13px; background: var(--neon-cyan); clip-path: polygon(50% 0,100% 22%,88% 78%,50% 100%,12% 78%,0 22%); box-shadow: var(--ui-shadow); }
     .dk-status { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; min-height: 14px; }
     .dk-status span {
-      font-size: 8px; line-height: 1; padding: 3px 5px; border-radius: 5px;
+      font-size: 9.5px; line-height: 1; padding: 3px 5px; border-radius: 5px;
       border: 1px solid rgba(24,32,52,0.17); color: var(--text-dim); background: rgba(0,0,0,.28);
     }
     .dk-status .vuln { color: #ffb7cb; border-color: rgb(var(--nc-pink-rgb) / .4); }
@@ -256,8 +256,8 @@
       background: #070b18; border: 1px solid rgba(24,32,52,.09);
     }
     .dk-art canvas { display: block; width: 100%; height: 100%; }
-    .dk-name { font-size: 10px; line-height: 1.25; color: var(--text-main); font-weight: 600; margin: 4px 3px 0; text-align: center; min-height: 13px; }
-    .dk-desc { font-size: 8px; line-height: 1.35; color: #a9b0c8; margin: 3px 4px; text-align: center; flex: 1 1 auto; }
+    .dk-name { font-size: 11px; line-height: 1.25; color: var(--text-main); font-weight: 600; margin: 4px 3px 0; text-align: center; min-height: 13px; }
+    .dk-desc { font-size: 9.5px; line-height: 1.35; color: #a9b0c8; margin: 3px 4px; text-align: center; flex: 1 1 auto; }
     .dk-rar { position: absolute; right: 3px; bottom: 2px; z-index: 2; font-size: 7px; letter-spacing: .5px; color: rgba(24,32,52,.35); }
     .dk-card.rar-rare .dk-rar { color: var(--neon-yellow); }
     .dk-card.rar-uncommon .dk-rar { color: var(--neon-cyan); }
@@ -273,8 +273,8 @@
     .dk-msg.warn { color: #ffb7cb; background: rgb(var(--nc-pink-rgb) / .09); animation: dk-msg-in .22s ease; }
     .dk-msg.info { color: var(--neon-yellow); }
     @keyframes dk-msg-in { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
-    .dk-log { font-size: 10px; color: var(--text-dim); min-height: 14px; line-height: 1.5; }
-    .dk-hint { font-size: 9px; color: rgba(138,138,160,.8); min-height: 13px; margin-top: 2px; }
+    .dk-log { font-size: 11px; color: var(--text-dim); min-height: 14px; line-height: 1.5; }
+    .dk-hint { font-size: 10px; color: rgba(138,138,160,.8); min-height: 13px; margin-top: 2px; }
 
     /* ---------- 覆盖层（奖励 / 休息 / 宝箱 / 结算 / 地图 / 牌库） ---------- */
     .dk-ov {
@@ -309,7 +309,7 @@
     .dk-event-opt.cant { opacity: .42; cursor: not-allowed; filter: saturate(.4); }
     .dk-event-opt.cant:hover { transform: none; border-color: rgb(var(--nc-purple-rgb) / .32); box-shadow: none; }
     .dk-event-opt-n { font-size: 11px; font-weight: 600; color: var(--neon-cyan); }
-    .dk-event-opt-d { font-size: 9px; line-height: 1.45; color: var(--text-dim); }
+    .dk-event-opt-d { font-size: 10px; line-height: 1.45; color: var(--text-dim); }
     .dk-reward-cards { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; padding: 4px 0; }
     .dk-reward-cards .dk-card { width: 94px; height: 138px; }
     .dk-reward-cards .dk-card .dk-art { height: 52px; }
@@ -343,12 +343,12 @@
     .dk-node.n-boss .dk-node-ic { background: var(--neon-purple); filter: drop-shadow(0 0 10px rgb(var(--nc-purple-rgb) / .9)); clip-path: polygon(50% 0, 95% 25%, 85% 75%, 50% 100%, 15% 75%, 5% 25%); }
     .dk-node.n-event .dk-node-ic { background: var(--neon-purple); filter: drop-shadow(0 0 9px rgb(var(--nc-purple-rgb) / .85)); clip-path: polygon(50% 0, 88% 18%, 100% 50%, 88% 82%, 50% 100%, 12% 82%, 0 50%, 12% 18%); }
     .dk-node.n-shop .dk-node-ic { background: var(--neon-yellow); filter: drop-shadow(0 0 7px rgb(var(--nc-yellow-rgb) / .8)); clip-path: polygon(0 28%, 50% 0, 100% 28%, 100% 78%, 50% 100%, 0 78%); }
-    .dk-map-gold { font-size: 10px; color: var(--neon-yellow); align-self: center; }
+    .dk-map-gold { font-size: 11px; color: var(--neon-yellow); align-self: center; }
     .dk-node-name { font-size: 11px; font-weight: 600; }
-    .dk-node-sub { font-size: 9px; color: var(--text-dim); line-height: 1.3; }
+    .dk-node-sub { font-size: 10px; color: var(--text-dim); line-height: 1.3; }
     .dk-map-boss .dk-node { flex: 0 1 190px; min-height: 70px; border-color: rgb(var(--nc-purple-rgb) / .5); }
     .dk-map-foot { display: flex; gap: 8px; width: 100%; justify-content: center; flex-wrap: wrap; margin-top: 4px; }
-    .dk-map-foot .btn { flex: 1 1 120px; min-height: 44px; font-size: 10px; }
+    .dk-map-foot .btn { flex: 1 1 120px; min-height: 44px; font-size: 11px; }
 
     /* ---------- 商店 ---------- */
     .dk-shop-card { width: 100%; max-width: 420px; gap: 8px; padding: 12px 10px; }
@@ -384,9 +384,9 @@
       inset: 7px 38%; border-radius: 50% 50% 40% 40%;
       background: linear-gradient(180deg, var(--neon-purple), transparent);
     }
-    .dk-shop-name { font-size: 10px; font-weight: 600; color: var(--text-main); line-height: 1.25; }
-    .dk-shop-rarity { font-size: 8px; color: var(--text-dim); }
-    .dk-shop-desc { font-size: 8px; line-height: 1.3; color: #a9b0c8; flex: 1 1 auto; }
+    .dk-shop-name { font-size: 11px; font-weight: 600; color: var(--text-main); line-height: 1.25; }
+    .dk-shop-rarity { font-size: 9.5px; color: var(--text-dim); }
+    .dk-shop-desc { font-size: 9.5px; line-height: 1.3; color: #a9b0c8; flex: 1 1 auto; }
     .dk-shop-price {
       font-family: var(--font-mono); font-size: 11px; color: var(--neon-yellow);
       min-height: 26px; display: flex; align-items: center;
@@ -397,30 +397,30 @@
     .dk-shop-removebtn {
       width: 100%; min-height: 46px; border-radius: 9px; cursor: pointer;
       border: 1px solid rgb(var(--nc-pink-rgb) / .4); background: rgb(var(--nc-pink-rgb) / .08);
-      color: #ffb7cb; font-size: 10px; font-family: var(--font-body);
+      color: #ffb7cb; font-size: 11px; font-family: var(--font-body);
     }
     .dk-shop-removebtn:disabled { opacity: .45; cursor: not-allowed; }
-    .dk-shop-deckhint { width: 100%; font-size: 9px; color: var(--text-dim); text-align: center; }
+    .dk-shop-deckhint { width: 100%; font-size: 10px; color: var(--text-dim); text-align: center; }
     .dk-shop-decklist { display: flex; flex-wrap: wrap; gap: 5px; width: 100%; max-height: 138px; overflow-y: auto; justify-content: center; }
     .dk-shop-deckbtn {
       min-height: 44px; padding: 5px 9px; border-radius: 7px; cursor: pointer;
       background: rgba(24,32,52,.05); border: 1px solid rgba(24,32,52,.16);
-      color: var(--text-main); font-size: 9px;
+      color: var(--text-main); font-size: 10px;
     }
     .dk-shop-deckbtn:active { transform: scale(.96); }
 
     /* ---------- 结算 ---------- */
     .dk-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; width: 100%; }
     .dk-stat { display: flex; flex-direction: column; gap: 3px; padding: 7px; border-radius: 9px; background: rgba(24,32,52,.045); border: 1px solid rgba(24,32,52,.1); }
-    .dk-stat span { font-size: 9px; color: var(--text-dim); }
+    .dk-stat span { font-size: 10px; color: var(--text-dim); }
     .dk-stat b { font-family: var(--font-mono); font-size: 13px; color: var(--neon-yellow); }
-    .dk-badge { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow); min-height: 15px; text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / .7); }
+    .dk-badge { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); min-height: 15px; text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / .7); }
     .dk-badge:empty { display: none; }
     .dk-ov-card h2 { font-family: var(--font-pixel); font-size: 14px; line-height: 1.6; color: var(--neon-green); text-align: center; }
 
     /* ---------- 牌库列表 ---------- */
     .dk-deck-list { display: flex; flex-direction: column; gap: 4px; width: 100%; max-height: 52vh; overflow-y: auto; }
-    .dk-deck-item { display: flex; justify-content: space-between; gap: 8px; padding: 5px 7px; border-radius: 6px; background: rgba(24,32,52,.04); font-size: 10px; text-align: left; }
+    .dk-deck-item { display: flex; justify-content: space-between; gap: 8px; padding: 5px 7px; border-radius: 6px; background: rgba(24,32,52,.04); font-size: 11px; text-align: left; }
     .dk-deck-item .c { color: var(--neon-yellow); font-family: var(--font-mono); }
 
     /* ---------- 出牌飞行动画 ---------- */
@@ -439,12 +439,12 @@
       .dk-diff-n { min-width: 62px; }
       .dk-diff-d { flex: 1; }
       .dk-diff-best { display: none; }
-      .dk-pick-help { font-size: 10px; }
-      .dk-chip { font-size: 9px; padding: 2px 6px; }
+      .dk-pick-help { font-size: 11px; }
+      .dk-chip { font-size: 10px; padding: 2px 6px; }
       .dk-chip b { font-size: 11px; }
       .dk-energy-orb { width: 42px; height: 42px; }
       .dk-energy-orb b { font-size: 17px; }
-      .dk-status span { font-size: 8px; }
+      .dk-status span { font-size: 9.5px; }
       .dk-reward-cards .dk-card { width: 88px; height: 130px; }
       .dk-map-row .dk-node { flex: 1 1 88px; }
     }
@@ -457,8 +457,6 @@
     /* 触屏点击兜底：消除双击缩放延迟，保留滚动；不加 !important 以免破坏滑动类游戏 */
     button, [role="button"], .card, .cell, .tile, .piece { touch-action: manipulation; }
 </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="deckbuilder" data-game-title="卡牌构筑" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -480,20 +478,20 @@
 </nav>
   <h1 class="seo-h1">卡牌构筑</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="deckbuilder-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="deckbuilder.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="deckbuilder-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="deckbuilder.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -504,7 +502,7 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>
 

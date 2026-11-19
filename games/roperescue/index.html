@@ -38,15 +38,15 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
-    .cr-wrap { padding: 10px 12px 16px; width: min(560px, 96vw); text-align: center; margin: 0 auto; }
+    .cr-wrap { padding: 10px 12px 16px; width: min(560px, 100%); text-align: center; margin: 0 auto; }
     .cr-stage { position: relative; border-radius: 10px; overflow: hidden; }
     .cr-canvas { display: block; width: 100%; height: auto; border-radius: 10px; background: #0d1626;
       box-shadow: var(--ui-shadow); touch-action: none; cursor: crosshair; max-width: 100%; }
@@ -62,10 +62,10 @@
     .cr-screen.hidden { display: none; }
     .cr-screen-title { font-family: var(--font-pixel); font-size: 13px; color: var(--text-main);
       text-shadow: 0 0 12px rgb(var(--nc-cyan-rgb) / 0.6); line-height: 1.4; margin-top: 2px; }
-    .cr-screen-sub { font-size: 10px; color: var(--text-dim); line-height: 1.6; max-width: 330px; }
+    .cr-screen-sub { font-size: 11px; color: var(--text-dim); line-height: 1.6; max-width: 330px; }
     .cr-chapters { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; width: 100%; }
     .cr-tab { min-height: 44px; min-width: 62px; padding: 4px 8px; font-family: var(--font-pixel);
-      font-size: 10px; color: var(--text-dim); background: rgb(var(--nc-cyan-rgb) / 0.04);
+      font-size: 11px; color: var(--text-dim); background: rgb(var(--nc-cyan-rgb) / 0.04);
       border: 1px solid rgb(var(--nc-cyan-rgb) / 0.22); border-radius: 6px; cursor: pointer; }
     .cr-tab.active { color: var(--neon-cyan); border-color: var(--neon-cyan);
       background: rgb(var(--nc-cyan-rgb) / 0.1); box-shadow: var(--ui-shadow); }
@@ -90,7 +90,7 @@
     .cr-tool { min-height: 48px; display: flex; align-items: center; justify-content: center;
       gap: 7px; padding: 6px 4px; border-radius: 8px; cursor: pointer;
       border: 1px solid rgb(var(--nc-cyan-rgb) / 0.28); background: rgb(var(--nc-cyan-rgb) / 0.05);
-      color: var(--text-dim); font-family: var(--font-pixel); font-size: 10px; }
+      color: var(--text-dim); font-family: var(--font-pixel); font-size: 11px; }
     .cr-tool.active { color: var(--neon-cyan); border-color: var(--neon-cyan);
       box-shadow: var(--ui-shadow); }
     .cr-tool span { line-height: 1.3; }
@@ -115,7 +115,7 @@
     @media (max-width: 420px) {
       .cr-wrap { padding: 6px 8px 12px; width: 100%; }
       .cr-top { font-size: 11px; gap: 2px 7px; }
-      .cr-tool { font-size: 9px; gap: 4px; }
+      .cr-tool { font-size: 10px; gap: 4px; }
       .cr-level-btn { font-size: 11px !important; }
       .cr-screen { gap: 6px; padding: 8px 8px; }
       .cr-screen-title { font-size: 11px; line-height: 1.3; margin-top: 0; }
@@ -125,8 +125,6 @@
       .cr-level-grid { grid-template-columns: repeat(5, 1fr); }
     }
   </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="roperescue" data-game-title="切绳救星" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -148,22 +146,22 @@
 </nav>
   <h1 class="seo-h1">切绳救星</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="roperescue-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="roperescue-levels.js?v=20261112b"></script>
-  <script src="roperescue-physics.js?v=20261112b"></script>
-  <script src="roperescue.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="roperescue-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="roperescue-levels.js?v=20261118h"></script>
+  <script src="roperescue-physics.js?v=20261118h"></script>
+  <script src="roperescue.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -174,6 +172,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

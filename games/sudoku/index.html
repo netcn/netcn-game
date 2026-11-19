@@ -38,15 +38,15 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
-    .su-wrap { padding: 14px 10px 22px; width: min(420px, 96vw); box-sizing: border-box; text-align: center; }
+    .su-wrap { padding: 14px 10px 22px; width: min(420px, 100%); box-sizing: border-box; text-align: center; }
     .su-top { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 10px; margin-bottom: 10px; font-size: 13px; color: var(--text-dim); }
     .su-top .btn { margin-left: auto; }
     .su-tier { color: var(--neon-purple); font-size: 11px; letter-spacing: .04em; }
@@ -59,8 +59,8 @@
     .su-zoomers button { min-height: 44px; min-width: 44px; padding: 0 12px; border-radius: 9px; border: 1px solid rgba(24,32,52,0.18); background: rgba(24,32,52,0.08); color: var(--text); font-family: var(--font-mono); font-size: 13px; cursor: pointer; transition: background .15s, box-shadow .15s; }
     .su-zoomers button:active { transform: translateY(1px); }
     .su-zoomers button.selected { background: rgb(var(--nc-cyan-rgb) / 0.18); box-shadow: var(--ui-shadow); color: var(--accent); }
-    .su-zoomers .su-zlbl { font-size: 10px; color: var(--text-dim); min-width: 68px; letter-spacing: .04em; font-family: var(--font-mono); }
-    .su-zoomtip { font-size: 10px; color: var(--text-dim); margin: -6px 0 6px; letter-spacing: .04em; }
+    .su-zoomers .su-zlbl { font-size: 11px; color: var(--text-dim); min-width: 68px; letter-spacing: .04em; font-family: var(--font-mono); }
+    .su-zoomtip { font-size: 11px; color: var(--text-dim); margin: -6px 0 6px; letter-spacing: .04em; }
     .su-cell { aspect-ratio: 1 / 1; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-family: var(--font-pixel); font-size: 19px; background: #11131a; color: var(--neon-cyan); cursor: pointer; user-select: none; }
     .su-cell.fixed { color: var(--text); }
     .su-cell.sel { background: rgb(var(--nc-cyan-rgb) / 0.22); box-shadow: inset 0 0 0 2px var(--accent); }
@@ -80,19 +80,19 @@
     .su-cell.hintfx { background: rgb(var(--nc-yellow-rgb) / .24) !important; box-shadow: inset 0 0 0 2px var(--neon-yellow), 0 0 14px rgb(var(--nc-yellow-rgb) / .6); animation: suHint .8s cubic-bezier(.2,1.4,.4,1); }
     @keyframes suHint { 0% { transform: scale(1); } 30% { transform: scale(1.14); } 100% { transform: scale(1); } }
     .su-cell:nth-child(3n) { margin-right: 1px; }
-    .su-pad { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; width: fit-content; margin: 0 auto; }
+    .su-pad { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; width: 100%; max-width: 420px; margin: 0 auto 8px; }
     .su-key { position: relative; min-height: 44px; padding: 10px 0; font-family: var(--font-pixel); font-size: 17px; border-radius: 7px; cursor: pointer; background: rgba(24,32,52,0.1); border: 1px solid rgba(24,32,52,0.16); color: var(--text); transition: background .15s ease, transform .1s ease, box-shadow .15s ease; }
     .su-key:active { transform: translateY(1px); }
     .su-key.done { opacity: .42; }
     .su-key.erase { color: var(--neon-pink); }
-    .su-key .su-left { position: absolute; top: 2px; right: 5px; font-size: 8px; color: var(--text-dim); font-family: var(--font-mono); }
+    .su-key .su-left { position: absolute; top: 2px; right: 5px; font-size: 9.5px; color: var(--text-dim); font-family: var(--font-mono); }
     .su-diffs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 8px 0 0; }
     .su-diffs .mode-btn, .su-tools .mode-btn { min-height: 44px; }
     .su-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 8px 0 2px; }
     .su-tools .mode-btn { font-size: 11px; }
     .su-msg { min-height: 18px; font-size: 13px; color: var(--neon-pink); margin: 10px 0 4px; }
     .su-ov-meta { font-size: 11px; color: var(--text-dim); letter-spacing: .04em; margin: -8px 0 12px; }
-    .su-keys-hint { font-size: 10px; color: var(--text-dim); margin: 2px 0 6px; letter-spacing: .04em; text-align: center; }
+    .su-keys-hint { font-size: 11px; color: var(--text-dim); margin: 2px 0 6px; letter-spacing: .04em; text-align: center; }
     .su-overlay {
       position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
       background: var(--nc-stage-2); backdrop-filter: blur(4px);
@@ -111,9 +111,53 @@
     .su-ov-row b { display: block; font-family: var(--font-pixel); font-size: 16px; color: var(--neon-cyan); margin-top: 4px; }
     .su-ov-row .err b { color: var(--neon-pink); }
     .su-ov-btns { display: flex; gap: 10px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+
+    /* 2026-11-18 浅色主题：数独棋盘改成纸面，题面数字回到深墨色 */
+    html[data-theme="light"] .su-board,
+    html:not([data-theme="dark"]) .su-board {
+      background: #c9d3e2; border-color: #b7c3d6;
+    }
+    html[data-theme="light"] .su-cell,
+    html:not([data-theme="dark"]) .su-cell {
+      background: #ffffff; color: #4f46c8;
+    }
+    html[data-theme="light"] .su-cell.fixed,
+    html:not([data-theme="dark"]) .su-cell.fixed { color: #1b2030; font-weight: 700; }
+    html[data-theme="light"] .su-cell.peer,
+    html:not([data-theme="dark"]) .su-cell.peer { background: #f4f6fb; }
+    html[data-theme="light"] .su-cell.sel,
+    html:not([data-theme="dark"]) .su-cell.sel { background: #eee9ff; box-shadow: inset 0 0 0 2px #7c5cff; }
+    html[data-theme="light"] .su-cell.wrong,
+    html:not([data-theme="dark"]) .su-cell.wrong { color: #d0335f; background: #fff0f3; box-shadow: inset 0 0 0 2px #e06a8d; }
+    html[data-theme="light"] .su-cell .su-notes span { color: #6b7280; }
+    /* 3×3 宫的分隔线：纸面数独必须有粗线 */
+    html[data-theme="light"] .su-cell:nth-child(9n+3),
+    html[data-theme="light"] .su-cell:nth-child(9n+6) { border-right: 1px solid #9aa8bf; }
+    html[data-theme="light"] .su-cell:nth-child(n+19):nth-child(-n+27),
+    html[data-theme="light"] .su-cell:nth-child(n+46):nth-child(-n+54) { border-bottom: 1px solid #9aa8bf; }
+
+    /* 2026-11-18 手机端：压缩顶部与数字键盘，棋盘+键盘尽量同屏 */
+    @media (max-width: 640px) {
+      .su-top { margin-bottom: 5px; font-size: 11.5px; gap: 3px 8px; }
+      .su-zoomers { margin: 4px 0 3px; }
+      .su-zoomers button { min-height: 40px; min-width: 40px; padding: 0 10px; }
+      .su-zoomers .su-zlbl { font-size: 10.5px; min-width: 58px; }
+      .su-zoomtip { display: none; } /* 手势说明让位给棋盘 */
+      .su-key { min-height: 42px; padding: 8px 0; font-size: 15px; }
+      .su-keys-hint { margin: 1px 0 3px; font-size: 10.5px; }
+      .su-msg { margin: 5px 0 2px; min-height: 14px; font-size: 12px; }
+    }
+    /* 平板/桌面：棋盘与数字键盘放大到 520，避免 360 宽小棋盘悬在舞台中间 */
+    @media (min-width: 641px) {
+      .su-wrap { width: min(620px, 100%); }
+      .su-boardwrap { width: min(440px, 100%); }
+      .su-pad { max-width: 440px; }
+    }
+    @media (min-width: 1100px) {
+      .su-boardwrap { width: min(400px, 100%); }
+      .su-pad { max-width: 400px; }
+    }
   </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="sudoku" data-game-title="数独" data-best-mode="min">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -135,19 +179,19 @@
 </nav>
   <h1 class="seo-h1">数独</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="sudoku-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="sudoku.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="sudoku-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="sudoku.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -158,6 +202,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

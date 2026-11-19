@@ -629,6 +629,15 @@ window.GAME_TUTORIAL_STEPS = [
     for (var gx = 40; gx < W; gx += 40) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
     for (var gy = 40; gy < H; gy += 40) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
 
+    /* 罐体：左右壁与底部，让空场读起来像容器而不是黑洞 */
+    ctx.fillStyle = 'rgba(125,255,232,0.10)';
+    ctx.fillRect(0, 0, 2, H); ctx.fillRect(W - 2, 0, 2, H);
+    var floorG = ctx.createLinearGradient(0, FLOOR, 0, H);
+    floorG.addColorStop(0, 'rgba(125,255,232,0.16)'); floorG.addColorStop(1, 'rgba(125,255,232,0.03)');
+    ctx.fillStyle = floorG; ctx.fillRect(0, FLOOR, W, H - FLOOR);
+    ctx.strokeStyle = 'rgba(125,255,232,0.34)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(0, FLOOR); ctx.lineTo(W, FLOOR); ctx.stroke();
+
     /* 顶部警戒区 */
     var dz = ctx.createLinearGradient(0, 0, 0, DANGER_Y + 20);
     dz.addColorStop(0, 'rgba(255,45,149,0.10)'); dz.addColorStop(1, 'rgba(255,45,149,0)');

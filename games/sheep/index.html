@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     .sh-wrap, .sh-wrap * { box-sizing: border-box; }
     .sh-wrap { padding: 12px 10px 24px; width: 100%; max-width: 520px; margin: 0 auto; text-align: center; }
@@ -79,7 +79,7 @@
       background: linear-gradient(90deg, rgb(var(--nc-green-rgb) / 0.08), rgb(var(--nc-purple-rgb) / 0.06));
       border: 1px solid rgb(var(--nc-green-rgb) / 0.3); border-radius: 9px;
     }
-    .sh-hud #sh-score, .sh-hud #sh-time { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 10px; }
+    .sh-hud #sh-score, .sh-hud #sh-time { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 11px; }
     .sh-hud.sh-low-time, .sh-hud #sh-time.sh-low { color: var(--neon-pink); animation: sh-pulse 0.9s ease-in-out infinite; }
     @keyframes sh-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
 
@@ -108,7 +108,7 @@
     .sh-card p b { color: var(--neon-yellow); }
     .sh-stats { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; font-size: 11px; color: var(--text-dim); }
     .sh-stats b { display: inline-block; margin-left: 3px; font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow); }
-    .sh-newrec { font-family: var(--font-pixel); font-size: 10px; letter-spacing: .5px; color: var(--neon-yellow); text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / 0.7); }
+    .sh-newrec { font-family: var(--font-pixel); font-size: 11px; letter-spacing: .5px; color: var(--neon-yellow); text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / 0.7); }
     .sh-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     .sh-btns .btn { min-width: 108px; }
 
@@ -116,15 +116,29 @@
       .sh-wrap { padding: 10px 8px 20px; }
       .sh-picker { padding: 14px 12px; }
       .sh-picker-t { font-size: 12px; }
-      .sh-hud { font-size: 10px; gap: 5px 8px; padding: 7px 8px; }
-      .sh-hud #sh-score, .sh-hud #sh-time { font-size: 9px; }
+      .sh-hud { font-size: 11px; gap: 5px 8px; padding: 7px 8px; }
+      .sh-hud #sh-score, .sh-hud #sh-time { font-size: 10px; }
       .sh-card { padding: 15px 12px; }
       .sh-btns .btn { min-width: 96px; font-size: 11px; }
     }
+    /* 浅色页面里的牧场选择卡是深绿底，文字统一提亮，锁定关不再糊成一片 */
+    html:not([data-theme="dark"]) .sh-picker,
+    html[data-theme="light"] .sh-picker {
+      --text-main: #f4f8ee;
+      --text-dim: #d2dfcb;
+    }
+    html:not([data-theme="dark"]) .sh-picker-t,
+    html[data-theme="light"] .sh-picker-t {
+      color: #d9ffa9;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .55);
+    }
+    html:not([data-theme="dark"]) .sh-lv.locked,
+    html[data-theme="light"] .sh-lv.locked {
+      opacity: .62;
+      filter: grayscale(.3);
+    }
   </style>
 <style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="sheep" data-game-title="绵羊三消" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -146,20 +160,20 @@
 </nav>
   <h1 class="seo-h1">绵羊三消</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="sheep-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="sheep.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="sheep-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="sheep.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -170,6 +184,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

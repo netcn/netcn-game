@@ -1374,7 +1374,7 @@
     '    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h4l9 10h4"/><path d="M18 4l3 3-3 3"/><path d="M4 17h4l9-10h4"/><path d="M18 14l3 3-3 3"/></svg>' +
     '    <span class="g2k-prop-name">' + T('gs.g2048.propShuffle') + '</span><b class="g2k-prop-count">0</b></button>' +
     '</div>' +
-    '<div class="game-message" id="msg">' + T('gs.g2048.hint') + '</div>' +
+    '<div class="game-message" id="msg"></div>' +
     '<div class="grid-board g2048-board" id="board">' +
     '  <div class="g2048-grid" id="bg-grid"></div>' +
     '  <div class="g2048-tiles" id="tile-layer"></div>' +

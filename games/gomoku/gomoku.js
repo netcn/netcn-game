@@ -391,37 +391,31 @@
     ctx.setTransform(scale, 0, 0, scale, 0, 0);
     ctx.clearRect(0, 0, LOGICAL, LOGICAL);
 
-    var bg = ctx.createLinearGradient(0, 0, LOGICAL, LOGICAL);
-    bg.addColorStop(0, '#2a1b10');
-    bg.addColorStop(0.5, '#3a2716');
-    bg.addColorStop(1, '#201308');
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, LOGICAL, LOGICAL);
-    for (var wi = 0; wi < wood.length; wi++) {
-      var wl = wood[wi];
-      ctx.fillStyle = 'rgba(0,0,0,' + wl.a + ')';
-      ctx.fillRect(wl.x, 0, wl.w, LOGICAL);
-    }
-    var vig = ctx.createRadialGradient(300, 280, 90, 300, 300, 430);
-    vig.addColorStop(0, 'rgba(255,190,90,.06)');
-    vig.addColorStop(1, 'rgba(0,0,0,.42)');
-    ctx.fillStyle = vig;
-    ctx.fillRect(0, 0, LOGICAL, LOGICAL);
+    var LIGHT = (function () {
+      var de = document.documentElement;
+      var t = (de.getAttribute('data-theme') || '').toLowerCase();
+      if (t === 'light') return true;
+      if (t === 'dark') return false;
+      return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+    })();
 
-    ctx.strokeStyle = 'rgba(0,240,255,.34)';
+    // 棋盘底色交给 CSS（木纹渐变），画布只负责格线、棋子与特效，避免主题切换把整块画布冲淡
+    ctx.clearRect(0, 0, LOGICAL, LOGICAL);
+
+    ctx.strokeStyle = LIGHT ? 'rgba(74,48,26,.52)' : 'rgba(0,240,255,.34)';
     ctx.lineWidth = 1;
-    ctx.shadowColor = 'rgba(0,240,255,.55)';
-    ctx.shadowBlur = 3;
+    ctx.shadowColor = LIGHT ? 'transparent' : 'rgba(0,240,255,.55)';
+    ctx.shadowBlur = LIGHT ? 0 : 3;
     for (var k = 0; k < SIZE; k++) {
       ctx.beginPath(); ctx.moveTo(MARGIN, px(k)); ctx.lineTo(px(SIZE - 1), px(k)); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(px(k), MARGIN); ctx.lineTo(px(k), px(SIZE - 1)); ctx.stroke();
     }
-    ctx.strokeStyle = 'rgba(0,240,255,.72)';
+    ctx.strokeStyle = LIGHT ? 'rgba(64,40,20,.78)' : 'rgba(0,240,255,.72)';
     ctx.lineWidth = 2;
     ctx.strokeRect(MARGIN, MARGIN, CELL * (SIZE - 1), CELL * (SIZE - 1));
     ctx.shadowBlur = 0;
 
-    ctx.fillStyle = 'rgba(0,240,255,.75)';
+    ctx.fillStyle = LIGHT ? 'rgba(64,40,20,.8)' : 'rgba(0,240,255,.75)';
     for (var s = 0; s < STARS.length; s++) {
       ctx.beginPath();
       ctx.arc(px(STARS[s][0]), px(STARS[s][1]), 3.5, 0, PI2);

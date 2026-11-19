@@ -38,15 +38,15 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
-    .td-wrap { padding: 12px 10px 24px; width: min(720px, 96vw); margin: 0 auto; text-align: center; }
+    .td-wrap { padding: 12px 10px 24px; width: min(720px, 100%); margin: 0 auto; text-align: center; }
     .td-wrap .game-controls.is-hidden { display: none; }
     .td-canvas { display: block; width: 100%; height: auto; border-radius: 10px; background: #0a120a;
       border: 1px solid rgb(var(--nc-green-rgb) / 0.3); box-shadow: 0 0 18px rgb(var(--nc-green-rgb) / 0.15);
@@ -77,7 +77,7 @@
       transition: opacity .3s ease, transform .3s cubic-bezier(.2,1.5,.4,1);
     }
     .td-wave-banner.show { opacity: 1; transform: translate(-50%, 0) scale(1); }
-    .td-wave-banner small { display: block; font-family: var(--font-mono); font-size: 9px; color: var(--neon-cyan); margin-top: 4px; letter-spacing: .1em; }
+    .td-wave-banner small { display: block; font-family: var(--font-mono); font-size: 10px; color: var(--neon-cyan); margin-top: 4px; letter-spacing: .1em; }
     .td-over { position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center;
       background: var(--nc-stage-2); border-radius: 10px;
       -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
@@ -109,10 +109,12 @@
       .td-dot { width: 7px; height: 7px; }
       .td-card { padding: 14px 10px; }
       .td-sel .btn { font-size: 11px; padding: 6px 8px; }
+      .td-meta { padding: 6px 8px !important; margin: 4px 0 !important; }
+      .td-meta-head { margin-bottom: 4px !important; font-size: 10px !important; }
+      .td-meta-btn { min-height: 40px !important; padding: 3px 6px !important; }
+      .td-meta-btn small { display: none !important; }
     }
   </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="towerdefense" data-game-title="塔防" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -134,20 +136,20 @@
 </nav>
   <h1 class="seo-h1">塔防</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="towerdefense-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="towerdefense.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="towerdefense-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="towerdefense.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -158,6 +160,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

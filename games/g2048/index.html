@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     .g2k-head { width: min(420px, 92vw); margin: 0 auto; text-align: center; }
     .g2k-brand {
@@ -61,20 +61,20 @@
     }
     .g2k-brand small {
       display: block; margin-top: 5px; font-family: var(--font-body, sans-serif);
-      font-size: 10px; letter-spacing: 1px; color: var(--text-dim);
+      font-size: 11px; letter-spacing: 1px; color: var(--text-dim);
       -webkit-text-fill-color: var(--text-dim);
     }
     .g2k-modes { display: flex; gap: 7px; justify-content: center; flex-wrap: wrap; margin-top: 11px; }
     .g2k-mode {
       flex: 0 1 calc(33.33% - 7px); min-width: 96px; min-height: 44px;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
-      font-family: var(--font-pixel); font-size: 10px; line-height: 1.3;
+      font-family: var(--font-pixel); font-size: 11px; line-height: 1.3;
       padding: 6px 6px; border-radius: 12px; cursor: pointer;
       color: var(--text-dim); background: rgba(24,32,52,0.04);
       border: 1px solid rgba(24,32,52,0.14);
       transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
     }
-    .g2k-mode small { font-size: 9px; color: var(--text-dim); letter-spacing: 0.04em; }
+    .g2k-mode small { font-size: 10px; color: var(--text-dim); letter-spacing: 0.04em; }
     .g2k-mode.active {
       color: var(--neon-cyan); border-color: var(--neon-cyan);
       background: rgb(var(--nc-cyan-rgb) / 0.1); box-shadow: var(--ui-shadow);
@@ -101,7 +101,7 @@
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .g2k-stat span {
-      display: block; font-size: 9px; letter-spacing: 0.08em; color: var(--text-dim);
+      display: block; font-size: 10px; letter-spacing: 0.08em; color: var(--text-dim);
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .g2k-stat b {
@@ -109,7 +109,7 @@
       font-weight: 400; color: var(--neon-cyan); text-shadow: 0 0 8px rgb(var(--nc-cyan-rgb) / 0.45);
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .g2k-stat b.small { font-size: 10px; letter-spacing: -0.02em; }
+    .g2k-stat b.small { font-size: 11px; letter-spacing: -0.02em; }
     .g2k-best { border-color: rgb(var(--nc-yellow-rgb) / 0.24); }
     .g2k-best b { color: var(--neon-yellow); text-shadow: 0 0 8px rgb(var(--nc-yellow-rgb) / 0.5); }
     .g2k-max b { color: var(--neon-green); text-shadow: 0 0 8px rgb(var(--nc-green-rgb) / 0.4); }
@@ -142,7 +142,7 @@
     .g2k-prop svg { width: 18px; height: 18px; flex: none; color: var(--neon-cyan); }
     .g2k-prop-name { white-space: nowrap; }
     .g2k-prop-count {
-      position: absolute; top: 3px; right: 6px; font-family: var(--font-pixel); font-size: 9px;
+      position: absolute; top: 3px; right: 6px; font-family: var(--font-pixel); font-size: 10px;
       font-weight: 400; color: var(--neon-yellow);
     }
     .g2k-prop.empty { opacity: 0.4; filter: grayscale(1); }
@@ -358,7 +358,7 @@
     .g2k-panel p { margin: 0 0 12px; font-size: 12px; line-height: 1.75; color: var(--text-dim); }
     .g2k-badge {
       display: inline-block; margin-bottom: 10px; padding: 5px 12px; border-radius: 999px;
-      font-family: var(--font-pixel); font-size: 10px;
+      font-family: var(--font-pixel); font-size: 11px;
       color: var(--neon-yellow); border: 1px solid rgb(var(--nc-yellow-rgb) / 0.6);
       background: rgb(var(--nc-yellow-rgb) / 0.1); box-shadow: 0 0 14px rgb(var(--nc-yellow-rgb) / 0.32);
     }
@@ -367,7 +367,7 @@
       flex: 1; min-width: 0; padding: 9px 4px; border-radius: 10px;
       background: rgba(24,32,52,0.04); border: 1px solid rgba(24,32,52,0.08);
     }
-    .g2k-res-stats span { display: block; font-size: 9px; color: var(--text-dim); }
+    .g2k-res-stats span { display: block; font-size: 10px; color: var(--text-dim); }
     .g2k-res-stats b {
       display: block; margin-top: 3px; font-family: var(--font-pixel); font-size: 14px;
       font-weight: 400; color: var(--neon-cyan); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -375,7 +375,7 @@
     .g2k-res-stats div:nth-child(2) b { color: var(--neon-yellow); }
     .g2k-res-stats div:nth-child(3) b { color: var(--neon-green); }
     .g2k-res-goal {
-      margin: -4px 0 12px; font-family: var(--font-pixel); font-size: 10px;
+      margin: -4px 0 12px; font-family: var(--font-pixel); font-size: 11px;
       color: var(--neon-yellow); letter-spacing: 1px; text-shadow: 0 0 8px rgb(var(--nc-yellow-rgb) / 0.5);
     }
     .g2k-res-btns { display: flex; flex-direction: column; gap: 8px; }
@@ -395,8 +395,8 @@
     .g2k-level .lv-no { font-family: var(--font-pixel); font-size: 14px; color: var(--neon-cyan); }
     .g2k-level .lv-body { min-width: 0; }
     .g2k-level .lv-target { display: block; font-family: var(--font-pixel); font-size: 14px; color: var(--neon-yellow); font-weight: 400; }
-    .g2k-level .lv-meta { display: block; margin-top: 2px; font-size: 10px; color: var(--text-dim); }
-    .g2k-level .lv-state { font-size: 10px; text-align: right; color: var(--text-dim); max-width: 96px; }
+    .g2k-level .lv-meta { display: block; margin-top: 2px; font-size: 11px; color: var(--text-dim); }
+    .g2k-level .lv-state { font-size: 11px; text-align: right; color: var(--text-dim); max-width: 96px; }
     .g2k-level.cleared { border-color: rgb(var(--nc-green-rgb) / 0.34); }
     .g2k-level.cleared .lv-state { color: var(--neon-green); }
     .g2k-level.locked { opacity: 0.5; cursor: not-allowed; filter: grayscale(0.6); }
@@ -408,7 +408,7 @@
       .g2k-brand { font-size: 19px; letter-spacing: 3px; }
       .g2k-mode { min-width: 88px; }
       .g2k-stat b { font-size: 12px; }
-      .g2k-stat b.small { font-size: 9px; }
+      .g2k-stat b.small { font-size: 10px; }
       .g2048-tile-inner span { font-size: calc(var(--cell) * 0.32); }
       .v128 span, .v256 span, .v512 span { font-size: calc(var(--cell) * 0.25); }
       .v1024 span { font-size: calc(var(--cell) * 0.215); }
@@ -416,12 +416,87 @@
       .vsuper span { font-size: calc(var(--cell) * 0.17); }
       .g2k-panel h2 { font-size: 15px; }
     }
+
+    /* 2026-11-18 移动端首屏重排：模式一行、HUD 一行、道具一行，棋盘进入首屏 */
+    @media (max-width: 640px) {
+      .g2k-head .g2k-brand { font-size: 18px; letter-spacing: 3px; padding-top: 1px; }
+      .g2k-brand small { margin-top: 2px; font-size: 11px; letter-spacing: .02em; }
+      .g2k-modes { flex-wrap: nowrap; gap: 6px; margin-top: 8px; }
+      .g2k-mode {
+        flex: 1 1 0; min-width: 0; min-height: 42px; padding: 4px 2px;
+        font-size: 9.5px; border-radius: 10px; gap: 1px;
+      }
+      .g2k-mode small { font-size: 8.5px; letter-spacing: 0; }
+      .g2k-hud { grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 8px auto 0; }
+      .g2k-stat { padding: 5px 4px 6px; border-radius: 9px; }
+      .g2k-stat span { font-size: 11px; letter-spacing: .02em; }
+      .g2k-stat b { margin-top: 1px; font-size: 12.5px; }
+      .g2k-stat.g2k-modecard, .g2k-stat.g2k-goalcard { display: none; }
+      .g2k-tools { gap: 6px; margin-top: 7px; }
+      .g2k-prop { min-height: 40px; padding: 4px 4px; border-radius: 9px; font-size: 11px; }
+      .g2k-prop svg { width: 16px; height: 16px; }
+      .g2k-prop-count { top: 1px; right: 5px; font-size: 8.5px; }
+      .game-message { margin: 3px 0 0; font-size: 11.5px; line-height: 1.35; }
+      .g2048-board { width: min(380px, 94vw); margin-top: 5px; border-radius: 16px; }
+      .game-controls { margin-top: 8px; gap: 8px; }
+      .game-controls .btn { min-height: 42px; padding: 8px 10px; font-size: 12.5px; }
+      .help-text { margin-top: 8px; font-size: 12px; line-height: 1.6; }
+      .g2k-note { margin-top: 6px; padding: 6px 9px; font-size: 11px; }
+    }
+
+    /* 浅色主题下的空格子：从灰块改成干净的凹槽 */
+    html[data-theme="light"] .g2048-gcell,
+    html:not([data-theme="dark"]) .g2048-gcell {
+      background: linear-gradient(150deg, #eef2f9, #e2e8f3);
+      box-shadow: inset 0 2px 5px rgba(24, 32, 52, .09), inset 0 -1px 0 rgba(255, 255, 255, .95);
+    }
+    html.dark .g2048-gcell {
+      background: linear-gradient(145deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .22));
+      box-shadow: inset 0 3px 8px rgba(0, 0, 0, .5);
+    }
+    /* 2026-11-18 手机端：副标题与棋盘上方提示重复，去掉顶上一行 */
+    @media (max-width: 640px) {
+      .g2k-brand small { display: none; }
+      .g2048-board { margin-top: 4px; }
+    }
+    @media (min-width: 641px) {
+      .g2048-board { width: min(440px, calc(100vw - 240px)); }
+    }
+    /* 1280 桌面：HUD 左栏 + 棋盘右栏，整块棋盘不再纵向超出首屏 */
+    @media (min-width: 1100px) {
+      main#game-root:has(.g2048-board) {
+        width: min(980px, calc(100% - 40px)) !important;
+        display: grid !important;
+        grid-template-columns: minmax(300px, 340px) minmax(0, 1fr);
+        grid-template-areas:
+          "head board"
+          "hud board"
+          "tools board"
+          "controls board"
+          "help board"
+          "msg board";
+        column-gap: 26px;
+        align-items: start !important;
+      }
+      .g2k-head { grid-area: head; width: 100%; }
+      .g2k-hud { grid-area: hud; width: 100%; margin-top: 6px; }
+      .g2k-tools { grid-area: tools; width: 100%; }
+      .game-controls { grid-area: controls; width: 100%; justify-content: stretch; }
+      .help-text { grid-area: help; width: 100%; }
+      .game-message { grid-area: msg; }
+      .g2048-board {
+        grid-area: board;
+        width: min(560px, 64vh) !important;
+        margin: 0 auto !important;
+        align-self: center;
+      }
+      .g2k-layer { grid-area: 1 / 1 / -1 / -1; }
+      .g2k-brand { text-align: left; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .g2k-brand, .g2048-board.danger, .g2048-gcell.blocked, .v2048, .vsuper, .g2k-stat.danger { animation: none !important; }
     }
   </style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="g2048" data-game-title="2048" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -443,19 +518,19 @@
 </nav>
   <h1 class="seo-h1">2048</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="g2048-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="g2048.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="g2048-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="g2048.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -466,6 +541,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>

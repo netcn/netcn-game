@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261112b" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261112b">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261112b">
-<script src="../../shell/shell.js?v=20261118b3"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
+<script src="../../shell/shell.js?v=20261118h"></script>
   <style>
     /* ============ 纸牌接龙 · 旗舰牌桌 ============ */
     .kl-wrap {
@@ -58,7 +58,7 @@
       flex: 1 1 0; min-height: 46px; padding: 8px 10px; cursor: pointer;
       border: 1px solid rgb(var(--nc-cyan-rgb) / 0.26); border-radius: 10px;
       background: rgb(var(--nc-cyan-rgb) / 0.05); color: var(--text-dim);
-      font-family: var(--font-pixel); font-size: 10px; line-height: 1.5;
+      font-family: var(--font-pixel); font-size: 11px; line-height: 1.5;
       transition: color 0.15s, border-color 0.15s, box-shadow 0.15s, background 0.15s;
     }
     .kl-vtab:hover { color: var(--neon-cyan); border-color: rgb(var(--nc-cyan-rgb) / 0.6); }
@@ -110,7 +110,7 @@
     .kl-daily:active { transform: scale(0.98); }
     .kl-daily-state { font-size: 11px; color: var(--text-dim); line-height: 1.7; margin-top: 8px; min-height: 18px; }
     .kl-daily-state.done { color: var(--neon-green); text-shadow: 0 0 10px rgb(var(--nc-green-rgb) / 0.35); }
-    .kl-pick-best { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow); margin-top: 10px; line-height: 1.8; }
+    .kl-pick-best { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); margin-top: 10px; line-height: 1.8; }
     .kl-diff:focus-visible, .kl-daily:focus-visible { outline: 2px solid var(--accent, #00f0ff); outline-offset: 3px; }
 
     /* ---------- HUD ---------- */
@@ -118,7 +118,7 @@
     .kl-chip {
       display: inline-flex; align-items: center; gap: 5px; min-height: 32px; padding: 5px 9px;
       background: rgba(0,0,0,0.32); border: 1px solid rgb(var(--nc-cyan-rgb) / 0.22); border-radius: 8px;
-      color: var(--text-dim); font-size: 10px; min-width: 0;
+      color: var(--text-dim); font-size: 11px; min-width: 0;
     }
     .kl-chip:first-child { flex: 1 1 150px; justify-content: flex-start; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
     .kl-chip b { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); }
@@ -192,7 +192,7 @@
     .kl-stock-slot.kb { outline: 2px dashed rgba(24,32,52,0.75); outline-offset: 2px; }
     .kl-count {
       position: absolute; right: -5px; bottom: -5px; z-index: 4;
-      font-family: var(--font-pixel); font-size: 8px; line-height: 1; color: #06170a;
+      font-family: var(--font-pixel); font-size: 9.5px; line-height: 1; color: #06170a;
       background: var(--neon-green); border-radius: 6px; padding: 3px 4px;
       box-shadow: 0 0 8px rgb(var(--nc-green-rgb) / 0.5);
     }
@@ -301,7 +301,7 @@
     .kl-stat { font-size: 12px; color: var(--text-dim); }
     .kl-stat b { font-family: var(--font-pixel); color: var(--neon-green); font-size: 12px; }
     .kl-actions { display: flex; gap: 8px; justify-content: center; margin: 6px 0 4px; flex-wrap: wrap; }
-    .kl-mini { font-size: 10px; padding: 8px 12px; min-height: 44px; min-width: 44px; }
+    .kl-mini { font-size: 11px; padding: 8px 12px; min-height: 44px; min-width: 44px; }
     #kl-undo-btn:disabled { opacity: 0.42; cursor: not-allowed; }
     .kl-toggle { display: inline-flex; align-items: center; gap: 6px; }
     .kl-sw {
@@ -394,7 +394,7 @@
     }
     @keyframes kl-ov-in { from { opacity: 0; transform: scale(0.86) translateY(14px); } to { opacity: 1; transform: none; } }
     .kl-ov-badge {
-      min-height: 16px; font-family: var(--font-pixel); font-size: 10px; line-height: 1.6;
+      min-height: 16px; font-family: var(--font-pixel); font-size: 11px; line-height: 1.6;
       color: var(--neon-yellow); text-shadow: 0 0 12px rgb(var(--nc-yellow-rgb) / 0.7);
       animation: kl-badge-pulse 0.8s ease-in-out infinite alternate;
     }
@@ -407,7 +407,7 @@
       display: flex; flex-direction: column; gap: 4px; padding: 8px 4px;
       background: rgba(24,32,52,0.045); border: 1px solid rgba(24,32,52,0.10); border-radius: 10px;
     }
-    .kl-ov-stats span { font-size: 10px; color: var(--text-dim); }
+    .kl-ov-stats span { font-size: 11px; color: var(--text-dim); }
     .kl-ov-stats b { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow); }
     .kl-ov-btns { display: flex; gap: 8px; justify-content: center; width: 100%; flex-wrap: wrap; }
     .kl-ov-btns .btn { flex: 1 1 140px; min-height: 46px; display: inline-flex; align-items: center; justify-content: center; }
@@ -419,21 +419,54 @@
       .kl-diff { flex-direction: row; align-items: center; min-height: 58px; padding: 10px 12px; gap: 10px; }
       .kl-diff-ic { font-size: 18px; width: 22px; text-align: center; }
       .kl-diff-name { margin-top: 0; min-width: 56px; }
-      .kl-diff-d { flex: 1; font-size: 10px; }
-      .kl-daily { font-size: 10px; min-height: 52px; }
+      .kl-diff-d { flex: 1; font-size: 11px; }
+      .kl-daily { font-size: 11px; min-height: 52px; }
       .kl-hud { gap: 5px; }
-      .kl-chip { padding: 4px 7px; min-height: 30px; font-size: 9px; }
-      .kl-chip b { font-size: 9px; }
+      .kl-chip { padding: 4px 7px; min-height: 30px; font-size: 10px; }
+      .kl-chip b { font-size: 10px; }
       .kl-status { gap: 10px; }
-      .kl-mini { font-size: 9px; padding: 8px 10px; }
-      .kl-vtab { font-size: 9px; padding: 8px 6px; }
+      .kl-mini { font-size: 10px; padding: 8px 10px; }
+      .kl-vtab { font-size: 10px; padding: 8px 6px; }
       .kl-fc-desc { font-size: 11px; padding: 10px 12px; }
       .kl-tip { top: calc(env(safe-area-inset-top, 0px) + 54px); font-size: 11px; max-width: 94vw; }
     }
+
+    /* 2026-11-18 手机端：7 列纸牌按视口平分，整桌不用横向滚动 */
+    @media (max-width: 640px) {
+      .kl-wrap {
+        --kl-cw: calc((100vw - 80px) / 7);
+        --kl-ch: calc(var(--kl-cw) * 1.45);
+        --kl-up: calc(var(--kl-ch) * 0.30);
+        --kl-down: calc(var(--kl-ch) * 0.17);
+        --kl-gap: 4px;
+        padding: 2px 2px 10px;
+      }
+      .kl-top, .kl-cols-wrap { overflow-x: hidden; }
+      .kl-top { gap: 4px; margin-bottom: 6px; }
+      .kl-cols { gap: 4px; }
+      .kl-hud { gap: 4px; margin-bottom: 5px; }
+      .kl-chip { padding: 4px 8px; min-height: 28px; font-size: 10px; }
+      .kl-status { margin: 4px 0; font-size: 10.5px; }
+      .kl-actions .btn, .kl-mini { min-height: 40px; font-size: 11px; }
+      .kl-rank { font-size: calc(var(--kl-ch) * 0.18); }
+      .kl-suit { font-size: calc(var(--kl-ch) * 0.155); }
+      .kl-watermark { font-size: calc(var(--kl-ch) * 0.38); }
+    }
+    html[data-theme="light"] .kl-chip,
+    html:not([data-theme="dark"]) .kl-chip {
+      background: #ffffff; border-color: #d8dfec; color: #6b7280;
+      box-shadow: 0 1px 1px rgba(16,24,40,.05);
+    }
+    html[data-theme="light"] .kl-stock-slot,
+    html:not([data-theme="dark"]) .kl-stock-slot,
+    html[data-theme="light"] .kl-found-slot,
+    html:not([data-theme="dark"]) .kl-found-slot,
+    html[data-theme="light"] .kl-col.empty::before,
+    html:not([data-theme="dark"]) .kl-col.empty::before {
+      background: #f4f7fb; border-color: #d8dfec;
+    }
   </style>
 <style>@media (max-width:900px){ main#game-root{padding-top:32px;} }</style>
-<link rel="stylesheet" href="/shell/netcn-shell.css?v=20261118b3">
-<link rel="stylesheet" href="/shell/netcn-ui.css?v=20261118b3">
 </head>
 <body data-game-id="klondike" data-game-title="纸牌接龙" data-best-mode="min">
 <nav class="nc-shell" aria-label="netcn 站点导航">
@@ -455,20 +488,20 @@
 </nav>
   <h1 class="seo-h1">纸牌接龙</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261112b"></script>
-  <script src="../../assets/js/core/input.js?v=20261112b"></script>
-  <script src="../../assets/js/core/loop.js?v=20261112b"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261112b"></script>
-<script src="../../games.js?v=20261112b"></script>
-  <script src="klondike-i18n.js?v=20261112b"></script>
-  <script src="../../assets/js/core/extras.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261112b"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261112b"></script>
-<script src="../../assets/js/shell.js?v=20261112b"></script>
-  <script src="../_shared/kit.js?v=20261112b"></script>
-  <script src="klondike.js?v=20261112b"></script>
-  <script src="../../assets/js/pwa.js?v=20261112b"></script>
+  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
+  <script src="../../assets/js/core/input.js?v=20261118h"></script>
+  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
+<script src="../../games.js?v=20261118h"></script>
+  <script src="klondike-i18n.js?v=20261118h"></script>
+  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
+<script src="../../assets/js/shell.js?v=20261118h"></script>
+  <script src="../_shared/kit.js?v=20261118h"></script>
+  <script src="klondike.js?v=20261118h"></script>
+  <script src="../../assets/js/pwa.js?v=20261118h"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -479,6 +512,6 @@
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
   <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261112b"></script>
+<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
 </body>
 </html>
