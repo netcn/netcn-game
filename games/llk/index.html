@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261119f1" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
-<script src="../../shell/shell.js?v=20261118h"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261119f1">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261119f1">
+<script src="../../shell/shell.js?v=20261119f1"></script>
   <style>
     .ll-wrap { padding: 14px 10px 24px; width: min(760px, 100%); text-align: center; }
     .ll-tabs { flex-wrap: wrap; display: flex; gap: 8px; justify-content: center; margin-bottom: 12px; }
@@ -71,6 +71,7 @@
     .ll-lines.fade { opacity: 0; transition: opacity .28s ease; }
     .ll-tile {
       box-sizing: border-box; aspect-ratio: 1 / 1;
+      position: relative; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-pixel); font-size: 15px;
       background: var(--nc-stage-2); color: var(--neon-cyan);
@@ -108,6 +109,47 @@
       padding: 8px; margin: 6px 0;
     }
     .ll-msg:empty { display: none; }
+    /* 浅色主题：瓷片牌面，深蓝字 + 顶部色条，选中/路径仍保留高亮 */
+    html[data-theme="light"] .ll-tile,
+    html:not([data-theme="dark"]) .ll-tile {
+      background: linear-gradient(160deg, #ffffff, #f0f4fa 55%, #dfe7f2);
+      color: #1d2a3f;
+      border-color: #c2cede;
+      box-shadow: 0 2px 0 #c2cede, 0 4px 8px rgba(39,64,99,.10), inset 0 1px 0 #fff;
+      text-shadow: none;
+      font-weight: 700;
+    }
+    html[data-theme="light"] .ll-tile::before,
+    html:not([data-theme="dark"]) .ll-tile::before {
+      content: ''; position: absolute; left: 5px; right: 5px; top: 4px; height: 2px;
+      border-radius: 2px; background: var(--tc, #3b82f6); opacity: .9;
+    }
+    html[data-theme="light"] .ll-tile:hover,
+    html:not([data-theme="dark"]) .ll-tile:hover {
+      border-color: var(--tc, #3b82f6);
+      box-shadow: 0 2px 0 var(--tc, #3b82f6), 0 6px 12px rgba(39,64,99,.14), inset 0 1px 0 #fff;
+    }
+    html[data-theme="light"] .ll-tile.sel,
+    html:not([data-theme="dark"]) .ll-tile.sel {
+      background: linear-gradient(160deg, #fffdf0, #ffeaa8 58%, #f5d979);
+      border-color: #d9a400;
+      color: #4a3200;
+      box-shadow: 0 0 0 2px #ffe600, 0 6px 14px rgba(180,130,0,.25), inset 0 1px 0 #fff;
+    }
+    html[data-theme="light"] .ll-tile.path,
+    html:not([data-theme="dark"]) .ll-tile.path {
+      background: linear-gradient(160deg, #f2fff7, #c9f5dc);
+      border-color: #24a866;
+      color: #083d24;
+      box-shadow: 0 0 0 2px #5cff9d, 0 6px 14px rgba(20,140,80,.20);
+    }
+    html[data-theme="light"] .ll-tile.bad,
+    html:not([data-theme="dark"]) .ll-tile.bad {
+      background: linear-gradient(160deg, #fff5f8, #f7c9d8);
+      border-color: #d92d5f;
+      color: #5a0a20;
+      box-shadow: 0 0 0 2px #ff5a8a, 0 6px 14px rgba(200,30,80,.18);
+    }
     @media (max-width: 640px) {
       .ll-tile { font-size: 11px; }
       .ll-status { margin: 6px 0 4px; font-size: 11.5px; }
@@ -136,19 +178,19 @@
 </nav>
   <h1 class="seo-h1">连连看</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
-  <script src="../../assets/js/core/input.js?v=20261118h"></script>
-  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
-<script src="../../games.js?v=20261118h"></script>
-  <script src="llk-i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
-<script src="../../assets/js/shell.js?v=20261118h"></script>
-  <script src="llk.js?v=20261118h"></script>
-  <script src="../../assets/js/pwa.js?v=20261118h"></script>
+  <script src="../../assets/js/core/storage.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/input.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/loop.js?v=20261119f1"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261119f1"></script>
+<script src="../../games.js?v=20261119f1"></script>
+  <script src="llk-i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/extras.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261119f1"></script>
+<script src="../../assets/js/shell.js?v=20261119f1"></script>
+  <script src="llk.js?v=20261119f1"></script>
+  <script src="../../assets/js/pwa.js?v=20261119f1"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -157,8 +199,8 @@
     <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
-  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">49 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
+<script src="../../assets/js/family-bridge.js?v=20261119f1"></script>
 </body>
 </html>

@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261119f1" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
-<script src="../../shell/shell.js?v=20261118h"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261119f1">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261119f1">
+<script src="../../shell/shell.js?v=20261119f1"></script>
   <style>
     .bj-wrap { padding: 12px 12px 22px; width: min(520px, 100%); text-align: center; position: relative; }
     .bj-wrap .hidden { display: none !important; }
@@ -283,6 +283,44 @@
       .bj-card-inner, .bj-table, .bj-hand-panel, .bj-chip { transition: none !important; }
       .bj-card.flip, .bj-result.show, .bj-pauseov.show { animation: none !important; }
     }
+    /* 平板/桌面也补上牌桌质感与空牌位；此前这两组规则只在 ≤640 内生效 */
+    @media (min-width: 641px) {
+      .bj-cards:empty::after, #bj-hands:empty::after {
+        content: ""; display: block; width: 52px; height: 74px; border-radius: 9px;
+        border: 1px solid rgba(255, 226, 164, .52);
+        background:
+          repeating-linear-gradient(45deg, rgba(255, 255, 255, .075) 0 5px, transparent 5px 10px),
+          linear-gradient(160deg, #7d2738, #3a0d18);
+        box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .06), 0 6px 14px rgba(0, 0, 0, .35);
+      }
+      html[data-theme="light"] canvas#bj-felt { display: none !important; }
+      html[data-theme="light"] .bj-table {
+        background:
+          radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, .10), transparent 62%),
+          linear-gradient(160deg, #1e6b52, #0d3c2f);
+        border-color: rgba(218, 181, 86, .48);
+        box-shadow: inset 0 0 42px rgba(0, 0, 0, .55), 0 10px 26px rgba(8, 40, 30, .28);
+      }
+      html[data-theme="light"] .bj-table::after,
+      html:not([data-theme="dark"]) .bj-table::after {
+        content: "BLACKJACK · 21";
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-mono); font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+        letter-spacing: .14em; color: rgba(255, 224, 160, .11);
+        pointer-events: none; z-index: 1;
+      }
+      html[data-theme="light"] .bj-side-head { color: #fff8e6; font-weight: 700; }
+      html[data-theme="light"] .bj-side-head .bj-val { color: #ffe08a; }
+      html[data-theme="light"] .bj-side.dealer { border-bottom-color: rgba(255, 255, 255, .18); }
+      html[data-theme="light"] .bj-cards:empty::after,
+      html[data-theme="light"] #bj-hands:empty::after {
+        border-color: rgba(255, 226, 164, .62);
+        background:
+          repeating-linear-gradient(45deg, rgba(255, 255, 255, .085) 0 5px, transparent 5px 10px),
+          linear-gradient(160deg, #7d2738, #3a0d18);
+        box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .07), 0 6px 14px rgba(0, 0, 0, .38);
+      }
+    }
   </style>
 </head>
 <body data-game-id="blackjack" data-game-title="21点" data-best-mode="max">
@@ -305,19 +343,19 @@
 </nav>
   <h1 class="seo-h1">21点</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
-  <script src="../../assets/js/core/input.js?v=20261118h"></script>
-  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
-<script src="../../games.js?v=20261118h"></script>
-  <script src="blackjack-i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
-<script src="../../assets/js/shell.js?v=20261118h"></script>
-  <script src="blackjack.js?v=20261118h"></script>
-  <script src="../../assets/js/pwa.js?v=20261118h"></script>
+  <script src="../../assets/js/core/storage.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/input.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/loop.js?v=20261119f1"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261119f1"></script>
+<script src="../../games.js?v=20261119f1"></script>
+  <script src="blackjack-i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/extras.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261119f1"></script>
+<script src="../../assets/js/shell.js?v=20261119f1"></script>
+  <script src="blackjack.js?v=20261119f1"></script>
+  <script src="../../assets/js/pwa.js?v=20261119f1"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -326,9 +364,9 @@
     <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
-  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">49 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
+<script src="../../assets/js/family-bridge.js?v=20261119f1"></script>
 </body>
 </html>
 

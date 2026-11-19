@@ -475,7 +475,7 @@
     '<div class="mode-row" id="hs-diffs"></div>' +
     '<div class="hs-msg" id="hs-msg" aria-live="polite"></div>' +
     '<div class="hs-stage">' +
-    '  <canvas class="hs-canvas" id="hs-canvas" width="440" height="440" tabindex="0"></canvas>' +
+    '  <canvas class="hs-canvas nc-keep-dark" id="hs-canvas" width="440" height="440" tabindex="0"></canvas>' +
     '  <div class="hs-overlay hidden" id="hs-overlay">' +
     '    <div class="hs-ov-title" id="hs-ov-title"></div>' +
     '    <div class="hs-ov-sub" id="hs-ov-sub"></div>' +

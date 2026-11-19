@@ -1,14 +1,14 @@
 /* ============================================================
    游戏厅 Service Worker（game/ 子站）
-   —— 缓存版本：arcade-hall-v16（2026-11-12 玩法可玩性修复：纸感绘制层 / 工具条层级 / 重开）
+   —— 缓存版本：arcade-hall-v31（2026-11-19：低分棋盘/首屏画质专项；blocks、2048、扫雷、数方、连连看、迷宫、战棋、骰子、黑白棋、跳棋、填数、24点）
    —— 策略：HTML 导航 network-first（离线回退缓存）；
            静态资源（JS/CSS/字体/图片）cache-first
-   —— 预缓存：2D 首页 + 53 款游戏页 + 子站 assets 核心
+   —— 预缓存：2D 首页 + 49 款游戏页 + 子站 assets 核心
    版本号约定：全站所有本地 js/css/woff2 只用 ASSET_VER 一个值，
    HTML 由 tools/normalize_pages.py 统一注入，改版只需改这里 + 工具里的 VER。
    ============================================================ */
-var CACHE = 'arcade-hall-v22';
-var ASSET_VER = '20261118h';
+var CACHE = 'arcade-hall-v32';
+var ASSET_VER = '20261119f1';
 
 /* 各游戏目录内的额外脚本（非 <id>.js / <id>-i18n.js），
    需与 index.html 中同版本号一起预缓存 */
@@ -27,6 +27,7 @@ var CORE = [
   /* 内页：2 层 bundle（6 层已合并）；首页 / 404 仍用下面三个源文件 */
   './assets/css/game-core.css?v=' + ASSET_VER,
   './assets/css/game-ui.css?v=' + ASSET_VER,
+  './assets/css/menu-vignette.css?v=' + ASSET_VER,
   './assets/css/theme.css?v=' + ASSET_VER,
   './assets/js/family-bridge.js?v=' + ASSET_VER,
   './assets/fonts/fusion-pixel-site.woff2?v=' + ASSET_VER,
@@ -41,6 +42,7 @@ var CORE = [
   './assets/js/core/extras.js?v=' + ASSET_VER,
   './assets/js/shell.js?v=' + ASSET_VER,
   './assets/js/pwa.js?v=' + ASSET_VER,
+  './assets/js/menu-vignette.js?v=' + ASSET_VER,
   /* 32 款游戏共用的画布工具库（与游戏页同版本号） */
   './games/_shared/kit.js?v=' + ASSET_VER,
   './games/_shared/pipegen.js?v=' + ASSET_VER,
@@ -57,7 +59,7 @@ var CORE = [
   './shell/shell.js?v=' + ASSET_VER,
 ];
 
-/* 53 款游戏页 + 各自三件套（注册表在 sw.js 同级：./games.js）
+/* 49 款游戏页 + 各自三件套（注册表在 sw.js 同级：./games.js）
    Service Worker 不允许同步 XHR，改为安装期 fetch 注册表后解析。
    （旧实现用 sync XHR 会抛异常，导致游戏页从未进入预缓存。） */
 function buildGamePages() {

@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261119f1" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
-<script src="../../shell/shell.js?v=20261118h"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261119f1">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261119f1">
+<script src="../../shell/shell.js?v=20261119f1"></script>
   <style>
     .g24-wrap { width: 100%; max-width: 560px; display: flex; flex-direction: column; gap: 9px; align-items: stretch; }
     .g24-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
@@ -131,6 +131,34 @@
     .g24-key.skip { grid-column: span 2; font-size: 11px; color: var(--neon-yellow); border-color: rgb(var(--nc-yellow-rgb) / 0.4); }
     .g24-key.submit { grid-column: span 3; font-size: 11px; color: var(--neon-green); border-color: var(--neon-green); background: linear-gradient(120deg, rgb(var(--nc-green-rgb) / 0.2), rgb(var(--nc-cyan-rgb) / 0.14)); text-shadow: 0 0 8px rgb(var(--nc-green-rgb) / 0.5); box-shadow: 0 0 10px rgb(var(--nc-green-rgb) / 0.2), inset 0 0 10px rgb(var(--nc-green-rgb) / 0.08); }
     .g24-key.submit:hover, .g24-key.submit:active { background: var(--neon-green); color: #071304; text-shadow: none; }
+    html[data-theme="light"] .g24-keys,
+    html:not([data-theme="dark"]) .g24-keys {
+      padding: 8px; border-radius: 14px;
+      background: linear-gradient(180deg, #0c1e30, #07121f);
+      border: 1px solid rgba(0, 240, 255, .22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 10px 22px rgba(10,25,45,.14);
+    }
+    html[data-theme="light"] .g24-key,
+    html:not([data-theme="dark"]) .g24-key {
+      color: #d6f2ff;
+      background: linear-gradient(180deg, #163348, #0a1d2e 78%);
+      border-color: rgba(0, 240, 255, .22);
+      box-shadow: inset 0 1px 0 rgba(180,255,255,.16), inset 0 -2px 2px rgba(0,0,0,.38), 0 2px 0 rgba(0,0,0,.2);
+    }
+    html[data-theme="light"] .g24-key.op,
+    html:not([data-theme="dark"]) .g24-key.op { color: #ff9ecb; border-color: rgba(255,90,138,.34); }
+    html[data-theme="light"] .g24-key.paren,
+    html:not([data-theme="dark"]) .g24-key.paren { color: #ffd98a; border-color: rgba(255,207,92,.34); }
+    html[data-theme="light"] .g24-key:hover,
+    html:not([data-theme="dark"]) .g24-key:hover {
+      background: linear-gradient(180deg, #1d4560, #0d2639 78%);
+      border-color: rgba(0,240,255,.5); box-shadow: 0 0 12px rgba(0,240,255,.16);
+    }
+    html[data-theme="light"] .g24-key.submit,
+    html:not([data-theme="dark"]) .g24-key.submit {
+      color: #8fffc0; border-color: rgba(80,255,170,.45);
+      background: linear-gradient(120deg, rgba(80,255,170,.18), rgba(0,240,255,.12));
+    }
     .g24-result { margin-top: 2px; padding: 14px; border-radius: 14px; border: 1px solid rgb(var(--nc-cyan-rgb) / 0.4); background: linear-gradient(165deg, rgba(24,32,52,0.08), rgba(0, 0, 0, 0.4)); box-shadow: var(--ui-shadow); animation: g24-pop 0.35s cubic-bezier(0.2, 0.9, 0.3, 1) both; }
     .g24-result.bad { border-color: rgb(var(--nc-pink-rgb) / 0.55); box-shadow: 0 0 24px rgb(var(--nc-pink-rgb) / 0.18); }
     .g24-res-title { text-align: center; font-family: var(--font-pixel); font-size: 15px; line-height: 1.5; color: var(--neon-green); text-shadow: 0 0 10px rgb(var(--nc-green-rgb) / 0.5); }
@@ -242,19 +270,19 @@
 </nav>
   <h1 class="seo-h1">24点</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
-  <script src="../../assets/js/core/input.js?v=20261118h"></script>
-  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
-<script src="../../games.js?v=20261118h"></script>
-  <script src="game24-i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
-<script src="../../assets/js/shell.js?v=20261118h"></script>
-  <script src="game24.js?v=20261118h"></script>
-  <script src="../../assets/js/pwa.js?v=20261118h"></script>
+  <script src="../../assets/js/core/storage.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/input.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/loop.js?v=20261119f1"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261119f1"></script>
+<script src="../../games.js?v=20261119f1"></script>
+  <script src="game24-i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/extras.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261119f1"></script>
+<script src="../../assets/js/shell.js?v=20261119f1"></script>
+  <script src="game24.js?v=20261119f1"></script>
+  <script src="../../assets/js/pwa.js?v=20261119f1"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -263,8 +291,8 @@
     <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
-  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">49 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
+<script src="../../assets/js/family-bridge.js?v=20261119f1"></script>
 </body>
 </html>

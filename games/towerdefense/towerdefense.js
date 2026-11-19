@@ -427,8 +427,9 @@ window.GAME_TUTORIAL_STEPS = [
     '<div class="td-tray" id="td-tray">' +
     TYPE_ORDER.map(function (tp) {
       var s = TOWERS[tp];
+      var glyph = { bolt: '⚡', sniper: '◎', frost: '❄', poison: '☣', cannon: '◉', battery: '✦' }[tp] || '◆';
       return '<button class="td-tower' + (tp === 'bolt' ? ' sel' : '') + '" data-t="' + tp + '">' +
-        '<i class="td-dot" style="background:' + s.color + ';box-shadow:0 0 6px ' + s.color + '"></i>' +
+        '<i class="td-ico" style="--tc:' + s.color + '">' + glyph + '</i>' +
         T('gs.towerdefense.tower.' + tp + '.n') + ' <b>' + s.cost + '</b></button>';
     }).join('') +
     '</div>' +
@@ -685,44 +686,194 @@ window.GAME_TUTORIAL_STEPS = [
     bgCanvas = document.createElement('canvas');
     bgCanvas.width = W; bgCanvas.height = H;
     var b = bgCanvas.getContext('2d');
+
+    /* 夜色林地：深绿 → 蓝黑，顶部留一束月光，底部压暗形成舞台 */
     var g = b.createLinearGradient(0, 0, W, H);
-    g.addColorStop(0, '#08120d'); g.addColorStop(0.6, '#0a0f18'); g.addColorStop(1, '#0c0a16');
+    g.addColorStop(0, '#0a1a16');
+    g.addColorStop(0.42, '#0a1518');
+    g.addColorStop(0.72, '#080f1c');
+    g.addColorStop(1, '#05080f');
     b.fillStyle = g; b.fillRect(0, 0, W, H);
-    // 网格
-    b.strokeStyle = 'rgba(57,255,20,0.05)'; b.lineWidth = 1;
+
+    var moon = b.createRadialGradient(W * 0.72, -20, 10, W * 0.72, -20, H * 0.9);
+    moon.addColorStop(0, 'rgba(150,235,210,0.16)');
+    moon.addColorStop(0.38, 'rgba(80,160,170,0.06)');
+    moon.addColorStop(1, 'rgba(0,0,0,0)');
+    b.fillStyle = moon; b.fillRect(0, 0, W, H);
+
+    /* 地表色块：大块苔藓 / 泥地，弱对比，避免整片死黑 */
+    var patches = [
+      [0.08, 0.18, 0.34, 0.24, 'rgba(38,86,62,0.16)'],
+      [0.55, 0.08, 0.40, 0.20, 'rgba(34,64,88,0.13)'],
+      [0.30, 0.62, 0.46, 0.26, 'rgba(24,64,54,0.12)'],
+      [0.78, 0.56, 0.30, 0.30, 'rgba(56,44,70,0.10)'],
+      [0.02, 0.80, 0.28, 0.22, 'rgba(20,42,40,0.18)']
+    ];
+    patches.forEach(function (p) {
+      var rg = b.createRadialGradient(W * p[0], H * p[1], 4, W * p[0], H * p[1], W * p[2]);
+      rg.addColorStop(0, p[4]);
+      rg.addColorStop(1, 'rgba(0,0,0,0)');
+      b.fillStyle = rg;
+      b.fillRect(W * (p[0] - p[2]), H * (p[1] - p[2]), W * p[2] * 2, H * p[2] * 2);
+    });
+
+    /* 极淡的格点，仅用于辅助定位，不抢画面 */
+    b.fillStyle = 'rgba(150,230,200,0.035)';
+    for (var gx = 0; gx <= W; gx += CELL * 3) {
+      for (var gy = 0; gy <= H; gy += CELL * 3) {
+        b.beginPath(); b.arc(gx, gy, 1, 0, Math.PI * 2); b.fill();
+      }
+    }
+
+    /* 道路底：先画连续深色路基，再逐格铺石，避免路径转弯处露缝 */
+    b.save();
+    b.strokeStyle = 'rgba(10,8,6,0.86)';
+    b.lineWidth = CELL + 7;
+    b.lineJoin = 'round'; b.lineCap = 'round';
     b.beginPath();
-    for (var x = 0; x <= W; x += CELL * 2) { b.moveTo(x, 0); b.lineTo(x, H); }
-    for (var y = 0; y <= H; y += CELL * 2) { b.moveTo(0, y); b.lineTo(W, y); }
+    PATH.forEach(function (p, i) {
+      var cx = p[1] * CELL + CELL / 2, cy = p[0] * CELL + CELL / 2;
+      if (i === 0) b.moveTo(cx, cy); else b.lineTo(cx, cy);
+    });
     b.stroke();
-    // 路径地砖
+    b.restore();
+
+    var seed = 20261119;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+
     PATH.forEach(function (p, i) {
       var px = p[1] * CELL, py = p[0] * CELL;
+      var warm = i % 3 === 0;
       var tg = b.createLinearGradient(px, py, px, py + CELL);
-      tg.addColorStop(0, i % 2 ? '#4c3d23' : '#55452a');
-      tg.addColorStop(1, i % 2 ? '#2e2513' : '#352a17');
+      tg.addColorStop(0, warm ? '#68553a' : '#5a4a32');
+      tg.addColorStop(0.5, warm ? '#4a3b26' : '#40331f');
+      tg.addColorStop(1, '#2a2115');
       b.fillStyle = tg;
-      b.fillRect(px, py, CELL, CELL);
-      b.strokeStyle = 'rgba(255,220,150,0.13)';
-      b.lineWidth = 1;
-      b.strokeRect(px + 1, py + 1, CELL - 2, CELL - 2);
-      b.fillStyle = 'rgba(255,235,190,0.08)';
-      b.fillRect(px + 4, py + 5, 2, 2);
-      b.fillRect(px + 13, py + 14, 2, 2);
-      // 方向箭头
-      if (i % 6 === 0 && i < PATH.length - 1) {
-        var np = PATH[i + 1];
-        var dx = np[1] - p[1], dy = np[0] - p[0];
-        var cx = px + CELL / 2, cy = py + CELL / 2;
-        b.save();
-        b.translate(cx, cy);
-        b.rotate(Math.atan2(dy, dx));
-        b.fillStyle = 'rgba(255,230,150,0.35)';
-        b.beginPath();
-        b.moveTo(5, 0); b.lineTo(-2, -3.5); b.lineTo(-2, 3.5);
-        b.closePath(); b.fill();
-        b.restore();
+      b.fillRect(px + 1, py + 1, CELL - 2, CELL - 2);
+
+      /* 碎石：两块不规则小石 + 高光，20px 一格也能看出石路质感 */
+      b.fillStyle = 'rgba(12,9,6,0.34)';
+      b.beginPath();
+      b.ellipse(px + 6.2 + rnd() * 1.5, py + 7.5, 4.2, 2.6, -0.25, 0, Math.PI * 2);
+      b.ellipse(px + 13.8 + rnd() * 1.2, py + 13.2, 4.6, 2.8, 0.3, 0, Math.PI * 2);
+      b.fill();
+      b.fillStyle = 'rgba(210,190,150,0.12)';
+      b.beginPath();
+      b.ellipse(px + 5.8, py + 6.8, 3.2, 1.6, -0.25, 0, Math.PI * 2);
+      b.ellipse(px + 13.4, py + 12.5, 3.6, 1.7, 0.3, 0, Math.PI * 2);
+      b.fill();
+
+      /* 路缘苔藓 */
+      if (i % 4 === 0) {
+        b.fillStyle = 'rgba(64,130,76,0.30)';
+        b.beginPath(); b.arc(px + (rnd() > 0.5 ? 2 : CELL - 2), py + CELL * 0.5, 2.2, 0, Math.PI * 2); b.fill();
       }
     });
+
+    /* 方向箭头：暖黄微光，沿行进方向 */
+    PATH.forEach(function (p, i) {
+      if (i % 8 !== 0 || i >= PATH.length - 1) return;
+      var np = PATH[i + 1];
+      var dx = np[1] - p[1], dy = np[0] - p[0];
+      var cx = p[1] * CELL + CELL / 2, cy = p[0] * CELL + CELL / 2;
+      b.save();
+      b.translate(cx, cy); b.rotate(Math.atan2(dy, dx));
+      b.fillStyle = 'rgba(255,220,135,0.42)';
+      b.beginPath();
+      b.moveTo(5.5, 0); b.lineTo(-2.5, -3.8); b.lineTo(-2.5, 3.8);
+      b.closePath(); b.fill();
+      b.restore();
+    });
+
+    /* 林地装饰：树 / 岩石 / 灌木 / 蘑菇 / 路灯 */
+    function blocked(c, r) {
+      /* 只避开路面本身。树冠可以轻微探到路边，反而更像真实林地；
+         敌人与塔在背景之上绘制，不会被装饰挡住。 */
+      return !!pathSet[r + ',' + c];
+    }
+    function pickSpot() {
+      for (var tries = 0; tries < 120; tries++) {
+        var c = 1 + Math.floor(rnd() * (COLS - 2));
+        var r = 1 + Math.floor(rnd() * (ROWS - 2));
+        if (!blocked(c, r)) return { x: c * CELL + CELL / 2, y: r * CELL + CELL / 2 };
+      }
+      return null;
+    }
+    function tree(x, y, s) {
+      b.fillStyle = 'rgba(0,0,0,0.35)';
+      b.beginPath(); b.ellipse(x + 3, y + 7, 9 * s, 3.4 * s, 0, 0, Math.PI * 2); b.fill();
+      b.fillStyle = '#3a2b1c';
+      b.fillRect(x - 1.4 * s, y - 2 * s, 2.8 * s, 9 * s);
+      var cols = ['#123d2a', '#174a32', '#1d5a3b', '#226844'];
+      cols.forEach(function (col, ci) {
+        var ox = (ci - 1.5) * 3.4 * s, oy = -8 * s + Math.abs(ci - 1.5) * 2.6 * s;
+        b.fillStyle = col;
+        b.beginPath(); b.arc(x + ox, y + oy, (6.6 - Math.abs(ci - 1.5) * 1.4) * s, 0, Math.PI * 2); b.fill();
+      });
+      b.fillStyle = 'rgba(150,230,180,0.18)';
+      b.beginPath(); b.arc(x - 3 * s, y - 13 * s, 3.2 * s, 0, Math.PI * 2); b.fill();
+    }
+    function rock(x, y, s) {
+      b.fillStyle = 'rgba(0,0,0,0.30)';
+      b.beginPath(); b.ellipse(x + 2, y + 4, 8 * s, 3 * s, 0, 0, Math.PI * 2); b.fill();
+      b.fillStyle = '#4b5560';
+      b.beginPath();
+      b.moveTo(x - 7 * s, y + 3 * s); b.lineTo(x - 3 * s, y - 4 * s);
+      b.lineTo(x + 4 * s, y - 3 * s); b.lineTo(x + 8 * s, y + 3 * s);
+      b.lineTo(x + 5 * s, y + 6 * s); b.lineTo(x - 4 * s, y + 6 * s);
+      b.closePath(); b.fill();
+      b.fillStyle = 'rgba(190,215,225,0.18)';
+      b.beginPath(); b.moveTo(x - 4 * s, y - 2 * s); b.lineTo(x + 3 * s, y - 2 * s); b.lineTo(x + 5 * s, y + 1 * s); b.lineTo(x - 5 * s, y + 1 * s); b.closePath(); b.fill();
+    }
+    function bush(x, y, s) {
+      b.fillStyle = '#1a5137';
+      b.beginPath(); b.arc(x - 4 * s, y, 4.3 * s, 0, Math.PI * 2); b.arc(x + 3 * s, y - 1 * s, 4.8 * s, 0, Math.PI * 2); b.arc(x, y + 3 * s, 3.8 * s, 0, Math.PI * 2); b.fill();
+      b.fillStyle = 'rgba(130,220,150,0.20)';
+      b.beginPath(); b.arc(x - 2 * s, y - 3 * s, 2.2 * s, 0, Math.PI * 2); b.fill();
+    }
+    function mushroom(x, y, s) {
+      b.fillStyle = '#d9e4d0'; b.fillRect(x - 1, y, 2, 5 * s);
+      b.fillStyle = '#ff5f7e';
+      b.beginPath(); b.arc(x, y - 1, 4.2 * s, Math.PI, 0); b.fill();
+      b.fillStyle = 'rgba(255,235,240,0.5)';
+      b.beginPath(); b.arc(x - 1.4 * s, y - 2.3 * s, 1.1 * s, 0, Math.PI * 2); b.fill();
+    }
+    function lantern(x, y) {
+      b.fillStyle = '#2b2a26'; b.fillRect(x - 1, y - 4, 2, 13);
+      var lg = b.createRadialGradient(x, y - 8, 1, x, y - 8, 18);
+      lg.addColorStop(0, 'rgba(255,220,120,0.42)');
+      lg.addColorStop(0.4, 'rgba(255,180,80,0.14)');
+      lg.addColorStop(1, 'rgba(255,150,50,0)');
+      b.fillStyle = lg; b.beginPath(); b.arc(x, y - 8, 18, 0, Math.PI * 2); b.fill();
+      b.fillStyle = '#ffd777'; b.fillRect(x - 2.5, y - 11, 5, 6);
+      b.fillStyle = 'rgba(255,255,230,0.9)'; b.fillRect(x - 1.4, y - 10, 2.8, 3.4);
+    }
+    var treeSpots = [], rockSpots = [], bushSpots = [], lampSpots = [];
+    for (var ti = 0; ti < 13; ti++) { var ts = pickSpot(); if (ts) treeSpots.push(ts); }
+    for (var ri = 0; ri < 11; ri++) { var rs = pickSpot(); if (rs) rockSpots.push(rs); }
+    for (var bi2 = 0; bi2 < 13; bi2++) { var bs2 = pickSpot(); if (bs2) bushSpots.push(bs2); }
+    for (var li = 0; li < 5; li++) { var ls = pickSpot(); if (ls) lampSpots.push(ls); }
+
+    treeSpots.forEach(function (p) { tree(p.x, p.y, 0.75 + rnd() * 0.45); });
+    rockSpots.forEach(function (p) { rock(p.x, p.y, 0.7 + rnd() * 0.5); });
+    bushSpots.forEach(function (p) { bush(p.x, p.y, 0.7 + rnd() * 0.5); });
+    lampSpots.forEach(function (p) { lantern(p.x, p.y); });
+    /* 零散蘑菇与萤火，补足近景细节 */
+    for (var mi = 0; mi < 16; mi++) {
+      var ms = pickSpot(); if (!ms) continue;
+      mushroom(ms.x + (rnd() - 0.5) * 6, ms.y + (rnd() - 0.5) * 6, 0.55 + rnd() * 0.3);
+    }
+    for (var fi = 0; fi < 28; fi++) {
+      var fs = pickSpot(); if (!fs) continue;
+      b.fillStyle = 'rgba(255,235,150,' + (0.18 + rnd() * 0.26) + ')';
+      b.beginPath(); b.arc(fs.x, fs.y, 1.1 + rnd() * 0.7, 0, Math.PI * 2); b.fill();
+    }
+
+    /* 四周暗角：把注意力收进地图中央 */
+    var vg = b.createRadialGradient(W / 2, H / 2, H * 0.35, W / 2, H / 2, W * 0.72);
+    vg.addColorStop(0, 'rgba(0,0,0,0)');
+    vg.addColorStop(1, 'rgba(0,0,0,0.40)');
+    b.fillStyle = vg; b.fillRect(0, 0, W, H);
   }
 
   /* ---------- 波次 ---------- */

@@ -1441,6 +1441,21 @@
     return 'rgb(' + r + ',' + gg + ',' + b + ')';
   }
 
+  function roundRectPath(c, x, y, w, h, r) {
+    var rr = Math.max(0, Math.min(r, w / 2, h / 2));
+    c.beginPath();
+    c.moveTo(x + rr, y);
+    c.lineTo(x + w - rr, y);
+    c.quadraticCurveTo(x + w, y, x + w, y + rr);
+    c.lineTo(x + w, y + h - rr);
+    c.quadraticCurveTo(x + w, y + h, x + w - rr, y + h);
+    c.lineTo(x + rr, y + h);
+    c.quadraticCurveTo(x, y + h, x, y + h - rr);
+    c.lineTo(x, y + rr);
+    c.quadraticCurveTo(x, y, x + rr, y);
+    c.closePath();
+  }
+
   function drawCell(c, px, py, size, type, alpha, ghost) {
     var col = COLORS[type] || '#8890a0';
     c.save();
@@ -1450,11 +1465,11 @@
     if (ghost) {
       c.globalAlpha = 0.22;
       c.fillStyle = col;
-      c.fillRect(x, y, s, s);
+      roundRectPath(c, x, y, s, s, Math.min(3, s * 0.16)); c.fill();
       c.globalAlpha = 0.6;
       c.strokeStyle = col;
       c.lineWidth = 1;
-      c.strokeRect(x, y, s, s);
+      c.stroke();
       c.restore();
       return;
     }
@@ -1463,12 +1478,12 @@
     grd.addColorStop(0.55, col);
     grd.addColorStop(1, shade(col, -0.42));
     c.fillStyle = grd;
-    c.fillRect(x, y, s, s);
+    roundRectPath(c, x, y, s, s, Math.min(4, s * 0.18)); c.fill();
     c.strokeStyle = col;
     c.lineWidth = size > 12 ? 1.5 : 1;
     c.shadowColor = col;
-    c.shadowBlur = size > 12 ? 6 : 3;
-    c.strokeRect(x, y, s, s);
+    c.shadowBlur = size > 12 ? 7 : 3;
+    c.stroke();
     c.shadowBlur = 0;
     c.fillStyle = 'rgba(255,255,255,.30)';
     c.fillRect(x + s * 0.14, y + s * 0.14, s * 0.5, Math.max(1, s * 0.11));
@@ -1479,7 +1494,10 @@
 
   function drawGrid(c, w, h, cell, color) {
     c.save();
-    c.strokeStyle = color || 'rgba(120,160,220,.10)';
+    var base = color || 'rgba(120,160,220,.16)';
+    var major = (color && color.indexOf('255,45,149') >= 0) ? 'rgba(255,45,149,.16)' : 'rgba(0,240,255,.16)';
+    var dot = (color && color.indexOf('255,45,149') >= 0) ? 'rgba(255,120,180,.20)' : 'rgba(120,220,255,.20)';
+    c.strokeStyle = base;
     c.lineWidth = 1;
     for (var x = cell; x < w; x += cell) {
       c.beginPath(); c.moveTo(x + 0.5, 0); c.lineTo(x + 0.5, h); c.stroke();
@@ -1487,7 +1505,63 @@
     for (var y = cell; y < h; y += cell) {
       c.beginPath(); c.moveTo(0, y + 0.5); c.lineTo(w, y + 0.5); c.stroke();
     }
+    // 每 4 格一条冷光主线，给空棋盘一个可读的节拍
+    c.strokeStyle = major;
+    c.lineWidth = 1;
+    for (var mx = cell * 4; mx < w; mx += cell * 4) {
+      c.beginPath(); c.moveTo(mx + 0.5, 0); c.lineTo(mx + 0.5, h); c.stroke();
+    }
+    for (var my = cell * 4; my < h; my += cell * 4) {
+      c.beginPath(); c.moveTo(0, my + 0.5); c.lineTo(w, my + 0.5); c.stroke();
+    }
+    // 交叉点微光
+    c.fillStyle = dot;
+    for (var dx = cell * 4; dx < w; dx += cell * 4) {
+      for (var dy = cell * 4; dy < h; dy += cell * 4) {
+        c.fillRect(dx - 1, dy - 1, 2, 2);
+      }
+    }
     c.restore();
+  }
+
+  function paintBoardBed(c, w, h, cell) {
+    var bg = c.createLinearGradient(0, 0, 0, h);
+    bg.addColorStop(0, '#0a1322');
+    bg.addColorStop(0.52, '#070c18');
+    bg.addColorStop(1, '#04070e');
+    c.fillStyle = bg;
+    c.fillRect(0, 0, w, h);
+    // 顶部冷光与底部暖光，像一块通电的街机屏幕
+    var top = c.createRadialGradient(w / 2, -h * 0.12, 0, w / 2, -h * 0.12, h * 0.72);
+    top.addColorStop(0, 'rgba(0,240,255,.15)');
+    top.addColorStop(0.48, 'rgba(0,190,230,.05)');
+    top.addColorStop(1, 'rgba(0,0,0,0)');
+    c.fillStyle = top;
+    c.fillRect(0, 0, w, h);
+    var bottom = c.createLinearGradient(0, h * 0.74, 0, h);
+    bottom.addColorStop(0, 'rgba(255,45,149,0)');
+    bottom.addColorStop(1, 'rgba(255,45,149,.07)');
+    c.fillStyle = bottom;
+    c.fillRect(0, h * 0.74, w, h * 0.26);
+    // 顶部危险区
+    c.fillStyle = 'rgba(255,45,149,.045)';
+    c.fillRect(0, 0, w, cell * 3);
+    c.strokeStyle = 'rgba(255,45,149,.35)';
+    c.lineWidth = 1;
+    c.setLineDash([5, 5]);
+    c.beginPath(); c.moveTo(0, cell * 3 + 0.5); c.lineTo(w, cell * 3 + 0.5); c.stroke();
+    c.setLineDash([]);
+    // 四角暗角，避免空场像一块纯黑矩形
+    var vg = c.createRadialGradient(w / 2, h / 2, Math.min(w, h) * 0.28, w / 2, h / 2, Math.max(w, h) * 0.72);
+    vg.addColorStop(0, 'rgba(0,0,0,0)');
+    vg.addColorStop(0.72, 'rgba(0,0,0,0)');
+    vg.addColorStop(1, 'rgba(0,0,0,.34)');
+    c.fillStyle = vg;
+    c.fillRect(0, 0, w, h);
+    // 两侧薄边
+    c.fillStyle = 'rgba(0,240,255,.09)';
+    c.fillRect(0, 0, 1, h);
+    c.fillRect(w - 1, 0, 1, h);
   }
 
   function pieceCells(m) {
@@ -1499,8 +1573,7 @@
   function drawBoard() {
     if (!g) {
       ctx.clearRect(0, 0, BW, BH);
-      ctx.fillStyle = '#07070d';
-      ctx.fillRect(0, 0, BW, BH);
+      paintBoardBed(ctx, BW, BH, CELL);
       drawGrid(ctx, BW, BH, CELL);
       return;
     }
@@ -1510,8 +1583,7 @@
     ctx.clearRect(0, 0, BW, BH);
     ctx.save();
     ctx.translate(sx, sy);
-    ctx.fillStyle = '#07070d';
-    ctx.fillRect(-2, -2, BW + 4, BH + 4);
+    paintBoardBed(ctx, BW, BH, CELL);
     drawGrid(ctx, BW, BH, CELL);
 
     for (var r = 0; r < ROWS; r++) {

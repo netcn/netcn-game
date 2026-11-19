@@ -8,6 +8,7 @@
 (function () {
   /* ==LLK-CORE-START== */
   var LLK_SYMBOLS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Δ', 'Ω', '⌁', '☍', '⌬', '◬', '⏚', '✶', '◉', '▣'];
+  var LLK_PALETTE = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1', '#14b8a6', '#eab308'];
   var LLK_CONF = {
     1: { rows: 6, cols: 8, kinds: 8 },   // 48 张 / 8 种 × 6
     2: { rows: 8, cols: 8, kinds: 16 },  // 64 张 / 16 种 × 4
@@ -431,7 +432,9 @@
           t.style.height = tile + 'px';
           t.style.fontSize = fs + 'px';
           if (v !== 0) {
-            t.textContent = LLK_SYMBOLS[(v - 1) % LLK_SYMBOLS.length];
+            var symIdx = (v - 1) % LLK_SYMBOLS.length;
+            t.textContent = LLK_SYMBOLS[symIdx];
+            t.style.setProperty('--tc', LLK_PALETTE[symIdx % LLK_PALETTE.length]);
             if (sel && sel[0] === rr && sel[1] === cc) t.classList.add('sel');
             if (kbd.r === rr && kbd.c === cc) t.classList.add('kb');
             if (withDeal) {

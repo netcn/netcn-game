@@ -368,6 +368,14 @@
     var css = [
       '.gl-wrap{box-sizing:border-box;margin:0 auto;}',
       '.gl-progress{display:block;margin:6px auto 10px;font-size:11px;color:var(--neon-yellow);border:1px dashed rgba(255,230,0,.38);border-radius:999px;padding:5px 12px;max-width:460px;}',
+      '.gl-warmap{position:relative;max-width:560px;margin:10px auto 12px;border:1px solid rgba(0,240,255,.34);border-radius:14px;overflow:hidden;background:#060d18;box-shadow:0 0 28px rgba(0,240,255,.16),inset 0 0 40px rgba(0,0,0,.55);}',
+      '.gl-warmap svg{display:block;width:100%;height:auto;}',
+      '.gl-warmap::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 22%,transparent 78%,rgba(0,0,0,.18));}',
+      '.gl-map-scan{animation:glMapScan 5.2s linear infinite;}',
+      '@keyframes glMapScan{0%{transform:translateY(-28px);opacity:0}12%{opacity:.7}72%{opacity:.7}100%{transform:translateY(196px);opacity:0}}',
+      '.gl-map-node{animation:glMapNode 2.8s ease-in-out infinite;}',
+      '@keyframes glMapNode{0%,100%{opacity:.55}50%{opacity:1}}',
+      '.gl-map-label{font-family:var(--font-mono),monospace;letter-spacing:.12em;}',
       '.gl-modehead{font-family:var(--font-pixel);font-size:11px;color:var(--neon-purple);letter-spacing:1px;margin:12px 0 6px;}',
       '.gl-levels{display:flex;flex-direction:column;gap:8px;max-width:480px;margin:0 auto 10px;}',
       '.gl-lvl{display:flex;align-items:center;gap:10px;width:100%;min-height:64px;padding:8px 11px;border:2px solid rgba(0,240,255,.35);border-radius:10px;background:linear-gradient(135deg,rgba(0,240,255,.09),rgba(255,45,149,.045));color:var(--text-main);cursor:pointer;text-align:left;font-family:inherit;transition:border-color .15s,box-shadow .15s,transform .12s;}',
@@ -472,6 +480,74 @@
     '  <div class="gl-pick hidden" id="gl-pick">' +
     '    <div class="gl-pick-t">' + T('gs.sectorsiege.pickT') + '</div>' +
     '    <div class="gl-pick-d">' + T('gs.sectorsiege.pickD') + '</div>' +
+    '    <div class="gl-warmap" aria-hidden="true">' +
+    '      <svg viewBox="0 0 480 190" role="img">' +
+    '        <defs>' +
+    '          <linearGradient id="glMapBg" x1="0" y1="0" x2="1" y2="1">' +
+    '            <stop offset="0" stop-color="#081322"/><stop offset=".52" stop-color="#07101f"/><stop offset="1" stop-color="#0b0a18"/>' +
+    '          </linearGradient>' +
+    '          <linearGradient id="glMapCyan" x1="0" y1="0" x2="1" y2="1">' +
+    '            <stop offset="0" stop-color="#00f0ff" stop-opacity=".20"/><stop offset="1" stop-color="#00f0ff" stop-opacity=".04"/>' +
+    '          </linearGradient>' +
+    '          <linearGradient id="glMapPink" x1="1" y1="0" x2="0" y2="1">' +
+    '            <stop offset="0" stop-color="#ff2d95" stop-opacity=".18"/><stop offset="1" stop-color="#ff2d95" stop-opacity=".035"/>' +
+    '          </linearGradient>' +
+    '          <radialGradient id="glMapCore" cx=".5" cy=".45" r=".6">' +
+    '            <stop offset="0" stop-color="#b967ff" stop-opacity=".34"/><stop offset="1" stop-color="#b967ff" stop-opacity=".04"/>' +
+    '          </radialGradient>' +
+    '          <filter id="glMapGlow" x="-40%" y="-40%" width="180%" height="180%">' +
+    '            <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>' +
+    '          </filter>' +
+    '        </defs>' +
+    '        <rect width="480" height="190" fill="url(#glMapBg)"/>' +
+    '        <path d="M0 34 C90 18 150 52 228 32 S370 12 480 38" fill="none" stroke="rgba(90,220,255,.08)" stroke-width="1"/>' +
+    '        <path d="M0 152 C80 126 148 168 244 148 S390 120 480 156" fill="none" stroke="rgba(255,90,180,.07)" stroke-width="1"/>' +
+    '        <g fill="none" stroke="rgba(120,210,255,.055)" stroke-width="1">' +
+    '          <path d="M38 28 C66 54 60 96 92 122 S104 158 88 184"/>' +
+    '          <path d="M142 8 C128 44 158 66 148 98 S170 138 154 184"/>' +
+    '          <path d="M326 4 C346 36 322 64 342 96 S322 140 340 184"/>' +
+    '          <path d="M438 18 C404 48 426 82 412 108 S432 148 450 180"/>' +
+    '        </g>' +
+    '        <g stroke="rgba(130,220,255,.09)" stroke-width=".6">' +
+    '          <path d="M0 46H480M0 95H480M0 144H480"/>' +
+    '          <path d="M96 0V190M192 0V190M288 0V190M384 0V190"/>' +
+    '        </g>' +
+    '        <g filter="url(#glMapGlow)">' +
+    '          <polygon points="24,56 104,28 176,62 196,112 150,148 58,138 22,102" fill="url(#glMapCyan)" stroke="rgba(0,240,255,.52)" stroke-width="1.2"/>' +
+    '          <polyline points="24,56 104,28 176,62 196,112 150,148 58,138 22,102 24,56" fill="none" stroke="rgba(0,240,255,.18)" stroke-width="3"/>' +
+    '          <polygon points="282,34 376,22 450,54 460,112 404,158 306,148 262,96" fill="url(#glMapPink)" stroke="rgba(255,45,149,.5)" stroke-width="1.2"/>' +
+    '          <polygon points="229,58 274,76 274,122 229,140 188,116 188,82" fill="url(#glMapCore)" stroke="rgba(185,103,255,.62)" stroke-width="1.2"/>' +
+    '        </g>' +
+    '        <g fill="none" stroke="rgba(0,240,255,.58)" stroke-width="1.6" stroke-dasharray="7 5">' +
+    '          <path d="M104 88 L188 106"/><path d="M188 106 L260 72"/>' +
+    '        </g>' +
+    '        <g fill="none" stroke="rgba(255,45,149,.55)" stroke-width="1.6" stroke-dasharray="7 5">' +
+    '          <path d="M390 108 L274 102"/><path d="M274 102 L260 72"/>' +
+    '        </g>' +
+    '        <g>' +
+    '          <circle cx="104" cy="88" r="10" fill="rgba(0,240,255,.10)" stroke="rgba(0,240,255,.7)" stroke-width="1.4"/>' +
+    '          <circle class="gl-map-node" cx="104" cy="88" r="3.2" fill="#8ffaff"/>' +
+    '          <circle cx="260" cy="72" r="9" fill="rgba(0,240,255,.10)" stroke="rgba(0,240,255,.7)" stroke-width="1.4"/>' +
+    '          <circle class="gl-map-node" cx="260" cy="72" r="3" fill="#8ffaff"/>' +
+    '          <circle cx="390" cy="108" r="10" fill="rgba(255,45,149,.10)" stroke="rgba(255,45,149,.72)" stroke-width="1.4"/>' +
+    '          <circle class="gl-map-node" cx="390" cy="108" r="3.2" fill="#ff9bd0"/>' +
+    '          <circle cx="274" cy="102" r="8" fill="rgba(255,45,149,.08)" stroke="rgba(255,45,149,.55)" stroke-width="1.2"/>' +
+    '          <circle cx="188" cy="106" r="9" fill="rgba(185,103,255,.10)" stroke="rgba(185,103,255,.7)" stroke-width="1.3"/>' +
+    '          <circle class="gl-map-node" cx="188" cy="106" r="2.8" fill="#e0b3ff"/>' +
+    '        </g>' +
+    '        <g class="gl-map-label" font-size="8" fill="rgba(180,235,255,.7)">' +
+    '          <text x="18" y="20">SECTOR 07 &middot; NIGHT OPS</text>' +
+    '          <text x="382" y="20" fill="rgba(255,150,200,.72)">FRONT LINE</text>' +
+    '          <text x="92" y="108">A-01</text><text x="248" y="90">B-02</text><text x="380" y="128">C-03</text>' +
+    '          <text x="166" y="128" fill="rgba(220,180,255,.75)">CORE</text>' +
+    '        </g>' +
+    '        <g transform="translate(260 72)">' +
+    '          <path d="M0 -13 L4 -4 L13 0 L4 4 L0 13 L-4 4 L-13 0 L-4 -4 Z" fill="rgba(0,240,255,.9)" opacity=".85"/>' +
+    '        </g>' +
+    '        <line class="gl-map-scan" x1="0" y1="0" x2="480" y2="0" stroke="rgba(0,240,255,.16)" stroke-width="2"/>' +
+    '        <rect x="6" y="6" width="468" height="178" rx="10" fill="none" stroke="rgba(120,220,255,.1)"/>' +
+    '      </svg>' +
+    '    </div>' +
     '    <div class="gl-progress" id="gl-progress"></div>' +
     '    <div class="gl-levels" id="gl-levels"></div>' +
     '    <div class="gl-modehead">' + T('gs.sectorsiege.randomT') + '</div>' +

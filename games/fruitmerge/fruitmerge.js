@@ -143,6 +143,12 @@ window.GAME_TUTORIAL_STEPS = [
     '</div>' +
     '<div class="fm-mode" id="fm-mode"></div>' +
     '<div class="fm-stage">' +
+    '  <div class="fm-menu" id="fm-menu">' +
+    '    <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
+    '    <div class="fm-menu-title">' + T('gs.fruitmerge.tutTitle') + '</div>' +
+    '    <div class="fm-menu-sub">' + T('gs.fruitmerge.tut1') + '</div>' +
+    '    <button class="btn green fm-menu-start" id="fm-start" type="button">' + T('extras.tutStart') + '</button>' +
+    '  </div>' +
     '  <canvas class="fm-canvas" id="fm-canvas"></canvas>' +
     '  <div class="fm-over" id="fm-over"><div class="fm-over-box">' +
     '    <div class="fm-over-title" id="fm-otitle"></div>' +
@@ -161,6 +167,10 @@ window.GAME_TUTORIAL_STEPS = [
     '</div>' +
     '<div class="fm-msg" id="fm-msg">' + T('gs.fruitmerge.help') + '</div>';
   root.appendChild(wrap);
+
+  var menuEl = wrap.querySelector('#fm-menu');
+  var menuStart = wrap.querySelector('#fm-start');
+  if (menuStart) menuStart.addEventListener('click', function () { if (menuEl) menuEl.classList.add('hidden'); });
 
   var canvas = wrap.querySelector('#fm-canvas'), stage = wrap.querySelector('.fm-stage');
   var gk = GK.setup(canvas, W, H);

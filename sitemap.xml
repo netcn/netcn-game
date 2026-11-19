@@ -32,12 +32,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://game.netcn.org/games/brickbash/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://game.netcn.org/games/tank/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -45,18 +39,6 @@
   </url>
   <url>
     <loc>https://game.netcn.org/games/ballpop/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://game.netcn.org/games/frogcross/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://game.netcn.org/games/mazedot/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -237,12 +219,6 @@
   </url>
   <url>
     <loc>https://game.netcn.org/games/checkers/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://game.netcn.org/games/siege/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

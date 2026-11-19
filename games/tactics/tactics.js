@@ -413,6 +413,9 @@ window.GAME_TUTORIAL_STEPS = [
       ".tk-pick-tools { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 0 auto 12px; }",
       ".tk-pick-tools .btn { min-height: 44px; min-width: 130px; }",
       ".tk-gold-chip { display: inline-flex; align-items: center; min-height: 32px; padding: 4px 12px; border: 1px dashed rgba(255,230,0,.45); border-radius: 999px; font-size: 11px; color: var(--neon-yellow); }",
+      ".tk-hero { position: relative; max-width: 560px; margin: 8px auto 12px; border: 1px solid rgba(0,240,255,.30); border-radius: 14px; overflow: hidden; background: #050b16; box-shadow: 0 14px 30px rgba(10,25,45,.22), 0 0 24px rgba(0,240,255,.10), inset 0 0 30px rgba(0,0,0,.55); }",
+      ".tk-hero svg { display: block; width: 100%; height: auto; }",
+      ".tk-hero::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(125,249,255,.055) 0 1px, transparent 1px 4px); mix-blend-mode: screen; opacity: .55; }",
       "",
       ".tk-prep { position: fixed; inset: 0; z-index: 70; display: flex; align-items: center; justify-content: center; background: rgba(5,5,12,.88); padding: 8px; }",
       ".tk-prep.hidden { display: none; }",
@@ -507,12 +510,35 @@ window.GAME_TUTORIAL_STEPS = [
   })();
 
   /* ---------- DOM ---------- */
+  var TACTICS_HERO =
+    '<div class="tk-hero" aria-hidden="true">' +
+    '<svg viewBox="0 0 560 170" preserveAspectRatio="xMidYMid meet">' +
+    '<defs>' +
+    '<linearGradient id="tkHeroBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#08182b"/><stop offset="1" stop-color="#030910"/></linearGradient>' +
+    '<filter id="tkHeroGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+    '</defs>' +
+    '<rect width="560" height="170" fill="url(#tkHeroBg)"/>' +
+    '<g stroke="#11324a" stroke-width="1" opacity=".7"><path d="M0 28H560M0 56H560M0 84H560M0 112H560M0 140H560M28 0V170M84 0V170M140 0V170M196 0V170M252 0V170M308 0V170M364 0V170M420 0V170M476 0V170M532 0V170"/></g>' +
+    '<path d="M30 118 L90 72 L152 96 L196 60 L264 82 L322 54 L380 76 L438 50 L522 92 L522 154 L30 154 Z" fill="#0b2c25" opacity=".78" stroke="#1e5a49" stroke-width="1.5"/>' +
+    '<path d="M90 154 L118 126 L166 142 L210 118 L260 146 L306 124 L350 148 L410 120 L460 144 L522 128 L522 154 Z" fill="#10243a" opacity=".9" stroke="#1c4563" stroke-width="1.2"/>' +
+    '<circle cx="226" cy="124" r="7" fill="#133248" stroke="#2d5d78" stroke-width="1.5"/><circle cx="368" cy="132" r="5" fill="#133248" stroke="#2d5d78" stroke-width="1.5"/>' +
+    '<g fill="#5cff9d" filter="url(#tkHeroGlow)"><circle cx="120" cy="104" r="7"/><circle cx="154" cy="76" r="7"/><circle cx="188" cy="116" r="7"/></g>' +
+    '<g fill="#0a1a12"><circle cx="120" cy="104" r="2.2"/><circle cx="154" cy="76" r="2.2"/><circle cx="188" cy="116" r="2.2"/></g>' +
+    '<g fill="#ff5a8a" filter="url(#tkHeroGlow)"><circle cx="382" cy="98" r="7"/><circle cx="420" cy="122" r="7"/><circle cx="452" cy="86" r="7"/></g>' +
+    '<g fill="#210510"><circle cx="382" cy="98" r="2.2"/><circle cx="420" cy="122" r="2.2"/><circle cx="452" cy="86" r="2.2"/></g>' +
+    '<path d="M212 100 C250 82 300 74 354 92" fill="none" stroke="#00f0ff" stroke-width="2" stroke-dasharray="6 5" opacity=".85"/>' +
+    '<path d="M286 88 l7 10 -7 10 -7 -10 z" fill="#ffcf5c" opacity=".18"/><path d="M286 92 l5 8 -5 8 -5 -8 z" fill="#ffcf5c"/>' +
+    '<text x="16" y="20" fill="#7df9ff" font-family="monospace" font-size="9" letter-spacing="2">CHAPTER 01 · BORDERLINE</text>' +
+    '<text x="448" y="20" fill="#ff9ecb" font-family="monospace" font-size="9" letter-spacing="2">TACTICS 10×10</text>' +
+    '</svg></div>';
+
   var root = document.getElementById('game-root');
   root.innerHTML =
     '<div class="tk-wrap">' +
     '  <div class="tk-pick" id="tk-pick">' +
     '    <div class="tk-pick-title" id="tk-pick-title"></div>' +
     '    <div class="tk-pick-sub" id="tk-pick-sub"></div>' +
+    '    ' + TACTICS_HERO +
     '    <div class="tk-pick-best" id="tk-pick-best"></div>' +
     '    <div class="tk-pick-tools" id="tk-pick-tools"></div>' +
     '    <div class="tk-levels" id="tk-levels"></div>' +

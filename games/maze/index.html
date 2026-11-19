@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261119f1" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
-<script src="../../shell/shell.js?v=20261118h"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261119f1">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261119f1">
+<script src="../../shell/shell.js?v=20261119f1"></script>
   <style>
     .mz-wrap {
       --mz-a: #00f0ff; --mz-b: #ff2d95;
@@ -59,6 +59,13 @@
     .mz-pick { padding: 14px 4px 8px; }
     .mz-pick-t { font-family: var(--font-pixel); font-size: 17px; letter-spacing: 2px; color: var(--mz-b); text-shadow: 0 0 14px var(--mz-glow-b); }
     .mz-pick-d { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin: 10px 0 16px; }
+    .mz-hero { position: relative; max-width: 520px; margin: 6px auto 14px; border: 1px solid rgba(0,240,255,.30);
+      border-radius: 14px; overflow: hidden; background: #050b16;
+      box-shadow: 0 14px 30px rgba(10,25,45,.22), 0 0 24px rgba(0,240,255,.10), inset 0 0 30px rgba(0,0,0,.55); }
+    .mz-hero svg { display: block; width: 100%; height: auto; }
+    .mz-hero::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(0deg, rgba(125,249,255,.055) 0 1px, transparent 1px 4px);
+      mix-blend-mode: screen; opacity: .55; }
     html[data-theme="light"] .mz-pick-t { color: #b03462; text-shadow: none; letter-spacing: 1px; }
     .mz-modes { display: flex; flex-direction: column; gap: 9px; max-width: 330px; margin: 0 auto; }
     .mz-mode {
@@ -218,20 +225,20 @@
 </nav>
   <h1 class="seo-h1">迷宫</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
-  <script src="../../assets/js/core/input.js?v=20261118h"></script>
-  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
-<script src="../../games.js?v=20261118h"></script>
-  <script src="maze-i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
-<script src="../../assets/js/shell.js?v=20261118h"></script>
-  <script src="../_shared/kit.js?v=20261118h"></script>
-  <script src="maze.js?v=20261118h"></script>
-  <script src="../../assets/js/pwa.js?v=20261118h"></script>
+  <script src="../../assets/js/core/storage.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/input.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/loop.js?v=20261119f1"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261119f1"></script>
+<script src="../../games.js?v=20261119f1"></script>
+  <script src="maze-i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/extras.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261119f1"></script>
+<script src="../../assets/js/shell.js?v=20261119f1"></script>
+  <script src="../_shared/kit.js?v=20261119f1"></script>
+  <script src="maze.js?v=20261119f1"></script>
+  <script src="../../assets/js/pwa.js?v=20261119f1"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -240,8 +247,8 @@
     <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
-  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">49 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
+<script src="../../assets/js/family-bridge.js?v=20261119f1"></script>
 </body>
 </html>

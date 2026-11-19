@@ -1,0 +1,31 @@
+/* Menu vignette: a small, self-contained gameplay poster for menu-only screens. */
+.nc-mv {
+  position: relative;
+  display: block;
+  width: min(360px, 100%);
+  aspect-ratio: 400 / 150;
+  flex: 0 0 auto;
+  margin: 0 auto 8px;
+  border-radius: 13px;
+  overflow: hidden;
+  border: 1px solid rgb(var(--nc-cyan-rgb) / .24);
+  background: var(--nc-stage-2);
+  box-shadow: 0 10px 24px rgba(18, 28, 46, .16), inset 0 1px 0 rgba(255, 255, 255, .06);
+  isolation: isolate;
+}
+.nc-mv svg { display: block; width: 100%; height: 100%; }
+.nc-mv::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 24px rgba(4, 8, 16, .28), inset 0 0 0 1px rgba(255, 255, 255, .05);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .05), transparent 40%, rgba(4, 8, 16, .1));
+}
+@media (max-width: 380px) {
+  .nc-mv { border-radius: 10px; margin-bottom: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nc-mv { box-shadow: none; }
+}

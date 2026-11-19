@@ -38,25 +38,33 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261119f1" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
-<script src="../../shell/shell.js?v=20261118h"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261119f1">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261119f1">
+<script src="../../shell/shell.js?v=20261119f1"></script>
   <style>
     .hs-wrap { padding: 10px 8px 18px; width: min(680px, 100%); box-sizing: border-box; margin: 0 auto; text-align: center; }
     .hs-top { display: flex; justify-content: space-between; align-items: center; gap: 6px 12px; flex-wrap: wrap; font-size: 13px; margin: 6px 2px; color: var(--text-dim); }
     .hs-top .stat-value { font-family: var(--font-pixel); color: var(--neon-cyan); text-shadow: 0 0 6px rgb(var(--nc-cyan-rgb) / .45); }
     .hs-msg { min-height: 20px; font-size: 13px; color: var(--neon-pink); margin: 6px 0; line-height: 1.6; text-shadow: 0 0 8px rgb(var(--nc-pink-rgb) / .25); }
     .hs-canvas {
-      width: 100%; height: auto; border-radius: 12px; background: #05050b;
-      border: 1px solid rgb(var(--nc-cyan-rgb) / 0.35); touch-action: manipulation; cursor: pointer; max-width: 100%;
+      width: 100%; height: auto; border-radius: 12px; background: #030812;
+      border: 1px solid rgb(var(--nc-cyan-rgb) / 0.5); touch-action: manipulation; cursor: pointer; max-width: 100%;
+      filter: brightness(.82) contrast(1.12) saturate(1.25);
+      box-shadow: 0 0 30px rgb(var(--nc-cyan-rgb) / .12), inset 0 0 0 1px rgba(255,255,255,.04);
       box-shadow: var(--ui-shadow);
       outline: none; }
     .hs-canvas:focus-visible { outline: 2px solid var(--neon-yellow); outline-offset: 3px; }
-    .hs-stage { position: relative; border-radius: 12px; }
+    .hs-stage { position: relative; width: min(560px, 100%); margin: 0 auto; border-radius: 12px; isolation: isolate; }
+    .hs-stage::after {
+      content: ""; position: absolute; inset: 7px; border-radius: 9px; pointer-events: none;
+      border: 1px solid rgba(0,240,255,.14);
+      background: linear-gradient(90deg, rgba(0,240,255,.08), transparent 18%, transparent 82%, rgba(185,103,255,.07));
+      box-shadow: inset 0 0 28px rgba(0,0,0,.28);
+    }
     .hs-overlay {
       position: absolute; inset: 0; z-index: 3; border-radius: 12px;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
@@ -174,7 +182,7 @@
     /* 触屏点击兜底：消除双击缩放延迟，保留滚动；不加 !important 以免破坏滑动类游戏 */
     button, [role="button"], .card, .cell, .tile, .piece { touch-action: manipulation; }
 </style>
-</head>
+<link rel="stylesheet" href="../../assets/css/menu-vignette.css?v=20261119f1"></head>
 <body data-game-id="hashi" data-game-title="岛屿连线" data-best-mode="min">
 <nav class="nc-shell" aria-label="netcn 站点导航">
   <a class="nc-brand" href="../../index.html" aria-label="返回首页"><span class="nc-mk" aria-hidden="true"></span><span class="nc-brand-txt">游戏厅</span></a>
@@ -195,19 +203,19 @@
 </nav>
   <h1 class="seo-h1">岛屿连线</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
-  <script src="../../assets/js/core/input.js?v=20261118h"></script>
-  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
-<script src="../../games.js?v=20261118h"></script>
-  <script src="hashi-i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
-<script src="../../assets/js/shell.js?v=20261118h"></script>
-  <script src="hashi.js?v=20261118h"></script>
-  <script src="../../assets/js/pwa.js?v=20261118h"></script>
+  <script src="../../assets/js/core/storage.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/input.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/loop.js?v=20261119f1"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261119f1"></script>
+<script src="../../games.js?v=20261119f1"></script>
+  <script src="hashi-i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/extras.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261119f1"></script>
+<script src="../../assets/js/shell.js?v=20261119f1"></script>
+  <script src="hashi.js?v=20261119f1"></script>
+  <script src="../../assets/js/pwa.js?v=20261119f1"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -216,8 +224,9 @@
     <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
-  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">49 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
-</body>
+<script src="../../assets/js/family-bridge.js?v=20261119f1"></script>
+<script src="../../assets/js/menu-vignette.js?v=20261119f1"></script></body>
 </html>
+

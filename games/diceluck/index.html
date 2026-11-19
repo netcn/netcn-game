@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261119f1" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
-<script src="../../shell/shell.js?v=20261118h"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261119f1">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261119f1">
+<script src="../../shell/shell.js?v=20261119f1"></script>
   <style>
     /* ---------- 快艇骰子 · 旗舰版布局 ---------- */
     .dl-wrap { width: min(560px, 100%); margin: 0 auto; padding: 8px 10px 16px; text-align: center; }
@@ -208,12 +208,20 @@
     .dl-die { height: clamp(48px, 13.2vw, 60px); }
     html[data-theme="light"] .dl-stage,
     html:not([data-theme="dark"]) .dl-stage {
+      padding: 18px 10px 10px;
       background:
-        radial-gradient(ellipse 70% 80% at 50% 18%, rgba(16, 185, 129, .10), transparent 72%),
-        linear-gradient(180deg, #ffffff, #f4f7f2 78%);
-      border: 1px solid #dfe7dd;
-      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(16,24,40,.05);
+        radial-gradient(ellipse 74% 86% at 50% 14%, #1d6d54 0%, #0d4637 48%, #06251d 100%);
+      border: 1px solid rgba(226,184,104,.35);
+      box-shadow: inset 0 0 30px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08), 0 14px 26px rgba(15,50,40,.18);
     }
+    html[data-theme="light"] .dl-stage::before,
+    html:not([data-theme="dark"]) .dl-stage::before {
+      content: ''; position: absolute; inset: 6px; border-radius: 11px; pointer-events: none;
+      border: 1px solid rgba(226,184,104,.24);
+      box-shadow: inset 0 0 18px rgba(0,0,0,.32);
+    }
+    html[data-theme="light"] .dl-stage .dl-msg,
+    html:not([data-theme="dark"]) .dl-stage .dl-msg { color: #d9f5e8; text-shadow: 0 1px 2px rgba(0,0,0,.45); }
   </style>
 <style>@media (max-width:900px){ main#game-root{padding-top:32px;} .dl-scroll{max-height:calc(100dvh - 495px);} }
     /* 触屏点击兜底：消除双击缩放延迟，保留滚动；不加 !important 以免破坏滑动类游戏 */
@@ -240,19 +248,19 @@
 </nav>
   <h1 class="seo-h1">快艇骰子</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
-  <script src="../../assets/js/core/input.js?v=20261118h"></script>
-  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
-<script src="../../games.js?v=20261118h"></script>
-  <script src="diceluck-i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
-<script src="../../assets/js/shell.js?v=20261118h"></script>
-  <script src="diceluck.js?v=20261118h"></script>
-  <script src="../../assets/js/pwa.js?v=20261118h"></script>
+  <script src="../../assets/js/core/storage.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/input.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/loop.js?v=20261119f1"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261119f1"></script>
+<script src="../../games.js?v=20261119f1"></script>
+  <script src="diceluck-i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/extras.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261119f1"></script>
+<script src="../../assets/js/shell.js?v=20261119f1"></script>
+  <script src="diceluck.js?v=20261119f1"></script>
+  <script src="../../assets/js/pwa.js?v=20261119f1"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -261,9 +269,9 @@
     <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
-  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">49 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
+<script src="../../assets/js/family-bridge.js?v=20261119f1"></script>
 </body>
 </html>
 

@@ -1,6 +1,6 @@
 /* ============================================================
    游戏子站注册表 · game.netcn.org
-   —— 53 款经典街机 / 逻辑 / 空间 / 动作 / 棋类 / 牌骰 / 球类
+   —— 49 款经典街机 / 逻辑 / 空间 / 动作 / 棋类 / 牌骰 / 球类
    —— path 相对本子站根目录（game/）
    ============================================================ */
 
@@ -40,13 +40,6 @@ window.GAMES = [
     lvl: 'easy', time: '5min',
     },
   {
-    id: 'brickbash', title: '打砖块', category: '经典街机',
-    desc: '移动挡板反弹弹球，击碎整屏砖块，别让球漏出底线。',
-    icon: '🧊', path: 'games/brickbash/index.html',
-    mobile: 'ok', bestMode: 'max',
-    lvl: 'easy', time: '5min',
-    },
-  {
     id: 'tank', title: '铁壁防线', category: '经典街机',
     desc: '敌军坦克进攻基地，驾驶守卫坦克清剿多波次敌军，道具系统 + 三难度。',
     icon: '🎖️', path: 'games/tank/index.html',
@@ -57,20 +50,6 @@ window.GAMES = [
     id: 'ballpop', title: '弹珠消消', category: '经典街机',
     desc: '彩球链沿蛇形路径前进，发射同色球三连消除，连锁消消 + 倒退/爆炸球。',
     icon: '🔮', path: 'games/ballpop/index.html',
-    mobile: 'ok', bestMode: 'max',
-    lvl: 'easy', time: '5min',
-    },
-  {
-    id: 'frogcross', title: '青蛙过河', category: '经典街机',
-    desc: '看准车流与浮木的节奏，一格格跳过河面到达对岸。',
-    icon: '🐸', path: 'games/frogcross/index.html',
-    mobile: 'ok', bestMode: 'min',
-    lvl: 'easy', time: '5min',
-    },
-  {
-    id: 'mazedot', title: '迷宫吃豆', category: '经典街机',
-    desc: '迷宫追逐玩法致敬经典街机，非官方，与 PAC-MAN™ 无关。',
-    icon: '🟡', path: 'games/mazedot/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'easy', time: '5min',
     },
@@ -285,13 +264,6 @@ window.GAMES = [
     id: 'checkers', title: '跳棋', category: '棋类对弈',
     desc: '斜向走子、跳吃升王，把对手的棋子全部吃光。',
     icon: '🔴', path: 'games/checkers/index.html',
-    mobile: 'ok', bestMode: 'max',
-    lvl: 'mid', time: '5min',
-    },
-  {
-    id: 'siege', title: '攻城棋', category: '棋类对弈',
-    desc: '指挥兵与王攻入敌营，占住高地的单位攻击力翻倍。',
-    icon: '🏰', path: 'games/siege/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '5min',
     },

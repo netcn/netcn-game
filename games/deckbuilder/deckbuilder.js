@@ -1360,10 +1360,12 @@ window.GAME_TUTORIAL_STEPS = [
   root.innerHTML =
     '<div class="dk-wrap" id="dk-wrap">' +
       '<div class="dk-screen" id="dk-pick">' +
+        '<div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
         '<div class="dk-pick-t" id="dk-pick-title"></div>' +
-        '<div class="dk-pick-d" id="dk-pick-sub"></div>' +
         '<div class="dk-class-title" id="dk-class-title"></div>' +
         '<div class="dk-class-grid" id="dk-class-grid"></div>' +
+        '<div class="dk-class-title" id="dk-diff-title"></div>' +
+        '<div class="dk-pick-d" id="dk-pick-sub"></div>' +
         '<div class="dk-diff-grid" id="dk-diff-grid"></div>' +
         '<div class="dk-diff-best" id="dk-pick-best"></div>' +
         '<button class="btn primary dk-start-btn" id="dk-start" type="button"></button>' +
@@ -2083,9 +2085,10 @@ window.GAME_TUTORIAL_STEPS = [
 
   /* ================= 难度选择 ================= */
   function renderPick() {
-    document.getElementById('dk-pick-title').textContent = t('diffTitle');
+    document.getElementById('dk-pick-title').textContent = t('clsTitle') + ' · ' + t('diffTitle');
     document.getElementById('dk-pick-sub').textContent = t('diffSub');
     classTitleEl.textContent = t('clsTitle');
+    document.getElementById('dk-diff-title').textContent = t('diffTitle');
     pickHelp.textContent = t('helpText');
     pickBest.textContent = t('best').replace('{n}', bestScore());
     classGrid.innerHTML = '';

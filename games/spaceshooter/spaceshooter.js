@@ -170,6 +170,7 @@ window.GAME_TUTORIAL_STEPS = [
     '      <h2 id="ss-ov-title"></h2>' +
     '      <div class="ss-ov-text" id="ss-ov-text"></div>' +
     '      <div class="ss-select ss-hide" id="ss-select">' +
+    '        <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '        <div class="ss-select-label" id="ss-ship-label"></div>' +
     '        <div class="ss-opt-row" id="ss-ship-row"></div>' +
     '        <div class="ss-select-label" id="ss-weapon-label"></div>' +
@@ -198,6 +199,7 @@ window.GAME_TUTORIAL_STEPS = [
   var gk = GK.setup(canvas, W, H);
   var ctx = gk.ctx;
   var overlayEl = document.getElementById('ss-overlay');
+  if (overlayEl) overlayEl.style.setProperty('background', 'radial-gradient(ellipse at 50% 12%, rgba(28,32,66,.97), rgba(4,5,12,.99))', 'important');
   var ovTitle = document.getElementById('ss-ov-title');
   var ovText = document.getElementById('ss-ov-text');
   var ovPrimary = document.getElementById('ss-ov-primary');

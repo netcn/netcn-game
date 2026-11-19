@@ -70,6 +70,7 @@ window.GAME_TUTORIAL_STEPS = [
     '  <div class="rs-stage" id="rs-stage">' +
     '    <canvas class="rs-canvas" id="rs-canvas" width="' + W + '" height="' + H + '"></canvas>' +
     '    <div class="rs-screen" id="rs-menu">' +
+    '      <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '      <div class="rs-screen-title">' + T('gs.railshooter.menuTitle') + '</div>' +
     '      <div class="rs-screen-sub">' + T('gs.railshooter.menuSub') + '</div>' +
     '      <div class="rs-screen-btns">' +

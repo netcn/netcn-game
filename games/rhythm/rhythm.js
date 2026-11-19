@@ -74,6 +74,7 @@
     '  <div class="rh-stage">' +
     '    <canvas class="rh-canvas" id="rh-canvas" width="' + W + '" height="' + H + '"></canvas>' +
     '    <div class="rh-screen" id="rh-menu">' +
+    '      <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '      <div class="rh-screen-title">' + T('gs.rhythm.menuTitle') + '</div>' +
     '      <div class="rh-screen-sub">' + T('gs.rhythm.menuSub') + '</div>' +
     '      <div class="rh-songs" id="rh-songs"></div>' +

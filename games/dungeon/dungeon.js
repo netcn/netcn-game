@@ -133,6 +133,7 @@ window.GAME_TUTORIAL_STEPS = [
   var menu = document.createElement('div');
   menu.className = 'dg-menu';
   menu.innerHTML =
+    '<div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '<div class="dg-menu-title">' + T('gs.dungeon.menuTitle') + '</div>' +
     '<div class="dg-menu-sub">' + T('gs.dungeon.menuSub') + '</div>' +
     '<div class="dg-classes" id="dg-classes"></div>' +

@@ -395,6 +395,7 @@
   root.innerHTML =
     '<div class="tk-wrap">' +
     '  <div class="tk-pick" id="tk-pick">' +
+    '    <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '    <div class="tk-pick-t">' + T('gt.pickT') + '</div>' +
     '    <div class="tk-pick-d">' + T('gt.pickD') + '</div>' +
     '    <div class="tk-mode" id="tk-mode">' +

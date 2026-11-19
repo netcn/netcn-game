@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261119f1" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
-<script src="../../shell/shell.js?v=20261118h"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261119f1">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261119f1">
+<script src="../../shell/shell.js?v=20261119f1"></script>
   <style>
     .fm-wrap { padding: 12px; width: min(440px, 100%); text-align: center; }
     .fm-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 10px;
@@ -56,6 +56,21 @@
     .fm-mode.on { color: var(--neon-cyan); text-shadow: 0 0 8px rgb(var(--nc-cyan-rgb) / .35); }
     .fm-stage { position: relative; border-radius: 12px; overflow: hidden;
       box-shadow: 0 0 22px rgb(var(--nc-yellow-rgb) / 0.14), 0 10px 26px rgba(0,0,0,0.4); }
+    .fm-menu {
+      position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px; padding: 18px;
+      background: radial-gradient(ellipse at 50% 8%, rgba(47,26,78,.94), rgba(6,8,18,.98));
+      backdrop-filter: blur(3px);
+    }
+    .fm-menu.hidden { display: none; }
+    .fm-menu .nc-mv { width: min(290px, 100%); margin: 0; }
+    .fm-menu-title { font-family: var(--font-pixel); font-size: 13px; line-height: 1.7; color: #ffd8ef; text-align: center; text-shadow: 0 0 12px rgba(255,77,109,.55); }
+    .fm-menu-sub { max-width: 300px; font-size: 11px; line-height: 1.75; color: #cbd8ee; text-align: center; }
+    .fm-menu-start { min-width: 180px; min-height: 46px; margin-top: 2px; }
+    @media (min-width: 641px) {
+      .fm-wrap { width: min(460px, 100%); }
+      .fm-menu .nc-mv { width: min(320px, 100%); }
+    }
     .fm-canvas { display: block; width: 100%; height: auto; background: #0a0f1e; touch-action: none; max-width: 100%; }
     .fm-over { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 18px;
       background: var(--nc-stage-2); backdrop-filter: blur(4px); }
@@ -99,7 +114,7 @@
       .fm-help { margin-top: 4px; font-size: 10.5px; line-height: 1.6; }
     }
   </style>
-</head>
+<link rel="stylesheet" href="../../assets/css/menu-vignette.css?v=20261119f1"></head>
 <body data-game-id="fruitmerge" data-game-title="西瓜合成" data-best-mode="max">
 <nav class="nc-shell" aria-label="netcn 站点导航">
   <a class="nc-brand" href="../../index.html" aria-label="返回首页"><span class="nc-mk" aria-hidden="true"></span><span class="nc-brand-txt">游戏厅</span></a>
@@ -120,20 +135,20 @@
 </nav>
   <h1 class="seo-h1">西瓜合成</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
-  <script src="../../assets/js/core/input.js?v=20261118h"></script>
-  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
-<script src="../../games.js?v=20261118h"></script>
-  <script src="fruitmerge-i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
-<script src="../../assets/js/shell.js?v=20261118h"></script>
-  <script src="../_shared/kit.js?v=20261118h"></script>
-  <script src="fruitmerge.js?v=20261118h"></script>
-  <script src="../../assets/js/pwa.js?v=20261118h"></script>
+  <script src="../../assets/js/core/storage.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/input.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/loop.js?v=20261119f1"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261119f1"></script>
+<script src="../../games.js?v=20261119f1"></script>
+  <script src="fruitmerge-i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/extras.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261119f1"></script>
+<script src="../../assets/js/shell.js?v=20261119f1"></script>
+  <script src="../_shared/kit.js?v=20261119f1"></script>
+  <script src="fruitmerge.js?v=20261119f1"></script>
+  <script src="../../assets/js/pwa.js?v=20261119f1"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -142,8 +157,9 @@
     <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
-  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">49 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
-</body>
+<script src="../../assets/js/family-bridge.js?v=20261119f1"></script>
+<script src="../../assets/js/menu-vignette.js?v=20261119f1"></script></body>
 </html>
+

@@ -803,12 +803,18 @@ window.GAME_TUTORIAL_STEPS = [
     g.addColorStop(1, '#03050f');
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
+    drawNebula(t);
     for (var i = 0; i < stars.length; i++) {
       var st = stars[i];
       var a = st.a + Math.sin(t * 1.4 + i) * 0.16;
       ctx.fillStyle = 'rgba(190,235,255,' + Math.max(0.08, a) + ')';
       ctx.fillRect(st.x, st.y, 2, 2);
+      if (i % 9 === 0) {
+        ctx.fillStyle = 'rgba(220,245,255,' + Math.max(0.12, a) + ')';
+        ctx.fillRect(st.x - 1, st.y - 1, 3, 3);
+      }
     }
+    drawAurora(t);
     /* 月亮 */
     ctx.save();
     ctx.shadowColor = '#8fe9ff'; ctx.shadowBlur = 24;
@@ -819,13 +825,128 @@ window.GAME_TUTORIAL_STEPS = [
     ctx.beginPath(); ctx.arc(530, 66, 20, 0, Math.PI * 2); ctx.fill();
   }
 
+  function drawNebula(t) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    var clouds = [
+      [76, 108, 150, 'rgba(92,70,190,0.18)', 'rgba(36,90,170,0.04)'],
+      [372, 74, 180, 'rgba(120,50,150,0.14)', 'rgba(20,100,150,0.04)'],
+      [248, 170, 210, 'rgba(20,110,140,0.10)', 'rgba(20,40,120,0.03)']
+    ];
+    clouds.forEach(function (c, i) {
+      var r = c[2] + Math.sin(t * 0.18 + i * 2.1) * 8;
+      var rg = ctx.createRadialGradient(c[0], c[1], 2, c[0], c[1], r);
+      rg.addColorStop(0, c[3]);
+      rg.addColorStop(0.55, c[4]);
+      rg.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = rg;
+      ctx.beginPath(); ctx.arc(c[0], c[1], r, 0, Math.PI * 2); ctx.fill();
+    });
+    ctx.restore();
+  }
+
+  function drawAurora(t) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    var grad = ctx.createLinearGradient(70, 0, 530, 0);
+    grad.addColorStop(0, 'rgba(0,255,190,0)');
+    grad.addColorStop(0.22, 'rgba(40,255,190,0.16)');
+    grad.addColorStop(0.55, 'rgba(80,200,255,0.19)');
+    grad.addColorStop(0.82, 'rgba(185,103,255,0.14)');
+    grad.addColorStop(1, 'rgba(185,103,255,0)');
+    ctx.strokeStyle = grad;
+    for (var band = 0; band < 3; band++) {
+      ctx.beginPath();
+      for (var x = 60; x <= 540; x += 8) {
+        var y = 136 + band * 12
+          + Math.sin(x * 0.013 + t * 0.42 + band * 0.8) * 16
+          + Math.sin(x * 0.036 - t * 0.24 + band) * 4;
+        if (x === 60) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.lineWidth = band === 1 ? 20 : 9;
+      ctx.globalAlpha = band === 1 ? 0.78 : 0.58;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawMountains(t) {
+    ctx.save();
+    var mg = ctx.createLinearGradient(0, 286, 0, 338);
+    mg.addColorStop(0, 'rgba(12,26,44,0.92)');
+    mg.addColorStop(1, 'rgba(5,12,26,0.98)');
+    ctx.fillStyle = mg;
+    ctx.beginPath();
+    ctx.moveTo(0, 338);
+    var ridge = [[0, 338], [24, 316], [58, 324], [92, 300], [124, 312], [160, 292], [194, 306], [226, 286], [258, 314], [292, 300], [328, 322], [360, 296], [396, 310], [430, 292], [466, 312], [500, 302], [534, 318], [566, 304], [600, 326], [600, 338]];
+    ridge.forEach(function (p, i) { if (i) ctx.lineTo(p[0], p[1]); });
+    ctx.lineTo(600, 338); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = 'rgba(110,200,230,0.10)';
+    ctx.lineWidth = 1;
+    for (var k = 0; k < 4; k++) {
+      ctx.beginPath();
+      ctx.moveTo(0, 318 + k * 7);
+      ctx.lineTo(600, 306 + k * 8 + Math.sin(t * 0.2 + k) * 1.4);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawWaterReflection(t) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    var moonRef = ctx.createLinearGradient(512, 330, 512, 400);
+    moonRef.addColorStop(0, 'rgba(140,235,255,0.20)');
+    moonRef.addColorStop(0.6, 'rgba(70,180,230,0.07)');
+    moonRef.addColorStop(1, 'rgba(20,60,110,0)');
+    ctx.fillStyle = moonRef;
+    ctx.beginPath(); ctx.ellipse(520, 366, 34, 42, 0, 0, Math.PI * 2); ctx.fill();
+    for (var r = 0; r < 5; r++) {
+      var yy = 344 + r * 10;
+      ctx.strokeStyle = 'rgba(160,240,255,' + (0.16 - r * 0.022) + ')';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (var wx = 470 + r * 3; wx <= 550 + r * 4; wx += 6) {
+        var wy = yy + Math.sin(wx * 0.09 + t * 1.5 + r) * 1.4;
+        if (wx === 470 + r * 3) ctx.moveTo(wx, wy); else ctx.lineTo(wx, wy);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawHorizonMist(t) {
+    var mist = ctx.createLinearGradient(0, 320, 0, 372);
+    mist.addColorStop(0, 'rgba(90,190,220,0.06)');
+    mist.addColorStop(0.5, 'rgba(60,130,180,0.035)');
+    mist.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = mist;
+    ctx.fillRect(0, 320, W, 54);
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    ctx.strokeStyle = 'rgba(120,220,240,' + (0.035 + Math.sin(t * 0.5) * 0.012) + ')';
+    ctx.lineWidth = 1;
+    for (var i = 0; i < 3; i++) {
+      ctx.beginPath();
+      for (var x = 0; x <= W; x += 14) {
+        var y = 338 + i * 9 + Math.sin(x * 0.02 + t * 0.7 + i) * 2;
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
   function drawScene(t) {
+    /* 远山：压在水面之前，形成层次 */
+    drawMountains(t);
     /* 水面 */
     var wg = ctx.createLinearGradient(0, 330, 0, H);
     wg.addColorStop(0, 'rgba(10,40,70,0.55)');
     wg.addColorStop(1, 'rgba(3,10,24,0.95)');
     ctx.fillStyle = wg;
     ctx.fillRect(0, 330, W, H - 330);
+    drawWaterReflection(t);
     for (var wy = 0; wy < 4; wy++) {
       ctx.strokeStyle = 'rgba(0,220,255,' + (0.10 + wy * 0.02) + ')';
       ctx.lineWidth = 1;
@@ -836,6 +957,7 @@ window.GAME_TUTORIAL_STEPS = [
       }
       ctx.stroke();
     }
+    drawHorizonMist(t);
 
     /* 两岸悬崖 */
     drawCliff(0, nodes[0].x + 34, nodes[0].y);
@@ -881,8 +1003,12 @@ window.GAME_TUTORIAL_STEPS = [
 
   function drawCliff(edgeX, topX, topY) {
     ctx.save();
-    ctx.fillStyle = '#0b1a25';
-    ctx.strokeStyle = 'rgba(0,240,255,0.25)';
+    var cg = ctx.createLinearGradient(edgeX, topY, topX, H);
+    cg.addColorStop(0, '#0e2433');
+    cg.addColorStop(0.45, '#0a1a26');
+    cg.addColorStop(1, '#050b13');
+    ctx.fillStyle = cg;
+    ctx.strokeStyle = 'rgba(0,240,255,0.28)';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(edgeX, H);
@@ -892,6 +1018,12 @@ window.GAME_TUTORIAL_STEPS = [
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
+    /* 崖顶冷光边 */
+    ctx.strokeStyle = 'rgba(120,235,255,0.42)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(edgeX, topY + 50); ctx.lineTo(topX, topY + 14);
+    ctx.stroke();
     /* 崖壁纹理 */
     ctx.strokeStyle = 'rgba(0,240,255,0.08)';
     for (var k = 0; k < 5; k++) {
@@ -899,6 +1031,13 @@ window.GAME_TUTORIAL_STEPS = [
       ctx.moveTo(edgeX + (topX - edgeX) * 0.15, topY + 70 + k * 32);
       ctx.lineTo(topX - (topX - edgeX) * 0.05, topY + 80 + k * 30);
       ctx.stroke();
+    }
+    /* 岩层碎光 */
+    ctx.fillStyle = 'rgba(110,210,230,0.10)';
+    for (var r = 0; r < 6; r++) {
+      var rx = edgeX + (topX - edgeX) * (0.22 + r * 0.09);
+      var ry = topY + 82 + (r % 3) * 28;
+      ctx.fillRect(rx, ry, 14, 1.6);
     }
     ctx.restore();
   }

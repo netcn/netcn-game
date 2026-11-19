@@ -92,6 +92,7 @@ window.GAME_TUTORIAL_STEPS = [
   root.innerHTML =
     '<div class="c4-wrap">' +
     '  <div class="c4-pick" id="c4-pick">' +
+    '    <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '    <div class="c4-pick-t">' + T('gs.fourline.pickTitle') + '</div>' +
     '    <div class="c4-pick-d">' + T('gs.fourline.pickDesc') + '</div>' +
     '    <div class="c4-modes" id="c4-modes">' + modesHtml + '</div>' +

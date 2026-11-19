@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261119f1" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
-<script src="../../shell/shell.js?v=20261118h"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261119f1">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261119f1">
+<script src="../../shell/shell.js?v=20261119f1"></script>
   <style>
     .sl-wrap { padding: 12px 10px 20px; width: min(680px, 100%); box-sizing: border-box; text-align: center; }
     .sl-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; margin: 8px 2px; color: var(--text-dim); }
@@ -122,15 +122,21 @@
     /* ============================================================
        旗舰视觉扩展（20261104e）：自绘 CSS 美术 + 面板/星级/成就
        ============================================================ */
-    .sl-stage { position: relative; width: fit-content; margin: 0 auto; }
+    .sl-stage {
+      position: relative; width: fit-content; margin: 0 auto;
+      border-radius: 14px;
+      box-shadow: 0 14px 38px rgba(0,0,0,.34);
+    }
     .sl-board {
       position: relative;
-      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2));
-      border: 1px solid rgb(var(--nc-cyan-rgb) / .34);
-      border-radius: 14px;
-      box-shadow: var(--ui-shadow);
+      background: radial-gradient(ellipse at 50% 0%, #12253d, #081321 58%, #040a12);
+      border: 1px solid rgb(var(--nc-cyan-rgb) / .55);
+      border-radius: 13px;
+      box-shadow: inset 0 0 24px rgba(0,240,255,.06), 0 0 24px rgba(0,240,255,.12);
       transition: box-shadow .55s ease, border-color .55s ease;
     }
+    .sl-cell { color: #bff4ff; text-shadow: 0 0 7px rgba(0,240,255,.45); }
+    .sl-cell.zero { color: #6f93ad; text-shadow: none; }
     .sl-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; border-radius: 14px; background: transparent !important; }
     .sl-board.solved {
       border-color: rgb(var(--nc-green-rgb) / .6);
@@ -400,7 +406,7 @@
       -webkit-text-fill-color: #dc2626 !important;
     }
   </style>
-</head>
+<link rel="stylesheet" href="../../assets/css/menu-vignette.css?v=20261119f1"></head>
 <body data-game-id="slitherlink" data-game-title="数回" data-best-mode="min">
 <nav class="nc-shell" aria-label="netcn 站点导航">
   <a class="nc-brand" href="../../index.html" aria-label="返回首页"><span class="nc-mk" aria-hidden="true"></span><span class="nc-brand-txt">游戏厅</span></a>
@@ -421,19 +427,19 @@
 </nav>
   <h1 class="seo-h1">数回</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
-  <script src="../../assets/js/core/input.js?v=20261118h"></script>
-  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
-<script src="../../games.js?v=20261118h"></script>
-  <script src="slitherlink-i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
-<script src="../../assets/js/shell.js?v=20261118h"></script>
-  <script src="slitherlink.js?v=20261118h"></script>
-  <script src="../../assets/js/pwa.js?v=20261118h"></script>
+  <script src="../../assets/js/core/storage.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/input.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/loop.js?v=20261119f1"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261119f1"></script>
+<script src="../../games.js?v=20261119f1"></script>
+  <script src="slitherlink-i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/extras.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261119f1"></script>
+<script src="../../assets/js/shell.js?v=20261119f1"></script>
+  <script src="slitherlink.js?v=20261119f1"></script>
+  <script src="../../assets/js/pwa.js?v=20261119f1"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -442,8 +448,9 @@
     <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
-  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">49 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
-</body>
+<script src="../../assets/js/family-bridge.js?v=20261119f1"></script>
+<script src="../../assets/js/menu-vignette.js?v=20261119f1"></script></body>
 </html>
+

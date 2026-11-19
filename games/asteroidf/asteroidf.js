@@ -214,6 +214,7 @@ window.GAME_TUTORIAL_STEPS = [
         '<div class="as-wave-banner" id="as-wave-banner"></div>' +
         '<div class="as-overlay" id="as-start">' +
           '<div class="as-card">' +
+            '<div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
             '<h2>' + T('gs.asteroidf.tutTitle') + '</h2>' +
             '<p>' + T('gs.asteroidf.pickDesc') + '</p>' +
             '<div class="as-diffs">' +

@@ -38,13 +38,13 @@
   </script>
 <link rel="icon" href="../../assets/icons/icon-512.png">
     <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
-  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261118h" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2?v=20261119f1" as="font" type="font/woff2" crossorigin>
   <script>
   (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
   </script>
-<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261118h">
-<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261118h">
-<script src="../../shell/shell.js?v=20261118h"></script>
+<link rel="stylesheet" href="../../assets/css/game-core.css?v=20261119f1">
+<link rel="stylesheet" href="../../assets/css/game-ui.css?v=20261119f1">
+<script src="../../shell/shell.js?v=20261119f1"></script>
   <style>
     .pf-wrap { padding: 14px; width: min(760px, 100%); text-align: center; }
     .pf-stage { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 0 28px rgb(var(--nc-purple-rgb) / 0.28), 0 8px 32px rgba(0,0,0,0.5); }
@@ -60,18 +60,18 @@
     #pf-dash { font-family: var(--font-mono); }
     #pf-dash.ready { color: var(--neon-green); text-shadow: 0 0 8px rgb(var(--nc-green-rgb) / .45); }
     #pf-dash.cooling { color: var(--text-dim); }
-    .pf-overlay { position: fixed; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px; text-align: center;
-      padding: max(84px, 10vh) 18px 32px; overflow-y: auto; z-index: 60; -webkit-overflow-scrolling: touch;
-      background: linear-gradient(160deg,var(--nc-stage),var(--nc-stage-2)); backdrop-filter: blur(4px); }
+    .pf-overlay { position: fixed; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center;
+      padding: max(76px, 8vh) 18px 32px; overflow-y: auto; z-index: 60; -webkit-overflow-scrolling: touch;
+      background: linear-gradient(160deg, color-mix(in srgb, var(--nc-stage) 36%, transparent), color-mix(in srgb, var(--nc-stage-2) 48%, transparent)); backdrop-filter: blur(2px) saturate(1.12); -webkit-backdrop-filter: blur(2px) saturate(1.12); }
     .pf-overlay.show { display: flex; animation: pf-fade .28s ease-out; }
     @keyframes pf-fade { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
-    .pf-ov-title { font-family: var(--font-pixel); font-size: clamp(16px, 4vw, 24px); color: var(--neon-cyan); text-shadow: 0 0 14px rgb(var(--nc-cyan-rgb) / .7), 0 0 34px rgb(var(--nc-cyan-rgb) / .3); }
-    .pf-ov-sub { font-size: 13px; color: var(--text-main); max-width: 560px; line-height: 1.7; }
+    .pf-ov-title { font-family: var(--font-pixel); font-size: clamp(16px, 4vw, 24px); color: var(--neon-cyan); text-shadow: 0 0 14px rgb(var(--nc-cyan-rgb) / .7), 0 0 34px rgb(var(--nc-cyan-rgb) / .3); padding: 5px 14px; border-radius: 10px; background: color-mix(in srgb, var(--nc-stage) 78%, transparent); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+    .pf-ov-sub { font-size: 13px; color: var(--text-main); max-width: 560px; line-height: 1.7; padding: 5px 12px; border-radius: 9px; background: color-mix(in srgb, var(--nc-stage) 72%, transparent); }
     .pf-ov-stats { font-size: 13px; color: var(--text-dim); line-height: 1.9; width: 100%; display: flex; flex-direction: column; align-items: center; }
     .pf-ov-stats b { color: var(--neon-yellow); font-family: var(--font-mono); }
     .pf-ov-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
     .pf-ov-btns .btn { min-height: 44px; min-width: 128px; }
-    .pf-menu { width: min(560px, 100%); display: flex; flex-direction: column; gap: 10px; }
+    .pf-menu { width: min(560px, 100%); display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 16px; border: 1px solid rgba(24,32,52,.12); background: color-mix(in srgb, var(--nc-stage) 84%, transparent); box-shadow: 0 18px 44px rgba(18,28,46,.16); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
     .pf-packs { display: flex; gap: 8px; width: 100%; }
     .pf-pack { flex: 1 1 0; min-height: 76px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px;
       padding: 9px 12px; border-radius: 11px; border: 1px solid rgba(24,32,52,.16); background: rgba(24,32,52,.045); color: var(--text-main);
@@ -141,19 +141,19 @@
 </nav>
   <h1 class="seo-h1">平台跳跃</h1>
   <main id="game-root"></main>
-  <script src="../../assets/js/core/storage.js?v=20261118h"></script>
-  <script src="../../assets/js/core/input.js?v=20261118h"></script>
-  <script src="../../assets/js/core/loop.js?v=20261118h"></script>
-    <script src="../../assets/js/core/i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-dict.js?v=20261118h"></script>
-<script src="../../games.js?v=20261118h"></script>
-  <script src="platformer-i18n.js?v=20261118h"></script>
-  <script src="../../assets/js/core/extras.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-extra.js?v=20261118h"></script>
-  <script src="../../assets/js/core/i18n-live.js?v=20261118h"></script>
-<script src="../../assets/js/shell.js?v=20261118h"></script>
-  <script src="platformer.js?v=20261118h"></script>
-  <script src="../../assets/js/pwa.js?v=20261118h"></script>
+  <script src="../../assets/js/core/storage.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/input.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/loop.js?v=20261119f1"></script>
+    <script src="../../assets/js/core/i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-dict.js?v=20261119f1"></script>
+<script src="../../games.js?v=20261119f1"></script>
+  <script src="platformer-i18n.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/extras.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-extra.js?v=20261119f1"></script>
+  <script src="../../assets/js/core/i18n-live.js?v=20261119f1"></script>
+<script src="../../assets/js/shell.js?v=20261119f1"></script>
+  <script src="platformer.js?v=20261119f1"></script>
+  <script src="../../assets/js/pwa.js?v=20261119f1"></script>
 <footer class="nc-foot">
   <nav class="nc-foot-nav" aria-label="netcn 站点">
     <a href="https://netcn.org/" data-nc-to="nav">导航</a>
@@ -162,8 +162,8 @@
     <a href="https://game.netcn.org/" data-nc-to="game">游戏厅</a><a href="https://sky.netcn.org/" data-nc-to="sky">火烧云</a>
   </nav>
   <span class="nc-foot-note">© 2011-2026 游戏厅 game.netcn.org</span>
-  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">53 款游戏 · 打开即玩 · 纪录仅存本地</span>
+  <a class="nc-foot-legal" href="https://netcn.org/disclaimer/">免责声明</a><span class="nc-foot-site">49 款游戏 · 打开即玩 · 纪录仅存本地</span>
 </footer>
-<script src="../../assets/js/family-bridge.js?v=20261118h"></script>
+<script src="../../assets/js/family-bridge.js?v=20261119f1"></script>
 </body>
 </html>

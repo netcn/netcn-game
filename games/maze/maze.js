@@ -195,11 +195,32 @@ window.GAME_TUTORIAL_STEPS = [
     return '<button class="mz-themechip' + (t.id === activeTheme.id ? ' on' : '') + '" data-t="' + t.id + '">' + T(t.name) + '</button>';
   }).join('');
 
+  var MAZE_HERO =
+    '<div class="mz-hero" aria-hidden="true">' +
+    '<svg viewBox="0 0 520 150" preserveAspectRatio="xMidYMid meet">' +
+    '<defs>' +
+    '<linearGradient id="mzHeroBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#08182b"/><stop offset="1" stop-color="#030910"/></linearGradient>' +
+    '<linearGradient id="mzHeroLine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00f0ff"/><stop offset="1" stop-color="#ff2d95"/></linearGradient>' +
+    '<filter id="mzHeroGlow"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+    '</defs>' +
+    '<rect width="520" height="150" fill="url(#mzHeroBg)"/>' +
+    '<g stroke="#11324a" stroke-width="1" opacity=".7"><path d="M0 25H520M0 50H520M0 75H520M0 100H520M0 125H520M26 0V150M78 0V150M130 0V150M182 0V150M234 0V150M286 0V150M338 0V150M390 0V150M442 0V150M494 0V150"/></g>' +
+    '<rect x="12" y="28" width="496" height="110" rx="5" fill="none" stroke="#0e3149" stroke-width="2"/>' +
+    '<path d="M70 28V68H120V118M190 28V58H242V118M312 28V88H364V48M430 28V72H480V118M16 80H54M148 80H178M270 110H298M390 110H414" fill="none" stroke="#1d4b67" stroke-width="3" opacity=".85"/>' +
+    '<path d="M18 116H78V44H142V126H214V56H286V112H356V36H428V96H502" fill="none" stroke="#00f0ff" stroke-width="7" opacity=".16" filter="url(#mzHeroGlow)"/>' +
+    '<path d="M18 116H78V44H142V126H214V56H286V112H356V36H428V96H502" fill="none" stroke="url(#mzHeroLine)" stroke-width="2.2" opacity=".95"/>' +
+    '<circle cx="18" cy="116" r="7" fill="#5cff9d" opacity=".16"/><circle cx="18" cy="116" r="3.4" fill="#5cff9d"/>' +
+    '<circle cx="502" cy="96" r="8" fill="#ffcf5c" opacity=".12"/><circle cx="502" cy="96" r="4" fill="none" stroke="#ffcf5c" stroke-width="2"/>' +
+    '<text x="16" y="20" fill="#7df9ff" font-family="monospace" font-size="9" letter-spacing="2">MAZE 07 · NIGHT RUN</text>' +
+    '<text x="438" y="20" fill="#ff9ecb" font-family="monospace" font-size="9" letter-spacing="2">EXIT</text>' +
+    '</svg></div>';
+
   root.innerHTML =
     '<div class="mz-wrap">' +
     '  <div class="mz-pick" id="mz-pick">' +
     '    <div class="mz-pick-t">' + T('gs.maze.pickT') + '</div>' +
     '    <div class="mz-pick-d">' + T('gs.maze.pickD') + '</div>' +
+    '    ' + MAZE_HERO +
     '    <div class="mz-modes">' + modeCard('expedition', '8') + modeCard('endless', '∞') + modeCard('daily', 'D') + '</div>' +
     '    <div class="mz-diffrow"><span class="mz-diffrow-t">' + T('gs.maze.diffLabel') + '</span>' + diffHtml + '</div>' +
     '    <div class="mz-themerow"><span class="mz-themerow-t">' + T('gs.maze.themeLabel') + '</span><div class="mz-themes">' + themeHtml + '</div></div>' +

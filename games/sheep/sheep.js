@@ -310,6 +310,8 @@
     '.sh-picker { background: linear-gradient(180deg, rgba(20,44,30,.82), rgba(8,18,13,.92)); border: 1px solid rgba(57,255,20,.32); border-radius: 16px; padding: 16px 13px 14px; margin: 6px 0 10px; box-shadow: 0 0 28px rgba(57,255,20,.10), inset 0 0 18px rgba(57,255,20,.05); }',
     '.sh-picker-t { font-family: var(--font-pixel); font-size: 13px; letter-spacing: 1px; color: var(--neon-green); text-shadow: 0 0 12px rgba(57,255,20,.45); margin-bottom: 7px; }',
     '.sh-picker-d { font-size: 11px; color: var(--text-dim); line-height: 1.7; margin: 0 auto 10px; max-width: 340px; }',
+    '.sh-picker .nc-mv { width: min(250px, 100%); margin: 0 auto 8px; }',
+    '@media (max-width: 640px) { .sh-picker-d { display: none; } }',
     '.sh-progress { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 14px; font-size: 10px; color: var(--text-dim); margin: 0 0 4px; }',
     '.sh-progress b { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 9px; }',
     '.sh-sec { display: flex; align-items: center; gap: 8px; font-family: var(--font-pixel); font-size: 9px; letter-spacing: .4px; color: var(--neon-cyan); margin: 14px 0 8px; text-align: left; }',
@@ -418,6 +420,16 @@
     '.sh-cx.locked .sh-cx-name { color: var(--text-dim); }',
     '.sh-cx-desc { font-size: 9.5px; line-height: 1.5; color: var(--text-dim); margin-top: 1px; overflow-wrap: anywhere; }',
     '.sh-cx-cond { font-size: 9px; line-height: 1.5; color: rgba(0,240,255,.8); margin-top: 3px; overflow-wrap: anywhere; }',
+    '@media (min-width: 1024px) {',
+    '  .sh-wrap { max-width: 760px; }',
+    '  .sh-picker .nc-mv { width: min(320px, 100%); }',
+    '  .sh-levels { gap: 10px; }',
+    '  .sh-lv { min-height: 112px; padding: 10px 10px 8px; }',
+    '  .sh-lv-name { font-size: 12px; line-height: 1.4; }',
+    '  .sh-lv-mini { font-size: 10px; line-height: 1.55; }',
+    '  .sh-lv-best { font-size: 9px; }',
+    '  #sh-game { max-width: 560px; margin-left: auto; margin-right: auto; }',
+    '}',
     '@media (max-width: 480px) {',
     '  .sh-wrap { padding: 10px 8px 20px; }',
     '  .sh-picker { padding: 13px 10px 12px; }',
@@ -450,6 +462,7 @@
     '<div class="sh-wrap">' +
     '  <div class="sh-picker" id="sh-picker">' +
     '    <div class="sh-picker-t">' + T('gs.sheep.pickT') + '</div>' +
+    '    <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '    <div class="sh-picker-d">' + T('gs.sheep.pickD') + '</div>' +
     '    <div class="sh-progress" id="sh-progress"></div>' +
     '    <div class="sh-week" id="sh-week">' +

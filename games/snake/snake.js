@@ -51,6 +51,7 @@
 
   root.innerHTML =
     '<div class="snake-menu" id="menu">' +
+    '  <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '  <div class="snake-menu-title">' + T('gs.snake.chooseMode') + '</div>' +
     '  <div class="snake-mode-row" id="mode-row">' +
     '    <button class="mode-btn selected" data-mode="classic">' + T('gs.snake.modeClassic') + '</button>' +

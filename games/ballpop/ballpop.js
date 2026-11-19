@@ -318,6 +318,7 @@ window.GAME_TUTORIAL_STEPS = [
   root.innerHTML =
     '<div class="bp-wrap">' +
     '  <div class="bp-pick" id="bp-pick">' +
+    '    <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '    <div class="bp-pick-t">' + T('gs.ballpop.pickT') + '</div>' +
     '    <div class="bp-pick-d">' + T('gs.ballpop.pickD') + '<br>' + T('gs.ballpop.pickGoal') + '</div>' +
     '    <div class="bp-pick-btns">' +

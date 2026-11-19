@@ -8,12 +8,14 @@
 window.Arcade = window.Arcade || {};
 
 /* ---------------- 主题绘制层：让 canvas 跟随全站明暗 ----------------
-   游戏画布由各游戏自行绘制，旧代码多为「深色底 + 白色文字」，在纸感浅色
-   主题下会变成一块黑。这里在绘制 API 层统一适配，53 个游戏无需改动：
+   游戏画布由各游戏自行绘制，绝大多数是「深色舞台 + 白色文字」。
+   浅色主题不再把所有画布强行刷成纸白：那样会把塔防地图、星空、夜间战场
+   全部洗平，只剩一块白底和零散线条。现在默认保留游戏自己的画布绘制，
+   只有显式声明 `nc-paper-canvas` 的画布才做纸感适配：
      · 覆盖整屏的 fillRect（清屏）→ 改用舞台底色
      · 近白色的 fillText / stroke → 改用主文字色 / 次级线条色
      · 同时关闭发光阴影，避免浅底上出现彩色光晕
-   只在浅色主题生效；深色主题完全保持游戏原始绘制，零副作用。 */
+   `nc-keep-dark` 继续兼容（HASHI 等已使用）。 */
 Arcade.paper = (function () {
   var state = {
     bg: '#f4f6fa', ink: '#1b2030', dim: '#5b6478',
@@ -90,11 +92,18 @@ Arcade.paper = (function () {
     return false;
   }
 
+  /* 绝大多数游戏画布应保持自身的深色舞台。只有显式标记
+     `nc-paper-canvas` 的画布才在浅色主题下走纸感替换。 */
+  function paperCanvas(ctx) {
+    return !!(ctx && ctx.canvas && ctx.canvas.classList &&
+      ctx.canvas.classList.contains('nc-paper-canvas'));
+  }
+
   var _fillRect = P.fillRect;
   P.fillRect = function (x, y, w, h) {
     /* 从左上角起、面积占画布两成以上的填充视为清屏；
        0.2 的门槛兼容 hiDPI（逻辑坐标只有实际像素的一半）。 */
-    if (!state.dark && x <= 2 && y <= 2 && w >= 80 && h >= 80 && this.canvas &&
+    if (!state.dark && paperCanvas(this) && x <= 2 && y <= 2 && w >= 80 && h >= 80 && this.canvas &&
         this.globalAlpha >= 0.95 &&
         w * h >= this.canvas.width * this.canvas.height * 0.2 &&
         allowClear(this.canvas)) {
@@ -109,7 +118,7 @@ Arcade.paper = (function () {
 
   var _fillText = P.fillText;
   P.fillText = function () {
-    if (!state.dark && nearWhite(this.fillStyle)) {
+    if (!state.dark && paperCanvas(this) && nearWhite(this.fillStyle)) {
       this.save();
       this.fillStyle = state.ink;
       this.shadowBlur = 0;
@@ -122,7 +131,7 @@ Arcade.paper = (function () {
 
   var _stroke = P.stroke;
   P.stroke = function () {
-    if (!state.dark && nearWhite(this.strokeStyle)) {
+    if (!state.dark && paperCanvas(this) && nearWhite(this.strokeStyle)) {
       this.save();
       this.strokeStyle = state.line;
       this.shadowBlur = 0;

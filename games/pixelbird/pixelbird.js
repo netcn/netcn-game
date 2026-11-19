@@ -28,6 +28,7 @@
     '    <canvas class="pb-canvas" id="pb-canvas" aria-label="Pixel Bird"></canvas>',
     '    <button class="pb-pause" id="pb-pause" aria-label="Pause">II</button>',
     '    <div class="pb-overlay" id="pb-menu">',
+    '      <div class="nc-mv" data-nc-mv aria-hidden="true"></div>',
     '      <div class="pb-title">PIXEL BIRD</div>',
     '      <div class="pb-sub" id="pb-menu-sub"></div>',
     '      <div class="pb-bestline" id="pb-bestline"></div>',

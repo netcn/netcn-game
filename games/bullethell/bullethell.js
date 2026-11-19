@@ -249,6 +249,7 @@ window.GAME_TUTORIAL_STEPS = [
     /* 开始 / 机体 / 武器 / 难度 / 练习遮罩 */
     '<div class="bh-overlay" id="bh-start">' +
     '  <div class="bh-card bh-start-card">' +
+    '    <div class="nc-mv" data-nc-mv aria-hidden="true"></div>' +
     '    <h2>' + T('gs.bullethell.startTitle') + '</h2>' +
     '    <p>' + T('gs.bullethell.startDesc') + '</p>' +
     '    <div class="bh-pick-label"><span>' + T('gs.bullethell.pickShip') + '</span><span>← →</span></div>' +
